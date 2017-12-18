@@ -14,16 +14,18 @@ tags: Node.js
 [点这里去下载](http://nodejs.cn/download/)
 
 ## 如下图，选择系统对应的位数下载
-{% asset_img 20171212103816.png %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212103816.png)
 
 ## 双击打开你下载node-v8.9.0-x64.msi安装包
-{% asset_img 20171212113959.png %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212113959.png)
+
 <center>一路下一步</center>
-{% asset_img 20171212114548.png %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212114548.png)
+
 <center>Node.js默认安装目录，你也可以点Change修改目录，点击下一步(Next)</center>
-{% asset_img 20171212132319.png %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132319.png)
 <center>点击下一步(Next)</center>
-{% asset_img 20171212132540.png %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132540.png)
 <center>点击安装(Install)</center>
 
 ## 安装完检测PATH环境变量是否配置Node.js
@@ -33,6 +35,5 @@ tags: Node.js
   输入 cmd 回车
   输入 node -v 和 npm -v
 ```
-
-{% asset_img 20171212133014.jpg %}
+![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212133014.jpg)
 <center>会显示你安装node和npm的版本</center>

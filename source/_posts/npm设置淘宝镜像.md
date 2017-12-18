@@ -24,7 +24,7 @@ npm config set registry http://registry.npm.taobao.org
 ```
 npm get registry 
 ```
-{% asset_img 20171215161837.png %}
+![](http://hexo-1252491761.file.myqcloud.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F/20171215161837.png)
 
 ## 注意如果你换成淘宝镜像的话，会影响你发布模块，这时候需要换回npm官网的镜像
 
