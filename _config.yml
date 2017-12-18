@@ -12,12 +12,12 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://lanpangzhi.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
-# site
+# siteMap
 sitemap: 
     path: sitemap.xml
 baidusitemap:
@@ -75,5 +75,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:lanpangzhi/lanpangzhi.github.io.git
-  branch: master
+  repo:
+   github: git@github.com:lanpangzhi/lanpangzhi.github.io.git,master
+   coding: git@git.coding.net:bule/bule.coding.me.git,master
