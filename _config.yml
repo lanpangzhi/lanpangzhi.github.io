@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lanpangzhi.github.io
+url: http://blog.langpz.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -78,3 +78,6 @@ deploy:
   repo:
    github: git@github.com:lanpangzhi/lanpangzhi.github.io.git,master
    coding: git@git.coding.net:bule/bule.coding.me.git,master
+
+# CNAME文件
+plugins: hexo-generator-cname
