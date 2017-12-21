@@ -81,3 +81,9 @@ deploy:
 
 # CNAME文件
 plugins: hexo-generator-cname
+
+# Algolia Search API Key
+algolia:
+  applicationID: 'EB9SBZZPJT'
+  apiKey: '2cafb332cd521b202f675f658207cb8d'
+  indexName: 'lanpangzhi'
