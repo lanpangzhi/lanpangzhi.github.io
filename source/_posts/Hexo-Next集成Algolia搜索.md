@@ -87,8 +87,11 @@ algolia_search:
 
 原因：遮罩的z-index值太高，我的next主题是5.1.3版本可能其他版本没有这个BUG
 
-解决方案： 找到\themes\next\source\css\_common\components\third-party 下面的algolia-search.styl 文件 把第7行 z-index : 2080 改成 z-index : 1000
-
+解决方案： 找到\themes\next\source\css\_common\components\third-party 下面的algolia-search.styl 文件 第8行追加
+```	
+  +mobile()
+    z-index: 1000
+```
 # 参考
 [http://theme-next.iissnan.com/third-party-services.html#algolia-search](http://theme-next.iissnan.com/third-party-services.html#algolia-search)
 [https://github.com/oncletom/hexo-algolia](https://github.com/oncletom/hexo-algolia)
