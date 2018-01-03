@@ -25,4 +25,4 @@ tags: css
 ```
 ![](http://hexo-1252491761.file.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111828.png)
 
-注：因为用了webkit的私有属性，建议只在移动端使用！
+注：因为用了webkit的私有属性，建议只在移动端使用！！！
