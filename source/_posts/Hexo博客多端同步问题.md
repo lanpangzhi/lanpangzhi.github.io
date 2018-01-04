@@ -12,6 +12,7 @@ tags: Hexo
 在博客根目录执行
 
 ```
+  git init
   git remote add origin git@github.com:lanpangzhi/lanpangzhi.github.io.git  # 添加远程仓库 注意这里要添加你自己的仓库 lanpangzhi 换成你自己的用户名
   git checkout -b hexo   		 # 新建hexo分支并切换到hexo分支
   git add . 			 # 所有变化提交到暂存区
