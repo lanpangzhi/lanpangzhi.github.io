@@ -41,7 +41,7 @@ console.log(math.add(1,2)); # 3
 加载模块后会被缓存,多次加载还是同一个对象。
 查看模块缓存 require.cache
 查看模块绝对路径  require.resolve(./math.js)
-删除模块的缓存 require.cache(require.resolve(./math.js))
+删除模块的缓存 require.cache[require.resolve(./math.js)]
 
 ## 模块的循环加载
 ```
