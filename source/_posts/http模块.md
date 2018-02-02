@@ -31,6 +31,75 @@ listen() 监听的端口。
 
 ## 客户端向HTTP服务器发起请求
 ### http.request(options[, callback])
+```
+// request.js
+var http = require('http');
+var querystring = require('querystring');
+const postData = querystring.stringify({
+	'msg': 'Hello World!'
+});
+
+const options = {
+	hostname: 'localhost',
+	port: 80,
+	path: '/',
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Content-Length': Buffer.byteLength(postData)
+	}
+};
+
+const req = http.request(options, (res) => {
+	console.log(`状态码: ${res.statusCode}`);
+	console.log(`响应头: ${JSON.stringify(res.headers)}`);
+	res.setEncoding('utf8');
+	res.on('data', (chunk) => {
+		console.log(`响应主体: ${chunk}`);
+	});
+	res.on('end', () => {
+		console.log('响应中已无数据。');
+	});
+});
+
+req.on('error', (e) => {
+	console.error(`请求遇到问题: ${e.message}`);
+});
+
+// 写入数据到请求主体
+req.write(postData);
+req.end();
+
+// sever.js
+let http = require('http');
+let querystring = require('querystring');
+
+let app = http.createServer( (res,req) => {
+    let str = '';
+    res.on('data',  (data) => {
+        str += data
+    });
+    res.on("end", () => {
+       
+        str = querystring.parse(str)
+        console.log(str)
+		// 向客户端返回数据
+        req.end(`提交成功了: ${str.msg}`) 
+    })	
+      
+});
+
+app.listen(80);
+```
+客户端会输出
+```
+状态码: 200
+响应头: {"date":"Fri, 02 Feb 2018 03:37:39 GMT","connection":"close","content-length":"29"}
+响应主体: 提交成功了: Hello World!
+响应中已无数据。
+```
+我们可以写个定时器用request方法，一直向某个网站提交信息。
+
 options: Object | string | URL
 - protocol &lt;string&gt; 使用的协议。默认为 http:。
 - host &lt;string&gt; 请求发送至的服务器的域名或 IP 地址。默认为 localhost。
@@ -47,9 +116,7 @@ options: Object | string | URL
 - Agent 对象：显式地使用传入的 Agent。false: 创建一个新的使用默认值的 Agent。
 - createConnection &lt;Function&gt; 当不使用 agent 选项时，为请求创建一个 socket 或流。 这可以用于避免仅仅创建一个自定义的 Agent 类来覆盖默认的 createConnection 函数。详见 agent.createConnection()。
 - timeout &lt;number&gt;: 指定 socket 超时的毫秒数。 它设置了 socket 等待连接的超时时间。
-```
 
-```
 ### 发起get请求 http.get(options[, callback])
 ```
 var http = require('http');
@@ -80,6 +147,8 @@ http.get('http://blog.langpz.com', (res) => {
 	console.error(`出错了: ${e.message}`);
 });
 ```
+网站内容就爬下来了
+
 # 参考
 [https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF](https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF)
 [https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF](https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF)
