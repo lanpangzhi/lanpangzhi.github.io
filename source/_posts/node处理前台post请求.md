@@ -4,7 +4,7 @@ date: 2018-03-01 10:29:37
 tags: Node.js
 ---
 # node.js处理前台post请求
-这里就不讲如何处理get请求了，直接req.url就可以接收到请求的参数。
+下面代码实现了用node.js接收前台发送的post请求。用到了http模块和querystring模块。
 <!--more-->
 
 ## 服务端代码 
