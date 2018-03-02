@@ -6,14 +6,13 @@ tags: Node.js
 # url模块
 url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。
 模块只有三个方法，用起来也简单。
+<!--more-->
 
 ## url结构说明
 网址：http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash
 ![](http://hexo-1252491761.file.myqcloud.com/url%E6%A8%A1%E5%9D%97/QQ%E5%9B%BE%E7%89%8720180301164245.png)
 从node.js 中文网拿的图。
 
-
-<!--more-->
 ## url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
 ```
 let url = require('url');
