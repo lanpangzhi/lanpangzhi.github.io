@@ -147,7 +147,8 @@ http.get('http://blog.langpz.com', (res) => {
 	console.error(`出错了: ${e.message}`);
 });
 ```
-网站内容就爬下来了
+网站内容就爬下来了。
+该方法与 http.request() 唯一的区别是它设置请求方法为 GET 且自动调用 req.end()。
 
 # 参考
 [https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF](https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF)
