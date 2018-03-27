@@ -40,6 +40,7 @@ package.json文件属性说明
 	npm install (Module Name) options  # 语法
 	npm install express                # 本地安装
 	npm install express -g             # 全局安装
+	npm install express@1.0.0          # 安装指定版本
 ```
 npm 的包安装分为本地安装（local）、全局安装（global）两种。
 - 本地安装：将安装包放在当前目录下的 ./node_modules 下。
@@ -55,11 +56,13 @@ npm 的包安装分为本地安装（local）、全局安装（global）两种�
 安装包信息将加入到dependencies（生产阶段的依赖） 
 ```
 	npm install express --save	# npm5已经将--save变成了默认参数，执行 install 依赖包时默认都会带上，除非加上 --no-save。
+	npm install express -S          # 缩写
 ```
 
 安装包信息将加入到devDependencies（开发和测试阶段的依赖）
 ```
 	npm install gulp --save-dev
+	npm install gulp -D  # 缩写
 ```
 
 注: 包的依赖都被写入了package.json文件后，他人git或者svn下载项目可以通过npm install 安装项目依赖的包。
