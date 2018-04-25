@@ -2,6 +2,7 @@
 title: path模块
 date: 2018-02-26 11:17:42
 tags: Node.js
+keywords: Node.js path模块
 ---
 # path模块
 path模块是Node.js提供用于处理文件与目录的路径。

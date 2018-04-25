@@ -2,6 +2,7 @@
 title: stream模块
 date: 2018-02-27 13:27:30
 tags: Node.js
+keywords: Node.js stream模块
 ---
 # stream (流)
 流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。

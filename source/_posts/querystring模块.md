@@ -2,6 +2,7 @@
 title: querystring模块
 date: 2018-02-09 13:10:53
 tags: Node.js
+keywords: Node.js querystring模块
 ---
 # querystring模块
 querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。

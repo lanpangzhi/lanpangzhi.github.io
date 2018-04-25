@@ -2,6 +2,7 @@
 title: node处理前台post请求
 date: 2018-03-01 10:29:37
 tags: Node.js
+keywords: Node.js处理post请求
 ---
 # node.js处理前台post请求
 下面代码实现了用node.js接收前台发送的post请求。用到了http模块和querystring模块。

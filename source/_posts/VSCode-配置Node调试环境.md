@@ -2,6 +2,7 @@
 title: VSCode 配置Node调试环境
 date: 2018-01-05 17:17:59
 tags: VSCode
+keywords:  VSCode 配置Node调试环境
 ---
 # VSCode 配置Node调试环境
 我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有办法了，因为是在命令行执行的没法打断点一个个console的话效率太低，所以这个时候就需要VSCode来辅助我们开发node.js。

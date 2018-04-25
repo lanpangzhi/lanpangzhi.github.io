@@ -2,6 +2,7 @@
 title: node处理前台get请求
 date: 2018-03-02 10:07:32
 tags: Node.js
+keywords: Node.js处理get请求
 ---
 # node.js处理前台get请求
 下面代码实现了用node.js接收前台发送的get请求。用到了http模块和url模块。

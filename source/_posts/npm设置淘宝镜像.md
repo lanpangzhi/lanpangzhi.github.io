@@ -2,6 +2,7 @@
 title: npm设置淘宝镜像
 date: 2017-12-15 16:06:34
 tags: npm
+keywords: npm设置淘宝镜像
 ---
 ## npm设置淘宝镜像
 

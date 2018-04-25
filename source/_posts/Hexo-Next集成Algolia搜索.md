@@ -2,6 +2,7 @@
 title: Hexo+Next集成Algolia搜索
 date: 2017-12-22 13:13:18
 tags: Hexo
+keywords: Hexo+Next集成Algolia搜索
 ---
 # 集成Algolia搜索
 起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。

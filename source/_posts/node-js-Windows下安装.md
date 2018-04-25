@@ -2,6 +2,7 @@
 title: node.js Windows下安装（笔记）
 date: 2017-12-12 16:26:01
 tags: Node.js
+keywords: Node.js安装 Windows
 ---
 # 首先去Node.js中文网下载安装包
 

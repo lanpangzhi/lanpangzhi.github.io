@@ -2,6 +2,7 @@
 title: nvm管理node.js版本（Windows系统）
 date: 2017-12-26 14:03:59
 tags: Node.js
+keywords: nvm管理node.js版本（Windows系统）
 ---
 # nvm管理node版本
 在开发过程中偶尔会碰见不同项目依赖的node版本不一样，而node没有提供自动切换版本的功能，这个时候就需要nvm出马了，n也可以管理node版本（注：不支持Windows）

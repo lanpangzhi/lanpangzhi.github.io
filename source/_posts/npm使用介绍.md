@@ -2,6 +2,7 @@
 title: npm使用介绍
 date: 2017-12-20 14:56:09
 tags: npm
+keywords: npm使用介绍
 ---
 # npm使用介绍
 npm是随同NodeJS一起安装的包管理工具、官网[https://www.npmjs.com](https://www.npmjs.com)

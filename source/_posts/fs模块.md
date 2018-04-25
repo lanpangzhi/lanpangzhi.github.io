@@ -2,6 +2,7 @@
 title: fs模块
 date: 2018-02-22 14:32:19
 tags: Node.js
+keywords: Node.js fs模块
 ---
 # fs模块
 fs模块是Node.js提供来操作本地文件（读、写、复制、删除...）等功能的模块。

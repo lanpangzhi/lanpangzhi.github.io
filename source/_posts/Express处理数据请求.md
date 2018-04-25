@@ -2,6 +2,7 @@
 title: Express处理数据请求
 date: 2018-04-02 17:28:39
 tags: Express
+keywords: Express处理数据请求 post get
 ---
 # Express处理数据请求
 之前文章里面介绍了如何用原生Node处理数据请求。

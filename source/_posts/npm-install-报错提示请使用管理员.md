@@ -2,6 +2,7 @@
 title: npm install 报错提示请使用管理员
 date: 2017-12-27 11:07:20
 tags: npm
+keywords: npm install 报错 Please try running this command again as root/Administrator
 ---
 # npm install 报错提示请使用管理员
 之前把node升级了，npm自动升级到 **npm5** 再npm install xxx 会报如下图错误

@@ -2,6 +2,7 @@
 title: Buffer对象
 date: 2018-02-06 13:43:40
 tags: Node.js
+keywords: Node.js Buffer对象
 ---
 # Buffer对象
 在 ECMAScript 2015 (ES6) 引入 TypedArray 之前，JavaScript 语言没有读取或操作二进制数据流的机制。 Buffer 类被引入作为 Node.js API 的一部分，使其可以在 TCP 流或文件系统操作等场景中处理二进制数据流。
