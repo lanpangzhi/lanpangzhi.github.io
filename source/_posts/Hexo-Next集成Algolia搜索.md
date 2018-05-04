@@ -37,7 +37,7 @@ algolia:
 ## 修改Algolia搜索ACL（访问控制列表）
 ![](http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222142305.png)
 
-{% cq %} 选中后保存。{% endcq %}
+选中后保存。
 
 ## 操作完成后执行命令
 ```
