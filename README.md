@@ -3,6 +3,7 @@
 
 ```
 git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git
+npm install hexo-cli -g
 cd lanpangzhi.github.io
 npm i
 git submodule init
