@@ -20,19 +20,61 @@ www.langpz.com/vip/bbb
 www.langpz.com/vip/ccc
 等等。。。
 咱们可以拆分成vip和user两个目录目录下再放子路由。
+先安装express 然后在项目根目录建一个app.js和routers文件夹，routers文件夹里面再建一个index.js文件和vip、user两个目录，两个目录下面分别建立index.js文件。
 ```
+// app.js
 const express = require('express');
-const cookieSession = require('cookie-session');
+const routers = require('./routers');  //引入路由
 
 let app = express();
 
-let routerVip = express.Router();
-let routerUser = express.Router();
+app.use('/vip', routers.vip);   // 设置/vip路由中间件
+app.use('/user', routers.user);  // 设置/user路由中间件
 
-app.use('/user', routerUser);
 
-app.use('/vip', routerVip);
+app.listen(8000);
+```
 
+```
+// routers/index.js
+let vip = require('./vip'); // 引入vip文件下面的路由
+let user = require('./user');   // 引入user文件下面的路由
+// 导出路由
+module.exports = {
+    vip,
+    user
+};
+```
+
+```
+// routers/vip/index.js
+const express = require('express'); // 必须要引入express
+
+let routerVip = express.Router();   // 创建router实例
+
+// 添加路由配置
+routerVip.get('/', (req, res) => {
+    res.send('我是vip根目录')
+});
+
+routerVip.get('/aaa', (req, res) => {
+    res.send('我是vip/aaa目录')
+});
+
+routerVip.get('/bbb', (req, res) => {
+    res.send('我是vip/bbb目录')
+});
+// 导出路由
+module.exports = routerVip;
+```
+
+```
+// routers/user/index.js
+const express = require('express'); // 必须要引入express
+
+let routerUser = express.Router();  // 创建router实例
+
+// 添加路由配置
 routerUser.get('/', (req, res) =>{
     res.send('我是user根目录')
 });
@@ -45,16 +87,8 @@ routerUser.get('/bbb', (req, res) => {
     res.send('我是user/bbb目录')
 });
 
-routerVip.get('/', (req, res) => {
-    res.send('我是vip根目录')
-});
-
-routerVip.get('/aaa', (req, res) => {
-    res.send('我是vip/aaa目录')
-});
-
-routerVip.get('/bbb', (req, res) => {
-    res.send('我是vip/bbb目录')
-});
-app.listen(8000);
+// 导出路由
+module.exports = routerUser;
 ```
+
+然后执行 node app.js 再浏览器输入http://localhost:8000/user/aaa、http://localhost:8000/vip/aaa，就可以来回切换路由了，如果新增了一个路由模块就在routers文件夹下，再新建文件夹划分路由，这样路由文件比较清晰，后期维护起来也方便。
