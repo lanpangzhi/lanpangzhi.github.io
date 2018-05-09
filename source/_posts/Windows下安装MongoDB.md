@@ -27,15 +27,32 @@ MongoDB的一个实例可以拥有多个相互独立的数据库(database)，每
 命令提示符（cmd）执行，具体路径需要看安装的版本，我的是3.6版本。
 ```
 cd C:\Program Files\MongoDB\Server\3.6\bin
-mongod --dbpath d:\db
+mongod --dbpath d:\db 
 ```
 控制台会输出一些东西，没有报错MongoDB就启动了。
+这样启动比较麻烦，每次都要启动，所以可以把它注册成windows 的服务
+```
+// 使用管理员权限运行
+mongod --install --dbpath d:\data\db --logpath d:\data\log\log.txt
+net start MongoDB  // 启动服务
+```
+
+```
+services.msc // 查看服务
+net stop mongodb   // 停止服务
+```
+删除服务
+```
+mongod --remove --serviceName MongoDB  // MongoDB是服务名
+```
+MongoDB 还可以通过配置文件启动
+可以去官网查看[https://docs.mongodb.com/manual/reference/configuration-options/](https://docs.mongodb.com/manual/reference/configuration-options/)
 
 ## 连接MongoDB
 在打开一个命令提示符（cmd）之前运行的MongoDB那个不要关闭，因为没有注册成windows的服务，关闭就找不到数据库了。
 ```
 cd C:\Program Files\MongoDB\Server\3.6\bin
-mongod
+mongo
 ```
 这样就链接上数据库了，当然还会输出一大堆东西。
 
