@@ -12,6 +12,12 @@ MongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以�
 和关系型数据库比较，面向文档的数据库不再有“行”（row）的概念，取而代之的是更为灵活的“文档”（document）模型。通过再文档中嵌入文档和数组，面向文档的方法能够仅使用一条记录来表现复杂的层次关系。
 另外，不再有预定义模式，文档的键（key）和值（value）不再是固定的类型和大小。由于没有固定的模式，根据需要添加或删除字段变得更容易。可以进行快速迭代，所以开发进程得到加快。
 
+## MongoDB基本概念
+文档是MongoDB中数据的基本单元，非常类似于关系型数据库管理系统中的行。
+集合(collection)可以看作是一个拥有动态模式(dynamic schema)的表。
+MongoDB的一个实例可以拥有多个相互独立的数据库(database)，每一个数据库都拥有自己的集合。
+每一个文档都有一个特殊的键“_id”，这个键在文档所属的集合中是唯一的。
+
 ## 下载和安装
 [下载地址](https://www.mongodb.com/download-center#atlas)
 ![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png)
@@ -40,7 +46,28 @@ use test02
 ```
 创建一个test02的数据库并切换过去。
 db变量指向当前数据库。
-插入一条数据，之前也讲了MongoDB没有预定义模式，所以不用新建表和表结构了，
+向集合里插入文档，之前也讲了MongoDB没有预定义模式，所以不用新建表和表结构了。
+insert方法 把一条文档保存到集合里。
 ```
 db.user_table.insert({"name", "lanpangzhi", "age": 18})
+```
+查看集合里面的文档。
+find和findOne方法可以用于查询集合里的文档。只想查看一个文件，可以用findOne
+```
+db.user_table.find()
+db.user_table.findOne()
+```
+find和findOne还可以接受一个查询文档作为限定条件。
+```
+db.user_table.find({"name": "lanpangzhi"})
+```
+更新集合里面的文档
+update方法接受（至少）两个参数：第一个是限定条件（用于匹配待更新的文档），第二个是新的文档。
+```
+db.user_table.update({name: lanpangzhi},{"name": "lanpangzhi", "age": 18, "sex": 1});
+```
+删除集合里面的文档
+remove方法可将数据库的集合永久删除，如果不加参数默认把集合里面所有的文档删除。它可以接受一个限定条件的文档作为参数。
+```
+db.user_table.remove({"name": "aaa"})
 ```
