@@ -105,6 +105,14 @@ connection.query('UPDATE user SET pass = "bbb" WHERE username = "lan"', (err, re
     console.log(results);
 })
 ```
+终止连接
+```
+connection.end(function(err) {
+  // The connection is terminated now
+});
+connection.destroy();
+```
+调用这两个方法都可以。
 基本操作就是这个流程，可以通过路由封装接口，写一个CRUD应用，mysql模块更多参数可以去看github。
 
 # 参考
