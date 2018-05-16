@@ -47,7 +47,7 @@ script:
 - hexo deploy
 branches:
   only:
-  - master
+  - indigo
 ```
 
 下载ruby(如果你电脑有就不需要下载了)
@@ -110,7 +110,7 @@ script:
   - hexo deploy
 branches:
   only:
-  - master
+  - indigo
 ```
 
 # 参考
