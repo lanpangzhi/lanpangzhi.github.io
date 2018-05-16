@@ -71,7 +71,7 @@ travis login --auto
 下一步开始用travis提供的工具加密刚才生成SSH公钥,并上传到travis供日常使用。
 把之前生成的id_rsa.pub文件放到项目根目录，然后执行。
 ```
-travis encrypt-file id_rsa.pub --add -r github用户名/hexo仓库
+travis encrypt-file id_rsa.pub --add -r github用户名/hexo仓库  // 不要使用Windows 系统机器否则构建的时候会报错
 ```
 成功后会生成一个id_rsa.pub.enc 并且 .travis.yml 会自动添加一些内容，不要去改内容。 然后把id_rsa.pub 文件删除。
 
