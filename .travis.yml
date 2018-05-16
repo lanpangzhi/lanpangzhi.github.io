@@ -22,4 +22,4 @@ script:
   - hexo deploy
 branches:
   only:
-  - master
+  - indigo
