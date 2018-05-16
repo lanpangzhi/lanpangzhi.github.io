@@ -24,7 +24,7 @@ Travis CI是在软件开发领域中的一个在线的，分布式的持续集�
 ssh-keygen -t rsa -C "你的邮箱"
 ```
 然后找到 C:\Users\windows\.ssh  下的 id_rsa.pub， 把内容添加到github和coding的hexo仓库的部署公钥里面。
-![](http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144527.png)
+
 ![](http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144704.png)
 
 然后在git仓库根目录 添加 .travis.yml 文件。
