@@ -50,13 +50,9 @@ branches:
   - indigo
 ```
 
-下载ruby(如果你电脑有就不需要下载了)
+下载ruby(如果你电脑有就不需要下载了)  注：不要使用Windows 系统机器否则构建的时候会报错
 [下载地址](https://rubyinstaller.org/downloads/)，选择你需要的版本下载，我直接下载最新版64位了。
 
-gem设置国内镜像
-```
-gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-```
 安装travis  
 ```   
 gem install travis
