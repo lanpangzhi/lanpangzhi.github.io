@@ -5,11 +5,6 @@ cache:
   directories:
   - node_modules
 before_install:
-- openssl aes-256-cbc -K $encrypted_955017c130ef_key -iv $encrypted_955017c130ef_iv -in .travis/id_rsa_pub.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
-- cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name "lanpangzhi"
 - git config --global user.email 875727617@qq.com
 - npm install hexo-cli -g
@@ -18,7 +13,28 @@ install:
 script:
 - hexo clean
 - hexo generate
-- hexo deploy
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "lanpangzhi"
+  - git config user.email "875727617@qq.com"
+  - git add .
+  - git commit -m "TravisCI 自动部署"
+  # Github Pages
+  - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
+  # Coding Pages
+  - git push --force --quiet "https://bule:${CO_TOKEN}@${CO_REF}" master:master
+  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  # Github Pages
+  - git push --quiet "https://${CI_TOKEN}@${GH_REF}" master:master --tags
+
 branches:
   only:
   - indigo
+
+env:
+ global:
+   # Github Pages
+   - GH_REF: github.com/lanpangzhi/lanpangzhi.github.io
+   # Coding Pages
+   - CO_REF: git.coding.net/bule/bule.coding.me.git
