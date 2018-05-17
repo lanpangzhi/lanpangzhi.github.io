@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>url模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Node.js">
+    <meta name="description" content="url模块url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。模块只有三个方法，用起来也简单。">
+<meta name="keywords" content="Node.js url模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="url模块">
+<meta property="og:url" content="http://blog.langpz.com/url模块.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="url模块url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。模块只有三个方法，用起来也简单。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/url%E6%A8%A1%E5%9D%97/QQ%E5%9B%BE%E7%89%8720180301164245.png">
+<meta property="og:updated_time" content="2018-05-17T05:09:39.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="url模块">
+<meta name="twitter:description" content="url模块url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。模块只有三个方法，用起来也简单。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/url%E6%A8%A1%E5%9D%97/QQ%E5%9B%BE%E7%89%8720180301164245.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">url模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">url模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-01T16:03:22.000Z" itemprop="datePublished" class="page-time">
+  2018-03-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#url模块"><span class="post-toc-number">1.</span> <span class="post-toc-text"><a href="#url&#x6A21;&#x5757;" class="headerlink" title="url&#x6A21;&#x5757;"></a>url&#x6A21;&#x5757;</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url结构说明"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"><a href="#url&#x7ED3;&#x6784;&#x8BF4;&#x660E;" class="headerlink" title="url&#x7ED3;&#x6784;&#x8BF4;&#x660E;"></a>url&#x7ED3;&#x6784;&#x8BF4;&#x660E;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url-parse-urlString-parseQueryString-slashesDenoteHost"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"><a href="#url-parse-urlString-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlString[, parseQueryString[, slashesDenoteHost]])"></a>url.parse(urlString[, parseQueryString[, slashesDenoteHost]])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url-format-urlObject"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"><a href="#url-format-urlObject" class="headerlink" title="url.format(urlObject)"></a>url.format(urlObject)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url-resolve-from-to"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-url模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">url模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-01 16:03:22" datetime="2018-03-01T16:03:22.000Z"  itemprop="datePublished">2018-03-01</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="url模块"><a href="#url模块" class="headerlink" title="url模块"></a>url模块</h1><p>url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。<br>模块只有三个方法，用起来也简单。<br><a id="more"></a></p>
+<h2 id="url结构说明"><a href="#url结构说明" class="headerlink" title="url结构说明"></a>url结构说明</h2><p>网址：<a href="http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash" target="_blank" rel="noopener">http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/url%E6%A8%A1%E5%9D%97/QQ%E5%9B%BE%E7%89%8720180301164245.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>从node.js 中文网拿的图。</p>
+<h2 id="url-parse-urlString-parseQueryString-slashesDenoteHost"><a href="#url-parse-urlString-parseQueryString-slashesDenoteHost" class="headerlink" title="url.parse(urlString[, parseQueryString[, slashesDenoteHost]])"></a>url.parse(urlString[, parseQueryString[, slashesDenoteHost]])</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let url = require(&apos;url&apos;);</span><br><span class="line"></span><br><span class="line">console.log(url.parse(&apos;http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top&apos;))</span><br></pre></td></tr></table></figure>
+<p>把url字符串解析成url对象。输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  protocol: &apos;http:&apos;,</span><br><span class="line">  slashes: true,</span><br><span class="line">  auth: &apos;user:pass&apos;,</span><br><span class="line">  host: &apos;langpz.com:80&apos;,</span><br><span class="line">  port: &apos;80&apos;,</span><br><span class="line">  hostname: &apos;langpz.com&apos;,</span><br><span class="line">  hash: &apos;#top&apos;,</span><br><span class="line">  search: &apos;?callback=fn&apos;,</span><br><span class="line">  query: &apos;callback=fn&apos;,</span><br><span class="line">  pathname: &apos;/aaa/ccc/ddd&apos;,</span><br><span class="line">  path: &apos;/aaa/ccc/ddd?callback=fn&apos;,</span><br><span class="line">  href: &apos;http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top&apos; &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>protocol: 请求协议。</li>
+<li>slashes: slashes 属性是一个 boolean，如果 协议 中的冒号后面跟着两个 ASCII 斜杠字符（/），则值为 true。</li>
+<li>auth： URL的用户名与密码部分。</li>
+<li>host: URL的主机部分包括端口号。</li>
+<li>port：主机的端口号。</li>
+<li>hostname：主机名部分。</li>
+<li>hash： 锚点部分。</li>
+<li>search： 整个查询字符串部分，包括前面的?号</li>
+<li>query: 查询字符串部分，不包括前面的?号</li>
+<li>pathname：URL 的整个路径部分。</li>
+<li>path： pathname 与 search 组成部分的串接。</li>
+<li>href： 解析后的完整的 URL 字符串，protocol 和 host 都会被转换为小写的。</li>
+</ul>
+<p>第二个参数是布尔值，如果是 true，query值是一个对象。 默认为 false。<br>第三个参数是布尔值，如果是 true，则 // 之后至下一个 / 之前的字符串会被解析作为 host。 例如，//foo/bar 会被解析为 {host: ‘foo’, pathname: ‘/bar’} 而不是 {pathname: ‘//foo/bar’}。 默认为 false。</p>
+<h2 id="url-format-urlObject"><a href="#url-format-urlObject" class="headerlink" title="url.format(urlObject)"></a>url.format(urlObject)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let url = require(&apos;url&apos;);</span><br><span class="line"></span><br><span class="line">console.log(url.format(&#123;</span><br><span class="line">    protocol: &apos;http:&apos;,</span><br><span class="line">    slashes: true,</span><br><span class="line">    auth: &apos;user:pass&apos;,</span><br><span class="line">    host: &apos;langpz.com:80&apos;,</span><br><span class="line">    port: &apos;80&apos;,</span><br><span class="line">    hostname: &apos;langpz.com&apos;,</span><br><span class="line">    hash: &apos;#top&apos;,</span><br><span class="line">    search: &apos;?callback=fn&apos;,</span><br><span class="line">    query: &apos;callback=fn&apos;,</span><br><span class="line">    pathname: &apos;/aaa/ccc/ddd&apos;,</span><br><span class="line">    path: &apos;/aaa/ccc/ddd?callback=fn&apos;,</span><br><span class="line">    href: &apos;http://user:pass@langpz.com:80/aaa/ccc/ddd?callback=fn#top&apos;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>url.parse()的反向操作，把url对象解析成url字符串</p>
+<h2 id="url-resolve-from-to"><a href="#url-resolve-from-to" class="headerlink" title="url.resolve(from, to)"></a>url.resolve(from, to)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let url = require(&apos;url&apos;);</span><br><span class="line"></span><br><span class="line">console.log(url.resolve(&apos;/one/two/three&apos;,&apos;four&apos;))  # 输出 /one/two/four</span><br><span class="line">console.log(url.resolve(&apos;http://blog.langpz.com/&apos;, &apos;aaa&apos;))  # 输出  http://blog.langpz.com/aaa</span><br><span class="line">console.log(url.resolve(&apos;http://blog.langpz.com/aaa&apos;, &apos;bbb&apos;))  # 输出 http://blog.langpz.com/bbb</span><br></pre></td></tr></table></figure>
+<p>把最后一个/没有内容后面追加to参数，有内容则替换。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://nodejs.cn/api/url.html" target="_blank" rel="noopener">http://nodejs.cn/api/url.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-17T05:09:39.336Z" itemprop="dateUpdated">2018-05-17 05:09:39</time>
+</span><br>
+
+
+        
+        <a href="/url模块.html" target="_blank" rel="external">http://blog.langpz.com/url模块.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/url模块.html&title=《url模块》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/url模块.html&title=《url模块》 — 蓝胖纸&source=url模块url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。模块只有三个方法，用起来也简单。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/url模块.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《url模块》 — 蓝胖纸&url=http://blog.langpz.com/url模块.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/url模块.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node处理前台get请求.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node处理前台get请求</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/node处理前台post请求.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">node处理前台post请求</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz",
+            appKey: "ivuSqsuVkomI9MQzJXCoFRbR",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/url模块.html&title=《url模块》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/url模块.html&title=《url模块》 — 蓝胖纸&source=url模块url模块，用于将url字符串解析为对象或将对象格式化为url字符串，用来处理get请求非常方便。模块只有三个方法，用起来也简单。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/url模块.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《url模块》 — 蓝胖纸&url=http://blog.langpz.com/url模块.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/url模块.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB2UlEQVR42u3awaoDIQxGYd//padwt8X0xF9luBxXhc5kPlyEmDgGXs/fqv+tn/mOQ55fXHLlyo25T7lmIP7kDFpHm26BXLlyL3JJ0uGfmUWe/UsMcuXKfSe3W3vUaLly5f5vbn344SWUXLly38ZNwvF19awmV67cgNttmJ74fbC/K1eu3CY3SUNJs2Px63Llyr3C7bYzCKgepfDk1ajI5MqVu5VLQrcTzVJbZCQbLleu3Cs9hLqIIa0Nnij583Llyr3PzYccJJ3x49M0mly5cg9z11IMGoXiFkmjESNXrtwr3KQ50ihKgstbIw8kV67cmNt4IRjWbhjGyJUr9xh37foUP4nUCY681T6lyZUrN+Z2jx+8iOm2YsnWyJUr9yaXjEY4kcTsvjV4aLly5cZcHq57RYNvQb0dPy5myZUr9zA3GatwVvfdke+QXLlym1zS3OQ1RjKOXazL5MqVe4D7NBdvdK41SX8cuuTKlXuFm9QP3TTEB6sbBr1y5cqNuUmDg49P+BDlyIlNrly5S1w+LuXD0fwK17RtKleu3Ndw6zKFJ6luOltMZHLlyr3OzcerJE77rodcuXK3cvnneYOjcbUCN0rkypV7h5scRXhTg5c7G+hy5cpd534Ap6PiMeSSP+UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":320,"hOffset":1200,"vOffset":50},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>

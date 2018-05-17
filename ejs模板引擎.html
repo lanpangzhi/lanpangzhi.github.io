@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>EJS模板引擎 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="EJS">
+    <meta name="description" content="EJS模板引擎模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。Express默认的模板引擎是Jade，为什么要选择EJS呢，因为它非常简单而且不破坏原有HTML代码结构。只需要用JavaScript编写你想要的HTML。">
+<meta name="keywords" content="EJS模板引擎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EJS模板引擎">
+<meta property="og:url" content="http://blog.langpz.com/ejs模板引擎.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="EJS模板引擎模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。Express默认的模板引擎是Jade，为什么要选择EJS呢，因为它非常简单而且不破坏原有HTML代码结构。只需要用JavaScript编写你想要的HTML。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-17T05:09:39.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EJS模板引擎">
+<meta name="twitter:description" content="EJS模板引擎模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。Express默认的模板引擎是Jade，为什么要选择EJS呢，因为它非常简单而且不破坏原有HTML代码结构。只需要用JavaScript编写你想要的HTML。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">EJS模板引擎</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">EJS模板引擎</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-27T13:36:44.000Z" itemprop="datePublished" class="page-time">
+  2018-04-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EJS模板引擎"><span class="post-toc-number">1.</span> <span class="post-toc-text"><a href="#EJS&#x6A21;&#x677F;&#x5F15;&#x64CE;" class="headerlink" title="EJS&#x6A21;&#x677F;&#x5F15;&#x64CE;"></a>EJS&#x6A21;&#x677F;&#x5F15;&#x64CE;</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装EJS"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"><a href="#&#x5B89;&#x88C5;EJS" class="headerlink" title="&#x5B89;&#x88C5;EJS"></a>&#x5B89;&#x88C5;EJS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Express设置EJS模板"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"><a href="#Express&#x8BBE;&#x7F6E;EJS&#x6A21;&#x677F;" class="headerlink" title="Express&#x8BBE;&#x7F6E;EJS&#x6A21;&#x677F;"></a>Express&#x8BBE;&#x7F6E;EJS&#x6A21;&#x677F;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将值输出到模板（HTML转义）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"><a href="#&#x5C06;&#x503C;&#x8F93;&#x51FA;&#x5230;&#x6A21;&#x677F;&#xFF08;HTML&#x8F6C;&#x4E49;&#xFF09;" class="headerlink" title="&#x5C06;&#x503C;&#x8F93;&#x51FA;&#x5230;&#x6A21;&#x677F;&#xFF08;HTML&#x8F6C;&#x4E49;&#xFF09;"></a>&#x5C06;&#x503C;&#x8F93;&#x51FA;&#x5230;&#x6A21;&#x677F;&#xFF08;HTML&#x8F6C;&#x4E49;&#xFF09;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#判断"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"><a href="#&#x5224;&#x65AD;" class="headerlink" title="&#x5224;&#x65AD;"></a>&#x5224;&#x65AD;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#循环"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"><a href="#&#x5FAA;&#x73AF;" class="headerlink" title="&#x5FAA;&#x73AF;"></a>&#x5FAA;&#x73AF;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#include（不转义）"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"><a href="#include&#xFF08;&#x4E0D;&#x8F6C;&#x4E49;&#xFF09;" class="headerlink" title="include&#xFF08;&#x4E0D;&#x8F6C;&#x4E49;&#xFF09;"></a>include&#xFF08;&#x4E0D;&#x8F6C;&#x4E49;&#xFF09;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EJS标签"><span class="post-toc-number">1.7.</span> <span class="post-toc-text"><a href="#EJS&#x6807;&#x7B7E;" class="headerlink" title="EJS&#x6807;&#x7B7E;"></a>EJS&#x6807;&#x7B7E;</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ejs模板引擎"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">EJS模板引擎</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-27 13:36:44" datetime="2018-04-27T13:36:44.000Z"  itemprop="datePublished">2018-04-27</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="EJS模板引擎"><a href="#EJS模板引擎" class="headerlink" title="EJS模板引擎"></a>EJS模板引擎</h1><p>模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。<br>Express默认的模板引擎是Jade，为什么要选择EJS呢，因为它非常简单而且不破坏原有HTML代码结构。只需要用JavaScript编写你想要的HTML。<br><a id="more"></a></p>
+<h2 id="安装EJS"><a href="#安装EJS" class="headerlink" title="安装EJS"></a>安装EJS</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ejs</span><br></pre></td></tr></table></figure>
+<h2 id="Express设置EJS模板"><a href="#Express设置EJS模板" class="headerlink" title="Express设置EJS模板"></a>Express设置EJS模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.set(&apos;view engine&apos;, &apos;ejs&apos;); # view engine, 模板引擎</span><br><span class="line">app.set(&apos;views&apos;, &apos;./views&apos;);   # views, 放模板文件的目录</span><br></pre></td></tr></table></figure>
+<h2 id="将值输出到模板（HTML转义）"><a href="#将值输出到模板（HTML转义）" class="headerlink" title="将值输出到模板（HTML转义）"></a>将值输出到模板（HTML转义）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// index.ejs</span><br><span class="line">&lt;%= arr %&gt;</span><br><span class="line"></span><br><span class="line">// Node</span><br><span class="line">res.render(&apos;index&apos;, &#123;arr: [1,2,3,4]&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%  if (user) &#123; %&gt;</span><br><span class="line">    &lt;p&gt; &lt;%= user %&gt; &lt;/p&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% for (var i = 0; i &lt; arr.length; i++) &#123; %&gt;</span><br><span class="line">    &lt;li&gt;&lt;%= arr[i] %&gt;&lt;/li&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="include（不转义）"><a href="#include（不转义）" class="headerlink" title="include（不转义）"></a>include（不转义）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- include(&apos;./common/header.ejs&apos;) %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="EJS标签"><a href="#EJS标签" class="headerlink" title="EJS标签"></a>EJS标签</h2><ul>
+<li>&lt;%    ‘脚本’ 标签，用于流程控制，无输出。</li>
+<li>&lt;%_   删除其前面的空格符</li>
+<li>&lt;%=   输出数据到模板（输出是转义 HTML 标签）</li>
+<li>&lt;%-   输出非转义的数据到模板</li>
+<li>&lt;%#   注释标签，不执行、不输出内容</li>
+<li>&lt;%%   输出字符串 ‘&lt;%’</li>
+<li>%&gt;    一般结束标签</li>
+<li>-%&gt;   删除紧随其后的换行符</li>
+<li>_%&gt;   将结束标签后面的空格符删除</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-17T05:09:39.332Z" itemprop="dateUpdated">2018-05-17 05:09:39</time>
+</span><br>
+
+
+        
+        <a href="/ejs模板引擎.html" target="_blank" rel="external">http://blog.langpz.com/ejs模板引擎.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EJS/">EJS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/ejs模板引擎.html&title=《EJS模板引擎》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/ejs模板引擎.html&title=《EJS模板引擎》 — 蓝胖纸&source=EJS模板引擎模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/ejs模板引擎.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EJS模板引擎》 — 蓝胖纸&url=http://blog.langpz.com/ejs模板引擎.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/ejs模板引擎.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/css实现元素垂直居中-包括未知宽高的元素.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css实现元素垂直水平居中-包括未知宽高的元素</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Express中间件body-parser简单实现.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Express中间件body-parser简单实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz",
+            appKey: "ivuSqsuVkomI9MQzJXCoFRbR",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/ejs模板引擎.html&title=《EJS模板引擎》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/ejs模板引擎.html&title=《EJS模板引擎》 — 蓝胖纸&source=EJS模板引擎模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/ejs模板引擎.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《EJS模板引擎》 — 蓝胖纸&url=http://blog.langpz.com/ejs模板引擎.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/ejs模板引擎.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aUY6DMAxF0e5/08wCKsJ9NlQTc/M1ainNYSTXdvz54HV8LX7N2fXf767vf8OSIUPGtoxjudbXpIz1p9awi0cpQ4aMFzBIKCRfk4bpWrCWIUOGDB4oySbIZ/m7MmTIkNFnkJC6QcCVIUPGv2SQIpbgSdHbCeU31OIyZMjYkMG77r//+5HzDRkyZGzFOMLVafSTzR2lJUOGjNkMHuBqwxbkSlSgkjvIkCFjKCMdqkhb/2kDrhisZciQMZrxRCmbbrE/8CFDhox3MuICsjQqkVLjJFKGDBkjGDyx44UlOYZMg/vFt8iQIWM0oz/cQEYl7h3sOH0QMmTIGMqoVbe1rJMXseufgdPUUIYMGaMZ/YBLitL0Gv5jIEOGjNmMTtCstd74Jlr9QhkyZAxikCSMtORIGOXbjV+RIUPGaEaK4aGwNlhWG8iQIUPGbEYt4JIkj4Ts9BHc8H+QIUPGtoz1jfhRAQmvtWOA4AhThgwZ4xikicaHIXiTrtULJEWsDBkyhjLSDfGQnZayreMBGTJkjGakrX+SFPIi9vGmmwwZMoYyeEmZJpRpkYxSTBkyZAxlHOHiiR0Pr+TR3NZokyFDxoaMWrCrHT3y40mSFBZJMmTI2JbROQzobLRTGF+022TIkDGUUQt8pIn/+OGlDBkyZIBmGQd3PhsMW8iQIUMGTubI1/ORi4vUU4YMGS9gpIcBvOzkr9QGzmTIkPEGRq10TG/EjyT5nWXIkPECxh9xWZNhNfvJ2wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":320,"hOffset":1200,"vOffset":50},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>

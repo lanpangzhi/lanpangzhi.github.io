@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>使用travis-ci自动构建Hexo | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo,travis-ci,自动构建,持续集成">
+    <meta name="description" content="使用travis-ci自动构建Hexo持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。">
+<meta name="keywords" content="使用travis-ci自动构建Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用travis-ci自动构建Hexo">
+<meta property="og:url" content="http://blog.langpz.com/使用travis-ci自动构建Hexo.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="使用travis-ci自动构建Hexo持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180738.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180908.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144527.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144704.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516152543.png">
+<meta property="og:updated_time" content="2018-05-17T05:09:39.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用travis-ci自动构建Hexo">
+<meta name="twitter:description" content="使用travis-ci自动构建Hexo持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180738.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用travis-ci自动构建Hexo</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用travis-ci自动构建Hexo</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-15T16:30:49.000Z" itemprop="datePublished" class="page-time">
+  2018-05-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用travis-ci自动构建Hexo"><span class="post-toc-number">1.</span> <span class="post-toc-text"><a href="#&#x4F7F;&#x7528;travis-ci&#x81EA;&#x52A8;&#x6784;&#x5EFA;Hexo" class="headerlink" title="&#x4F7F;&#x7528;travis-ci&#x81EA;&#x52A8;&#x6784;&#x5EFA;Hexo"></a>&#x4F7F;&#x7528;travis-ci&#x81EA;&#x52A8;&#x6784;&#x5EFA;Hexo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构建流程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"><a href="#&#x6784;&#x5EFA;&#x6D41;&#x7A0B;" class="headerlink" title="&#x6784;&#x5EFA;&#x6D41;&#x7A0B;"></a>&#x6784;&#x5EFA;&#x6D41;&#x7A0B;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用github登陆travis-ci"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"><a href="#&#x7528;github&#x767B;&#x9646;travis-ci" class="headerlink" title="&#x7528;github&#x767B;&#x9646;travis-ci"></a>&#x7528;github&#x767B;&#x9646;travis-ci</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用travis-ci自动构建Hexo"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用travis-ci自动构建Hexo</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-15 16:30:49" datetime="2018-05-15T16:30:49.000Z"  itemprop="datePublished">2018-05-15</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用travis-ci自动构建Hexo"><a href="#使用travis-ci自动构建Hexo" class="headerlink" title="使用travis-ci自动构建Hexo"></a>使用travis-ci自动构建Hexo</h1><p>持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。<br><a id="more"></a><br>Travis CI是在软件开发领域中的一个在线的，分布式的持续集成服务，用来构建及测试在GitHub托管的代码。这个软件的代码同时也是开源的，可以在GitHub上下载到，尽管开发者当前并不推荐在闭源项目中单独使用它。</p>
+<h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p>本地写完文章  =&gt;  push github  =&gt;  GitHub触发Travis CI构建  =&gt;  执行命令  =&gt;  部署  =&gt;   完成。</p>
+<h2 id="用github登陆travis-ci"><a href="#用github登陆travis-ci" class="headerlink" title="用github登陆travis-ci"></a>用github登陆travis-ci</h2><p><a href="https://travis-ci.com" target="_blank" rel="noopener">https://travis-ci.com</a>然后添加到你要激活的存储库。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180738.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>然后选择你要使用的仓库，我这里选择的是lanpangzhi.github.io，我放hexo博客的仓库。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180515180908.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>然后生成SSH公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure></p>
+<p>然后找到 C:\Users\windows.ssh  下的 id_rsa.pub， 把内容添加到github和coding的hexo仓库的部署公钥里面。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144527.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516144704.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>然后在git仓库根目录 添加 .travis.yml 文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">language: node_js</span><br><span class="line">node_js:</span><br><span class="line">- 8.9.0</span><br><span class="line">cache:</span><br><span class="line">  directories:</span><br><span class="line">  - node_modules</span><br><span class="line">before_install:</span><br><span class="line">- git config --global user.name &quot;lanpangzhi&quot;</span><br><span class="line">- git config --global user.email 875727617@qq.com</span><br><span class="line">- npm install hexo-cli -g</span><br><span class="line">install:</span><br><span class="line">- npm install</span><br><span class="line">script:</span><br><span class="line">- hexo clean</span><br><span class="line">- hexo generate</span><br><span class="line">- hexo deploy</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">  - indigo</span><br></pre></td></tr></table></figure></p>
+<p>下载ruby(如果你电脑有就不需要下载了)  注：不要使用Windows 系统机器否则构建的时候会报错<br><a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">下载地址</a>，选择你需要的版本下载，我直接下载最新版64位了。</p>
+<p>安装travis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install travis</span><br></pre></td></tr></table></figure></p>
+<p>安装完后登陆travis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis login --auto</span><br></pre></td></tr></table></figure></p>
+<p>输入你github的登陆账号和密码。如下图就登陆成功了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo/QQ%E5%9B%BE%E7%89%8720180516152543.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>下一步开始用travis提供的工具加密刚才生成SSH公钥,并上传到travis供日常使用。<br>把之前生成的id_rsa.pub文件放到项目根目录，然后执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis encrypt-file id_rsa.pub --add -r github用户名/hexo仓库  // 不要使用Windows 系统机器否则构建的时候会报错</span><br></pre></td></tr></table></figure></p>
+<p>成功后会生成一个id_rsa.pub.enc 并且 .travis.yml 会自动添加一些内容，不要去改内容。 然后把id_rsa.pub 文件删除。</p>
+<p>然后新建文件夹 .travis 然后把id_rsa.pub.enc 文件移到 .travis 文件夹里面， 在里面再新建  ssh_config 文件添加如下内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  User git</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa</span><br><span class="line">  IdentitiesOnly yes</span><br></pre></td></tr></table></figure></p>
+<p>.travis.yml 文件最终版本，可以参考。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">language: node_js</span><br><span class="line">node_js:</span><br><span class="line">- 8.9.0</span><br><span class="line">cache:</span><br><span class="line">  directories:</span><br><span class="line">  - node_modules</span><br><span class="line">before_install:</span><br><span class="line">  - openssl aes-256-cbc -K $encrypted_43f1702cd897_key -iv $encrypted_43f1702cd897_iv</span><br><span class="line">    -in .travis/id_rsa_github.enc -out ~/.ssh/id_rsa -d</span><br><span class="line">  - chmod 600 ~/.ssh/id_rsa</span><br><span class="line">  - eval $(ssh-agent)</span><br><span class="line">  - ssh-add ~/.ssh/id_rsa</span><br><span class="line">  - cp .travis/ssh_config ~/.ssh/config</span><br><span class="line">  - git config --global user.name &quot;lanpangzhi&quot;</span><br><span class="line">  - git config --global user.email 875727617@qq.com</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line">install:</span><br><span class="line">  - npm install</span><br><span class="line">script:</span><br><span class="line">  - hexo clean</span><br><span class="line">  - hexo generate</span><br><span class="line">  - hexo deploy</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">  - indigo</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.travis-ci.com/user/for-beginners" target="_blank" rel="noopener">https://docs.travis-ci.com/user/for-beginners</a><br><a href="https://zh.wikipedia.org/wiki/Travis_CI" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Travis_CI</a><br><a href="https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/6250744" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/6250744</a><br><a href="https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/" target="_blank" rel="noopener">https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-17T05:09:39.336Z" itemprop="dateUpdated">2018-05-17 05:09:39</time>
+</span><br>
+
+
+        
+        <a href="/使用travis-ci自动构建Hexo.html" target="_blank" rel="external">http://blog.langpz.com/使用travis-ci自动构建Hexo.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/travis-ci/">travis-ci</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/持续集成/">持续集成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动构建/">自动构建</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&title=《使用travis-ci自动构建Hexo》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&title=《使用travis-ci自动构建Hexo》 — 蓝胖纸&source=使用travis-ci自动构建Hexo持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用travis-ci自动构建Hexo.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用travis-ci自动构建Hexo》 — 蓝胖纸&url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/使用express-generator快速生成express应用.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用express-generator快速生成express应用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz",
+            appKey: "ivuSqsuVkomI9MQzJXCoFRbR",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&title=《使用travis-ci自动构建Hexo》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&title=《使用travis-ci自动构建Hexo》 — 蓝胖纸&source=使用travis-ci自动构建Hexo持续集成(CI)是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用travis-ci自动构建Hexo.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用travis-ci自动构建Hexo》 — 蓝胖纸&url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用travis-ci自动构建Hexo.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aSW6EMBAF0L7/pck2UgT9q2wi2X6sWj0Aj0iVmj6f+Lhujr+f/n4nP/PdeSYfGBgYyzKuxyO50ZFfJa+f7w0DA+McRhIKq4HyOYDmj+/53jAwMDCq3xm/IQwMDIxxRjWw9upQDAwMjFkp2vPlk+IzTzqn1eIYGBgLMnrt+/95/cp8AwMDYynGVTySdC0Jvr1i+PauMDAwtmbkAS4fUubvFwrUIBnFwMDYlTESCkeGl/nZotIXAwNja0av0Z8ki++tiH35m2BgYGzK6AXZ5Lf52CBZ16imjxgYGDsxqk35asnaC9bVEQUGBsaujOckrDcqGFnR6LX2MDAw9mbkCdmscjRP+8oJIgYGxtaM3iV7xe14alj+H4KBgbE4o7cqkQTHasjO+4K32yIYGBibMvKg1jvpSPOuPM3AwMDYlFFtk723ulpdzigMBjAwMBZnVNtnOSx/KLPGmRgYGHszRlpsvTxt/MF96RpiYGBsx+gFxFnrF9WrRMNLDAyMYxjVxtzc4UHyThRwMTAwNmK8vWzRG4UWxpYYGBjHMHrLW0kyN/4ImlU4BgbG4oyreOSNs0JK1ypcMTAwzmFUy9R8xJizR7a8yhgMDIxlGSNBtlfc5oljIeBiYGAcwKi2+5PvVwcG1dBfWLbAwMA4jDGrTO09uFswBgYGxsByWJIIVkvlaQEXAwNjKUbvhuY24PI0EQMD4zRGXjrmg8/qOattuKH5BgYGxkqMH1JTdHJWw8SzAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":320,"hOffset":1200,"vOffset":50},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Hexo+Next集成Algolia搜索 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="集成Algolia搜索起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。注：Algolia搜索在版本 5.1.0 中引入，要使用此功能请确保所使用的 NexT 版本在此之后">
+<meta name="keywords" content="Hexo+Next集成Algolia搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+Next集成Algolia搜索">
+<meta property="og:url" content="http://blog.langpz.com/Hexo-Next集成Algolia搜索.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="集成Algolia搜索起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。注：Algolia搜索在版本 5.1.0 中引入，要使用此功能请确保所使用的 NexT 版本在此之后">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222140824.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222142305.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222143002.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222143639.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222144122.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222151203.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222151807.png">
+<meta property="og:updated_time" content="2018-05-17T05:09:39.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo+Next集成Algolia搜索">
+<meta name="twitter:description" content="集成Algolia搜索起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。注：Algolia搜索在版本 5.1.0 中引入，要使用此功能请确保所使用的 NexT 版本在此之后">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222140824.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo+Next集成Algolia搜索</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo+Next集成Algolia搜索</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-22T13:13:18.000Z" itemprop="datePublished" class="page-time">
+  2017-12-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#集成Algolia搜索"><span class="post-toc-number">1.</span> <span class="post-toc-text"><a href="#&#x96C6;&#x6210;Algolia&#x641C;&#x7D22;" class="headerlink" title="&#x96C6;&#x6210;Algolia&#x641C;&#x7D22;"></a>&#x96C6;&#x6210;Algolia&#x641C;&#x7D22;</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#首先注册Algolia账户"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"><a href="#&#x9996;&#x5148;&#x6CE8;&#x518C;Algolia&#x8D26;&#x6237;" class="headerlink" title="&#x9996;&#x5148;&#x6CE8;&#x518C;Algolia&#x8D26;&#x6237;"></a>&#x9996;&#x5148;&#x6CE8;&#x518C;Algolia&#x8D26;&#x6237;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注册完成后，创建一个新的-Index，这个-index-name-之后会用到"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"><a href="#&#x6CE8;&#x518C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;-Index&#xFF0C;&#x8FD9;&#x4E2A;-index-name-&#x4E4B;&#x540E;&#x4F1A;&#x7528;&#x5230;" class="headerlink" title="&#x6CE8;&#x518C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Index&#xFF0C;&#x8FD9;&#x4E2A; index name &#x4E4B;&#x540E;&#x4F1A;&#x7528;&#x5230;"></a>&#x6CE8;&#x518C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Index&#xFF0C;&#x8FD9;&#x4E2A; index name &#x4E4B;&#x540E;&#x4F1A;&#x7528;&#x5230;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取-Key，更新站点根目录配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"><a href="#&#x83B7;&#x53D6;-Key&#xFF0C;&#x66F4;&#x65B0;&#x7AD9;&#x70B9;&#x6839;&#x76EE;&#x5F55;&#x914D;&#x7F6E;" class="headerlink" title="&#x83B7;&#x53D6; Key&#xFF0C;&#x66F4;&#x65B0;&#x7AD9;&#x70B9;&#x6839;&#x76EE;&#x5F55;&#x914D;&#x7F6E;"></a>&#x83B7;&#x53D6; Key&#xFF0C;&#x66F4;&#x65B0;&#x7AD9;&#x70B9;&#x6839;&#x76EE;&#x5F55;&#x914D;&#x7F6E;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改Algolia搜索ACL（访问控制列表）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"><a href="#&#x4FEE;&#x6539;Algolia&#x641C;&#x7D22;ACL&#xFF08;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5217;&#x8868;&#xFF09;" class="headerlink" title="&#x4FEE;&#x6539;Algolia&#x641C;&#x7D22;ACL&#xFF08;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5217;&#x8868;&#xFF09;"></a>&#x4FEE;&#x6539;Algolia&#x641C;&#x7D22;ACL&#xFF08;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5217;&#x8868;&#xFF09;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作完成后执行命令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"><a href="#&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x547D;&#x4EE4;" class="headerlink" title="&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x547D;&#x4EE4;"></a>&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x547D;&#x4EE4;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#成功后修改Next主题配置文件"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"><a href="#&#x6210;&#x529F;&#x540E;&#x4FEE;&#x6539;Next&#x4E3B;&#x9898;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="&#x6210;&#x529F;&#x540E;&#x4FEE;&#x6539;Next&#x4E3B;&#x9898;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>&#x6210;&#x529F;&#x540E;&#x4FEE;&#x6539;Next&#x4E3B;&#x9898;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结一下集成遇到的BUG"><span class="post-toc-number">1.7.</span> <span class="post-toc-text"><a href="#&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x96C6;&#x6210;&#x9047;&#x5230;&#x7684;BUG" class="headerlink" title="&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x96C6;&#x6210;&#x9047;&#x5230;&#x7684;BUG"></a>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x96C6;&#x6210;&#x9047;&#x5230;&#x7684;BUG</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Please-provide-an-Algolia-index-name-in-your-hexo-config-yml-flle"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text"><a href="#Please-provide-an-Algolia-index-name-in-your-hexo-config-yml-flle" class="headerlink" title="Please provide an Algolia index name in your hexo _config.yml flle"></a>Please provide an Algolia index name in your hexo _config.yml flle</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Not-enough-rights-to-update-an-object-near"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text"><a href="#Not-enough-rights-to-update-an-object-near" class="headerlink" title="Not enough rights to update an object near"></a>Not enough rights to update an object near</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#移动端遮罩盖住搜索"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text"><a href="#&#x79FB;&#x52A8;&#x7AEF;&#x906E;&#x7F69;&#x76D6;&#x4F4F;&#x641C;&#x7D22;" class="headerlink" title="&#x79FB;&#x52A8;&#x7AEF;&#x906E;&#x7F69;&#x76D6;&#x4F4F;&#x641C;&#x7D22;"></a>&#x79FB;&#x52A8;&#x7AEF;&#x906E;&#x7F69;&#x76D6;&#x4F4F;&#x641C;&#x7D22;</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo-Next集成Algolia搜索"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo+Next集成Algolia搜索</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-22 13:13:18" datetime="2017-12-22T13:13:18.000Z"  itemprop="datePublished">2017-12-22</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="集成Algolia搜索"><a href="#集成Algolia搜索" class="headerlink" title="集成Algolia搜索"></a>集成Algolia搜索</h1><p>起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algolia。<br>注：Algolia搜索在版本<strong> 5.1.0 </strong>中引入，要使用此功能请确保所使用的 NexT 版本在此之后<br><a id="more"></a></p>
+<h2 id="首先注册Algolia账户"><a href="#首先注册Algolia账户" class="headerlink" title="首先注册Algolia账户"></a>首先注册Algolia账户</h2><p><a href="https://www.algolia.com/users/sign_in" target="_blank" rel="noopener">Algolia 登陆页面https://www.algolia.com/users/sign_in</a>，可以使用 GitHub 或者 Google 账户直接登录，也可以注册一个新账户。我直接用谷歌账户登陆了，注册后的 14 天内拥有所有功能（包括收费类别的）。之后若未续费会自动降级为免费账户，免费账户 总共有 10,000 条记录，每月有 100,000 的可以操作数。</p>
+<h2 id="注册完成后，创建一个新的-Index，这个-index-name-之后会用到"><a href="#注册完成后，创建一个新的-Index，这个-index-name-之后会用到" class="headerlink" title="注册完成后，创建一个新的 Index，这个 index name 之后会用到"></a>注册完成后，创建一个新的 Index，这个 index name 之后会用到</h2><p>Index 创建完成后，此时这个 Index 里未包含任何数据。 接下来需要安装 Hexo Algolia 扩展， 这个扩展的功能是搜集站点的内容并通过 API 发送给 Algolia。前往站点根目录，执行命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-algolia --save  # 目前最新版本是1.2.4，下面的操作都是基于这个版本的文档</span><br></pre></td></tr></table></figure>
+<h2 id="获取-Key，更新站点根目录配置"><a href="#获取-Key，更新站点根目录配置" class="headerlink" title="获取 Key，更新站点根目录配置"></a>获取 Key，更新站点根目录配置</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222140824.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>前往站点根目录打开_config.yml添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Algolia Search API Key</span><br><span class="line">algolia:</span><br><span class="line">  applicationID: &apos;你的Application ID&apos;</span><br><span class="line">  apiKey: &apos;你的Search-Only API Key&apos;</span><br><span class="line">  indexName: &apos;输入刚才创建index name&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="修改Algolia搜索ACL（访问控制列表）"><a href="#修改Algolia搜索ACL（访问控制列表）" class="headerlink" title="修改Algolia搜索ACL（访问控制列表）"></a>修改Algolia搜索ACL（访问控制列表）</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222142305.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选中后保存。</p>
+<h2 id="操作完成后执行命令"><a href="#操作完成后执行命令" class="headerlink" title="操作完成后执行命令"></a>操作完成后执行命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export(windows 为 set) (Powershell 用 $env:) HEXO_ALGOLIA_INDEXING_KEY=你的Search-Only API key</span><br><span class="line">set (Mac和git bash 为 export) (Powershell 用 $env:) HEXO_ALGOLIA_INDEXING_KEY     #查看是否设置成功如果没有值就设置失败</span><br><span class="line">hexo algolia</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222143002.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="成功后修改Next主题配置文件"><a href="#成功后修改Next主题配置文件" class="headerlink" title="成功后修改Next主题配置文件"></a>成功后修改Next主题配置文件</h2><p>更改Next主题配置文件，找到 Algolia Search 配置部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Algolia Search</span><br><span class="line">algolia_search:</span><br><span class="line">  enable: true</span><br><span class="line">  hits:</span><br><span class="line">    per_page: 10</span><br><span class="line">  labels:</span><br><span class="line">    input_placeholder: Search for Posts</span><br><span class="line">    hits_empty: &quot;我们没有找到任何搜索结果: $&#123;query&#125;&quot;</span><br><span class="line">    hits_stats: &quot;找到约$&#123;hits&#125;条结果（用时$&#123;time&#125;ms）&quot;</span><br></pre></td></tr></table></figure>
+<p>将 enable 改为 true 即可，根据需要你可以调整 labels 中的文本。这个是我修改的文本。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222143639.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="总结一下集成遇到的BUG"><a href="#总结一下集成遇到的BUG" class="headerlink" title="总结一下集成遇到的BUG"></a>总结一下集成遇到的BUG</h2><h3 id="Please-provide-an-Algolia-index-name-in-your-hexo-config-yml-flle"><a href="#Please-provide-an-Algolia-index-name-in-your-hexo-config-yml-flle" class="headerlink" title="Please provide an Algolia index name in your hexo _config.yml flle"></a>Please provide an Algolia index name in your hexo _config.yml flle</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222144122.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>原因：Algolia Search API Key indexName 错了</p>
+<p>解决方案：看下之前新建index的名字</p>
+<h3 id="Not-enough-rights-to-update-an-object-near"><a href="#Not-enough-rights-to-update-an-object-near" class="headerlink" title="Not enough rights to update an object near"></a>Not enough rights to update an object near</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222151203.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>原因：没有修改Algolia搜索ACL（访问控制列表）</p>
+<p>解决方案： 按1.4操作勾选上就可以</p>
+<h3 id="移动端遮罩盖住搜索"><a href="#移动端遮罩盖住搜索" class="headerlink" title="移动端遮罩盖住搜索"></a>移动端遮罩盖住搜索</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://hexo-1252491761.file.myqcloud.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/20171222151807.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>原因：遮罩的z-index值太高，我的next主题是5.1.3版本可能其他版本没有这个BUG</p>
+<p>解决方案： 找到\themes\next\source\css_common\components\third-party 下面的algolia-search.styl 文件 第8行追加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+mobile()</span><br><span class="line">  z-index: 1000</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://theme-next.iissnan.com/third-party-services.html#algolia-search" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#algolia-search</a><br><a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">https://github.com/oncletom/hexo-algolia</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-17T05:09:39.332Z" itemprop="dateUpdated">2018-05-17 05:09:39</time>
+</span><br>
+
+
+        
+        <a href="/Hexo-Next集成Algolia搜索.html" target="_blank" rel="external">http://blog.langpz.com/Hexo-Next集成Algolia搜索.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&title=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&title=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&source=集成Algolia搜索起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algo..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/nvm管理node-js版本（Windows系统）.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">nvm管理node.js版本（Windows系统）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/npm使用介绍.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm使用介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz",
+            appKey: "ivuSqsuVkomI9MQzJXCoFRbR",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&title=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&title=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&source=集成Algolia搜索起因Swiftype现在收费了，也没有免费版本。Local Search搜索体验不好，微搜索Next官网上描述太少！所以选择Algo..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo+Next集成Algolia搜索》 — 蓝胖纸&url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo-Next集成Algolia搜索.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAxF0ex/0+60QSHnPtINIPF6FDix5JOBwN/rha/r1/X3zuo+X7n2bHzJkCFjW8Z1e5HfrDZercN/E+woQ4aMAQxyFPKn7p8lr8uflSFDhgzO4L8nx7QMGTJkdBgkjKu90FcPXBkyZGzIIEksL5yR9TvfypAhYxqjVr7/zud/6W/IkCFjK8YVXmlpjB+RaRPibU0ZMmQczUjDvnQwgjcPyFMfVpAhQ8ZIRi3hTF+LlNvQyjJkyDia8VTDcrUlYaeh5/KvkSFDxtGMWkuSj7HWYLXQU4YMGScx7jfgwWKtGdkZ9fgQ28qQIeMgRtoNTAtnQbGslDbLkCFjGiNNU0nAVyvVpemuDBkyJjD4EunR+VQyHA9byJAhYwCDBHYPD3WVdgk6GzJkyNiWwYO5dGme3KbtUhkyZExjdNoD6f20YdAasJAhQ8ZBDN5iJNvwJLbfBnj7VoYMGWMYfNyh1vJMg0jeQpAhQ8bZjFrAVxsaq63Aw1kZMmSczaglsf2CGi/PkcNXhgwZExi1kI4nwOnoRvwnypAhYxiDp5QkEU1LaUWkDBkyDmX0R7h4C4GnuygQ5DU/GTJkbM6oHXadF+JI0gaIYTJkyNiWQTYjqWkaMvablzJkyJjGqB18tRflwxxBm1OGDBkywnYjvxOMfNXGSGTIkDGSwctnnYIdLwvKkCFjDoMksZ2xjNbIF3kHGTJkHM1I465a6b/fknysvyFDhoydGD/cn2qY7folNgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":320,"hOffset":1200,"vOffset":50},"mobile":{"show":false},"react":{"opacityDefault":1,"opacityOnHover":0.2}});</script></body>
+</html>
