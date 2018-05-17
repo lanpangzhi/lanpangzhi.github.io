@@ -5,8 +5,6 @@ cache:
   directories:
   - node_modules
 before_install:
-- git config --global user.name "lanpangzhi"
-- git config --global user.email 875727617@qq.com
 - npm install hexo-cli -g
 install:
 - npm install
@@ -24,9 +22,6 @@ after_script:
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
   # Coding Pages
   - git push --force --quiet "https://bule:${CO_TOKEN}@${CO_REF}" master:master
-  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-  # Github Pages
-  - git push --quiet "https://${CI_TOKEN}@${GH_REF}" master:master --tags
 
 branches:
   only:
