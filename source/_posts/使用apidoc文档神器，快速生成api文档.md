@@ -103,7 +103,7 @@ example 详细的例子
 ```
 routes/ 要输出API文档的文件夹。
 public/ 输出文档到public文件夹，没有回自动创建。
-
+执行 npm run doc
 访问 http://localhost:3000/ 就可以看到生成好的API文档了。
 ![](http://hexo-1252491761.file.myqcloud.com/apidoc/111.png)
 
