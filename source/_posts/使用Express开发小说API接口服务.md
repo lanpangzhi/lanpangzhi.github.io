@@ -26,7 +26,10 @@ express --no-view novel-api
 cd novel-api
 npm install 
 npm install request file-stream-rotator -S
-DEBUG=novel-api:* npm start
+// Linux MacOS
+DEBUG=novel-api:* & npm start
+// windows 
+set DEBUG=novel-api:* & npm start
 ```
 生成好的目录结构和文件
 ![](http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png)
