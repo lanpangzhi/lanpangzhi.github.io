@@ -1,5 +1,4 @@
-# lanpangzhi.github.io
-## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
+# [http://blog.langpz.com/](http://blog.langpz.com/)
 
 ## Node.js
 - [使用nvm安装node（Windows系统）](http://blog.langpz.com/nvm%E7%AE%A1%E7%90%86node-js%E7%89%88%E6%9C%AC%EF%BC%88Windows%E7%B3%BB%E7%BB%9F%EF%BC%89.html)
@@ -58,6 +57,8 @@
 ## Hexo
 - [Hexo博客多端同步问题](http://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](http://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)
+
+## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
 ```
 git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git
 npm install hexo-cli -g
