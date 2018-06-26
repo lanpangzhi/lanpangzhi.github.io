@@ -1,5 +1,9 @@
 # [http://blog.langpz.com/](http://blog.langpz.com/)
 
+## es6
+- [ES6系列-let和const变量](http://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html)
+- [javascript数组去重(es6)](http://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html)
+
 ## Node.js
 - [使用nvm安装node（Windows系统）](http://blog.langpz.com/nvm%E7%AE%A1%E7%90%86node-js%E7%89%88%E6%9C%AC%EF%BC%88Windows%E7%B3%BB%E7%BB%9F%EF%BC%89.html)
 - [VSCode 配置Node调试环境](http://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html)
@@ -46,7 +50,6 @@
 ## Javascript
 - [javascript数据类型转换](http://blog.langpz.com/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html)
 - [javascript数组去重(es5)](http://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D.html)
-- [javascript数组去重(es6)](http://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html)
 - [移动端click事件300毫秒延迟和点透问题](http://blog.langpz.com/%E8%A7%A3%E5%86%B3%E7%A7%BB%E5%8A%A8%E7%AB%AFclick%E4%BA%8B%E4%BB%B6300%E6%AF%AB%E7%A7%92%E5%BB%B6%E8%BF%9F%E5%92%8C%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.html)
 
 ## css
