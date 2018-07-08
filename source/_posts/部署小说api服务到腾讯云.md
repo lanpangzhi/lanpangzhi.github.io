@@ -2,7 +2,7 @@
 title: 部署小说api服务到腾讯云
 date: 2018-05-29 11:00:08
 tags: [部署, Express, Node.js, API]
-keywords:
+keywords: 部署小说api服务到腾讯云
 ---
 # 部署小说api服务到腾讯云
 小说api1.0版本写完了，接下来就开始部署到服务器上，用到了nginx、pm2、nvm、git、OpenSSL。
