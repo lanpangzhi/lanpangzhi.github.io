@@ -42,6 +42,7 @@
 - [node定时任务](http://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
 ## vue2.0
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
+- [vue（scoped）修改UI库组件样式](http://blog.langpz.com/vue修改UI库组件样式.html)
 
 ## webpack
 - [webpack4.0入门指南（一）安装和转换es6语法](http://blog.langpz.com/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html)
