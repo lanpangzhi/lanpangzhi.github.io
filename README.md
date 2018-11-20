@@ -40,6 +40,8 @@
 - [使用apidoc文档神器，快速生成api文档](http://blog.langpz.com/%E4%BD%BF%E7%94%A8apidoc%E6%96%87%E6%A1%A3%E7%A5%9E%E5%99%A8%EF%BC%8C%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90api%E6%96%87%E6%A1%A3.html)
 - [部署小说api服务到腾讯云](http://blog.langpz.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91.html)
 - [node定时任务](http://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
+- [pm2开机自启](http://blog.langpz.com/pm2开机自启.html)
+
 ## vue2.0
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
 - [vue（scoped）修改UI库组件样式](http://blog.langpz.com/vue修改UI库组件样式.html)
@@ -69,6 +71,9 @@
 ## Hexo
 - [Hexo博客多端同步问题](http://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](http://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)
+
+## nginx
+- [centos7开机自启nginx](http://blog.langpz.com/centos7开机自启nginx.html)
 
 ## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
 ```
