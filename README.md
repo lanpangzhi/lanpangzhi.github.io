@@ -55,6 +55,7 @@
 - [javascript数据类型转换](http://blog.langpz.com/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html)
 - [javascript数组去重(es5)](http://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D.html)
 - [移动端click事件300毫秒延迟和点透问题](http://blog.langpz.com/%E8%A7%A3%E5%86%B3%E7%A7%BB%E5%8A%A8%E7%AB%AFclick%E4%BA%8B%E4%BB%B6300%E6%AF%AB%E7%A7%92%E5%BB%B6%E8%BF%9F%E5%92%8C%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.html)
+- [移动端js复制内容到剪贴板](http://blog.langpz.com/移动端js复制内容到剪贴板.html)
 
 ## css
 - [css实现单行、多行文本溢出显示省略号](http://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
