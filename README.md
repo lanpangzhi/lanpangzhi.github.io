@@ -41,6 +41,7 @@
 - [部署小说api服务到腾讯云](http://blog.langpz.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91.html)
 - [node定时任务](http://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
 - [pm2开机自启](http://blog.langpz.com/pm2开机自启.html)
+- [centos7安装MongoDB](http://blog.langpz.com/centos7安装mongodb.html)
 
 ## vue2.0
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
