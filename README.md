@@ -47,6 +47,7 @@
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
 - [vue（scoped）修改UI库组件样式](http://blog.langpz.com/vue修改UI库组件样式.html)
 - [element-ui里Table组件多选，翻页记忆选中复选框](http://blog.langpz.com/element-ui里Table组件多选，翻页记忆选中复选框.html)
+- [在vue使用clipboard.js](http://blog.langpz.com/在vue使用clipboard-js.html)
 
 ## webpack
 - [webpack4.0入门指南（一）安装和转换es6语法](http://blog.langpz.com/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html)
