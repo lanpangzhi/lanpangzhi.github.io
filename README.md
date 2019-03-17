@@ -42,6 +42,7 @@
 - [node定时任务](http://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
 - [pm2开机自启](http://blog.langpz.com/pm2开机自启.html)
 - [centos7安装MongoDB](http://blog.langpz.com/centos7安装mongodb.html)
+- [centos7安装MySQL](http://blog.langpz.com/centos7安装MySQL.html)
 
 ## vue2.0
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
