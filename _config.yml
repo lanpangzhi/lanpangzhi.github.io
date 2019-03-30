@@ -85,9 +85,9 @@ deploy:
   cdnConfig: 
     enable: true
     cdnUrl: blog.langpz.com
-    bucket: static-1251123456
+    bucket: blog-1252491761
     region: ap-beijing
-    folder: static-1251123456
+    folder: blog-1252491761
 
 # CNAME文件
 plugins: hexo-generator-cname
