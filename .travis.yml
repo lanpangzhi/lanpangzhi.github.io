@@ -11,6 +11,7 @@ install:
 script:
 - hexo clean
 - hexo generate
+- hexo d
 after_script:
   - cd ./public
   - git init
@@ -21,7 +22,7 @@ after_script:
   # Github Pages
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
   # Coding Pages
-  - git push --force --quiet "https://bule:${CO_TOKEN}@${CO_REF}" master:master
+  # - git push --force --quiet "https://bule:${CO_TOKEN}@${CO_REF}" master:master
 
 branches:
   only:
@@ -33,3 +34,5 @@ env:
    - GH_REF: github.com/lanpangzhi/lanpangzhi.github.io
    # Coding Pages
    - CO_REF: git.coding.net/bule/bule.coding.me.git
+   - SecretId: ${SecretId}
+   - SecretKey: ${SecretKey}

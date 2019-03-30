@@ -73,11 +73,21 @@ theme: indigo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo:
-   github: git@github.com:lanpangzhi/lanpangzhi.github.io.git,master
-   coding: git@git.coding.net:bule/bule.coding.me.git,master
+# deploy:
+#   type: git
+#   repo:
+#    github: git@github.com:lanpangzhi/lanpangzhi.github.io.git,master
+#    coding: git@git.coding.net:bule/bule.coding.me.git,master
+deploy: 
+  type: cos
+  bucket: blog-1252491761
+  region: ap-beijing
+  cdnConfig: 
+    enable: true
+    cdnUrl: blog.langpz.com
+    bucket: static-1251123456
+    region: ap-beijing
+    folder: static-1251123456
 
 # CNAME文件
 plugins: hexo-generator-cname
