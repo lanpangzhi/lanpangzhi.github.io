@@ -76,6 +76,7 @@
 ## Hexo
 - [Hexo博客多端同步问题](http://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](http://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)
+- [Hexo博客从Coding迁移到腾讯云COS](http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html)
 
 ## nginx
 - [centos7开机自启nginx](http://blog.langpz.com/centos7开机自启nginx.html)
