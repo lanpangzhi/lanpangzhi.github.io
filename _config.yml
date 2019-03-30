@@ -115,3 +115,5 @@ live2d:
   react:
     opacityDefault: 1
     opacityOnHover: 0.2
+
+all_minifier: true
