@@ -9,9 +9,6 @@
 - [VSCode 配置Node调试环境](http://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html)
 - [什么是Node.js](http://blog.langpz.com/%E4%BB%80%E4%B9%88%E6%98%AFNode-js.html)
 - [Node模块机制](http://blog.langpz.com/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6.html)
-- [yarn使用介绍](http://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html)
-- [npm使用介绍](http://blog.langpz.com/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html)
-- [npm设置淘宝镜像](http://blog.langpz.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html)
 - [global](http://blog.langpz.com/global%E5%AF%B9%E8%B1%A1.html)
 - [http](http://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html)
 - [Buffer](http://blog.langpz.com/Buffer%E5%AF%B9%E8%B1%A1.html)
@@ -83,6 +80,11 @@
 ## nginx
 - [centos7开机自启nginx](http://blog.langpz.com/centos7开机自启nginx.html)
 
+## npm yarn
+- [yarn使用介绍](http://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html)
+- [npm使用介绍](http://blog.langpz.com/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html)
+- [npm设置淘宝镜像](http://blog.langpz.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html)
+- [解决node-sass安装失败](http://blog.langpz.com/%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5.html)
 ## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
 ```
 git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git
