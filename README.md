@@ -85,6 +85,9 @@
 - [npm使用介绍](http://blog.langpz.com/npm%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html)
 - [npm设置淘宝镜像](http://blog.langpz.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html)
 - [解决node-sass安装失败](http://blog.langpz.com/%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5.html)
+
+## Electron
+- [nativefier 一行命令生成桌面应用](http://blog.langpz.com/nativefier-%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8.html)
 ## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
 ```
 git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git
