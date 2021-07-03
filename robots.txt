@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/ 
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Sitemap: http://blog.langpz.com/sitemap.xml
+Sitemap: http://blog.langpz.com/baidusitemap.xml
