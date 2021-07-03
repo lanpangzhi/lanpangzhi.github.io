@@ -52,6 +52,7 @@
 ## webpack
 - [webpack4.0入门指南（一）安装和转换es6语法](http://blog.langpz.com/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html)
 - [webpack4.0入门指南（二）转换es7语法解析静态资源](http://blog.langpz.com/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%BA%8C%EF%BC%89%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90.html)
+- [webpack内存溢出](http://blog.langpz.com/webpack内存溢出.html)
 
 ## Javascript
 - [javascript数据类型转换](http://blog.langpz.com/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html)
