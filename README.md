@@ -63,6 +63,7 @@
 ## css
 - [css实现单行、多行文本溢出显示省略号](http://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
 - [css实现元素垂直水平居中-包括未知宽高的元素](http://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-%E5%8C%85%E6%8B%AC%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0.html)
+- [css粘性定位实现table表头和列固定](http://blog.langpz.com/css%E5%AE%9E%E7%8E%B0table%E8%A1%A8%E5%A4%B4%E5%92%8C%E5%88%97%E5%9B%BA%E5%AE%9A.html)
 
 ## Git
 - [Git配置https免用户名和密码提交](http://blog.langpz.com/Git%E9%85%8D%E7%BD%AEhttps%E5%85%8D%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E6%8F%90%E4%BA%A4.html)
