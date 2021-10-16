@@ -43,6 +43,7 @@
 
 ## vue2.0
 - [vue2.0的生命周期](http://blog.langpz.com/vue的生命周期.html)
+- [vue2的生命周期](http://blog.langpz.com/vue3的生命周期.html)
 - [vue（scoped）修改UI库组件样式](http://blog.langpz.com/vue修改UI库组件样式.html)
 - [element-ui里Table组件多选，翻页记忆选中复选框](http://blog.langpz.com/element-ui里Table组件多选，翻页记忆选中复选框.html)
 - [在vue使用clipboard.js](http://blog.langpz.com/在vue使用clipboard-js.html)
