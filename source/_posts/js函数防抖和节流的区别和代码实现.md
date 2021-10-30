@@ -26,7 +26,7 @@ function debounce(fn, delay) {
 ```
 一般用于input或者srcoll事件上。输入框搜索防止输入过快向后端发很多个请求，就是限制多长时间才能执行一次。重复操作会重新计算时间。
 
-## 防抖节流
+## 节流函数
 
 ``` 
 function throttle(fn, delay) {
