@@ -116,4 +116,7 @@ live2d:
     opacityDefault: 1
     opacityOnHover: 0.2
 
-all_minifier: true
+all_minifier:
+  enable: true
+  ignore_error: true
+  silent: true
