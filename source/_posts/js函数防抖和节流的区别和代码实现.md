@@ -48,3 +48,6 @@ function throttle(fn, delay) {
 }
 ```
 一般用于mousemove或者resize事件上，避免触发N次事件，限制多少毫秒内只能执行一次，提高性能。
+
+## demo
+[https://jsbin.com/budazewure/edit?html,console,output](https://jsbin.com/budazewure/edit?html,console,output)
