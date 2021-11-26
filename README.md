@@ -10,11 +10,13 @@
 - [element-ui里Table组件多选，翻页记忆选中复选框](http://blog.langpz.com/element-ui里Table组件多选，翻页记忆选中复选框.html)
 - [在vue使用clipboard.js](http://blog.langpz.com/在vue使用clipboard-js.html)
 - [vue-cli3设置默认打开浏览器](http://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html)
-- [vue-cli3设置默认打开浏览器](http://blog.langpz.com/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7.html)
+- [给项目加一个骨架屏吧](http://blog.langpz.com/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7.html)
 
 ## vue3
 - [vue3的生命周期](http://blog.langpz.com/vue3的生命周期.html)
 - [vue3中引入element-plus的Icon](http://blog.langpz.com/vue3中引入element-plus的Icon.html)
+- [vue-cli4配置生产环境删除console.log](http://blog.langpz.com/vue-cli4配置生产环境删除console-log.html)
+
 ## webpack
 - [webpack4.0入门指南（一）安装和转换es6语法](http://blog.langpz.com/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html)
 - [webpack4.0入门指南（二）转换es7语法解析静态资源](http://blog.langpz.com/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%BA%8C%EF%BC%89%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90.html)
