@@ -29,6 +29,7 @@
 - [移动端js复制内容到剪贴板](http://blog.langpz.com/移动端js复制内容到剪贴板.html)
 - [js获取图片文件宽度和高度](http://blog.langpz.com/js获取图片文件宽度和高度.html)
 - [函数防抖和节流](http://blog.langpz.com/js函数防抖和节流的区别和代码实现.html)
+- [js浮点运算0.1+0.2 = 0.30000000000000004](http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html)
 
 ## css
 - [css实现单行、多行文本溢出显示省略号](http://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
