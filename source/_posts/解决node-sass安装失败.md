@@ -9,9 +9,9 @@ node-sass 安装时需要下载一个node-sass ...binding.node 文件，所以�
 <!--more-->
 
 ```
-yarn config set registry http://registry.npm.taobao.org
-yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+yarn config set registry https://registry.npmmirror.com
+yarn config set sass_binary_site https://registry.npmmirror.com/mirrors/node-sass
 或者
-npm set registry https://registry.npm.taobao.org
-npm set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+npm set registry https://registry.npmmirror.com
+npm set sass_binary_site https://registry.npmmirror.com/mirrors/node-sass
 ```

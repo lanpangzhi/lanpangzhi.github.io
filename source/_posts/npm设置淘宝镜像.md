@@ -10,6 +10,12 @@ keywords: npm设置淘宝镜像
 
 <!--more-->
 
+## 更新
+淘宝镜像源最新地址
+```
+npm config set registry https://registry.npmmirror.com
+```
+
 ## 我们可以通过设置淘宝镜像来解决问题
 
 > 淘宝镜像同步频率目前为10分钟一次以保证尽量与官方服务同步。
@@ -17,6 +23,7 @@ keywords: npm设置淘宝镜像
 设置成淘宝镜像
 
 ```
+// 旧地址2022年(今年)5月份停止解析
 npm config set registry http://registry.npm.taobao.org
 ```
 
