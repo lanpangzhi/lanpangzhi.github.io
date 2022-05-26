@@ -99,6 +99,9 @@
 - [centos7安装MySQL](https://blog.langpz.com/centos7安装MySQL.html)
 - [Node-js使用Nodemailer发送邮件通知](https://blog.langpz.com/Node-js使用Nodemailer发送邮件通知.html)
 
+## VPN
+- [拯救被墙的ip-v2ray使用cloudflare中转流量](https://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html)
+
 ## 基于hexo 搭建的静态资源博客 主题选用 indigo 备用 next
 ```
 git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git
