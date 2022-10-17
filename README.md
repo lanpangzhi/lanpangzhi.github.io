@@ -11,6 +11,7 @@
 - [在vue使用clipboard.js](https://blog.langpz.com/在vue使用clipboard-js.html)
 - [vue-cli3设置默认打开浏览器](https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html)
 - [给项目加一个骨架屏吧](https://blog.langpz.com/%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%8A%A0%E4%B8%80%E4%B8%AA%E9%AA%A8%E6%9E%B6%E5%B1%8F%E5%90%A7.html)
+- [el-date-picker日期范围设置选择区间](https://blog.langpz.com//el-date-picker日期范围设置选择区间.html)
 
 ## vue3
 - [vue3的生命周期](https://blog.langpz.com/vue3的生命周期.html)
