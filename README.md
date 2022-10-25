@@ -62,8 +62,11 @@
 - [Hexo+Next集成Algolia搜索](https://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)
 - [Hexo博客从Coding迁移到腾讯云COS](https://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html)
 
-## nginx
+## 运维
 - [centos7开机自启nginx](https://blog.langpz.com/centos7开机自启nginx.html)
+- [centos7安装MongoDB](https://blog.langpz.com/centos7安装mongodb.html)
+- [centos7安装MySQL](https://blog.langpz.com/centos7安装MySQL.html)
+- [Debian9安装设置Fail2ban](https://blog.langpz.com/Debian9安装设置Fail2ban.html)
 
 ## Node.js
 - [使用nvm安装node（Windows系统）](https://blog.langpz.com/nvm%E7%AE%A1%E7%90%86node-js%E7%89%88%E6%9C%AC%EF%BC%88Windows%E7%B3%BB%E7%BB%9F%EF%BC%89.html)
@@ -99,8 +102,6 @@
 - [部署小说api服务到腾讯云](https://blog.langpz.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91.html)
 - [node定时任务](https://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
 - [pm2开机自启](https://blog.langpz.com/pm2开机自启.html)
-- [centos7安装MongoDB](https://blog.langpz.com/centos7安装mongodb.html)
-- [centos7安装MySQL](https://blog.langpz.com/centos7安装MySQL.html)
 - [Node-js使用Nodemailer发送邮件通知](https://blog.langpz.com/Node-js使用Nodemailer发送邮件通知.html)
 
 ## VPN
