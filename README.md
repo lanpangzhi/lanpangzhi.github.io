@@ -1,9 +1,5 @@
 # [https://blog.langpz.com/](https://blog.langpz.com/)
 
-## es6
-- [ES6系列-let和const变量](https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html)
-- [javascript数组去重(es6)](https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html)
-
 ## vue2.0
 - [vue2.0的生命周期](https://blog.langpz.com/vue的生命周期.html)
 - [vue（scoped）修改UI库组件样式](https://blog.langpz.com/vue修改UI库组件样式.html)
@@ -24,6 +20,8 @@
 - [webpack内存溢出](https://blog.langpz.com/webpack内存溢出.html)
 
 ## Javascript
+- [ES6系列-let和const变量](https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html)
+- [javascript数组去重(es6)](https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html)
 - [javascript数据类型转换](https://blog.langpz.com/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html)
 - [javascript数组去重(es5)](https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D.html)
 - [移动端click事件300毫秒延迟和点透问题](https://blog.langpz.com/%E8%A7%A3%E5%86%B3%E7%A7%BB%E5%8A%A8%E7%AB%AFclick%E4%BA%8B%E4%BB%B6300%E6%AF%AB%E7%A7%92%E5%BB%B6%E8%BF%9F%E5%92%8C%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.html)
@@ -34,6 +32,7 @@
 - [手写简易Promise](https://blog.langpz.com/手写简易Promise.html)
 - [手写Promsie.all方法](https://blog.langpz.com/手写Promsie-all方法.html)
 - [手写Promise.race方法](https://blog.langpz.com/手写Promise-race方法.html)
+- [手写Promise.allsettled方法](https://blog.langpz.com/手写Promise-allsettled方法.html)
 
 ## css
 - [css实现单行、多行文本溢出显示省略号](https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
