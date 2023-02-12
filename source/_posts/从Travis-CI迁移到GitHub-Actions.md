@@ -35,8 +35,8 @@ on:
       - indigo
 env:
   GH_REF: github.com/lanpangzhi/lanpangzhi.github.io
-  SecretId: ${{ secrets.SecretId }}
-  SecretKey: ${{ secrets.SecretKey }}
+  secretId: ${{ secrets.SecretId }}
+  secretKey: ${{ secrets.SecretKey }}
 
 jobs:
   build:
