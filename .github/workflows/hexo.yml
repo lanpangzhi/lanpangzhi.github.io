@@ -1,0 +1,40 @@
+name: hexo
+on:
+  push:
+    branches:
+      - indigo
+env:
+  GH_REF: github.com/lanpangzhi/lanpangzhi.github.io
+  SecretId: ${{ secrets.SecretId }}
+  SecretKey: ${{ secrets.SecretKey }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Setup node
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: "10.14.0"
+
+      - name: Install and Deploy 
+          run: |
+            npm install hexo-cli -g
+            npm install
+            hexo generate
+            hexo d
+      - name: Deploy github
+          run: |
+            cd ./public
+            git init
+            git config user.name "lanpangzhi"
+            git config user.email "875727617@qq.com"
+            git add .
+            git commit -m "GitHub Actions 自动部署"
+            git push --force --quiet "https://${{secrets.CI_TOKEN}}@${{env.GH_REF}}" master:master
