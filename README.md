@@ -59,7 +59,7 @@
 
 ## 持续集成
 - [使用travis-ci自动构建Hexo](https://blog.langpz.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo.html)
-
+- [从Travis-CI迁移到GitHub Actions](https://blog.langpz.com/%E4%BB%8ETravis-CI%E8%BF%81%E7%A7%BB%E5%88%B0GitHub-Actions.html)
 ## Hexo
 - [Hexo博客多端同步问题](https://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](https://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)

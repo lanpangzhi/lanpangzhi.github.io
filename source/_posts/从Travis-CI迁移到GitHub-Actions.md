@@ -25,3 +25,72 @@ GitHub Actions 使用 YAML 语法来定义事件、作业和步骤。 这些 YAM
 
 ## 迁移
 首先在项目根目录下面创建 `.github/workflows 目录和hexo.yml` 文件。
+SecretId、SecretKey、CI_TOKEN 环境变量需要在`仓库 -> Settings -> Actions secrets and variables -> New repository secret`, 添加Secrets变量
+
+```
+name: hexo
+on:
+  push:
+    branches:
+      - indigo
+env:
+  GH_REF: github.com/lanpangzhi/lanpangzhi.github.io
+  SecretId: ${{ secrets.SecretId }}
+  SecretKey: ${{ secrets.SecretKey }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "10.14.0"
+
+      - name: Install and Deploy 
+        run: |
+          npm install hexo-cli -g
+          npm install
+          hexo generate
+          hexo d
+      - name: Deploy github
+        run: |
+          cd ./public
+          git init
+          git config user.name "lanpangzhi"
+          git config user.email "875727617@qq.com"
+          git add .
+          git commit -m "GitHub Actions 自动部署"
+          git push --force --quiet "https://${{secrets.CI_TOKEN}}@${{env.GH_REF}}" master:master
+```
+
+## 注意
+环境变量获取和写法和Travis-CI不一样
+```
+${{env.GH_REF}} 对应 ${GH_REF} 
+${{secrets.CI_TOKEN}} 对应 ${CI_TOKEN} 因为是从配置Secrets变量直接拿所以要用 secrets.的方式
+```
+git 子模块需要手动配置开启
+```
+- uses: actions/checkout@v3
+  with:
+    submodules: true
+```
+执行脚本
+```
+steps:
+  - name: Run build script
+    run: |
+      npm install hexo-cli -g
+      npm install
+```
+
+# 参考
+[从 Travis CI 迁移到 GitHub Actions
+](https://docs.github.com/zh/actions/migrating-to-github-actions/migrating-from-travis-ci-to-github-actions)
