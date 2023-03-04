@@ -8,5 +8,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: http://blog.langpz.com/sitemap.xml
-Sitemap: http://blog.langpz.com/baidusitemap.xml
+Sitemap: https://blog.langpz.com/sitemap.xml
+Sitemap: https://blog.langpz.com/baidusitemap.xml

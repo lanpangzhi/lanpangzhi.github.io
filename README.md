@@ -64,6 +64,7 @@
 - [Hexo博客多端同步问题](https://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](https://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)
 - [Hexo博客从Coding迁移到腾讯云COS](https://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html)
+- [解决Waline服务因vercel国内被墙无法使用](https://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html)
 
 ## 运维
 - [centos7开机自启nginx](https://blog.langpz.com/centos7开机自启nginx.html)
