@@ -37,6 +37,7 @@
 - [手写Promsie.all方法](https://blog.langpz.com/手写Promsie-all方法.html)
 - [手写Promise.race方法](https://blog.langpz.com/手写Promise-race方法.html)
 - [手写Promise.allsettled方法](https://blog.langpz.com/手写Promise-allsettled方法.html)
+- [JavaScript的事件委托原理](https://blog.langpz.com/JavaScript的事件委托原理.html)
 
 ## css
 - [css实现单行、多行文本溢出显示省略号](https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
