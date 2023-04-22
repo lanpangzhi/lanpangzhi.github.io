@@ -14,6 +14,7 @@
 - [vue3的生命周期](https://blog.langpz.com/vue3的生命周期.html)
 - [vue3中引入element-plus的Icon](https://blog.langpz.com/vue3中引入element-plus的Icon.html)
 - [vue-cli4配置生产环境删除console.log](https://blog.langpz.com/vue-cli4配置生产环境删除console-log.html)
+- [Vue3组合式API(Composition API)](https://blog.langpz.com/Vue3组合式API(Composition%20API)%20.html)
 
 ## axios
 - [axios发送Basic Auth认证和Bearer Token](https://blog.langpz.com/axios发送Basic-Auth认证和Bearer-Token.html)
