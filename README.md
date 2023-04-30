@@ -1,5 +1,8 @@
 # [https://blog.langpz.com/](https://blog.langpz.com/)
 
+## 设计模式
+- [/手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
+
 ## vue2.0
 - [vue2.0的生命周期](https://blog.langpz.com/vue的生命周期.html)
 - [vue（scoped）修改UI库组件样式](https://blog.langpz.com/vue修改UI库组件样式.html)
