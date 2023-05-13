@@ -1,7 +1,7 @@
 # [https://blog.langpz.com/](https://blog.langpz.com/)
 
 ## 设计模式
-- [/手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
+- [手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
 
 ## vue2.0
 - [vue2.0的生命周期](https://blog.langpz.com/vue的生命周期.html)
@@ -42,6 +42,7 @@
 - [手写Promise.race方法](https://blog.langpz.com/手写Promise-race方法.html)
 - [手写Promise.allsettled方法](https://blog.langpz.com/手写Promise-allsettled方法.html)
 - [JavaScript的事件委托原理](https://blog.langpz.com/JavaScript的事件委托原理.html)
+- [手写bind、call、apply方法实现](https://blog.langpz.com/手写bind、call、apply方法实现.html)
 
 ## css
 - [css实现单行、多行文本溢出显示省略号](https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html)
@@ -64,7 +65,7 @@
 
 ## 持续集成
 - [使用travis-ci自动构建Hexo](https://blog.langpz.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo.html)
-- [从Travis-CI迁移到GitHub Actions](https://blog.langpz.com/%E4%BB%8ETravis-CI%E8%BF%81%E7%A7%BB%E5%88%B0GitHub-Actions.html)
+- [Hexo博客从Travis-CI迁移到GitHub Actions](https://blog.langpz.com/%E4%BB%8ETravis-CI%E8%BF%81%E7%A7%BB%E5%88%B0GitHub-Actions.html)
 ## Hexo
 - [Hexo博客多端同步问题](https://blog.langpz.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98.html)
 - [Hexo+Next集成Algolia搜索](https://blog.langpz.com/Hexo-Next%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2.html)

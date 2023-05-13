@@ -1,10 +1,10 @@
 ---
-title: 从Travis-CI迁移到GitHub Actions
+title: Hexo博客从Travis-CI迁移到GitHub Actions
 date: 2023-02-11 08:58:23
 tags: GitHub Actions
-keywords: 从Travis-CI迁移到GitHub Actions
+keywords: Hexo博客从Travis-CI迁移到GitHub Actions
 ---
-# 从Travis-CI迁移到GitHub Actions
+# Hexo博客从Travis-CI迁移到GitHub Actions
 由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免费使用构建服务了。所以迁移到GitHub Actions。
 Github Actions每月2000分钟免费额度。
 <!--more-->
