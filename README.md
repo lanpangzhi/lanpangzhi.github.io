@@ -18,7 +18,6 @@
 - [vue3中引入element-plus的Icon](https://blog.langpz.com/vue3中引入element-plus的Icon.html)
 - [vue-cli4配置生产环境删除console.log](https://blog.langpz.com/vue-cli4配置生产环境删除console-log.html)
 - [Vue3组合式API(Composition API)](https://blog.langpz.com/Vue3组合式API(Composition%20API)%20.html)
-- [Vue3组合式API(Composition API)](https://blog.langpz.com/Vue3组合式API(Composition%20API)%20.html)
 
 ## axios
 - [axios发送Basic Auth认证和Bearer Token](https://blog.langpz.com/axios发送Basic-Auth认证和Bearer-Token.html)
@@ -56,6 +55,7 @@
 - [npm设置淘宝镜像](https://blog.langpz.com/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html)
 - [解决node-sass安装失败](https://blog.langpz.com/%E8%A7%A3%E5%86%B3node-sass%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5.html)
 - [切换node版本项目Saas报错](https://blog.langpz.com/%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC%E9%A1%B9%E7%9B%AESaas%E6%8A%A5%E9%94%99.html)
+- [nvm切换node版本 npm ERR! Unexpected token '.'](https://blog.langpz.com/nvm切换node版本-npm-ERR-Unexpected-token.html)
 ## Electron
 - [nativefier 一行命令生成桌面应用](https://blog.langpz.com/nativefier-%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8.html)
 ## Git
