@@ -114,6 +114,7 @@
 - [node定时任务](https://blog.langpz.com/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html)
 - [pm2开机自启](https://blog.langpz.com/pm2开机自启.html)
 - [Node-js使用Nodemailer发送邮件通知](https://blog.langpz.com/Node-js使用Nodemailer发送邮件通知.html)
+- [使用Volta管理Node](https://blog.langpz.com/使用-Volta-管理Node.html)
 
 ## VPN
 - [拯救被墙的ip-v2ray使用cloudflare中转流量](https://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html)
