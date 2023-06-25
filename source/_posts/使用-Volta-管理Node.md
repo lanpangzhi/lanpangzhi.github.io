@@ -137,7 +137,7 @@ pnpm目前处于实验阶段。要启用它，请确保将**环境变量VOLTA_FE
 ## 迁移
 目前没有自动迁移功能，因此如果您之前已pnpm作为 Volta 全局安装，则需要通过调用 手动重新安装它volta install pnpm。在启用支持并重新安装之前，您可以pnpm通过卸载以前安装的软件包volta uninstall pnpm。一旦切换到本机 pnpm 支持，您可能无法pnpm通过调用相同的命令来删除隔离的旧包，因为目前还缺乏卸载实现。
 
-## Volta Could not download node 
+# Volta Could not download node 
 如果碰见 **volta install node@11.0.0**报错 `Volta Could not download node` 可以手动下载安装包再执行 **volta install node@11.0.0** 就可以安装成功了。
 
 [node下载地址](https://registry.npmmirror.com/binary.html?path=node/)
@@ -148,6 +148,9 @@ pnpm目前处于实验阶段。要启用它，请确保将**环境变量VOLTA_FE
 volta install node@11.0.0
 ```
 注:如果你有修改过`VOLTA_HOME` 环境变量请把node 放到配置环境变量的地址。
+
+# Volta error: Could not create shared environment for package
+如果npm or yarn 安装全局包出现这个报错，请使用**管理员权限**的命令行工具。
 # 参考
 [volta](https://volta.sh/)
 [Window下volta安装node失败解决方案](https://zhuanlan.zhihu.com/p/585494072?utm_id=0)
