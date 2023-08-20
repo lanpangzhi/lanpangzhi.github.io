@@ -18,14 +18,18 @@
 - [vue3中引入element-plus的Icon](https://blog.langpz.com/vue3中引入element-plus的Icon.html)
 - [vue-cli4配置生产环境删除console.log](https://blog.langpz.com/vue-cli4配置生产环境删除console-log.html)
 - [Vue3组合式API(Composition API)](https://blog.langpz.com/Vue3组合式API(Composition%20API)%20.html)
+- [pinia使用指南](https://blog.langpz.com/pinia使用指南.html)
 
+## vite
+- [vite热更新报错](https://blog.langpz.com/vite热更新报错.html)
 ## axios
 - [axios发送Basic Auth认证和Bearer Token](https://blog.langpz.com/axios发送Basic-Auth认证和Bearer-Token.html)
 
 ## webpack
 - [webpack4.0入门指南（一）安装和转换es6语法](https://blog.langpz.com/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html)
 - [webpack4.0入门指南（二）转换es7语法解析静态资源](https://blog.langpz.com/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%BA%8C%EF%BC%89%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90.html)
-- [pinia使用指南](https://blog.langpz.com/pinia使用指南.html)
+
+
 
 ## Javascript
 - [ES6系列-let和const变量](https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html)
