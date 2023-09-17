@@ -1,5 +1,8 @@
 # [https://blog.langpz.com/](https://blog.langpz.com/)
 
+## TypeScript
+- [TypeScript简介](https://blog.langpz.com//TypeScript简介.html)
+
 ## 设计模式
 - [手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
 
