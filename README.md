@@ -4,6 +4,7 @@
 - [TypeScript简介](https://blog.langpz.com/TypeScript简介.html)
 - [TypeScript-基础类型](https://blog.langpz.com/TypeScript-基础类型.html)
 - [TypeScript-函数类型](https://blog.langpz.com/TypeScript-函数类型.html)
+- [TypeScript-类](https://blog.langpz.com/TypeScript-类.html)
 
 
 ## 设计模式
