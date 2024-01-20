@@ -75,6 +75,7 @@
 - [Git生成SSH公钥](https://blog.langpz.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5.html)
 - [Git拉取远程分支到本地](https://blog.langpz.com/Git拉取远程分支到本地.html)
 - [Git版本回退](https://blog.langpz.com/Git版本回退.html)
+- [ssh: connect to host github.com port 22: Connection timed out](https://blog.langpz.com/解决github拉取推送代码报错-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html)
 
 ## 持续集成
 - [使用travis-ci自动构建Hexo](https://blog.langpz.com/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo.html)
