@@ -8,6 +8,7 @@
 - [TypeScript-接口](https://blog.langpz.com/TypeScript-接口.html)
 - [TypeScript-泛型](https://blog.langpz.com/TypeScript-泛型.html)
 - [TypeScript-联合类型](https://blog.langpz.com/TypeScript-联合类型.html)
+- [TypeScript-交叉类型](https://blog.langpz.com/TypeScript-交叉类型.html)
 
 ## 设计模式
 - [手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
