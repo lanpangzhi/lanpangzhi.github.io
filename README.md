@@ -11,6 +11,7 @@
 - [TypeScript-交叉类型](https://blog.langpz.com/TypeScript-交叉类型.html)
 - [TypeScript-类型保护](https://blog.langpz.com/TypeScript-类型保护.html)
 - [TypeScript-条件类型](https://blog.langpz.com/TypeScript-条件类型.html)
+- [TypeScript-unknown类型](https://blog.langpz.com/TypeScript-unknown类型.html)
 
 ## 设计模式
 - [手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
