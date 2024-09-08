@@ -13,6 +13,7 @@
 - [TypeScript-条件类型](https://blog.langpz.com/TypeScript-条件类型.html)
 - [TypeScript-unknown类型](https://blog.langpz.com/TypeScript-unknown类型.html)
 - [TypeScript-模块和命名空间](https://blog.langpz.com/TypeScript-模块和命名空间.html)
+- [TypeScript-声明文件](https://blog.langpz.com/TypeScript-声明文件.html)
 
 ## 设计模式
 - [手写EventHub-发布订阅](https://blog.langpz.com/手写EventHub-发布订阅.html)
