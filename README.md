@@ -61,6 +61,7 @@
 - [手写Promsie.all方法](https://blog.langpz.com/手写Promsie-all方法.html)
 - [手写Promise.race方法](https://blog.langpz.com/手写Promise-race方法.html)
 - [手写Promise.allsettled方法](https://blog.langpz.com/手写Promise-allsettled方法.html)
+- [手写PromiseA+ 实现](https://blog.langpz.com/手写PromiseA-实现.html)
 - [JavaScript的事件委托原理](https://blog.langpz.com/JavaScript的事件委托原理.html)
 - [手写bind、call、apply方法实现](https://blog.langpz.com/手写bind、call、apply方法实现.html)
 - [for in 和 for of 区别](https://blog.langpz.com/for-in-和-for-of-区别.html)
