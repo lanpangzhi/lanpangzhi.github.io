@@ -1,5 +1,8 @@
 # [https://blog.langpz.com/](https://blog.langpz.com/)
 
+## AI
+- [DeepSeek本地部署](https://blog.langpz.com/DeepSeek本地部署.html)
+
 ## TypeScript
 - [TypeScript简介](https://blog.langpz.com/TypeScript简介.html)
 - [TypeScript-基础类型](https://blog.langpz.com/TypeScript-基础类型.html)
