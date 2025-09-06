@@ -27,6 +27,7 @@
 - [适配器模式](https://blog.langpz.com/JS设计模式-适配器模式.html)
 - [中介者模式](https://blog.langpz.com/JS设计模式-中介者模式.html)
 - [状态机模式](https://blog.langpz.com/JS设计模式-状态机模式.html)
+- [工厂模式](https://blog.langpz.com/JS设计模式-工厂模式.html)
 
 ## vue2.0
 - [vue2.0的生命周期](https://blog.langpz.com/vue的生命周期.html)
