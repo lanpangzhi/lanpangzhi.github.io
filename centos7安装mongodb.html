@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>centos7安装MongoDB | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="centos7安装MongoDB先去MongoDB官网的文档中的Install on Red Hat，检查是否有更新，当前MongoDB版本4.0。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7安装MongoDB">
+<meta property="og:url" content="http://blog.langpz.com/centos7安装mongodb.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="centos7安装MongoDB先去MongoDB官网的文档中的Install on Red Hat，检查是否有更新，当前MongoDB版本4.0。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos7安装MongoDB">
+<meta name="twitter:description" content="centos7安装MongoDB先去MongoDB官网的文档中的Install on Red Hat，检查是否有更新，当前MongoDB版本4.0。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">centos7安装MongoDB</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">centos7安装MongoDB</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-16T19:22:11.000Z" itemprop="datePublished" class="page-time">
+  2018-12-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#centos7安装MongoDB"><span class="post-toc-number">1.</span> <span class="post-toc-text">centos7安装MongoDB</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置包管理系统（yum）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">配置包管理系统（yum）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动MongoDB"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启动MongoDB</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证是否安装成功"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">验证是否安装成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-centos7安装mongodb"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">centos7安装MongoDB</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-16 19:22:11" datetime="2018-12-16T19:22:11.000Z"  itemprop="datePublished">2018-12-16</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="centos7安装MongoDB"><a href="#centos7安装MongoDB" class="headerlink" title="centos7安装MongoDB"></a>centos7安装MongoDB</h1><p>先去MongoDB官网的文档中的<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum" target="_blank" rel="external">Install on Red Hat</a>，检查是否有更新，当前MongoDB版本4.0。<br><a id="more"></a></p><h2 id="配置包管理系统（yum）"><a href="#配置包管理系统（yum）" class="headerlink" title="配置包管理系统（yum）"></a>配置包管理系统（yum）</h2><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/yum<span class="selector-class">.repos</span><span class="selector-class">.d</span>/   <span class="comment">// 进入这个目录</span></span><br><span class="line">touch mongodb-org-<span class="number">4.0</span><span class="selector-class">.repo</span>  <span class="comment">// 创建一个新的YUM存储库配置文件</span></span><br></pre></td></tr></table></figure></div><p>vim 编辑 mongodb-org-4.0.repo 然后把如下代码复制到文件里<br></p><div class="highlight-wrap" data-rel="Ini"><figure class="lpz highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mongodb-org-4.0]</span></span><br><span class="line"><span class="attr">name</span>=MongoDB Repository</span><br><span class="line"><span class="attr">baseurl</span>=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/<span class="number">4.0</span>/x<span class="number">86_64</span>/</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=https://www.mongodb.org/static/pgp/server-<span class="number">4.0</span>.asc</span><br></pre></td></tr></table></figure></div><p></p><p>ESC :wq 退出并保存</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum <span class="keyword">install</span> -y mongodb-org</span><br></pre></td></tr></table></figure></div><ul><li>mongodb-org-server- mongod守护程序，以及相应的init脚本和配置。</li><li>mongodb-org-mongos- mongos守护进程。</li><li>mongodb-org-shell - mongo shell，一个MongoDB的交互式JavaScript接口，用于执行命令行的管理任务。</li><li>mongodb-org-tools - 包含几个MongoDB工具，用于导入和导出数据，统计信息以及其他实用程序。</li></ul><h2 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h2><p>安装完成后，启动MongoDB<br></p><div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod <span class="built_in">start</span> <span class="comment"> // 启动</span></span><br><span class="line">sudo service mongod <span class="built_in">stop</span> <span class="comment"> // 停止</span></span><br><span class="line">sudo service mongod restart<span class="comment"> // 重启</span></span><br></pre></td></tr></table></figure></div><p></p><p>设置MongoDB将在系统重新启动后启动<br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig mongod <span class="keyword">on</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h2><div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line"><span class="keyword">db</span>.<span class="keyword">version</span>()  <span class="comment">// 会出现版本号，我这里是4.0.4</span></span><br></pre></td></tr></table></figure></div><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum" target="_blank" rel="external">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#configure-the-package-management-system-yum</a></p><p><a href="https://linuxize.com/post/how-to-install-mongodb-on-centos-7/" target="_blank" rel="external">https://linuxize.com/post/how-to-install-mongodb-on-centos-7/</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/centos7安装mongodb.html" target="_blank" rel="external">http://blog.langpz.com/centos7安装mongodb.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/centos7安装mongodb.html&title=《centos7安装MongoDB》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/centos7安装mongodb.html&title=《centos7安装MongoDB》 — 蓝胖纸&source=centos7安装MongoDB先去MongoDB官网的文档中的Install on Red Hat，检查是否有更新，当前MongoDB版本4.0。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/centos7安装mongodb.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《centos7安装MongoDB》 — 蓝胖纸&url=http://blog.langpz.com/centos7安装mongodb.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/centos7安装mongodb.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/移动端js复制内容到剪贴板.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">移动端js复制内容到剪贴板</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/pm2开机自启.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">pm2开机自启</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/centos7安装mongodb.html&title=《centos7安装MongoDB》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/centos7安装mongodb.html&title=《centos7安装MongoDB》 — 蓝胖纸&source=centos7安装MongoDB先去MongoDB官网的文档中的Install on Red Hat，检查是否有更新，当前MongoDB版本4.0。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/centos7安装mongodb.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《centos7安装MongoDB》 — 蓝胖纸&url=http://blog.langpz.com/centos7安装mongodb.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/centos7安装mongodb.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3a0W7CMAxGYd7/pTtpV5M6kvPbgKh7clXRsuQrkmfHeTzwOH7H3+vzJ+fnz5+vnyHfag0ZMmRclnEsR8rgdwmDrE2GDBn3YdSCLA+XhLe+3qxZhgwZMkC6xgH9eWXIkCGjE3A76aYMGTJkrBlpeUmmJ8ni+vm31OIyZMi4IKPWGPjM9dv7GzJkyPh6xhGO9XdJqOWMYFUyZMgYzVgflUg3wtISt18qb+paGTJkjGCkS0nzMZLq1dqiQaiVIUPGxRkkyesfBSMHwmotgX9+ExkyZIxj8I34zrGJtGEQtxBkyJAxmpEujiR5/EXwlJEcMpMhQ8ZURi1FS5fIy9S0DH76f0OGDBlDGTzg8lSykywGVBkyZNyMkaZ3aSBOG6jolcmQIWM0gwfWfpsz3VYrlrIyZMgYx+CNxvTgRQrmjKctTBkyZAxlpKVmLSySlgBJKAOADBkyBjE6bcta8ZkeI0MHy2TIkHEbRjpxLbzWktENUoYMGaMZPGmrbbrVEr7a65AhQ8ZUBlKGJWjnQEZxq06GDBk3YKQLqrUE+CxpQJchQ8ZsBgmmtWMWJGSn/YrN7DJkyBjKOMLBJyD5Gwdv7sqQIWM0g4/0eFZtE61VysqQIWM0gwRZHnA5o1MYoyJWhgwZ4xhpyVorO9dtiTToo9syZMi4GYME6FrDstYQlSFDhoxOTcwTzbhVue5vyJAhYzSjGOZe1M4kf3PzLRkyZIxmdArIfiFaayG8rIUpQ4aMb2f8APSGf60cG2Y7AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

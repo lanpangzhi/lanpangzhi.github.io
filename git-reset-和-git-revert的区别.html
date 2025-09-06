@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>git reset 和 git revert的区别 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="git reset 和 git revert的区别在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销更改，但适用场景和操作方式截然不同。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git reset 和 git revert的区别">
+<meta property="og:url" content="http://blog.langpz.com/git-reset-和-git-revert的区别.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="git reset 和 git revert的区别在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销更改，但适用场景和操作方式截然不同。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git reset 和 git revert的区别">
+<meta name="twitter:description" content="git reset 和 git revert的区别在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销更改，但适用场景和操作方式截然不同。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">git reset 和 git revert的区别</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">git reset 和 git revert的区别</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-11-24T12:27:37.000Z" itemprop="datePublished" class="page-time">
+  2024-11-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-reset-和-git-revert的区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">git reset 和 git revert的区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-reset"><span class="post-toc-number">2.</span> <span class="post-toc-text">git reset</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-revert"><span class="post-toc-number">3.</span> <span class="post-toc-text">git revert</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#两者的主要区别"><span class="post-toc-number">4.</span> <span class="post-toc-text">两者的主要区别</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-git-reset-和-git-revert的区别"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">git reset 和 git revert的区别</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-11-24 12:27:37" datetime="2024-11-24T12:27:37.000Z"  itemprop="datePublished">2024-11-24</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="git-reset-和-git-revert的区别"><a href="#git-reset-和-git-revert的区别" class="headerlink" title="git reset 和 git revert的区别"></a>git reset 和 git revert的区别</h1><p>在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销更改，但适用场景和操作方式截然不同。<br><a id="more"></a></p><h1 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h1><p>git reset 用于移动当前分支的 HEAD 指针，并可以选择性地更改工作区和暂存区的状态。它主要用于“回滚到某个版本”，从历史记录中移除不需要的提交。</p><ul><li>常用参数<br>–soft：仅回滚到指定版本，保留暂存区和工作区的更改。<br>–mixed（默认）：回滚到指定版本，同时清空暂存区，但保留工作区更改。<br>–hard：回滚到指定版本，并丢弃暂存区和工作区的更改。</li></ul><p>提交历史如下<br></p><div class="highlight-wrap" data-rel="Clean"><figure class="lpz highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; B -&gt; C -&gt; D (HEAD)</span><br></pre></td></tr></table></figure></div><p></p><p>回滚到提交B<br></p><div class="highlight-wrap" data-rel="Sql"><figure class="lpz highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard B</span></span><br></pre></td></tr></table></figure></div><p></p><p>C 和 D 会被彻底删除，工作区将恢复到 B 的状态。现在的提交历史会变成如下。<br></p><div class="highlight-wrap" data-rel="Lisp"><figure class="lpz highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; B (<span class="name">HEAD</span>)</span><br></pre></td></tr></table></figure></div><p></p><p>如果使用 –soft<br></p><div class="highlight-wrap" data-rel="Sql"><figure class="lpz highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft B</span></span><br></pre></td></tr></table></figure></div><p></p><p>C 和 D 的更改会保留在暂存区，待提交。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>破坏性操作：–hard 会直接丢弃更改，如果没分支或tag保存，有数据丢失的风险，需谨慎使用。</li><li>本地历史调整：git reset 不会生成新的提交，只会修改现有提交的状态，通常仅在本地分支中使用。</li></ul><h1 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h1><p>git revert 是一种更安全的撤销方法。它通过创建一个新的提交来反转指定提交的更改，而不会改变提交历史。这非常适合在协作开发中撤销错误操作。</p><p>提交历史如下<br></p><div class="highlight-wrap" data-rel="Clean"><figure class="lpz highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; B -&gt; C -&gt; D (HEAD)</span><br></pre></td></tr></table></figure></div><p></p><p>撤销提交C<br></p><div class="highlight-wrap" data-rel="Armasm"><figure class="lpz highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">revert </span>C</span><br></pre></td></tr></table></figure></div><p></p><p>Git 会生成一个新的提交 E，其内容与 C 的更改相反，撤销提交 C 带来的修改。<br></p><div class="highlight-wrap" data-rel="Clean"><figure class="lpz highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; B -&gt; C -&gt; D -&gt; E (HEAD)</span><br></pre></td></tr></table></figure></div><p></p><p>提交 E = <strong>提交 B 的内容 + 提交 C 的反向更改 + 提交 D 的更改</strong>。</p><h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>不可破坏性：git revert 不会修改历史记录，非常适合需要保留团队协作完整性的场景。</li><li>可撤销性：如果你不小心 revert 了一个提交，还可以通过另一个 revert 恢复，<code>git revert E</code>。</li></ul><h1 id="两者的主要区别"><a href="#两者的主要区别" class="headerlink" title="两者的主要区别"></a>两者的主要区别</h1><table><thead><tr><th>特性</th><th>git reset</th><th>git revert</th></tr></thead><tbody><tr><td>历史记录</td><td>修改历史记录，移除指定提交</td><td>保留历史记录，生成新的提交</td></tr><tr><td>适用场景</td><td>本地修改，调整错误提交</td><td>团队协作，安全撤销已推送的提交</td></tr><tr><td>破坏性</td><td>可能丢失更改（尤其是 –hard）</td><td>不会丢失任何更改</td></tr><tr><td>是否生成新提交</td><td>不会生成新的提交</td><td>会生成新的提交</td></tr></tbody></table>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/git-reset-和-git-revert的区别.html" target="_blank" rel="external">http://blog.langpz.com/git-reset-和-git-revert的区别.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&title=《git reset 和 git revert的区别》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&title=《git reset 和 git revert的区别》 — 蓝胖纸&source=git reset 和 git revert的区别在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/git-reset-和-git-revert的区别.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git reset 和 git revert的区别》 — 蓝胖纸&url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/手写PromiseA-实现.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">手写PromiseA+ 实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-装饰器.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-5.0装饰器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&title=《git reset 和 git revert的区别》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&title=《git reset 和 git revert的区别》 — 蓝胖纸&source=git reset 和 git revert的区别在 Git 中，git reset 和 git revert 是两个常见且功能强大的命令。它们都可以撤销..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/git-reset-和-git-revert的区别.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git reset 和 git revert的区别》 — 蓝胖纸&url=http://blog.langpz.com/git-reset-和-git-revert的区别.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/git-reset-和-git-revert的区别.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aMXLDMAwEQP//006TLpF8BzqZMbmsMraH5KpAAAGPR7yeF+v+9/nOP095/MXCwMD4WMbzdl0d8POw5Pir31ztnNwNAwPjHEa+9f0ns3B5//iix4GBgYFxGwSToJwHaAwMDIz3BtyE1yaIGBgYGCtF7OzgJBD/ay2OgYHxgYzZ6/v/+ftP+hsYGBgfxXiWK39N1v5mdp/v3TAwMLZmtK3H2YXahLK9DwYGxgmMWUvy6tu8AM4L2mKwAwMD4wBG256cpXr5gEVd3GJgYGzHaIvPvNk5u9zsMWFgYOzNaJPCvPU4G8gYjllgYGAcw5gVq7PQnJemxWgFBgbGAYx3DUDkO6yPf12mhhgYGNsx8pCXpHrJDuv7v0BiYGBsxGgDXJtWtteNgunVfwwMDIxNGflhbfyepZIrn2BgYOzNaEe42uI2H/PKGw+/7IOBgbEpY32oKylT24fSNhgwMDBOYMxaj+3gRR642xE0DAyMvRntAEQeHFtSHoJfFLEYGBhbM9qX8nmYzq+71E7AwMA4krFevs5apMMEFAMD4wBGO541e61fpHrvHbDAwMD4WMbKOEUbHPN6s6ZiYGBszchXnvwl110pfWfDZxgYGJ/OyFPD9kJ54pgHcQwMjJMZs8A3i+s5qR62wMDAwHhTU3PlxBcVOQYGBsYCbzaEUSSXGBgYBzDyFubshf67HgoGBsaZjLZ0bC836060J2JgYGzK+ALtXLwqGj2tVAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

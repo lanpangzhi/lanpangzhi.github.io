@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>webpack4.0入门指南（一）安装和转换es6语法 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="webpack4.0入门指南（一）安装和转换es6语法webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 webpack v4.0.0 开始，可以不用引入一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack4.0入门指南（一）安装和转换es6语法">
+<meta property="og:url" content="http://blog.langpz.com/webpack入门指南.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="webpack4.0入门指南（一）安装和转换es6语法webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 webpack v4.0.0 开始，可以不用引入一个">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608132222.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608145725.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608151354.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack4.0入门指南（一）安装和转换es6语法">
+<meta name="twitter:description" content="webpack4.0入门指南（一）安装和转换es6语法webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 webpack v4.0.0 开始，可以不用引入一个">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608132222.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack4.0入门指南（一）安装和转换es6语法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">webpack4.0入门指南（一）安装和转换es6语法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-08T10:35:24.000Z" itemprop="datePublished" class="page-time">
+  2018-06-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#webpack4-0入门指南（一）安装和转换es6语法"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack4.0入门指南（一）安装和转换es6语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建项目"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">新建项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用默认配置去构建"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用默认配置去构建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用配置文件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用babel转换es6语法-gt-es5"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用babel转换es6语法 => es5</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装babel"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">安装babel</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#babel-polyfill"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">babel-polyfill</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo仓库地址"><span class="post-toc-number">2.</span> <span class="post-toc-text">demo仓库地址</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-webpack入门指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack4.0入门指南（一）安装和转换es6语法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-08 10:35:24" datetime="2018-06-08T10:35:24.000Z"  itemprop="datePublished">2018-06-08</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="webpack4-0入门指南（一）安装和转换es6语法"><a href="#webpack4-0入门指南（一）安装和转换es6语法" class="headerlink" title="webpack4.0入门指南（一）安装和转换es6语法"></a>webpack4.0入门指南（一）安装和转换es6语法</h1><p>webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 webpack v4.0.0 开始，可以不用引入一个配置文件。<br><a id="more"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g webpack</span><br><span class="line">npm <span class="keyword">install</span> -g webpack-cli</span><br></pre></td></tr></table></figure></div><p>需要先全局安装你才可以使用webpack命令，然后再安装到你的项目依赖。<br>如果你使用 webpack 4+ 版本，你还需要安装 CLI。</p><h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mkdir</span> webpack-demo &amp;&amp; <span class="keyword">cd</span> webpack-demo  <span class="comment">//创建并进入webpack-demo文件夹</span></span><br><span class="line">npm init -y   <span class="comment">// 初始化项目package.json文件</span></span><br><span class="line">npm install -<span class="keyword">D</span> webpack webpack-<span class="keyword">cli</span>  <span class="comment">// 本地安装 webpack和webpack-cli</span></span><br></pre></td></tr></table></figure></div><h2 id="使用默认配置去构建"><a href="#使用默认配置去构建" class="headerlink" title="使用默认配置去构建"></a>使用默认配置去构建</h2><div class="highlight-wrap" data-rel="Vim"><figure class="lpz highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> demo1 &amp;&amp; <span class="keyword">cd</span> demo1</span><br><span class="line">touch <span class="built_in">index</span>.html</span><br><span class="line"><span class="built_in">mkdir</span> src &amp;&amp; <span class="keyword">cd</span> src</span><br><span class="line">touch <span class="built_in">index</span>.js</span><br></pre></td></tr></table></figure></div><p>index.html<br></p><div class="highlight-wrap" data-rel="Xml"><figure class="lpz highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!--  webpack会把src/index.js文件打包到dist目录mian.js --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div><p></p><p>src/index.js<br></p><div class="highlight-wrap" data-rel="Abnf"><figure class="lpz highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = <span class="number">1</span><span class="comment">;</span></span><br><span class="line">alert(a)<span class="comment">;</span></span><br></pre></td></tr></table></figure></div><p></p><p>执行 webpack 命令。就可以看到文件被打包到dist文件夹了。打开index.html文件就会弹出1。<br>webpack4.0可以不用写配置文件，然而大多数项目会需要很复杂的设置，需要你自己去配置。</p><h2 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h2><div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> .. <span class="comment">// 返回到webpack-demo文件夹</span></span><br><span class="line">touch webpack.config.js  <span class="comment">// 创建配置文件</span></span><br><span class="line">touch index.html</span><br><span class="line"><span class="keyword">mkdir</span> demo2 &amp;&amp; <span class="keyword">cd</span> demo2  <span class="comment">// 创建demo2文件夹</span></span><br><span class="line"><span class="keyword">mkdir</span> src &amp;&amp; <span class="keyword">cd</span> src</span><br><span class="line">touch index.js</span><br></pre></td></tr></table></figure></div><p>webpack.config.js<br></p><div class="highlight-wrap" data-rel="Java"><figure class="lpz highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = require(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,  <span class="comment">// 入口文件</span></span><br><span class="line">  output: &#123;  <span class="comment">// 出口文件</span></span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,   <span class="comment">// 打包后命名为bundle.js</span></span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>) <span class="comment">// 输出的路径</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><p></p><p>在项目的demo2目录执行webpack。如下图就代表打包成功。打开demo2下面的index.html 就可以弹出我的博客地址。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608132222.png" alt></div><div class="image-caption"></div></figure><p></p><h2 id="使用babel转换es6语法-gt-es5"><a href="#使用babel转换es6语法-gt-es5" class="headerlink" title="使用babel转换es6语法 =&gt; es5"></a>使用babel转换es6语法 =&gt; es5</h2><h3 id="安装babel"><a href="#安装babel" class="headerlink" title="安装babel"></a>安装babel</h3><p>在webpack-demo路径下执行命令<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install </span>--save-dev <span class="keyword">babel-loader </span><span class="keyword">babel-core </span><span class="keyword">babel-preset-env</span></span><br></pre></td></tr></table></figure></div><p></p><p>把demo2复制一份命名为demo3，在src目录下再新建a.js。<br>src/a.js<br></p><div class="highlight-wrap" data-rel="Routeros"><figure class="lpz highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span><span class="built_in"> default </span>lanpangzhi = <span class="string">"blog.langpz.com"</span>;</span><br></pre></td></tr></table></figure></div><p></p><p>src/index.js<br></p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lanpz <span class="keyword">from</span> <span class="string">"./a.js"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(lanpz);</span><br></pre></td></tr></table></figure></div><p></p><p>webpack.config.js<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>,  <span class="comment">// 入口文件</span></span><br><span class="line">  output: &#123;  <span class="comment">// 出口文件</span></span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,   <span class="comment">// 打包后命名为bundle.js</span></span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>) <span class="comment">// 输出的路径</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>, <span class="comment">// 匹配所有.js结尾的文件</span></span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,  <span class="comment">// 忽略node_modules文件夹</span></span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">'babel-loader'</span>  <span class="comment">// 使用babel-loader转义</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><p></p><p>新建 .babelrc 文件<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">touch</span> <span class="selector-class">.babelrc</span></span><br></pre></td></tr></table></figure></div><p></p><p>.babelrc<br></p><div class="highlight-wrap" data-rel="Json"><figure class="lpz highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>执行webpack就可以看见打包成功了。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608145725.png" alt></div><div class="image-caption"></div></figure><p></p><h3 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h3><p>由于 Babel 只转换语法(如箭头函数)， 你可以使用 babel-polyfill 支持新的全局变量，例如 Promise 、新的原生方法如 String.padStart (left-pad) 等。<br>在webpack-demo路径下执行命令<br></p><div class="highlight-wrap" data-rel="Gauss"><figure class="lpz highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="keyword">save</span> babel-polyfill  <span class="comment">// 安装babel-polyfill</span></span><br></pre></td></tr></table></figure></div><p></p><p>在 webpack.config.js 中，将 babel-polyfill 加到你的 entry 数组中。<br></p><div class="highlight-wrap" data-rel="Java"><figure class="lpz highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">  entry: [<span class="string">"babel-polyfill"</span>, <span class="string">"./src/index.js"</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><p></p><p>执行webpack命令，如下图就成功了。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608151354.png" alt></div><div class="image-caption"></div></figure><p></p><h1 id="demo仓库地址"><a href="#demo仓库地址" class="headerlink" title="demo仓库地址"></a>demo仓库地址</h1><p><a href="https://github.com/lanpangzhi/webpack-demo" target="_blank" rel="external">https://github.com/lanpangzhi/webpack-demo</a></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.babeljs.cn/" target="_blank" rel="external">https://www.babeljs.cn/</a><br><a href="https://webpack.docschina.org/" target="_blank" rel="external">https://webpack.docschina.org/</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/webpack入门指南.html" target="_blank" rel="external">http://blog.langpz.com/webpack入门指南.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包工具/">打包工具</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/webpack入门指南.html&title=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/webpack入门指南.html&title=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&source=webpack4.0入门指南（一）安装和转换es6语法webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundl..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/webpack入门指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&url=http://blog.langpz.com/webpack入门指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/webpack入门指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/yarn使用介绍.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">yarn使用介绍</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/部署小说api服务到腾讯云.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">部署小说api服务到腾讯云</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/webpack入门指南.html&title=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/webpack入门指南.html&title=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&source=webpack4.0入门指南（一）安装和转换es6语法webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundl..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/webpack入门指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack4.0入门指南（一）安装和转换es6语法》 — 蓝胖纸&url=http://blog.langpz.com/webpack入门指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/webpack入门指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAxF0ex/0+40QCrlPjIJYOpqVNS1reMBy48eD7yup7W/+vqXq7ter+7f8oElQ4aM2zKu7Vq9gNy12ijBpG+RIUPGCQz+aB5k37y4EaxlyJAhgwfKffq4D8Hk9zJkyJDRT9c6yM6TZciQcSaDp2j86m+eJkOGjBMYvOv++5+/Mt+QIUPGrRhXuEhCWRtM8iD7z65kyJAxmlErQUmpyYcBqEAlT5AhQ8ZQBmnQ8/KSh1c+SEDhXoYMGaMZaeqWBtZOkI3HDzJkyBjK4M0v3pQvDiC3mDfvkiFDxmgGb419qmStDQDQCEGGDBlDGbUyslb08rZd3KSTIUPGaEZno7U0Lk1Gg1RShgwZQxmdAQAPuN8+zCpDhoxzGHwMUDuE0Wnbxf8xZMiQMYhBEi+e0u0bZP2PJUOGDBm8BOXNsvSYV5omypAh4wRGLUXrpIPpeDI4MyJDhozRjLStX2uQ8cSRH/WQIUPGCYzaRtPAmg4+W804GTJkDGXsb+CHJ9ImXZoIolJWhgwZRzL64TLdIlnFmacMGTLGMXgxmYJJ4cpDvAwZMmYzrnCliSPfECmJlx9ChgwZoxm1krV2nIt/GjIGqBXeMmTIuC+DH/niqSTZaKdht2y3yZAhYzQjDXw8cWxNVvuDARkyZBzMSMG8fK2182TIkCGjE3w7A4NgLCpDhowDGKSITQ+bpuVxrfEnQ4aMExit0rEUmmvHL/qfQIYMGTdk/AGy5WqYj0mFXQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Hexo博客从Travis-CI迁移到GitHub Actions | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Hexo博客从Travis-CI迁移到GitHub Actions由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免费使用构建服务了。所以迁移到GitHub Actions。Github Actions每月2000分钟免费额度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客从Travis-CI迁移到GitHub Actions">
+<meta property="og:url" content="http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Hexo博客从Travis-CI迁移到GitHub Actions由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免费使用构建服务了。所以迁移到GitHub Actions。Github Actions每月2000分钟免费额度。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客从Travis-CI迁移到GitHub Actions">
+<meta name="twitter:description" content="Hexo博客从Travis-CI迁移到GitHub Actions由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免费使用构建服务了。所以迁移到GitHub Actions。Github Actions每月2000分钟免费额度。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo博客从Travis-CI迁移到GitHub Actions</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo博客从Travis-CI迁移到GitHub Actions</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-02-11T08:58:23.000Z" itemprop="datePublished" class="page-time">
+  2023-02-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hexo博客从Travis-CI迁移到GitHub-Actions"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hexo博客从Travis-CI迁移到GitHub Actions</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GitHub-Actions"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">GitHub Actions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GitHub-Actions基本概念"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">GitHub Actions基本概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#workflows文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">workflows文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#迁移"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">迁移</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-从Travis-CI迁移到GitHub-Actions"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo博客从Travis-CI迁移到GitHub Actions</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-02-11 08:58:23" datetime="2023-02-11T08:58:23.000Z"  itemprop="datePublished">2023-02-11</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Hexo博客从Travis-CI迁移到GitHub-Actions"><a href="#Hexo博客从Travis-CI迁移到GitHub-Actions" class="headerlink" title="Hexo博客从Travis-CI迁移到GitHub Actions"></a>Hexo博客从Travis-CI迁移到GitHub Actions</h1><p>由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免费使用构建服务了。所以迁移到GitHub Actions。<br>Github Actions每月2000分钟免费额度。<br><a id="more"></a></p><h2 id="GitHub-Actions"><a href="#GitHub-Actions" class="headerlink" title="GitHub Actions"></a>GitHub Actions</h2><p>GitHub Actions 是 GitHub 的持续集成服务，于2018年10月推出。<br>GitHub Actions 可帮助您在软件开发生命周期内自动执行任务。GitHub 操作是事件驱动的，这意味着您可以在发生指定事件后运行一系列命令。例如，每次有人为存储库创建拉取请求时，您都可以自动运行执行软件测试脚本的命令。</p><h2 id="GitHub-Actions基本概念"><a href="#GitHub-Actions基本概念" class="headerlink" title="GitHub Actions基本概念"></a>GitHub Actions基本概念</h2><p>（1）workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。<br>（2）events（事件）：事件是触发工作流程的特定活动。例如，监听推送触发工作流程等。<br>（3）job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。<br>（4）step（步骤）：每个 job 由多个 step 构成，一步步完成。<br>（5）action （动作）：每个 step 可以依次执行一个或多个命令（action）。<br>（6）runners （运行器）：运行器是安装了 GitHub Actions 运行器应用程序的服务器。</p><h2 id="workflows文件"><a href="#workflows文件" class="headerlink" title="workflows文件"></a>workflows文件</h2><p>GitHub Actions 使用 YAML 语法来定义事件、作业和步骤。 这些 YAML 文件存储在代码仓库中名为 .github/workflows 的目录中。</p><h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>首先在项目根目录下面创建 <code>.github/workflows 目录和hexo.yml</code> 文件。<br>SecretId、SecretKey、CI_TOKEN 环境变量需要在<code>仓库 -&gt; Settings -&gt; Actions secrets and variables -&gt; New repository secret</code>, 添加Secrets变量</p><div class="highlight-wrap" data-rel="Yaml"><figure class="lpz highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">indigo</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">  GH_REF:</span> <span class="string">github.com/lanpangzhi/lanpangzhi.github.io</span></span><br><span class="line"><span class="attr">  secretId:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.SECRETID</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">  secretKey:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.SECRETKEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  build:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Checkout</span> <span class="string">codes</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          submodules:</span> <span class="string">'true'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Setup</span> <span class="string">node</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          node-version:</span> <span class="string">"10.14.0"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Install</span> <span class="string">and</span> <span class="string">Deploy</span> </span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span><br><span class="line">          npm install hexo-cli -g</span><br><span class="line">          npm install</span><br><span class="line">          hexo generate</span><br><span class="line">          hexo d</span><br><span class="line"></span><span class="attr">      - name:</span> <span class="string">Deploy</span> <span class="string">github</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span><br><span class="line">          cd ./public</span><br><span class="line">          git init</span><br><span class="line">          git config user.name "lanpangzhi"</span><br><span class="line">          git config user.email "875727617@qq.com"</span><br><span class="line">          git add .</span><br><span class="line">          git commit -m "GitHub Actions 自动部署"</span><br><span class="line">          git push --force --quiet "https://$<span class="template-variable">&#123;&#123;secrets.CI_TOKEN&#125;&#125;</span>@$<span class="template-variable">&#123;&#123;env.GH_REF&#125;&#125;</span>" master:master</span></span><br></pre></td></tr></table></figure></div><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>环境变量获取和写法和Travis-CI不一样<br></p><div class="highlight-wrap" data-rel="Shell"><figure class="lpz highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;&#123;env.GH_REF&#125;&#125; 对应 <span class="variable">$&#123;GH_REF&#125;</span> </span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;&#123;secrets.CI_TOKEN&#125;&#125; 对应 <span class="variable">$&#123;CI_TOKEN&#125;</span> 因为是从配置Secrets变量直接拿所以要用 secrets.的方式</span></span><br></pre></td></tr></table></figure></div><p></p><p>git 子模块需要手动配置开启<br></p><div class="highlight-wrap" data-rel="Yaml"><figure class="lpz highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"><span class="attr">  with:</span></span><br><span class="line"><span class="attr">    submodules:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div><p></p><p>执行脚本<br></p><div class="highlight-wrap" data-rel="Routeros"><figure class="lpz highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">steps:</span><br><span class="line">  - name: <span class="builtin-name">Run</span> build<span class="built_in"> script</span><br><span class="line"></span>    run: |</span><br><span class="line">      npm install hexo-cli -g</span><br><span class="line">      npm install</span><br></pre></td></tr></table></figure></div><p></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.github.com/zh/actions/migrating-to-github-actions/migrating-from-travis-ci-to-github-actions" target="_blank" rel="external">从 Travis CI 迁移到 GitHub Actions</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/从Travis-CI迁移到GitHub-Actions.html" target="_blank" rel="external">http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub-Actions/">GitHub Actions</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&title=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&title=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&source=Hexo博客从Travis-CI迁移到GitHub Actions由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/解决Waline服务因vercel国内被墙无法使用.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">解决Waline服务因vercel国内被墙无法使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/axios发送Basic-Auth认证和Bearer-Token.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">axios发送Basic Auth认证和Bearer Token</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&title=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&title=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&source=Hexo博客从Travis-CI迁移到GitHub Actions由于Travis-CI更改了免费政策，系统赠送的 10000 积分用完以后，就无法继续免..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客从Travis-CI迁移到GitHub Actions》 — 蓝胖纸&url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/从Travis-CI迁移到GitHub-Actions.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3awY7jIBAE0Pz/T+9Ke9qLmaoGMj48n6Ik4/AYCdrVfD7x9efftf70/+vpb/PXT9fnxoWHh4c3Gvr6dsmtn2Drwa3fPzAFeHh4eNd46x9eL/r51MymILnP4/t4eHh4v8pbk/JSe323dpPAw8PDezOvXe5zagLAw8PDexsvKYsTxk4YkU/ilawFDw8P70IX6T2vL/b38PDw8Da66rMFNw9t83J8OFo8PDy8C7zZD8xK4SSGSNpsbbCLh4eHd5aXRAyzgGB/Wc+3kMdv4uHh4V3g7TzXz6KK/PBWeyQrmWI8PDy8e7ydxbqNFfJQY3Y8Cw8PD+8eLz8E0A5otsTvHFkoZhoPDw9vxGvj0fYn20J89v95vBseHh7eBd4OrB30bCvKoxA8PDy827y2bX8q88ibZHnr6/G4FR4eHt5RXt6+OtWm2mmJtZOLh4eHd5uXF9D5UJLCt92c8gMNeHh4eDd4yQGpNoxICuidO+eTjoeHh3eDl7ft8zI6P6rVDvRUfIyHh4e3w2ubVQnjVDm+EwEPe3F4eHh4XU+qCFvX5e9Oy7/dNvIAGg8PD+8s78CD/ejZf6eUr1NqPDw8vK/w2oW4LaPb9tgwgMbDw8O7zGuf4tuG2c52goeHh/cGXtKwb2PT2XbSTm70KR4eHt41Xk79/jbQNt5+ODqAh4eHt81r18+80ZWHC3moMfs+Hh4e3lle3pTK21SzAjrflorWGh4eHt5XeO2g98vlfLj5+48bAx4eHt42rx3cbEvYGVzy+kAggoeHh1fyZsVx25pqI49TE4SHh4d3j5dvBrOQYv/YwbBYx8PDw/tV3qwIzkvhBF8fwMLDw8N7AW929OrUNlBPIh4eHt41XrLcnzoikB9cSIKMYzEuHh4e3rUGWBvgzsLfdgo+OxceHh5eOoa/NdfkKSP2/EAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

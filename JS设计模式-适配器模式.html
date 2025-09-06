@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>JS设计模式-适配器模式 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而不能在一起工作的类可以协同工作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式-适配器模式">
+<meta property="og:url" content="http://blog.langpz.com/JS设计模式-适配器模式.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而不能在一起工作的类可以协同工作。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS设计模式-适配器模式">
+<meta name="twitter:description" content="适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而不能在一起工作的类可以协同工作。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS设计模式-适配器模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS设计模式-适配器模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-06-28T16:18:49.000Z" itemprop="datePublished" class="page-time">
+  2025-06-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#适配器模式使用场景"><span class="post-toc-number">1.</span> <span class="post-toc-text">适配器模式使用场景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#适配器模式的结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">适配器模式的结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#适配器模式的实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">适配器模式的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多种支付方式适配器"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">多种支付方式适配器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-目标接口-Target"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">1. 目标接口 (Target)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-适配者（Adaptee）"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">2. 适配者（Adaptee）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-适配器（Adapter）"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">3. 适配器（Adapter）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-客户端代码"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">4. 客户端代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扩展新支付方式"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">扩展新支付方式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#优缺点总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">优缺点总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优点"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">缺点</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JS设计模式-适配器模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS设计模式-适配器模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-06-28 16:18:49" datetime="2025-06-28T16:18:49.000Z"  itemprop="datePublished">2025-06-28</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而不能在一起工作的类可以协同工作。<br><a id="more"></a></p><h1 id="适配器模式使用场景"><a href="#适配器模式使用场景" class="headerlink" title="适配器模式使用场景"></a>适配器模式使用场景</h1><p>在以下情况下可以考虑使用适配器模式：</p><ol><li>接口兼容问题： 系统需要使用现有的类，而这些类的接口不符合系统的需求。</li><li>提高代码复用性：可以复用一些现有的、功能强大的类，而无需修改其源代码。</li><li>增强系统灵活性：将客户端代码与具体实现解耦。如果未来需要替换或引入新的被适配者，只需创建一个新的适配器，而无需修改客户端代码。这在集成第三方库或处理遗留代码时尤其有用。</li></ol><h1 id="适配器模式的结构"><a href="#适配器模式的结构" class="headerlink" title="适配器模式的结构"></a>适配器模式的结构</h1><p>适配器模式包含以下主要角色：</p><ol><li>目标接口（Target）：定义客户端使用的与特定领域相关的接口。</li><li>适配者（Adaptee）：包含一些已有的功能，但其接口与目标接口不兼容。</li><li>适配器（Adapter）：将适配者的接口转换成目标接口，使客户端能够与适配者进行交互。</li><li>客户端 (Client) ：使用目标接口的代码</li></ol><h1 id="适配器模式的实现"><a href="#适配器模式的实现" class="headerlink" title="适配器模式的实现"></a>适配器模式的实现</h1><h2 id="多种支付方式适配器"><a href="#多种支付方式适配器" class="headerlink" title="多种支付方式适配器"></a>多种支付方式适配器</h2><p>在电商系统中，我们经常需要集成多种支付方式（支付宝、微信支付、银联等），每种支付方式的接口都不相同。</p><h3 id="1-目标接口-Target"><a href="#1-目标接口-Target" class="headerlink" title="1. 目标接口 (Target)"></a>1. 目标接口 (Target)</h3><p>所有支付方式都需要提供一个统一的 pay(amount, orderId) 方法。<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">adapter</span><span class="selector-class">.pay</span>(<span class="selector-tag">amount</span>, <span class="selector-tag">orderId</span>);</span><br></pre></td></tr></table></figure></div><p></p><h3 id="2-适配者（Adaptee）"><a href="#2-适配者（Adaptee）" class="headerlink" title="2. 适配者（Adaptee）"></a>2. 适配者（Adaptee）</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支付宝支付类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlipayService</span> </span>&#123;</span><br><span class="line">  makePayment(amount, orderId) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`支付宝支付: 订单<span class="subst">$&#123;orderId&#125;</span>, 金额<span class="subst">$&#123;amount&#125;</span>元`</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">success</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">transactionId</span>: <span class="string">'alipay_'</span> + <span class="built_in">Date</span>.now(),</span><br><span class="line">      <span class="attr">message</span>: <span class="string">'支付宝支付成功'</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 微信支付类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WechatPayService</span> </span>&#123;</span><br><span class="line">  pay(money, orderNumber) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`微信支付: 订单<span class="subst">$&#123;orderNumber&#125;</span>, 金额<span class="subst">$&#123;money&#125;</span>元`</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">status</span>: <span class="string">'ok'</span>,</span><br><span class="line">      <span class="attr">wxTransactionId</span>: <span class="string">'wx_'</span> + <span class="built_in">Date</span>.now(),</span><br><span class="line">      <span class="attr">desc</span>: <span class="string">'微信支付完成'</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 银联支付类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionPayService</span> </span>&#123;</span><br><span class="line">  processPayment(orderInfo) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`银联支付: 订单<span class="subst">$&#123;orderInfo.id&#125;</span>, 金额<span class="subst">$&#123;orderInfo.amount&#125;</span>元`</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">      <span class="attr">unionPayId</span>: <span class="string">'union_'</span> + <span class="built_in">Date</span>.now(),</span><br><span class="line">      <span class="attr">result</span>: <span class="string">'银联支付成功'</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h3 id="3-适配器（Adapter）"><a href="#3-适配器（Adapter）" class="headerlink" title="3. 适配器（Adapter）"></a>3. 适配器（Adapter）</h3><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> PaymentAdapter &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">paymentService, <span class="keyword">type</span></span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.paymentService = paymentService;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="keyword">type</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pay(amount, orderId) &#123;</span><br><span class="line">    <span class="keyword">let</span> result;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'alipay'</span>:</span><br><span class="line">        result = <span class="keyword">this</span>.paymentService.makePayment(amount, orderId);</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          success: result.success,</span><br><span class="line">          transactionId: result.transactionId,</span><br><span class="line">          message: result.message</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">case</span> <span class="string">'wechat'</span>:</span><br><span class="line">        result = <span class="keyword">this</span>.paymentService.pay(amount, orderId);</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          success: result.status === <span class="string">'ok'</span>,</span><br><span class="line">          transactionId: result.wxTransactionId,</span><br><span class="line">          message: result.desc</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">case</span> <span class="string">'unionpay'</span>:</span><br><span class="line">        result = <span class="keyword">this</span>.paymentService.processPayment(&#123; id: orderId, amount &#125;);</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          success: result.code === <span class="number">200</span>,</span><br><span class="line">          transactionId: result.unionPayId,</span><br><span class="line">          message: result.result</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'不支持的支付方式'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h3 id="4-客户端代码"><a href="#4-客户端代码" class="headerlink" title="4. 客户端代码"></a>4. 客户端代码</h3><div class="highlight-wrap" data-rel="Haxe"><figure class="lpz highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">processOrder</span></span>(paymentType, amount, orderId) &#123;</span><br><span class="line">  let paymentService;</span><br><span class="line">  let adapter;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">switch</span> (paymentType) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'alipay'</span>:<span class="type"></span></span><br><span class="line">      paymentService = <span class="keyword">new</span> <span class="type">AlipayService</span>();</span><br><span class="line">      adapter = <span class="keyword">new</span> <span class="type">PaymentAdapter</span>(paymentService, <span class="string">'alipay'</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'wechat'</span>:<span class="type"></span></span><br><span class="line">      paymentService = <span class="keyword">new</span> <span class="type">WechatPayService</span>();</span><br><span class="line">      adapter = <span class="keyword">new</span> <span class="type">PaymentAdapter</span>(paymentService, <span class="string">'wechat'</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'unionpay'</span>:<span class="type"></span></span><br><span class="line">      paymentService = <span class="keyword">new</span> <span class="type">UnionPayService</span>();</span><br><span class="line">      adapter = <span class="keyword">new</span> <span class="type">PaymentAdapter</span>(paymentService, <span class="string">'unionpay'</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  const result = adapter.pay(amount, orderId);</span><br><span class="line">  console.log(<span class="string">'支付结果:'</span>, result);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line">processOrder(<span class="string">'alipay'</span>, <span class="number">100</span>, <span class="string">'1'</span>);</span><br><span class="line">processOrder(<span class="string">'wechat'</span>, <span class="number">200</span>, <span class="string">'2'</span>);</span><br><span class="line">processOrder(<span class="string">'unionpay'</span>, <span class="number">300</span>, <span class="string">'3'</span>);</span><br></pre></td></tr></table></figure></div><h3 id="扩展新支付方式"><a href="#扩展新支付方式" class="headerlink" title="扩展新支付方式"></a>扩展新支付方式</h3><p>新增 PayPal 支付时：</p><ol><li>新建 PaypalService 类；</li><li>修改 PaymentAdapter 添加 “paypal” 的逻辑；</li><li>修改 processOrder 添加 “paypal” 分支；</li></ol><h1 id="优缺点总结"><a href="#优缺点总结" class="headerlink" title="优缺点总结"></a>优缺点总结</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol><li>代码复用 ：可以复用现有的类，无需修改其源代码</li><li>解耦 ：将客户端代码与具体实现分离</li><li>灵活性 ：可以轻松替换或添加新的适配器</li><li>符合开闭原则 ：对扩展开放，对修改关闭</li></ol><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol><li>增加复杂性 ：引入了额外的抽象层</li><li>性能开销 ：可能会有轻微的性能损失</li><li>维护成本 ：需要维护适配器代码</li></ol>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JS设计模式-适配器模式.html" target="_blank" rel="external">http://blog.langpz.com/JS设计模式-适配器模式.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/适配器模式/">适配器模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-适配器模式.html&title=《JS设计模式-适配器模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-适配器模式.html&title=《JS设计模式-适配器模式》 — 蓝胖纸&source=适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-适配器模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-适配器模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-适配器模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-适配器模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/JS设计模式-状态机模式.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS设计模式-状态机模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS设计模式-中介者模式.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-中介者模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-适配器模式.html&title=《JS设计模式-适配器模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-适配器模式.html&title=《JS设计模式-适配器模式》 — 蓝胖纸&source=适配器模式（Adapter Pattern）是一种结构型设计模式，它允许将一个类（或对象）的接口转换成客户端期望的另一个接口。适配器让那些由于接口不兼容而..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-适配器模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-适配器模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-适配器模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-适配器模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQY7DIAwF0N7/0pntjKom33Y6UuCxqpoWeFlY2Ob1isfxa5x/f7yNZObzVW4bGBgYj2Ucp2OyuXyL77/M94aBgbEPI5862W6CT36Z7A0DAwMjP8Alyye/xMDAwPgGI/mcHxAxMDAwJklsr0A2me0ruTgGBsYDGXnV/f8/f6W/gYGB8SjGURzVtDMPlMdgYGBgrM3IA1zekuy1E5Kk+mIGDAyMDRi9xLIaWKuvJnlZGBgY+zCSbyaY8w3dkOhiYGAszZgUxaqNhOqxsny4xMDAWJrxaXN5uKwG3MKxLwdgYGAsx8gXHoW/uA2QvMobpsPAwHggI0kme0fDfLbeJbA/nVgMDIwNGHmQ7V3OqM6WUzEwMNZmJMtUi255aJ6H41fhMQYGxlMZ+WK9Lfbqf+VvMDAwNmBMymSTUtr89WFgYOzA6B3jzsv0eUF/3orAwMDYh9FrA/Sut1YvrebpNAYGxtqMausxWSDf3F3tTwwMjB0Yo2jdegW9Qtuo6IaBgfFwRvVQ2Es4k5S4d2kDAwNjH0a1bdkr21UbEtEJEAMDY1HGURzV1Ld3CWzUicXAwFiOMQlz3wu4N28dAwNjCUb1StZdh8jq04tiHAYGxgaMajMgKdknvGpC+/FfGBgYGMEyk5S12ih95Q8wMDC2ZFSvUFRnPj8sXrQHMDAwlmYkSWwvKe1d2khWwcDA2IeRp45J6a3XSLi4D9JKpDEwMJZg/ADjC8dldHMaZwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

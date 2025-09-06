@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>使用Express开发小说API接口服务1.0（三） | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="使用Express开发小说API接口服务1.0（三）之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Express开发小说API接口服务1.0（三）">
+<meta property="og:url" content="http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="使用Express开发小说API接口服务1.0（三）之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Express开发小说API接口服务1.0（三）">
+<meta name="twitter:description" content="使用Express开发小说API接口服务1.0（三）之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用Express开发小说API接口服务1.0（三）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用Express开发小说API接口服务1.0（三）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-26T10:54:41.000Z" itemprop="datePublished" class="page-time">
+  2018-05-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用Express开发小说API接口服务1-0（三）"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用Express开发小说API接口服务1.0（三）</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#app-js-增加错误处理"><span class="post-toc-number">2.</span> <span class="post-toc-text">app.js 增加错误处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列表页增加返回ID"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">列表页增加返回ID</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#详情页增加上一章和下一章的返回值"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">详情页增加上一章和下一章的返回值</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用Express开发小说API接口服务1-0（三）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用Express开发小说API接口服务1.0（三）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-26 10:54:41" datetime="2018-05-26T10:54:41.000Z"  itemprop="datePublished">2018-05-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用Express开发小说API接口服务1-0（三）"><a href="#使用Express开发小说API接口服务1-0（三）" class="headerlink" title="使用Express开发小说API接口服务1.0（三）"></a>使用Express开发小说API接口服务1.0（三）</h1><p>之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。<br><a id="more"></a></p><h1 id="app-js-增加错误处理"><a href="#app-js-增加错误处理" class="headerlink" title="app.js 增加错误处理"></a>app.js 增加错误处理</h1><div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// catch 404 and forward to error handler</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(function (req, res, next) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">err</span> = new <span class="keyword">Error</span>('Not Found');</span><br><span class="line">    <span class="keyword">err</span>.status = 404;</span><br><span class="line">    next(<span class="keyword">err</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// error handler</span></span><br><span class="line"><span class="keyword">app</span>.<span class="keyword">use</span>(function (<span class="keyword">err</span>, req, res, next) &#123;</span><br><span class="line">    <span class="comment">// set locals, only providing error in development</span></span><br><span class="line">    res.locals.message = <span class="keyword">err</span>.message;</span><br><span class="line">    res.locals.<span class="keyword">error</span> = req.<span class="keyword">app</span>.<span class="built_in">get</span>('env') === 'development' ? <span class="keyword">err</span> : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// render the error page</span></span><br><span class="line">    res.status(<span class="keyword">err</span>.status || 500);</span><br><span class="line">    res.render('<span class="keyword">error</span>');</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div><p>这些代码放到module.exports = app; 上面就可以了。</p><h2 id="列表页增加返回ID"><a href="#列表页增加返回ID" class="headerlink" title="列表页增加返回ID"></a>列表页增加返回ID</h2><p>找到routes/chapter.js 29行替换<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.send(<span class="keyword">JSON.stringify(&#123; </span><span class="string">"flag"</span>: <span class="number">1</span>,<span class="string">"id"</span>: <span class="keyword">body._id, </span> <span class="string">"chapters"</span>: <span class="keyword">body.chapters, </span><span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;))<span class="comment">;</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="详情页增加上一章和下一章的返回值"><a href="#详情页增加上一章和下一章的返回值" class="headerlink" title="详情页增加上一章和下一章的返回值"></a>详情页增加上一章和下一章的返回值</h2><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">let</span> common = <span class="built_in">require</span>(<span class="string">'../common/common.json'</span>); <span class="comment">// 引用公共文件</span></span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span><br><span class="line">  获取小说文章内容</span><br><span class="line">  返回小说文章内容</span><br><span class="line">  param link &#123;String&#125; 是小说文章列表接口 chapters[0].link</span><br><span class="line">  http://chapter2.zhuishushenqi.com/chapter/$&#123;link&#125;</span><br><span class="line">*/</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.query.link) &#123;</span><br><span class="line">        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请传入link..."</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// req.query.link 编码转义</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="built_in">encodeURIComponent</span>(req.query.link);</span><br><span class="line">    request.get(<span class="string">`<span class="subst">$&#123;common.CHAPTER&#125;</span>/chapter/<span class="subst">$&#123;link&#125;</span>`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解析返回的数据</span></span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (body.ok)&#123;</span><br><span class="line">            <span class="comment">// 再次请求列表页获取上一页和下一页</span></span><br><span class="line">            <span class="keyword">if</span>(req.query.id)&#123;</span><br><span class="line">                <span class="comment">// req.query.id 编码转义</span></span><br><span class="line">                <span class="keyword">let</span> id = <span class="built_in">encodeURIComponent</span>(req.query.id);</span><br><span class="line">                <span class="keyword">let</span> n = <span class="built_in">parseInt</span>(req.query.n);</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n))&#123;</span><br><span class="line">                    n = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                request.get(<span class="string">`<span class="subst">$&#123;common.API&#125;</span>/atoc/<span class="subst">$&#123;id&#125;</span>?view=chapters`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body2</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (body2 == <span class="string">"wrong param"</span>)&#123;</span><br><span class="line">                        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入错误的ID..."</span> &#125;));</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="comment">// 解析返回的数据</span></span><br><span class="line">                        body2 = <span class="built_in">JSON</span>.parse(body2);</span><br><span class="line">                        <span class="comment">// 检查页码是否超过小说的章节数</span></span><br><span class="line">                        <span class="keyword">if</span>(n &gt; body2.chapters.length - <span class="number">1</span>)&#123;</span><br><span class="line">                            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入的页码过大"</span> &#125;));</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            <span class="comment">// 如果有上一页或者下一页就返回link否则返回false</span></span><br><span class="line">                            <span class="keyword">let</span> prev,next;</span><br><span class="line">                            body2.chapters[n - <span class="number">1</span>] ? prev = body2.chapters[n - <span class="number">1</span>].link : prev = <span class="literal">false</span>;</span><br><span class="line">                            body2.chapters[n + <span class="number">1</span>] ? next = body2.chapters[n + <span class="number">1</span>].link : next = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">                            <span class="keyword">if</span> (body2.chapters.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>,<span class="string">"id"</span>: id, <span class="string">"chapter"</span>: body.chapter, <span class="string">"prev"</span>: prev,<span class="string">"next"</span>: next, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"chapter"</span>: body.chapter, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入link有错误"</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></div><p>访问<a href="http://localhost:3000/article?link=http://www.69shu.com/txt/1463/4861037&amp;n=2648&amp;id=577b6c81ccb7bf00499d036c" target="_blank" rel="external">http://localhost:3000/article?link=http://www.69shu.com/txt/1463/4861037&amp;n=2648&amp;id=577b6c81ccb7bf00499d036c</a><br>新增n和id参数。<br>n 代表是第几页。<br>id 是书籍ID。</p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/使用Express开发小说API接口服务1-0（三）.html" target="_blank" rel="external">http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&title=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&title=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0（三）之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/使用apidoc文档神器，快速生成api文档.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用apidoc文档神器，快速生成api文档</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/使用Express开发小说API接口服务-二.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用Express开发小说API接口服务1.0(二)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&title=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&title=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0（三）之前发现追书神器API详情页竟然没有下一章和上一章的返回值，只能自己动手封装一下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0（三）》 — 蓝胖纸&url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用Express开发小说API接口服务1-0（三）.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3aQXLjMAwEwPz/09kHJPbOAEI2W9U6uWxZYvNAsgb4+Iivz7fXq/u/fs5//fr8V+964MLDw8M7GPr7R7+6M8EnT3g1nmi68fDw8M54yaDbRTyZrBbTThweHh7eb+O9oibPyTchPDw8vP+XNwsX9sduPDw8vN/JSxbr/JA9C3bf//c8a8HDw8PrKlZRFen3fD6p7+Hh4eGtq+rtsruPITZFr2/+hYeHh3fAaxfl2cE3/zU5lNflMTw8PLxHebNBR+FpEDrk28MwFMbDw8M74+VtUm0DwawJYF9gw8PDw7vj5UWmpOjVFsPa8GI2HXh4eHh3vPz1s40hDynaZoK6aQAPDw9vwWsfsUqLR0v/jPdNjIuHh4d3wHu28F8MYh3yvpxiPDw8vDNeMrh9+X/Pro/veHh4eD/I2yzH++g2mdwovMDDw8M74G0C1nxS8rckR+r8QI+Hh4d3zdsMsSjbl01a+YZRvAAPDw9vzUuW+zxuyF+ftyDMQgo8PDy8C157aG6bAPLFvb2iIzgeHh7eD/I2wW5e6Eq2gdX9eHh4eAe8fInPH9e2COQB7qy5AQ8PD+9ZXrtkz5oGZpvNJpXFw8PDu+a1selmI8kD3Lxtq+iJwMPDw3uINxtWW+LahxptwwEeHh7eBW+/AeT35zFEu5H85R48PDy8R3nvH7dZyvNtJiflscXLMAIPDw9vzdvEEMkBuj3ltm+M7sfDw8N7lPdZXpsWgU2bwrDYhoeHh3fAy699G1YeT7QbT7Kx4eHh4T3La1+fbBJ5uDBrRyi2DTw8PLwzXrsQ5+HCRVBbHLXx8PDw/invqSP1rNEq32CGGwMeHh7eAW+WZGymZjMReHh4eNe8WRix+WbWcNA+Hw8PD++Cly/ubatW8n0bDW8as/Dw8PDWvD+g1xg8v0kk7gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>pinia使用指南 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pinia使用指南">
+<meta property="og:url" content="http://blog.langpz.com/pinia使用指南.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pinia使用指南">
+<meta name="twitter:description" content="Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">pinia使用指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">pinia使用指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-05-27T10:37:37.000Z" itemprop="datePublished" class="page-time">
+  2023-05-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#起步"><span class="post-toc-number">1.</span> <span class="post-toc-text">起步</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Store"><span class="post-toc-number">2.</span> <span class="post-toc-text">Store</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Getter"><span class="post-toc-number">3.</span> <span class="post-toc-text">Getter</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Action"><span class="post-toc-number">4.</span> <span class="post-toc-text">Action</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#访问其他-store-的-Store、-getter、-Action"><span class="post-toc-number">5.</span> <span class="post-toc-text">访问其他 store 的 Store、 getter、 Action</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组合式API写法"><span class="post-toc-number">6.</span> <span class="post-toc-text">组合式API写法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-number">7.</span> <span class="post-toc-text">demo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">8.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-pinia使用指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">pinia使用指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-05-27 10:37:37" datetime="2023-05-27T10:37:37.000Z"  itemprop="datePublished">2023-05-27</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。<br><a id="more"></a><br><strong>Pinia</strong> 对比 <strong>vuex</strong></p><ul><li>没有了 <strong>mutations</strong> 这个概念只需要用 Action就可以定义同步和异步的方法</li><li>没有了 <strong>modules</strong> Pinia里每个store是一个模块</li><li>轻量化 Pinia 大小只有 1kb 左右！</li></ul><!--more--><h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><p>安装 pinia<br></p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="keyword">add</span><span class="bash"> pinia</span><br><span class="line"></span><span class="comment"># 或者使用 npm</span></span><br><span class="line">npm install pinia</span><br></pre></td></tr></table></figure></div><p></p><p>Vue3使用<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createPinia &#125; <span class="keyword">from</span> <span class="string">'pinia'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pinia = createPinia()</span><br><span class="line"><span class="keyword">const</span> app = createApp(App)</span><br><span class="line"></span><br><span class="line">app.use(pinia)</span><br><span class="line">app.mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure></div><p></p><h1 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h1><p><strong>defineStore</strong>来定义Store，每个store是一个模块</p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">'pinia'</span></span><br><span class="line"></span><br><span class="line">const countStore = defineStore(<span class="string">'storeId'</span>, &#123;</span><br><span class="line">  state: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      count: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; countStore &#125;;</span><br></pre></td></tr></table></figure></div><p><strong>使用state</strong></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const store = countStore()</span><br><span class="line">// 可以通过 store 实例访问 <span class="keyword">state</span>，直接对其进行读写</span><br><span class="line">store.count++</span><br><span class="line"></span><br><span class="line">// 重置 <span class="keyword">state</span></span><br><span class="line">store.<span class="variable">$reset</span>()</span><br><span class="line"></span><br><span class="line">// 变更 <span class="keyword">state</span> 除了用 store.count++ 直接改变 store，你还可以调用 <span class="variable">$patch</span> 方法。它允许你用一个 <span class="keyword">state</span> 的补丁对象在同一时间更改多个属性</span><br><span class="line">store.<span class="variable">$patch</span>(&#123;</span><br><span class="line">  count: store.count + <span class="number">1</span>,</span><br><span class="line">  age: <span class="number">120</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 订阅 <span class="keyword">state</span></span><br><span class="line">store.<span class="variable">$subscribe</span>((mutation, <span class="keyword">state</span>) =&gt; &#123;</span><br><span class="line">  // mutation.type // ‘direct’ | ‘patch object’ | ‘patch function’</span><br><span class="line">  // mutation.storeId // 'storeId'</span><br><span class="line">  console.<span class="keyword">log</span>(mutation, <span class="keyword">state</span>);</span><br><span class="line">&#125;, &#123; detached: true &#125;);</span><br></pre></td></tr></table></figure></div><p>订阅<strong>$subscribe</strong></p><ul><li>mutation.type<ul><li><strong>direct</strong> 直接修改值</li><li><strong>patch object</strong> 通过 patch 传对象方式修改</li><li><strong>patch function</strong> 通过 patch 函数形式修改值</li></ul></li><li>detached: true 订阅器即便在组件卸载之后仍会被保留</li></ul><p>注: <code>store.$state = { count: 24 }</code> 不能完全替换掉 store 的 state，因为那样会破坏其响应性。要使用$patch来修改。</p><h1 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h1><p>Getter 完全等同于 store 的 state 的计算值。可以通过 defineStore() 中的 <strong>getters</strong> 属性来定义它们。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const countStore = defineStore('storeId', &#123;</span><br><span class="line">  <span class="keyword">state</span>: () =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doubleCount: (<span class="keyword">state</span>) =&gt; <span class="keyword">state</span>.count * <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p></p><p>使用和state一样。Getter也可以不依赖于state，可以使用其他 getter 来计算。</p><h1 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h1><p>Action 相当于组件中的 method。它们可以通过 defineStore() 中的 actions 属性来定义。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const countStore = defineStore('storeId', &#123;</span><br><span class="line">  <span class="keyword">state</span>: () =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doubleCount: (<span class="keyword">state</span>) =&gt; <span class="keyword">state</span>.count * <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment() &#123;</span><br><span class="line">      this.count++</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const store = countStore()</span><br><span class="line">// 直接使用actions</span><br><span class="line">store.increment()</span><br></pre></td></tr></table></figure></div><p></p><p>Action 里面不同区分同步还是异步，比vuex更简单和使用方便。</p><p><strong>订阅 action </strong>通过 store.$onAction(callback, false) 来监听 action 和它们的结果。传递给它的回调函数会在 action 本身之前执行。after 表示在 promise 解决之后，允许你在 action 解决后执行一个回调函数。同样地，onError 允许你在 action 抛出错误或 reject 时执行一个回调函数。<strong>组件销毁会自动删除action 订阅器，如需保留可以传递第二个参数 true</strong>。<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = countStore()</span><br><span class="line"><span class="keyword">const</span> unsubscribe = store.$onAction(</span><br><span class="line">  (&#123;</span><br><span class="line">    name, <span class="comment">// action 名称</span></span><br><span class="line">    store, <span class="comment">// store 实例，类似 `countStore`</span></span><br><span class="line">    args, <span class="comment">// 传递给 action 的参数数组</span></span><br><span class="line">    after, <span class="comment">// 在 action 返回或解决后的钩子</span></span><br><span class="line">    onError, <span class="comment">// action 抛出或拒绝的钩子</span></span><br><span class="line">  &#125;) =&gt; &#123;</span><br><span class="line">     <span class="comment">// 为这个特定的 action 调用提供一个共享变量</span></span><br><span class="line">    <span class="keyword">const</span> startTime = <span class="built_in">Date</span>.now()</span><br><span class="line">    <span class="comment">// 这将在执行 "store "的 action 之前触发。</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Start "<span class="subst">$&#123;name&#125;</span>" with params [<span class="subst">$&#123;args.join(<span class="string">', '</span>)&#125;</span>].`</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这将在 action 成功并完全运行后触发。</span></span><br><span class="line">    <span class="comment">// 它等待着任何返回的 promise</span></span><br><span class="line">    after(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(</span><br><span class="line">        <span class="string">`Finished "<span class="subst">$&#123;name&#125;</span>" after <span class="subst">$&#123;</span><br><span class="line">          <span class="built_in">Date</span>.now() - startTime</span><br><span class="line">        &#125;</span>ms.\nResult: <span class="subst">$&#123;result&#125;</span>.`</span></span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果 action 抛出或返回一个拒绝的 promise，这将触发</span></span><br><span class="line">    onError(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.warn(</span><br><span class="line">        <span class="string">`Failed "<span class="subst">$&#123;name&#125;</span>" after <span class="subst">$&#123;<span class="built_in">Date</span>.now() - startTime&#125;</span>ms.\nError: <span class="subst">$&#123;error&#125;</span>.`</span></span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手动删除监听器</span></span><br><span class="line">unsubscribe()</span><br></pre></td></tr></table></figure></div><p></p><h1 id="访问其他-store-的-Store、-getter、-Action"><a href="#访问其他-store-的-Store、-getter、-Action" class="headerlink" title="访问其他 store 的 Store、 getter、 Action"></a>访问其他 store 的 Store、 getter、 Action</h1><p>Pinia里每个store是一个模块，直接import 实例化 就可以使用其他store 的 Store、 getter、 Action。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">export const ageStore = defineStore(<span class="string">"ageStore"</span>, &#123;</span><br><span class="line">  <span class="keyword">state</span>: () =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      age: <span class="number">18</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doubleAge: (<span class="keyword">state</span>) =&gt; <span class="keyword">state</span>.age * <span class="number">2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment() &#123;</span><br><span class="line">      this.age++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 引入 ageStore 并使用ageStore 的 Store、 getter、 Action</span><br><span class="line">import &#123; ageStore &#125; <span class="keyword">from</span> <span class="string">"./age"</span>;</span><br><span class="line">const countStore = defineStore(<span class="string">"storeId"</span>, &#123;</span><br><span class="line">  <span class="keyword">state</span>: () =&gt; &#123;</span><br><span class="line">    // 使用 ageStore 的 <span class="keyword">state</span></span><br><span class="line">    const age = ageStore();</span><br><span class="line">    return &#123;</span><br><span class="line">      count: <span class="number">0</span>,</span><br><span class="line">      age: age.age</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  getters: &#123;</span><br><span class="line">    doubleCount: (<span class="keyword">state</span>) =&gt; <span class="keyword">state</span>.count * <span class="number">2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    increment() &#123;</span><br><span class="line">      // 使用 ageStore 的 actions</span><br><span class="line">      const age = ageStore();</span><br><span class="line">      age.increment();</span><br><span class="line">      this.count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export &#123; countStore &#125;;</span><br></pre></td></tr></table></figure></div><p></p><p>注: 两个或更多的 store 相互使用，它们不可以通过 getters 或 actions 创建一个无限循环。它们也不可以同时在它们的 setup 函数中直接互相读取对方的 state</p><h1 id="组合式API写法"><a href="#组合式API写法" class="headerlink" title="组合式API写法"></a>组合式API写法</h1><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useCounterStore = defineStore(<span class="string">'counter'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = ref(<span class="number">0</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">increment</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    count.value++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; count, increment &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p>在 Setup Store 中：</p><ul><li>ref() 就是 state 属性</li><li>computed() 就是 getters</li><li>function() 就是 actions<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><a href="https://codesandbox.io/s/nameless-dawn-19ol4w?file=/src/store/count.js:0-483" target="_blank" rel="external">demo</a></li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://pinia.vuejs.org/zh/" target="_blank" rel="external">pinia</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/pinia使用指南.html" target="_blank" rel="external">http://blog.langpz.com/pinia使用指南.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pinia/">pinia</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue3-0/">vue3.0</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/pinia使用指南.html&title=《pinia使用指南》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/pinia使用指南.html&title=《pinia使用指南》 — 蓝胖纸&source=Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/pinia使用指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《pinia使用指南》 — 蓝胖纸&url=http://blog.langpz.com/pinia使用指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/pinia使用指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/nvm切换node版本-npm-ERR-Unexpected-token.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">nvm切换node版本 npm ERR! Unexpected token &#39;.&#39;</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/手写bind、call、apply方法实现.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">手写bind、call、apply方法实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/pinia使用指南.html&title=《pinia使用指南》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/pinia使用指南.html&title=《pinia使用指南》 — 蓝胖纸&source=Pinia 是 Vue 的专属状态管理库，Vue3官网推荐使用Pinia，Pinia支持Vue2和Vue3。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/pinia使用指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《pinia使用指南》 — 蓝胖纸&url=http://blog.langpz.com/pinia使用指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/pinia使用指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3a227qMBAF0P7/T+e8VkKEvcfpkbCXn1AI4JVKU8/l5yde16/1+8r9u6/Xk+98d/8DCwMD42sZ1+2639YVr1f86x7uH9CHR4OBgXEA40++Ogij62wMDAyMGekecL9RDAwMjGcD7koanCfDGBgYGG3y+VQgbkP2Y7k4BgbGFzLycPn/X/9JfwMDA+OrGFe52iJafpS8FhYGBsbejDzAzXgrrYI6JcbAwNiUcV/8yktgyZXZWFhSpMPAwDiB0R772qQ3eRwrbVQMDIy9Gfm4Q5uyJpvLGwbDEy4GBsYWjHy7+VEv33QbrN++xsDAOIbRHuCSR5AU4/Jg/WFaBAMDY1PGrKC2ko6ujJTVRTcMDIxNGW1iORtOTe5JfhEDA+MERh7O8nvyst2sLRr9HTAwMDZlDEtdZdhti2tRgxMDA+MAxlMjYnmDMy/VFTMjGBgYWzNmR7rZZ1ealx8+hoGBsTWjPcC1hbOVxxSNoGFgYGzNWDmutT+chN0kqX57HQMD4wDGbMJqJeA+lQBjYGCcw2jD5ayd0OahReMTAwPjAMZKk3I2rhqV0vLSGwYGxqaMq1yzka8VZN3CxMDA2I7RBru2xTijPrx1DAyMLRhtujgbm8hbBVHKioGBcSSjGGsIWgVtypr/T/iQymJgYGCUAbRtXuZNzWjYAgMD42BG0VYcNTvbwQ4MDIxzGMnm8lbByje3yTYGBsYJjDZ1zIcwZuMa+XUMDIwDGP8Ax+QZBlEcl5UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

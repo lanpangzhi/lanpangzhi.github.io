@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>TypeScript-泛型 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="什么是泛型？泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代码的复用性和可读性。在 TypeScript 中，泛型以的形式表示，其中 T 可以是任何标识符，常用于表示类型参数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-泛型">
+<meta property="og:url" content="http://blog.langpz.com/TypeScript-泛型.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="什么是泛型？泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代码的复用性和可读性。在 TypeScript 中，泛型以的形式表示，其中 T 可以是任何标识符，常用于表示类型参数。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript-泛型">
+<meta name="twitter:description" content="什么是泛型？泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代码的复用性和可读性。在 TypeScript 中，泛型以的形式表示，其中 T 可以是任何标识符，常用于表示类型参数。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-泛型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-泛型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-02-25T14:27:17.000Z" itemprop="datePublished" class="page-time">
+  2024-02-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是泛型？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是泛型？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#泛型函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">泛型函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#泛型类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">泛型类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#泛型约束"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">泛型约束</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认泛型"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">默认泛型</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-泛型"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-泛型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-02-25 14:27:17" datetime="2024-02-25T14:27:17.000Z"  itemprop="datePublished">2024-02-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="什么是泛型？"><a href="#什么是泛型？" class="headerlink" title="什么是泛型？"></a>什么是泛型？</h1><p>泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代码的复用性和可读性。在 TypeScript 中，泛型以<t>的形式表示，其中 T 可以是任何标识符，常用于表示类型参数。<br><a id="more"></a></t></p><h2 id="泛型函数"><a href="#泛型函数" class="headerlink" title="泛型函数"></a>泛型函数</h2><div class="highlight-wrap" data-rel="Qml"><figure class="lpz highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArg</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> output = getArg&lt;<span class="built_in">string</span>&gt;(<span class="string">"langpz"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(output); <span class="comment">// 输出：langpz</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> output2 = getArg&lt;number&gt;(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(output2); <span class="comment">// 输出：1</span></span><br></pre></td></tr></table></figure></div><p>getArg 函数接受一个参数 arg，并返回相同的参数。通过<t>，使函数 getArg 成为了一个泛型函数，可以接受任意类型的参数，并返回相同类型的值。</t></p><h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><p>泛型类使用（&lt;&gt;）括起泛型类型，跟在类名后面。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Info&lt;T, U&gt; &#123; <span class="comment">// 这里的 T 和 U 是使用接口的时候传入</span></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">public</span> name: T, <span class="keyword">public</span> age: U</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> langpz = <span class="keyword">new</span> Info&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;(<span class="string">"langpz"</span>, <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(langpz.name); <span class="comment">// 输出：langpz</span></span><br></pre></td></tr></table></figure></div><p></p><p>注：类的<strong>静态属性</strong>不能引用泛型类型。</p><h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><p>有时候，我们希望泛型参数具有某些特定的属性或方法。可以使用泛型约束来实现。如果不约束会ts会直接报错属性或方法不存在。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Lengthwise &#123;</span><br><span class="line">    length: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArg</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Lengthwise</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length)</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> output = getArg&lt;<span class="built_in">string</span>&gt;(<span class="string">"langpz"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(output); <span class="comment">// 输出：langpz</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> output2 = getArg&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>); <span class="comment">// 报错 Type 'number' does not satisfy the constraint 'Lengthwise'</span></span><br></pre></td></tr></table></figure></div><p></p><p>使用了 extends 关键字来约束泛型 T 必须满足 Lengthwise 接口的要求，传入的参数必须包含必须 length 的属性。</p><h2 id="默认泛型"><a href="#默认泛型" class="headerlink" title="默认泛型"></a>默认泛型</h2><div class="highlight-wrap" data-rel="Excel"><figure class="lpz highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> NameType&lt;<span class="built_in">T</span> = string&gt; = &#123;</span><br><span class="line">    <span class="built_in">na</span><span class="symbol">me:</span> <span class="built_in">T</span>;</span><br><span class="line">&#125;;</span><br><span class="line">let <span class="built_in">na</span><span class="symbol">me1:Na</span>meType = &#123;<span class="built_in">na</span><span class="symbol">me:</span>'langpz'&#125;</span><br></pre></td></tr></table></figure></div><p>可以通过在泛型 T 参数后面加上 = 符号和默认值来实现。</p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-泛型.html" target="_blank" rel="external">http://blog.langpz.com/TypeScript-泛型.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/泛型/">泛型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-泛型.html&title=《TypeScript-泛型》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-泛型.html&title=《TypeScript-泛型》 — 蓝胖纸&source=什么是泛型？泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-泛型.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-泛型》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-泛型.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-泛型.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-联合类型.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-联合类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/解决github拉取推送代码报错-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-泛型.html&title=《TypeScript-泛型》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-泛型.html&title=《TypeScript-泛型》 — 蓝胖纸&source=什么是泛型？泛型是一种参数化类型的概念，允许我们在定义函数、类、接口等时使用类型变量来表示未知的具体类型。通过泛型，我们可以编写出更通用的代码，从而提高代..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-泛型.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-泛型》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-泛型.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-泛型.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aS26EMBAFwNz/0mQdRZD32kwkTLEajZDtYtFyf76+4uf49Zy9c/37bM2zf25+MDAwHss4Lp/rDWbvtJ/g+mwYGBjvYcwCaLt9Hifzs2FgYGC0gXU9BGNgYGCsM3LYNTJZBwMDA6NNYu9KO/NL5EdycQwMjAcy8qr7///+SH8DAwPjUYyjfK6Db9tUWDnJjzUxMDC2ZuQBLh+zyN8vEtRkBQwMjE0Z16lpO9TVjnYloTkp0mFgYLyBkSeQs2tfstdSGxUDA2NrRn7ElUJ/krLOWpgYGBhvY7Sk9UPnTYhhCwEDA2MLxkqxfjbU1Y5WFANhGBgYmzLyDdqkdCWJzU9SzLhhYGA8lpEfNw+Xs5DdprV/VA0xMDA2ZawUyPKmZvsJomQYAwPjBYy7guysiL8y8IGBgfEGxrA1WC7dXvXyz3R6BgwMjI0Yd13aPhf9oiCOgYGxNaNtPa4E0/bqWY9uYGBgbM1ot2wD6yfaovXdFgMD4+GMVpwEx1ljchbQMTAw3sZYSVnzNLg9LgYGBkZSiM8DYrJlXoCr77YYGBjbMY7yuQ7KyWWxRUaBGwMDY2vGShuyTU3b0v+911YMDIynM+4KsisFu1kyjIGB8TZGHvhm7yTNy1nox8DAwEiCXZK45tfHfEcMDAyM2XhWu/36wCsGBsZ7GPkgV169W1+5aD9gYGBszZiNOLTLzYZWh/MjGBgY+zC+Acy1S6kuxmjcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

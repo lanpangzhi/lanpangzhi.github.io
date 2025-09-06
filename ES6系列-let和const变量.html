@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>ES6系列-let和const变量 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6系列-let和const变量">
+<meta property="og:url" content="http://blog.langpz.com/ES6系列-let和const变量.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6系列-let和const变量">
+<meta name="twitter:description" content="ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6系列-let和const变量</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES6系列-let和const变量</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-26T17:08:51.000Z" itemprop="datePublished" class="page-time">
+  2018-06-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ES6系列-let和const变量"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES6系列-let和const变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#let"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">let</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#const"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">const</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例子"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ES6系列-let和const变量"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6系列-let和const变量</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-26 17:08:51" datetime="2018-06-26T17:08:51.000Z"  itemprop="datePublished">2018-06-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="ES6系列-let和const变量"><a href="#ES6系列-let和const变量" class="headerlink" title="ES6系列-let和const变量"></a>ES6系列-let和const变量</h1><p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。<br><a id="more"></a></p><p>首先说说var声明变量的弊端。<br>1.可以重复声明<br>2.无法限制修改<br>3.没有块级作用域<br>4.变量会被提升</p><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>let不可以重复声明。<br></p><div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span> = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">a</span> = <span class="number">3</span>;</span><br><span class="line">alert(a)</span><br></pre></td></tr></table></figure></div><p></p><p>如果重复声明会直接报错。<br>let有块级作用域。<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  let a = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">  var <span class="keyword">b </span>= <span class="number">3</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(<span class="keyword">b);</span><br><span class="line"></span>console.log(a)<span class="comment">;</span></span><br></pre></td></tr></table></figure></div><p></p><p>会报错 a is not defined。<br>let不存在变量提升。<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></div><p></p><p>会打印出 a undefined b is not defined。</p><h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const常量是不可以被修改的。<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="string">'lanpangzhi'</span>;</span><br><span class="line">a = <span class="number">11</span>;</span><br><span class="line">alert(a)</span><br></pre></td></tr></table></figure></div><p></p><p>修改会直接报错，但是如果是对象数据类型可以在对象下添加新得属性。<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;&#125;<span class="comment">;</span></span><br><span class="line">a.<span class="keyword">b </span>= <span class="number">2</span><span class="comment">;</span></span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure></div><p></p><p>这样写不会报错，常量a存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把a指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p><p>const不可以重复声明。<br></p><div class="highlight-wrap" data-rel="Abnf"><figure class="lpz highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const a = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">const a = <span class="number">3</span><span class="comment">;</span></span><br><span class="line">alert(a)</span><br></pre></td></tr></table></figure></div><p></p><p>如果重复声明会直接报错。</p><p>const有块级作用域。<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  const a = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">  var <span class="keyword">b </span>= <span class="number">3</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(<span class="keyword">b);</span><br><span class="line"></span>console.log(a)<span class="comment">;</span></span><br></pre></td></tr></table></figure></div><p></p><p>会报错 a is not defined。</p><p>const不存在变量提升。<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></div><p></p><p>会打印出 a undefined b is not defined。</p><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>让i从0输出到5，按顺序输出，es5版本需要闭包来实现。<br></p><div class="highlight-wrap" data-rel="Lisp"><figure class="lpz highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (<span class="name">var</span> i = <span class="number">0</span><span class="comment">; i &lt;= 5; i++)&#123;</span></span><br><span class="line">	(<span class="name">function</span>(<span class="name">i</span>)&#123;</span><br><span class="line">		console.log(<span class="name">i</span>)</span><br><span class="line">	&#125;)(<span class="name">i</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>es6版本<br></p><div class="highlight-wrap" data-rel="Matlab"><figure class="lpz highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt;= <span class="number">5</span>; <span class="built_in">i</span>++)&#123;</span><br><span class="line">	console.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>let和const解决了var的弊端，瞬间开发变简单了很多。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://es6.ruanyifeng.com/#docs/let" target="_blank" rel="external">http://es6.ruanyifeng.com/#docs/let</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/ES6系列-let和const变量.html" target="_blank" rel="external">http://blog.langpz.com/ES6系列-let和const变量.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/ES6系列-let和const变量.html&title=《ES6系列-let和const变量》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/ES6系列-let和const变量.html&title=《ES6系列-let和const变量》 — 蓝胖纸&source=ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/ES6系列-let和const变量.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6系列-let和const变量》 — 蓝胖纸&url=http://blog.langpz.com/ES6系列-let和const变量.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/ES6系列-let和const变量.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node定时任务.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node定时任务</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/解决移动端click事件300毫秒延迟和点透问题.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">解决移动端click事件300毫秒延迟和点透问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/ES6系列-let和const变量.html&title=《ES6系列-let和const变量》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/ES6系列-let和const变量.html&title=《ES6系列-let和const变量》 — 蓝胖纸&source=ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/ES6系列-let和const变量.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6系列-let和const变量》 — 蓝胖纸&url=http://blog.langpz.com/ES6系列-let和const变量.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/ES6系列-let和const变量.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3a0WrDMAxG4b7/S2fQq8IW7/ySU7B9fFWyLPOXgiZLer3wut6LXPlcd3fePef3705eMmTIWJZxDRfZNNnumDp+5nhvMmTIOIeRhsJ/HtreOt+bDBkyZJDUsBay+ZNlyJAhox9wySGWsGXIkCFjzCCP7hfUxmW1L53FZciQsSAjbQx88/OD/Q0ZMmQswrjClSJrd8a7kiFDxtYMPkiRNilJSY4nneg1yZAhY1MGT9RSatra5Ff++OsyZMg4htEPlzw1rDVNg86GDBkyNmLUivK1cn/KTl+oDBkydmXUBh0IkqeME9oGMmTI2JrBS2b9TZNgzcFBmihDhoxNGWk06x9Wx4nm5OEwGTJkLMWohbm0YMdJ6RUZMmScw0gbmbWiWy2Ik0apDBkyzmGQLLKzaX70jWEyZMg4gPFECtj/KflncJvhypAhYzsGSb9qx9F0eCI4uH7eI0OGjAMYT8wt1AJumkTKkCHjBAZ5UC0Upmll7Uj8IvFYhgwZizP6Exnp2FY6hIFaoTJkyDiAETQLS1uphVe+HxkyZOzNIGUyfhBN7+8PZNx+JzJkyNiIcYUrDan8NY1fwbSZERkyZCzIqIU5krrxjfabnTJkyDiBkQbZPiYd8kAkGTJkHMBIC2fkeifsxvuRIUOGjDD4dga/iqU6GTJkyMDBt1/oJ2F9WsCVIUPGUoxZTUcyWJbeg4K+DBkytmZ0GgPjMdNaQklGV4u9DhkyZKzH+AGGkCy6j8ouMwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

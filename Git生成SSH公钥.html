@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Git生成SSH公钥 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Git生成SSH公钥大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥的过程在所有操作系统上都差不多。 首先先确认一下是否已经有一个公钥了。SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git生成SSH公钥">
+<meta property="og:url" content="http://blog.langpz.com/Git生成SSH公钥.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Git生成SSH公钥大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥的过程在所有操作系统上都差不多。 首先先确认一下是否已经有一个公钥了。SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505165306.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505170650.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git生成SSH公钥">
+<meta name="twitter:description" content="Git生成SSH公钥大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥的过程在所有操作系统上都差不多。 首先先确认一下是否已经有一个公钥了。SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505165306.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Git生成SSH公钥</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Git生成SSH公钥</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-05T16:40:31.000Z" itemprop="datePublished" class="page-time">
+  2018-05-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git生成SSH公钥"><span class="post-toc-number">1.</span> <span class="post-toc-text">Git生成SSH公钥</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看公钥是否生成过"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">查看公钥是否生成过</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生成公钥"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">生成公钥</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试公钥是否添加成功"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">测试公钥是否添加成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Git生成SSH公钥"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Git生成SSH公钥</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-05 16:40:31" datetime="2018-05-05T16:40:31.000Z"  itemprop="datePublished">2018-05-05</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Git生成SSH公钥"><a href="#Git生成SSH公钥" class="headerlink" title="Git生成SSH公钥"></a>Git生成SSH公钥</h1><p>大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥的过程在所有操作系统上都差不多。 首先先确认一下是否已经有一个公钥了。SSH 公钥默认储存在账户的主目录下的 ~/.ssh 目录。<br><a id="more"></a></p><h2 id="查看公钥是否生成过"><a href="#查看公钥是否生成过" class="headerlink" title="查看公钥是否生成过"></a>查看公钥是否生成过</h2><div class="highlight-wrap" data-rel="Jboss-cli"><figure class="lpz highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~<span class="string">/.ssh</span></span><br><span class="line"><span class="keyword">ls</span>  <span class="comment"># 在Git bash下执行</span></span><br></pre></td></tr></table></figure></div><p>或者 C:\Users\Administrator.ssh 访问这个目录。<br>看有没有用 something 和 something.pub 来命名的一对文件，这个 something 通常就是 id_dsa 或 id_rsa。有 .pub 后缀的文件就是公钥，另一个文件则是密钥。如果有公钥直接打开 id_rsa.pub 文件添加到GitHub和coding的SSH公钥里面，建议coding有效期选永久。</p><h2 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h2><p>执行下面的命令。<br></p><div class="highlight-wrap" data-rel="Ebnf"><figure class="lpz highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen</span></span><br></pre></td></tr></table></figure></div><p></p><p>它先要求你确认保存公钥的位置（.ssh/id_rsa），然后它会让你重复一个密码两次，如果不想在使用公钥的时候输入密码，可以留空。<br>直接回车就行。<br>然后去C:\Users\Administrator.ssh目录 找到id_rsa.pub 文件就是生成好的公钥，添加到GitHub和coding。<br>公钥的大概样子，全部复制。<br></p><div class="highlight-wrap" data-rel="Groovy"><figure class="lpz highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ<span class="regexp">/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/</span><span class="number">7</span>XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+<span class="number">3</span>V0Ww68<span class="regexp">/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/</span>Pb0rwert/En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+<span class="number">1</span>nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q== schacon<span class="meta">@agadorlaptop</span>.local</span><br></pre></td></tr></table></figure></div><p></p><h2 id="测试公钥是否添加成功"><a href="#测试公钥是否添加成功" class="headerlink" title="测试公钥是否添加成功"></a>测试公钥是否添加成功</h2><p>测试GitHub。<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">git</span>@<span class="keyword">github</span>.<span class="keyword">com</span></span><br></pre></td></tr></table></figure></div><p></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505165306.png" alt></div><div class="image-caption"></div></figure><p>现在就添加成功了。</p><p>测试Coding<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">-T</span> <span class="selector-tag">git</span>@<span class="keyword">git</span>.<span class="keyword">coding</span>.<span class="keyword">net</span></span><br></pre></td></tr></table></figure></div><p></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505170650.png" alt></div><div class="image-caption"></div></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5" target="_blank" rel="external">https://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Git生成SSH公钥.html" target="_blank" rel="external">http://blog.langpz.com/Git生成SSH公钥.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH公钥/">SSH公钥</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Git生成SSH公钥.html&title=《Git生成SSH公钥》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Git生成SSH公钥.html&title=《Git生成SSH公钥》 — 蓝胖纸&source=Git生成SSH公钥大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Git生成SSH公钥.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git生成SSH公钥》 — 蓝胖纸&url=http://blog.langpz.com/Git生成SSH公钥.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Git生成SSH公钥.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/javascript数据类型转换.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">javascript数据类型转换</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Express文件上传.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Express文件上传</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Git生成SSH公钥.html&title=《Git生成SSH公钥》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Git生成SSH公钥.html&title=《Git生成SSH公钥》 — 蓝胖纸&source=Git生成SSH公钥大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。生成公钥..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Git生成SSH公钥.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git生成SSH公钥》 — 蓝胖纸&url=http://blog.langpz.com/Git生成SSH公钥.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Git生成SSH公钥.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aS27DMAwFwNz/0u62QFH5kZJbWBqtisSxNV6w/Ojzidf1bf32yfjzmXsuWxgYGK9lXMPVe2SV9/PO+d4wMDDOYVRvvTZojl9f8powMDAw8qSwd31yHwwMDIxV6dp4E+Nr/i3gYmBgvISRb6iaCI6Lzxy2rBbHwMB4ISMvMv/+70fmGxgYGK9iXMXVSyjzu/UWBgbG3ow8wI0HAHnSVk098/1gYGCcw0hCYRJe8wMWy450YGBgbM1Ivs4fVh0VzBS3GBgYpzHmx5DVwDo/cpg6X4aBgfESRjVQPpHqLRiIYmBgHMDIm/uF5tcEsnpEDAMDY29GL4HrjSpXAW5gGBgY2zHmj0E8Nx5I/iVgYGCcw8iTvGrY7cHyZ33yjiAGBsZrGcnPeo22pOzMf1U4bIGBgXEYIwmFvcFn9bhG+bAFBgbGYYxyaz6+sjoqiFJYDAyM7RgzrbEFb671sm7OjGBgYGzH6G2u98je8DICYGBgHMnoJYJPjypvilgMDIwDGNWmfI/XSz2joIyBgXEAo5cO9o6LJWVtuRjGwMDYlHEVV46sBvGZsSgGBsbejPkkL2mrzSCrRS8GBsaujJkgm48n54eUN6UsBgbGAYz8AETeAksa+tWCNuoaYmBgHM+oYvLtVoMyBgYGxhMts2ooz18iBgbGCYxeQ603KqiWrNEQFAMDY2tGXjrmCV8vQM/cAQMDY1PGF7Lqapj+sFRcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Express框架cookie和session | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Express框架cookie和sessionHTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express框架cookie和session">
+<meta property="og:url" content="http://blog.langpz.com/Express框架cookie和session.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Express框架cookie和sessionHTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Express框架cookie和session">
+<meta name="twitter:description" content="Express框架cookie和sessionHTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Express框架cookie和session</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Express框架cookie和session</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-06T17:32:54.000Z" itemprop="datePublished" class="page-time">
+  2018-05-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Express框架cookie和session"><span class="post-toc-number">1.</span> <span class="post-toc-text">Express框架cookie和session</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">cookie</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#session"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">session</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Express操作cookie"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Express操作cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如下"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">如下</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Express操作session"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Express操作session</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Express框架cookie和session"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Express框架cookie和session</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-06 17:32:54" datetime="2018-05-06T17:32:54.000Z"  itemprop="datePublished">2018-05-06</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Express框架cookie和session"><a href="#Express框架cookie和session" class="headerlink" title="Express框架cookie和session"></a>Express框架cookie和session</h1><p>HTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存在服务器端。<br><a id="more"></a></p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie存在浏览器端，每次请求都会带上。<br>缺点：不安全(用户可以随便串改)，大小（4k）。</p><h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>session只存在服务器端。<br>优点：容量不限，比较安全（用户接触不到）。<br>session实现是基于cookie的。<br>风险：session_id 被泄露漏 session劫持。<br>提醒用户不在在控制台输入(console)输入代码。<br>session_id 足够复杂，定期更换。</p><h2 id="Express操作cookie"><a href="#Express操作cookie" class="headerlink" title="Express操作cookie"></a>Express操作cookie</h2><p>先安装cookie-parser。<br></p><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> cookie-parser -S</span><br></pre></td></tr></table></figure></div><p></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(cookieParser()); <span class="comment">// 设置cookieParser 中间件</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.cookies); <span class="comment">// 获取cookie</span></span><br><span class="line">    res.cookie(<span class="string">'user'</span>, <span class="string">'lanpangzhi'</span>); <span class="comment">// 设置cookie</span></span><br><span class="line">    res.send(<span class="string">'OK'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>);</span><br></pre></td></tr></table></figure></div><p>在cmd执行 node app.js 浏览器输入<a href="http://localhost:8000/" target="_blank" rel="external">http://localhost:8000/</a> 第一次控制台输出{}，再刷新就输出{user: ‘lanpangzhi’ }。<br>现在就能获取和设置cookie了，但是有个问题，浏览器执行document.cookie = “user=aaa”,浏览器再刷新控制台就会输出{user: ‘aaa’ }。<br>这样使用cookie不安全，敏感信息容易被篡改，所以要使用带签名的cookie。</p><p>带签名的cookie<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(cookieParser(<span class="string">'abc123456abc'</span>)); <span class="comment">// 设置cookieParser 中间件  使用签名必须要设置字符串。</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.cookies); <span class="comment">// 获取cookie</span></span><br><span class="line">    <span class="built_in">console</span>.log(req.signedCookies); <span class="comment">// 获取带签名的cookie</span></span><br><span class="line">    res.cookie(<span class="string">'user'</span>, <span class="string">'lanpangzhi'</span>, &#123;</span><br><span class="line">        signed: <span class="literal">true</span> <span class="comment">// 设置带签名的cookie</span></span><br><span class="line">    &#125;); </span><br><span class="line">    res.send(<span class="string">'OK'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>);</span><br></pre></td></tr></table></figure></div><p></p><p>再执行，就会发现浏览器cookie的值变成了s%3Alanpangzhi.i6hEUuhD%2Fd0miBMsGyRdktiDFmi%2BYfiJhQTcqKpQqIc ，再修改cookie的值，控制台就会输出{ user: false }，这样cookie就不会被简单的篡改了。</p><p>req.cookies 获取cookie。<br>res.cookie(name, value [, options]);<br>name: cookie的名称(string)。<br>value: cookie的值，(string or object)。<br>options：options参数是一个可以具有以下属性的对象。</p><h3 id="如下"><a href="#如下" class="headerlink" title="如下"></a>如下</h3><table><thead><tr><th style="text-align:center">值</th><th style="text-align:center">类型</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:center">domain</td><td style="text-align:center">String</td><td style="text-align:left">cookie的域名。 默认为网站的域名。</td></tr><tr><td style="text-align:center">encode</td><td style="text-align:center">Function</td><td style="text-align:left">用于cookie值编码的同步函数。 默认为encodeURIComponent。</td></tr><tr><td style="text-align:center">expires</td><td style="text-align:center">Date</td><td style="text-align:left">cookie的有效期（如果未指定或设置为0），则创建会话cookie。</td></tr><tr><td style="text-align:center">httpOnly</td><td style="text-align:center">Boolean</td><td style="text-align:left">将cookie标记为仅可由Web服务器访问。默认false</td></tr><tr><td style="text-align:center">maxAge</td><td style="text-align:center">Number</td><td style="text-align:left">设置cookie的到期时间、相对于当前时间的到期时间（以毫秒为单位）。</td></tr><tr><td style="text-align:center">path</td><td style="text-align:center">String</td><td style="text-align:left">cookie的路径。 默认为“/”</td></tr><tr><td style="text-align:center">secure</td><td style="text-align:center">Boolean</td><td style="text-align:left">将cookie标记为仅与HTTPS一起使用。默认false</td></tr><tr><td style="text-align:center">signed</td><td style="text-align:center">Boolean</td><td style="text-align:left">对cookie进行签名。默认false</td></tr></tbody></table><h2 id="Express操作session"><a href="#Express操作session" class="headerlink" title="Express操作session"></a>Express操作session</h2><p>先安装cookie-session。<br></p><div class="highlight-wrap" data-rel="Sql"><figure class="lpz highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> cookie-<span class="keyword">session</span> -S</span><br></pre></td></tr></table></figure></div><p></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> cookieSession = <span class="built_in">require</span>(<span class="string">'cookie-session'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(cookieSession(&#123;</span><br><span class="line">    secret: <span class="string">'aaaa'</span></span><br><span class="line">&#125;));  <span class="comment">// 设置cookieSession中间件</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (req.session[<span class="string">'num'</span>]) &#123;</span><br><span class="line">        req.session[<span class="string">'num'</span>]++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        req.session[<span class="string">'num'</span>] = <span class="number">1</span>; <span class="comment">// 设置session</span></span><br><span class="line">    &#125;</span><br><span class="line">    res.send(<span class="string">`访问<span class="subst">$&#123;req.session["num"]&#125;</span>次`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>);</span><br></pre></td></tr></table></figure></div><p>在cmd执行 node app.js 浏览器输入<a href="http://localhost:8000/" target="_blank" rel="external">http://localhost:8000/</a> 刷新浏览器就可以看到访问几次，把所有浏览器都关闭session就失效了，再进入页面就从第一次开始了。<br>更多方法还有详细参数可以去github自行参考。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://expressjs.com/en/4x/api.html" target="_blank" rel="external">http://expressjs.com/en/4x/api.html</a><br><a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="external">https://github.com/expressjs/cookie-parser</a><br><a href="https://github.com/expressjs/cookie-session" target="_blank" rel="external">https://github.com/expressjs/cookie-session</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Express框架cookie和session.html" target="_blank" rel="external">http://blog.langpz.com/Express框架cookie和session.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session/">session</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Express框架cookie和session.html&title=《Express框架cookie和session》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Express框架cookie和session.html&title=《Express框架cookie和session》 — 蓝胖纸&source=Express框架cookie和sessionHTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Express框架cookie和session.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Express框架cookie和session》 — 蓝胖纸&url=http://blog.langpz.com/Express框架cookie和session.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Express框架cookie和session.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Express路由.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Express路由</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/javascript数据类型转换.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">javascript数据类型转换</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Express框架cookie和session.html&title=《Express框架cookie和session》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Express框架cookie和session.html&title=《Express框架cookie和session》 — 蓝胖纸&source=Express框架cookie和sessionHTTP协议是无状态的，所以要通过一些机制来记录用户的信息。cookie是存在浏览器端的，session是存..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Express框架cookie和session.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Express框架cookie和session》 — 蓝胖纸&url=http://blog.langpz.com/Express框架cookie和session.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Express框架cookie和session.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aUa6DMAwEwN7/0n0HqKC7Dn0SYfKFKIVMPqzE9usVj/fB+Hzm8zp559GdiwcGBsZtGe/TkX/yfBLJr0fXySJiYGA8gbHy6vyZNpQnc8PAwMA4eiYPwefI9rsYGBgYLWN2+MwPwBgYGBjtITYPrMloF+iyszgGBsYNGW2I/M/rn9Q3MDAwbsV4l+P8v9duHItZYWBgbM2YNUYkU8yLAVc1amBgYOzKWE/3X5t6Gy4TBgbGAxhJuDz/QBJeZw0ZUSDGwMB4DKNtzJoVO9vCZPQkBgbG1oz8YJkXF9skWhtevzyDgYGxHaNtqlg57ualhfpIjIGBsTVjpZ7QfiwP6HkRYqm+gYGBcRNGmyybhc48cOeLddgzgoGBsR1jpWGi3T6ulEWjfSAGBsbWjDa0ze6vB/Ro+TAwMLZm5GOWkktKAnnCbgmAgYFxK0b+6iQoz0qbs2aLw3QbBgbGpoy2ADlrmLjqEHuYNcTAwNiUkaTb2latWRdE28BRZw0xMDC2YOR3ZkF5FmSXekYwMDC2Y+T5uVnzVptuq0sOGBgYD2bkDV6Xhc5ZewcGBsamjHc5cli+uWxLDlEJEwMDYyNG22AxKwbMFugnPSMYGBi3ZbSpsZW2sLyQUAdcDAyMBzDOD6Lt1NebLZLj8Zf6BgYGBkaQemv3oUt7WAwMDIyFhrBZoq3dvGJgYDyB0bZQRNXRURkgL5FiYGA8hzHbd7WkWdJt5Q0YGBhbMP4AFEe8Kl9X/ZsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

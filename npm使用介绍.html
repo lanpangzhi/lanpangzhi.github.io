@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>npm使用介绍 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="npm使用介绍npm是随同NodeJS一起安装的包管理工具、官网https://www.npmjs.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm使用介绍">
+<meta property="og:url" content="http://blog.langpz.com/npm使用介绍.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="npm使用介绍npm是随同NodeJS一起安装的包管理工具、官网https://www.npmjs.com">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm使用介绍">
+<meta name="twitter:description" content="npm使用介绍npm是随同NodeJS一起安装的包管理工具、官网https://www.npmjs.com">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">npm使用介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">npm使用介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-20T14:56:09.000Z" itemprop="datePublished" class="page-time">
+  2017-12-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#npm使用介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm使用介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个模块"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建一个模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装模块"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#卸载包"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">卸载包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新包"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">更新包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检查包是否已经过时"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">检查包是否已经过时</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#搜索包"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">搜索包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看包安装信息"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">查看包安装信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm-scripts"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">npm-scripts</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包版本号"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">包版本号</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-npm使用介绍"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">npm使用介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-20 14:56:09" datetime="2017-12-20T14:56:09.000Z"  itemprop="datePublished">2017-12-20</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="npm使用介绍"><a href="#npm使用介绍" class="headerlink" title="npm使用介绍"></a>npm使用介绍</h1><p>npm是随同NodeJS一起安装的包管理工具、官网<a href="https://www.npmjs.com" target="_blank" rel="external">https://www.npmjs.com</a><br><a id="more"></a></p><h2 id="创建一个模块"><a href="#创建一个模块" class="headerlink" title="创建一个模块"></a>创建一个模块</h2><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> init</span><br></pre></td></tr></table></figure></div><p>会提示你输入包名等，然后生成一个package.json文件,文件内容如下<br></p><div class="highlight-wrap" data-rel="Json"><figure class="lpz highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"xxx"</span>,   </span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">"lanpang"</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>package.json文件属性说明</p><ul><li>name - 包名</li><li>version - 包的版本号</li><li>description - 包的描述，方便在npm search中搜索</li><li>main - main字段配置一个文件名指向模块的入口程序。如果你包的名字叫xxx，然后用户require(“xxx”)，main配置的模块的exports对象会被返回</li><li>scripts - 是一个由脚本命令组成的hash对象，他们在包不同的生命周期中被执行。key是生命周期事件，value是要运行的命令</li><li>author - 作者</li><li>license - 许可证，让人知道使用的权利和限制的<br>更多说明请查看<a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="external">https://github.com/ericdum/mujiang.info/issues/6/</a></li></ul><h2 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> (Module Name) options  <span class="comment"># 语法</span></span><br><span class="line">npm <span class="keyword">install</span> express                <span class="comment"># 本地安装</span></span><br><span class="line">npm <span class="keyword">install</span> express -g             <span class="comment"># 全局安装</span></span><br><span class="line">npm <span class="keyword">install</span> express@<span class="number">1.0</span>.<span class="number">0</span>          <span class="comment"># 安装指定版本</span></span><br></pre></td></tr></table></figure></div><p>npm 的包安装分为本地安装（local）、全局安装（global）两种。</p><ul><li>本地安装：将安装包放在当前目录下的 ./node_modules 下。</li><li>本地安装：可以通过 require(Module Name) 来引入本地安装的包。</li><li>全局安装：node安装目录/node_modules。</li><li>全局安装：可以直接在命令行里使用。</li></ul><p><strong>查看全局安装目录</strong><br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">list</span> -g <span class="comment">--depth=0</span></span><br></pre></td></tr></table></figure></div><p></p><p>安装包信息将加入到dependencies（生产阶段的依赖）<br></p><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="built_in">express</span> --<span class="built_in">save</span>	# npm5已经将--<span class="built_in">save</span>变成了默认参数，执行 install 依赖包时默认都会带上，除非加上 --no-<span class="built_in">save</span>。</span><br><span class="line">npm install <span class="built_in">express</span> -S          # 缩写</span><br></pre></td></tr></table></figure></div><p></p><p>安装包信息将加入到devDependencies（开发和测试阶段的依赖）<br></p><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> gulp --save-dev</span><br><span class="line">npm <span class="keyword">install</span> gulp -D  <span class="comment"># 缩写</span></span><br></pre></td></tr></table></figure></div><p></p><p>注: 包的依赖都被写入了package.json文件后，他人git或者svn下载项目可以通过npm install 安装项目依赖的包。</p><h2 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h2><div class="highlight-wrap" data-rel="Q"><figure class="lpz highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall gulp 	# 如果你安装的包带参数 --<span class="built_in">save</span> 或者 --<span class="built_in">save</span>-<span class="built_in">dev</span>  必须npm uninstall gulp 要添加对应参数</span><br></pre></td></tr></table></figure></div><h2 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h2><p>更新本地包<br></p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> update gulp</span><br></pre></td></tr></table></figure></div><p></p><p>更新全局包<br></p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> update gulp -g</span><br></pre></td></tr></table></figure></div><p></p><h2 id="检查包是否已经过时"><a href="#检查包是否已经过时" class="headerlink" title="检查包是否已经过时"></a>检查包是否已经过时</h2><p>检查本地包<br></p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> outdated</span><br></pre></td></tr></table></figure></div><p></p><p>检查全局包<br></p><div class="highlight-wrap" data-rel="Routeros"><figure class="lpz highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated -g <span class="attribute">--depth</span>=0</span><br></pre></td></tr></table></figure></div><p></p><h2 id="搜索包"><a href="#搜索包" class="headerlink" title="搜索包"></a>搜索包</h2><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> search express</span><br></pre></td></tr></table></figure></div><h2 id="查看包安装信息"><a href="#查看包安装信息" class="headerlink" title="查看包安装信息"></a>查看包安装信息</h2><p>查看本地包<br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">list</span></span><br></pre></td></tr></table></figure></div><p></p><p>查看全局包<br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">list</span> -g</span><br></pre></td></tr></table></figure></div><p></p><h2 id="npm-scripts"><a href="#npm-scripts" class="headerlink" title="npm-scripts"></a>npm-scripts</h2><p>可以修改package.json文件scripts增加自定义命令，执行一些操作<br></p><div class="highlight-wrap" data-rel="Xquery"><figure class="lpz highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span> : <span class="string">"gulp"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>此时在cmd或git bash中输入npm start 就会执行gulp命令</p><h2 id="包版本号"><a href="#包版本号" class="headerlink" title="包版本号"></a>包版本号</h2><p>默认1.0.0</p><ul><li>bug修复和其他小的变化：修补程序版本，增加最后一个数字，例如1.0.1。</li><li>不破坏现有功能的新功能：次要版本，增加中间数字，例如1.1.0。</li><li>主要版本，增加第一个数字，例如2.0.0。</li></ul>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/npm使用介绍.html" target="_blank" rel="external">http://blog.langpz.com/npm使用介绍.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/npm使用介绍.html&title=《npm使用介绍》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/npm使用介绍.html&title=《npm使用介绍》 — 蓝胖纸&source=npm使用介绍npm是随同NodeJS一起安装的包管理工具、官网https://www.npmjs.com" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/npm使用介绍.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm使用介绍》 — 蓝胖纸&url=http://blog.langpz.com/npm使用介绍.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/npm使用介绍.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Hexo-Next集成Algolia搜索.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hexo+Next集成Algolia搜索</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/国内学生云主机优惠整理.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">国内学生云主机优惠整理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/npm使用介绍.html&title=《npm使用介绍》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/npm使用介绍.html&title=《npm使用介绍》 — 蓝胖纸&source=npm使用介绍npm是随同NodeJS一起安装的包管理工具、官网https://www.npmjs.com" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/npm使用介绍.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm使用介绍》 — 蓝胖纸&url=http://blog.langpz.com/npm使用介绍.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/npm使用介绍.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS27DMAwFwNz/0u42QBrnkXKKmhqtisSNNVoQ4ufxiNfxtJ4/ef32/Ml3v/zuLRcvDAyM2zKO05W/IGG8/kLvgH7ZCQYGxgaMJBT2tnvVEXzYMwYGBkb8TBIckxCMgYGBsc5YCan/KOBiYGDcitErmZ2H1JW09ou5OAYGxg0ZedX97//+Sn8DAwPjVoyjuPJLYa8xebQWBgbGbEYe4JLyWX51SxLa6vAHBgbGVMZ5WKwOeOUbrb7xw3sxMDBGM6rF916TMjmU3sAHBgbGDow82FWHwHoXzWZDAgMDY0tGr4iWlOSql8soBGNgYIxm5OX4fHPJIEV1sCM6CAwMjKGMJKTmrcpqAS4/oA//hYGBMZpRbRVU25Z5eO2FeAwMjB0Y6wNbefDtDWSU01cMDIyhjDwprV4i17cbfYKBgbEBo9eAXGl8fiVlxcDAGM1IXlC9Sp4f1vr1sTkzgoGBcUNGr8TWK7dVi3rVFgUGBsZsRjWhTQYjemG3WrDDwMDYh1FNXJP0Mm9GVoc5ovYABgbGUEYeKHtbvDZ9LefKGBgY4xh5+T55spyIrlwNMTAwxjGO4lpJVnshO2pnYmBgjGZcFbPzT6qXPwwMDIwk7K4Uy1YOpXy5xMDA2IBRDXy9sYxe83Kpv4GBgbExoxeI89S0zMbAwMAIxilWxjJ6pbqlgIuBgXFDRt6Y7KWjeXO0WbDDwMAYzeiljvmmq+NivbYBBgbGUMYPW5pBzwaiHo4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

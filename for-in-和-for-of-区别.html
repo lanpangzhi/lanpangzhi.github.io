@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>for in 和 for of 区别 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="for in 和 for of 区别for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="for in 和 for of 区别">
+<meta property="og:url" content="http://blog.langpz.com/for-in-和-for-of-区别.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="for in 和 for of 区别for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="for in 和 for of 区别">
+<meta name="twitter:description" content="for in 和 for of 区别for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">for in 和 for of 区别</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">for in 和 for of 区别</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-07-16T17:59:18.000Z" itemprop="datePublished" class="page-time">
+  2023-07-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#for-in-和-for-of-区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">for in 和 for of 区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#for…in-循环"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">for…in 循环</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#for…of-循环"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">for…of 循环</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#for-in-和-for-of-区别-1"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">for in 和 for of 区别</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-for-in-和-for-of-区别"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">for in 和 for of 区别</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-07-16 17:59:18" datetime="2023-07-16T17:59:18.000Z"  itemprop="datePublished">2023-07-16</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="for-in-和-for-of-区别"><a href="#for-in-和-for-of-区别" class="headerlink" title="for in 和 for of 区别"></a>for in 和 for of 区别</h1><p>for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。<br><a id="more"></a></p><h2 id="for…in-循环"><a href="#for…in-循环" class="headerlink" title="for…in 循环"></a>for…in 循环</h2><p>for…in 语句以任意顺序迭代一个<strong>对象的除Symbol以外的可枚举属性</strong>，包括<strong>继承的可枚举属性</strong>。<br>for…in 循环不推荐用于遍历数组，因为它可能会遍历数组的所有属性，包括<strong>数组原型链上的属性</strong>，从而导致不可预料的结果。<br></p><div class="highlight-wrap" data-rel="Processing"><figure class="lpz highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Object</span>.prototype.a = <span class="string">'123'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123; name: <span class="string">'lanpz'</span>, age: <span class="number">60</span>, sex: <span class="string">'男'</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (let <span class="built_in">key</span> in obj) &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="built_in">key</span> + <span class="string">': '</span> + obj[<span class="built_in">key</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// "name: lanpz"</span></span><br><span class="line"><span class="comment">// "age: 60"</span></span><br><span class="line"><span class="comment">// "sex: 男"</span></span><br><span class="line"><span class="comment">// "a: 123"</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="for…of-循环"><a href="#for…of-循环" class="headerlink" title="for…of 循环"></a>for…of 循环</h2><p>for…of语句在<strong>可迭代对象（包括 Array，Map，Set，String，TypedArray等）</strong>上创建一个迭代循环。</p><div class="highlight-wrap" data-rel="Ceylon"><figure class="lpz highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">Array.prototype.arrCustom = <span class="number">5</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> <span class="keyword">value</span> <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">  &#125;</span><br><span class="line">  console.log(<span class="keyword">value</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure></div><h2 id="for-in-和-for-of-区别-1"><a href="#for-in-和-for-of-区别-1" class="headerlink" title="for in 和 for of 区别"></a>for in 和 for of 区别</h2><ul><li>for in 不仅会遍历当前对象，还包括原型链上的可枚举属性。可能需要通过 hasOwnProperty() 方法来检查是否为对象自身的属性，以避免遍历到原型链上的属性。</li><li>for of 可以使用break，continue，return终止循环、for in 不支持。</li><li>for of 按顺序遍历，for…in 循环不保证遍历对象属性的顺序。</li></ul>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/for-in-和-for-of-区别.html" target="_blank" rel="external">http://blog.langpz.com/for-in-和-for-of-区别.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/for-in-和-for-of-区别.html&title=《for in 和 for of 区别》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/for-in-和-for-of-区别.html&title=《for in 和 for of 区别》 — 蓝胖纸&source=for in 和 for of 区别for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/for-in-和-for-of-区别.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《for in 和 for of 区别》 — 蓝胖纸&url=http://blog.langpz.com/for-in-和-for-of-区别.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/for-in-和-for-of-区别.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/vite热更新报错.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vite热更新报错</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/使用-Volta-管理Node.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用 Volta 管理Node</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/for-in-和-for-of-区别.html&title=《for in 和 for of 区别》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/for-in-和-for-of-区别.html&title=《for in 和 for of 区别》 — 蓝胖纸&source=for in 和 for of 区别for…in 和 for…of 是 JavaScript 中的两种不同的循环语法，用于遍历对象和数组的元素。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/for-in-和-for-of-区别.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《for in 和 for of 区别》 — 蓝胖纸&url=http://blog.langpz.com/for-in-和-for-of-区别.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/for-in-和-for-of-区别.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aW47CMBAEQO5/afYACOj2hJVil78idnFcIA2Zx+MRr+fLevc/yfXrDsn+FywMDIzbMp4f1+tR2j0/v5Kzv1AxMDAOYLQBNAmdCfXznsnZMDAwMCaPfQk4vy8GBgbGWkBsD5E8IGJgYGBMkthfJKKfA/FPcnEMDIwbMvLy2f9f/6S/gYGBcSvGs1z5bSb71KfCwMDYmrF2y7XS/6R5EKWyGBgYmzLaJmU7zrXWEsiLehgYGKcx2sC31qpshzOioI+BgXEAY+1BcK2gf1WhDQMD4zTGWvK5NvK1NswRVQ0xMDC2ZuQBsU1f2+GzPJRHR8HAwNiCkaepbbktfyUP69EPAwYGxqaMJPksyvTl2ESb9H75HjAwMI5hjIpfZSMhH9T48rFiYGAcwFh7vJuvvMHwJcRjYGBsypiMPuSPdG1JLv/gMDAwTmZMSmZ5UL7svRgYGEcy2vQ1uW6La0XrFAMDY2tG3kqcH7rdOcdgYGBgtI2ByQhF2yjFwMA4jZEPTOSYNmTnox5FfwMDA2MLxqQcttg1HTRE63dhYGDcnPEsVxsc2+ZlMvzxtoWJgYGxKWMS5ubDE0nynFxjYGCcwFgLssmN27DbBlwMDIzTGEngW+O1gXVtvAMDAwNjrZT2u+LdBQEXAwPjGEZbPpsnyRgYGCcz5kls/td2qOKCRiYGBsbNGfPBi0nboE1rR10ODAyM+zH+AMVGRry/i+/WAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

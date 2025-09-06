@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>使用Express开发小说API接口服务1.0(二) | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="使用Express开发小说API接口服务1.0(二)之前完成了首页和搜索的接口，现在就开始写剩下的接口。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Express开发小说API接口服务1.0(二)">
+<meta property="og:url" content="http://blog.langpz.com/使用Express开发小说API接口服务-二.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="使用Express开发小说API接口服务1.0(二)之前完成了首页和搜索的接口，现在就开始写剩下的接口。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Express开发小说API接口服务1.0(二)">
+<meta name="twitter:description" content="使用Express开发小说API接口服务1.0(二)之前完成了首页和搜索的接口，现在就开始写剩下的接口。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用Express开发小说API接口服务1.0(二)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用Express开发小说API接口服务1.0(二)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-18T13:26:05.000Z" itemprop="datePublished" class="page-time">
+  2018-05-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用Express开发小说API接口服务1-0-二"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用Express开发小说API接口服务1.0(二)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取小说源"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">获取小说源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小说文章列表"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">小说文章列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小说文章内容"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">小说文章内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排行榜"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">排行榜</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用Express开发小说API接口服务-二"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用Express开发小说API接口服务1.0(二)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-18 13:26:05" datetime="2018-05-18T13:26:05.000Z"  itemprop="datePublished">2018-05-18</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用Express开发小说API接口服务1-0-二"><a href="#使用Express开发小说API接口服务1-0-二" class="headerlink" title="使用Express开发小说API接口服务1.0(二)"></a>使用Express开发小说API接口服务1.0(二)</h1><p>之前完成了首页和搜索的接口，现在就开始写剩下的接口。<br><a id="more"></a></p><h2 id="获取小说源"><a href="#获取小说源" class="headerlink" title="获取小说源"></a>获取小说源</h2><p>因为追书神器正版源是收费加密的，所以只能使用盗版源，所以要封装一个获取小说源的接口。<br>修改app.js 文件路由中间件配置，增加一个路由<br></p><div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sourceRouter = <span class="keyword">require</span>(<span class="string">'./routes/source'</span>);</span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">'/source'</span>, sourceRouter);</span><br></pre></td></tr></table></figure></div><p></p><p>在routes下面新建 source.js<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">let</span> common = <span class="built_in">require</span>(<span class="string">'../common/common.json'</span>); <span class="comment">// 引用公共文件</span></span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span><br><span class="line">  获取小说源</span><br><span class="line">  返回盗版源和正版源</span><br><span class="line">  param id &#123;String&#125; 是首页和搜索返回接口 books[i].id</span><br><span class="line">  param n &#123;Number || String&#125;  使用第几个源，可以不用传参默认 1</span><br><span class="line">  http://api.zhuishushenqi.com/atoc?view=summary&amp;book=$&#123;bookID&#125;</span><br><span class="line">*/</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.query.id) &#123;</span><br><span class="line">        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请传入ID..."</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// req.query.id 编码转义</span></span><br><span class="line">    <span class="keyword">let</span> id = <span class="built_in">encodeURI</span>(req.query.id);</span><br><span class="line">    request.get(<span class="string">`<span class="subst">$&#123;common.API&#125;</span>/atoc?view=summary&amp;book=<span class="subst">$&#123;id&#125;</span>`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 解析返回的数据</span></span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line">        <span class="comment">// 判断是否返回内容</span></span><br><span class="line">        <span class="keyword">if</span> (body.length == <span class="number">0</span>)&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"没有获取到小说源，换个小说看吧"</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 第一个源是正版源，是收费加密的，所以默认选中第二个源</span></span><br><span class="line">        <span class="keyword">let</span> n = <span class="built_in">parseInt</span>(req.query.n);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || n == <span class="number">0</span>)&#123;</span><br><span class="line">            n = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断n是否大于源数据的长度</span></span><br><span class="line">        <span class="keyword">if</span> (n &gt;= body.length)&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"n的参数值不正确，没有那个源"</span> &#125;));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"books"</span>: body[n], <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></div><p></p><p>访问<a href="http://localhost:3000/source/?id=50864bf69dacd30e3a000014&amp;n=3" target="_blank" rel="external">http://localhost:3000/source/?id=50864bf69dacd30e3a000014&amp;n=3</a> 就可以看到返回第四个源的数据。</p><h2 id="小说文章列表"><a href="#小说文章列表" class="headerlink" title="小说文章列表"></a>小说文章列表</h2><p>修改app.js 文件路由中间件配置，增加一个路由<br></p><div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> chapterRouter = <span class="keyword">require</span>(<span class="string">'./routes/chapter'</span>);</span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">'/chapter'</span>, chapterRouter);</span><br></pre></td></tr></table></figure></div><p></p><p>在routes下面新建 chapter.js<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">let</span> common = <span class="built_in">require</span>(<span class="string">'../common/common.json'</span>); <span class="comment">// 引用公共文件</span></span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span><br><span class="line">  获取小说文章列表</span><br><span class="line">  返回小说文章列表</span><br><span class="line">  param id &#123;String&#125; 是小说源接口 books.id</span><br><span class="line">  http://api.zhuishushenqi.com/atoc/$&#123;id&#125;?view=chapters</span><br><span class="line">*/</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.query.id)&#123;</span><br><span class="line">        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请传入ID..."</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// req.query.id 编码转义</span></span><br><span class="line">    <span class="keyword">let</span> id = <span class="built_in">encodeURIComponent</span>(req.query.id);</span><br><span class="line">    request.get(<span class="string">`<span class="subst">$&#123;common.API&#125;</span>/atoc/<span class="subst">$&#123;id&#125;</span>?view=chapters`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (body == <span class="string">"wrong param"</span>)&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入错误的ID..."</span> &#125;));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 解析返回的数据</span></span><br><span class="line">            body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line">            <span class="keyword">if</span> (body.chapters.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"chapters"</span>: body.chapters, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></div><p></p><p>访问<a href="http://localhost:3000/chapter/?id=57416370ccc94e4b41df80cc" target="_blank" rel="external">http://localhost:3000/chapter/?id=57416370ccc94e4b41df80cc</a> 就可以看到数据。id小说源接口返回的id。</p><h2 id="小说文章内容"><a href="#小说文章内容" class="headerlink" title="小说文章内容"></a>小说文章内容</h2><p>修改app.js 文件路由中间件配置，增加一个路由<br></p><div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> articleRouter = <span class="keyword">require</span>(<span class="string">'./routes/article'</span>);</span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">'/article'</span>, articleRouter);</span><br></pre></td></tr></table></figure></div><p></p><p>在routes下面新建 article.js<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">let</span> common = <span class="built_in">require</span>(<span class="string">'../common/common.json'</span>); <span class="comment">// 引用公共文件</span></span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span><br><span class="line">  获取小说文章内容</span><br><span class="line">  返回小说文章内容</span><br><span class="line">  param link &#123;String&#125; 是小说文章列表接口 chapters[0].link</span><br><span class="line">  http://chapter2.zhuishushenqi.com/chapter/$&#123;link&#125;</span><br><span class="line">*/</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!req.query.link) &#123;</span><br><span class="line">        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请传入link..."</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// req.query.link 编码转义</span></span><br><span class="line">    <span class="keyword">let</span> link = <span class="built_in">encodeURIComponent</span>(req.query.link);</span><br><span class="line">    request.get(<span class="string">`<span class="subst">$&#123;common.CHAPTER&#125;</span>/chapter/<span class="subst">$&#123;link&#125;</span>`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解析返回的数据</span></span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (body.ok)&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"chapter"</span>: body.chapter, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入link有错误"</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></div><p></p><p>访问<a href="http://localhost:3000/article?link=http://www.69shu.com/txt/1463/4861037" target="_blank" rel="external">http://localhost:3000/article?link=http://www.69shu.com/txt/1463/4861037</a> 就可以看到数据。</p><h2 id="排行榜"><a href="#排行榜" class="headerlink" title="排行榜"></a>排行榜</h2><p>修改app.js 文件路由中间件配置，增加一个路由<br></p><div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rankingRouter = <span class="keyword">require</span>(<span class="string">'./routes/ranking'</span>);</span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">'/ranking'</span>, rankingRouter);</span><br></pre></td></tr></table></figure></div><p></p><p>在routes下面新建 ranking.js<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">let</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">let</span> common = <span class="built_in">require</span>(<span class="string">'../common/common.json'</span>); <span class="comment">// 引用公共文件</span></span><br><span class="line"><span class="keyword">let</span> router = express.Router();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span><br><span class="line">  获取排行榜</span><br><span class="line">  返回排行榜</span><br><span class="line">  param id &#123;String&#125; 没有传参数就是获取全部榜单，否则根据参数获取榜单</span><br><span class="line">  http://api.zhuishushenqi.com/ranking/gender</span><br><span class="line">  http://api.zhuishushenqi.com/ranking/$&#123;id&#125;</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取全部榜单</span></span><br><span class="line">    request.get(<span class="string">`<span class="subst">$&#123;common.API&#125;</span>/ranking/gender`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解析返回的数据</span></span><br><span class="line">        body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (body.ok) &#123;</span><br><span class="line">            <span class="keyword">let</span> ranking = &#123;</span><br><span class="line">                <span class="attr">male</span>: body.male,</span><br><span class="line">                <span class="attr">picture</span>: body.picture,</span><br><span class="line">                <span class="attr">epub</span>: body.epub,</span><br><span class="line">                <span class="attr">female</span>: body.female</span><br><span class="line">            &#125;;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"ranking"</span>: ranking, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"出错了"</span> &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/:id'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (req.params.id) &#123;</span><br><span class="line">        <span class="comment">// req.param.id 编码转义</span></span><br><span class="line">        <span class="keyword">let</span> id = <span class="built_in">encodeURIComponent</span>(req.params.id);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据id获取榜单</span></span><br><span class="line">        request.get(<span class="string">`<span class="subst">$&#123;common.API&#125;</span>/ranking/<span class="subst">$&#123;id&#125;</span>`</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"请求出错了..."</span> &#125;));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 解析返回的数据</span></span><br><span class="line">            body = <span class="built_in">JSON</span>.parse(body);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (body.ok) &#123;</span><br><span class="line">                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">1</span>, <span class="string">"ranking"</span>: body.ranking, <span class="string">"msg"</span>: <span class="string">"OK"</span> &#125;));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"传入id错误"</span> &#125;));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.send(<span class="built_in">JSON</span>.stringify(&#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"id没有传"</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure></div><p></p><p>分别访问<a href="http://localhost:3000/ranking/" target="_blank" rel="external">http://localhost:3000/ranking/</a> 和 <a href="http://localhost:3000/ranking/54d43437d47d13ff21cad58b" target="_blank" rel="external">http://localhost:3000/ranking/54d43437d47d13ff21cad58b</a> 就可以获取到榜单的数据。<br>1.0版本的开发就告于段落了。<br>github仓库访问地址<a href="https://github.com/lanpangzhi/novel-api" target="_blank" rel="external">https://github.com/lanpangzhi/novel-api</a></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/expressjs/morgan" target="_blank" rel="external">https://github.com/expressjs/morgan</a><br><a href="https://juejin.im/entry/593a3fdf61ff4b006c737ca4" target="_blank" rel="external">https://juejin.im/entry/593a3fdf61ff4b006c737ca4</a><br><a href="https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3" target="_blank" rel="external">https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/使用Express开发小说API接口服务-二.html" target="_blank" rel="external">http://blog.langpz.com/使用Express开发小说API接口服务-二.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&title=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&title=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0(二)之前完成了首页和搜索的接口，现在就开始写剩下的接口。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用Express开发小说API接口服务-二.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/使用Express开发小说API接口服务1-0（三）.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用Express开发小说API接口服务1.0（三）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/使用Express开发小说API接口服务.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用Express开发小说API接口服务1.0（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&title=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&title=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0(二)之前完成了首页和搜索的接口，现在就开始写剩下的接口。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用Express开发小说API接口服务-二.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0(二)》 — 蓝胖纸&url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用Express开发小说API接口服务-二.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aMW7DMBAEwPz/0w6QKo2k3SPpOMCwCmRF4rDQEcv7+orH62dcXXn9Gvf3zH69urJt4OHh4Y2mfjWSqVw95wqfPD+/cvVePDw8vNO8+2IwuycB308uWe4HCx4eHt6f8pKtc0JNNu4rxQkPDw/vc3jJRvx+q51MHQ8PD++/8JIwIv81X4iccTxrwcPDw4t57QHYJ/x98HwPDw8Pb+FUPRlJ5JoHHPnWPJobHh4e3gFeHrDu+urmQUZ+/WHmeHh4eMd47YvbuCGZ9KwF4eEJeHh4eFt5ydRXWqBmB2zblgYPDw/vGG/WFtAe7a80FiRL9nCyh4eHh3eAl0eobWi7ElXkpIcAFw8PD+8Ab7aNzotKG1W0B2x4eHh47+S129ZZsNvGE3lEcjlDPDw8vAO8WTtUHuO2/3VfePJN/LCBAA8PDy/m5ZHE7LB/tkHPj8Gipis8PDy8t/DaBqw8nJ21drUzx8PDwzvHyxuh2lfmUUUe7LYBCh4eHt4JXvuyfKudr+tsKx/NEA8PD+8Yb9beNGuQakPk9ujroYEADw8Pb4GXb2fb2HfWyLWrEQEPDw/vHG8Wm+bhRfuhzyPg/O14eHh4e3lJcJCUh5y0UhLqMAIPDw/vjby2qqw0S90XjBwcpSx4eHh4y7wWln/c23vyqSfLMeyPwMPDwyt5K5/+ljorHu0i4uHh4Z3j7dr45kHDrlIRzRAPDw/vGK9tb0qecK75oGgdwMPDw9vKe5Vj9hFv27DaAnD5Xjw8PLwDvHzsPYhqw4j1cBkPDw9vL28lbF0vLXlu0D4NDw8P7zRvpYFgpaisPLluGsDDw8P7AN4sSsiXY1Za8PDw8D6H1x5KtRNKpluXEzw8PLxjvJX4oEXOlrXOnvHw8PCO8doDsJWQov30711uPDw8vGXeN4e5+T62jxsxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

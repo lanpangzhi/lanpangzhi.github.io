@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Hexo博客多端同步问题 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Hexo博客多端同步问题搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解决同步问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客多端同步问题">
+<meta property="og:url" content="http://blog.langpz.com/Hexo博客多端同步问题.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Hexo博客多端同步问题搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解决同步问题。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170524.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170951.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229172902.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229174101.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229175442.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客多端同步问题">
+<meta name="twitter:description" content="Hexo博客多端同步问题搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解决同步问题。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170524.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo博客多端同步问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo博客多端同步问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-29T16:38:22.000Z" itemprop="datePublished" class="page-time">
+  2017-12-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hexo博客多端同步问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hexo博客多端同步问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#博客源文件同步"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">博客源文件同步</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-submodule-实现第三方主题同步"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">git submodule 实现第三方主题同步</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更换电脑同步博客和第三方主题"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">更换电脑同步博客和第三方主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步博客"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">同步博客</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步第三方主题"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">同步第三方主题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo博客多端同步问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo博客多端同步问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-29 16:38:22" datetime="2017-12-29T16:38:22.000Z"  itemprop="datePublished">2017-12-29</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Hexo博客多端同步问题"><a href="#Hexo博客多端同步问题" class="headerlink" title="Hexo博客多端同步问题"></a>Hexo博客多端同步问题</h1><p>搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解决同步问题。<br><a id="more"></a></p><h2 id="博客源文件同步"><a href="#博客源文件同步" class="headerlink" title="博客源文件同步"></a>博客源文件同步</h2><p>在博客根目录执行</p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:lanpangzhi/lanpangzhi.github.io.git  <span class="comment"># 添加远程仓库 注意这里要添加你自己的仓库 lanpangzhi 换成你自己的用户名</span></span><br><span class="line"></span>git checkout -b hexo   		 <span class="comment"># 新建hexo分支并切换到hexo分支</span></span><br><span class="line">git <span class="keyword">add</span><span class="bash"> . 			 <span class="comment"># 所有变化提交到暂存区</span></span><br><span class="line"></span>git commit -m <span class="string">"解决同步问题"</span>  <span class="comment"># 提交文件</span></span><br><span class="line">git push origin hexo   <span class="comment"># 推送hexo分支</span></span><br></pre></td></tr></table></figure></div><p>这就成功了，github上已经有博客的源文件了。</p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170524.png" alt="github查看提交成功"></div><div class="image-caption">github查看提交成功</div></figure><p>推荐把hexo设置为默认分支。</p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170951.png" alt="hexo设置为默认分支"></div><div class="image-caption">hexo设置为默认分支</div></figure><h2 id="git-submodule-实现第三方主题同步"><a href="#git-submodule-实现第三方主题同步" class="headerlink" title="git submodule 实现第三方主题同步"></a>git submodule 实现第三方主题同步</h2><p>因为之前是直接把第三方主题克隆到博客目录，有什么改动是无法推送到作者Git仓库的，这个时候需要把第三方主题的项目Fork到自己仓库，自己账号下生成一个同名的仓库，并对应一个url，我们应该git clone自己账号下仓库的url。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229172902.png" alt="Fork第三方主题"></div><div class="image-caption">Fork第三方主题</div></figure><p></p><p>执行如下操作。<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add git@github<span class="selector-class">.com</span>:lanpangzhi/hexo-theme-next<span class="selector-class">.git</span> themes/next</span><br></pre></td></tr></table></figure></div><p></p><p>把自己仓库下面第三方主题添加到Git子模块， <strong>注 : themes/next 这里的目录是因为我用的next主题才会写themes/next 如果你用的不是next请把next替换成你的第三方主题文件夹名字。</strong></p><p>博客的根目录会多一个.gitmodules文件,这是一个配置文件，保存了项目 URL 和你拉取到的本地子目录。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229174101.png" alt=".gitmodules文件"></div><div class="image-caption">.gitmodules文件</div></figure><p></p><p>这就添加成功了，然后执行如下操作。<br></p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> . 			 <span class="comment"># 所有变化提交到暂存区</span></span><br><span class="line"></span>git commit -m <span class="string">"添加第三方主题Git子模块"</span>  <span class="comment"># 提交文件</span></span><br><span class="line">git push origin hexo   <span class="comment"># 推送hexo分支</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="更换电脑同步博客和第三方主题"><a href="#更换电脑同步博客和第三方主题" class="headerlink" title="更换电脑同步博客和第三方主题"></a>更换电脑同步博客和第三方主题</h2><h3 id="同步博客"><a href="#同步博客" class="headerlink" title="同步博客"></a>同步博客</h3><p>电脑上一定要先node和git，执行如下操作。</p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install hexo-cli -g  <span class="comment"># 先安装hexo的脚手架</span></span><br><span class="line">git clone git@github.com:lanpangzhi/lanpangzhi.github.io.git  <span class="comment"># 下载项目，因为hexo 是默认分支，所以这里直接会下载hexo分支</span></span><br><span class="line"><span class="built_in">npm</span> i <span class="comment"># 安装依赖</span></span><br><span class="line">hexo s <span class="comment"># 启动服务器</span></span><br></pre></td></tr></table></figure></div><p>剩下的就自行操作了。博客已经完成了同步。</p><p>注：每次写完文章部署网站后，记得再执行如下操作。</p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> . 			<span class="comment"># 所有变化提交到暂存区</span></span><br><span class="line"></span>git commit -m <span class="string">"新增xxx文章"</span>  	<span class="comment"># 提交文件</span></span><br><span class="line">git push origin hexo   		<span class="comment"># 推送hexo分支</span></span><br></pre></td></tr></table></figure></div><h3 id="同步第三方主题"><a href="#同步第三方主题" class="headerlink" title="同步第三方主题"></a>同步第三方主题</h3><p>在博客根目录执行如下操作。<br></p><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">submodule </span>init	<span class="comment"># 初始化本地配置文件</span></span><br><span class="line">git <span class="keyword">submodule </span>update    <span class="comment"># 拉取子模块</span></span><br></pre></td></tr></table></figure></div><p></p><p>如果第三方主题有修改的，修改完成后在第三方主题目录执行。</p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> . 			<span class="comment"># 所有变化提交到暂存区</span></span><br><span class="line"></span>git commit -m <span class="string">"修改主题xxxx"</span>  	<span class="comment"># 提交文件</span></span><br><span class="line">git push origin master   	<span class="comment"># 推送master分支</span></span><br></pre></td></tr></table></figure></div><p>这样就会把修改的主题推送到自己的仓库。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229175442.png" alt="修改的主题推送到自己的仓库"></div><div class="image-caption">修改的主题推送到自己的仓库</div></figure><p></p><p>这样就实现多端同步了。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://devtian.me/2015/03/17/blog-sync-solution" target="_blank" rel="external">http://devtian.me/2015/03/17/blog-sync-solution</a><br><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="external">https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Hexo博客多端同步问题.html" target="_blank" rel="external">http://blog.langpz.com/Hexo博客多端同步问题.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo博客多端同步问题.html&title=《Hexo博客多端同步问题》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo博客多端同步问题.html&title=《Hexo博客多端同步问题》 — 蓝胖纸&source=Hexo博客多端同步问题搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo博客多端同步问题.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客多端同步问题》 — 蓝胖纸&url=http://blog.langpz.com/Hexo博客多端同步问题.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo博客多端同步问题.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/javascript数组去重.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">javascript数组去重</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/npm-install-报错提示请使用管理员.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm install 报错提示请使用管理员</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo博客多端同步问题.html&title=《Hexo博客多端同步问题》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo博客多端同步问题.html&title=《Hexo博客多端同步问题》 — 蓝胖纸&source=Hexo博客多端同步问题搭完博客，发现只有公司电脑上有源文件，如果回家就没发继续更新博客了。也不能拿着U盘到处拷贝。所以就把博客源文件放到github上解..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo博客多端同步问题.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客多端同步问题》 — 蓝胖纸&url=http://blog.langpz.com/Hexo博客多端同步问题.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo博客多端同步问题.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aS27DMAwFwNz/0u42myiPpFPA0mhVOK6iQQCCH71e8breVvL8/dNk52S3GxYGBsZjGddyfXqnerg1bP3++mwYGBjnMHpbJwfN91/v/GVPDAwMjOJXrjF5QomBgYExYVTfzA+EgYGBMSlikzbcuiWXhOmf1+IYGBgPZORd9///+yfzDQwMjEcxruLqgZMdrsHCwMDYm1G9EpE3/asJZe+KBgYGxjmM5KAJY12C5gVwssNHKgYGxnaMXkDsXZiYX4H98gtgYGAcw6geqzoKre4Q7YmBgXEMY37pIR9PTsYAH7uGGBgYWzOqlxvuGh5M2m2FahgDA+PhjGoozK9K5Pj8PFGCiIGBsSnjF6VpDugNEpojTAwMjMcymqnYTcll3miLfgcMDIztGPlFh8mFiXwI2nyCgYGxNSMfA/RK0HkITspmDAyMvRnzweQkBOdXPcp3RjAwMDZi5MPFXnNtskNhGICBgXEAozdKTJLF9X/lY9HC8BIDA+MARp72TdK4vCVXGB5gYGAcxpiH2nmamC8MDIxzGPlgYJL2Jfje4BMDA2NXRi+05QetDg/yNhwGBsY5jGqAq442C4ldULhiYGCczJgH2WpbrVokF9ptGBgYWzOqga8aaqslcXlUgIGBgRGPG/MxwF3hGwMDA2PSDuuVrNViGAMD4xxGUsQmn1ZJyZMo6cTAwNiaMSod43eSBPF3pS8GBsZjGX9JDUup0owIrQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Node模块机制 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Node模块机制JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。所以JavaScript社区提出了commonjs规范来解决这些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node模块机制">
+<meta property="og:url" content="http://blog.langpz.com/Node模块机制.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Node模块机制JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。所以JavaScript社区提出了commonjs规范来解决这些问题。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node模块机制">
+<meta name="twitter:description" content="Node模块机制JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。所以JavaScript社区提出了commonjs规范来解决这些问题。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Node模块机制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Node模块机制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-08T16:11:02.000Z" itemprop="datePublished" class="page-time">
+  2018-01-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Node模块机制"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node模块机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commonjs规范"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">commonjs规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用模块"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">引用模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义模块"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">定义模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块标识"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">模块标识</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块缓存"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">模块缓存</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块的循环加载"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">模块的循环加载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module对象"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">module对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node的模块"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Node的模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module-exports和exports区别"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">module.exports和exports区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Node模块机制"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Node模块机制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-08 16:11:02" datetime="2018-01-08T16:11:02.000Z"  itemprop="datePublished">2018-01-08</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Node模块机制"><a href="#Node模块机制" class="headerlink" title="Node模块机制"></a>Node模块机制</h1><p>JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。<br>所以JavaScript社区提出了commonjs规范来解决这些问题。<br><a id="more"></a><br>一个Node应用由模块组成，每个js文件就是一个独立模块。<br>npm基于commonjs实现包的管理使我们开发Node.js更方便。</p><h2 id="commonjs规范"><a href="#commonjs规范" class="headerlink" title="commonjs规范"></a>commonjs规范</h2><h3 id="引用模块"><a href="#引用模块" class="headerlink" title="引用模块"></a>引用模块</h3><p>在commonjs规范中，定义了 require() 方法，这个方法接受一个模块的标识。<br></p><div class="highlight-wrap" data-rel="Ebnf"><figure class="lpz highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var math</span> = require(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure></div><p></p><h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><p>模块有自己的作用域。在模块里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p><p>上下文中提供了一个 exports 对象可以导出当前模块的方法或者变量，并且它是唯一导出的出口。在模块中，还存在一个 module 对象，它代表当前模块，exports 是 module 的属性。<br></p><div class="highlight-wrap" data-rel="Cs"><figure class="lpz highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="function">function <span class="title">add</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">exports.<span class="keyword">add</span> = <span class="keyword">add</span>;  <span class="meta"># 导出一个add的方法</span></span><br></pre></td></tr></table></figure></div><p></p><p>再新建一个文件就可以用 require()引用这个模块了<br></p><div class="highlight-wrap" data-rel="Cs"><figure class="lpz highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">var</span> math = require(<span class="string">'math'</span>);</span><br><span class="line">console.log(math.<span class="keyword">add</span>(<span class="number">1</span>,<span class="number">2</span>)); <span class="meta"># 3</span></span><br></pre></td></tr></table></figure></div><p></p><h3 id="模块标识"><a href="#模块标识" class="headerlink" title="模块标识"></a>模块标识</h3><p>模块标识就是传递给 require() 方法的参数，它必须是符合小驼峰命名的规范，或者以 .. 开头的相对路径，或者绝对路径。它可以没有文件后缀名.js。</p><h2 id="模块缓存"><a href="#模块缓存" class="headerlink" title="模块缓存"></a>模块缓存</h2><p>加载模块后会被缓存,多次加载还是同一个对象。<br>查看模块缓存 require.cache<br>查看模块绝对路径 require.resolve(./math.js)<br>删除模块的缓存 require.cache[require.resolve(./math.js)]</p><h2 id="模块的循环加载"><a href="#模块的循环加载" class="headerlink" title="模块的循环加载"></a>模块的循环加载</h2><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a 开始'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'在 a 中，b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a 结束'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// b.js</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b 开始'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'在 b 中，a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b 结束'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'main 开始'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'在 main 中，a.done=%j，b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure></div><p>当 main.js 加载 a.js 时，a.js 又加载 b.js。 此时，b.js 会尝试去加载 a.js。 为了防止无限的循环，会返回一个 a.js 的 exports 对象的 未完成的副本 给 b.js 模块。 然后 b.js 完成加载，并将 exports 对象提供给 a.js 模块。</p><p>当 main.js 加载这两个模块时，它们都已经完成加载。 因此，该程序的输出会是：</p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node main<span class="selector-class">.js</span></span><br><span class="line">main 开始</span><br><span class="line"><span class="selector-tag">a</span> 开始</span><br><span class="line"><span class="selector-tag">b</span> 开始</span><br><span class="line">在 <span class="selector-tag">b</span> 中，<span class="selector-tag">a</span><span class="selector-class">.done</span> = false</span><br><span class="line"><span class="selector-tag">b</span> 结束</span><br><span class="line">在 <span class="selector-tag">a</span> 中，<span class="selector-tag">b</span><span class="selector-class">.done</span> = true</span><br><span class="line"><span class="selector-tag">a</span> 结束</span><br><span class="line">在 main 中，<span class="selector-tag">a</span>.done=true，<span class="selector-tag">b</span>.done=true</span><br></pre></td></tr></table></figure></div><h2 id="module对象"><a href="#module对象" class="headerlink" title="module对象"></a>module对象</h2><p>module.children 被该模块引用的模块对象。<br>module.id 模块的标识符。 通常是完全解析后的文件名。<br>module.parent 最先引用该模块的模块。<br>module.paths 模块的搜索路径。<br>… 更多去官网查询</p><h2 id="Node的模块"><a href="#Node的模块" class="headerlink" title="Node的模块"></a>Node的模块</h2><p>在Node中，模块分为两类：一类是Node提供的模块，称为核心模块。另外一类是用户编写的模块，称为文件模块。<br>核心模块定义在 Node.js 源代码的 lib/ 目录下。<br>require() 总是会优先加载核心模块。 例如，require(‘http’) 始终返回内置的 HTTP 模块，即使有同名文件。</p><h2 id="module-exports和exports区别"><a href="#module-exports和exports区别" class="headerlink" title="module.exports和exports区别"></a>module.exports和exports区别</h2><p>exports是module.exports对象的引用<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params"><span class="comment">/* ... */</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">module</span> = &#123; exports: &#123;&#125; &#125;;</span><br><span class="line">  <span class="function">(<span class="params">(<span class="params"><span class="built_in">module</span>, exports</span>) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 模块代码在这。在这个例子中，定义了一个函数。</span></span><br><span class="line">    <span class="keyword">function</span> someFunc(<span class="params"></span>) &#123;&#125;</span><br><span class="line">    exports = someFunc;</span><br><span class="line">    <span class="comment">// 此时，exports 不再是一个 module.exports 的快捷方式，</span></span><br><span class="line">    <span class="comment">// 且这个模块依然导出一个空的默认对象。</span></span><br><span class="line">    <span class="built_in">module</span>.exports = someFunc;</span><br><span class="line">    <span class="comment">// 此时，该模块导出 someFunc，而不是默认对象。</span></span><br><span class="line">  &#125;</span>)(<span class="params"><span class="built_in">module</span>, <span class="built_in">module</span>.exports</span>);</span><br><span class="line">  <span class="params">return</span> <span class="params">module</span>.<span class="params">exports</span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></div><p></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://nodejs.cn/api/modules.html#modules_cycles" target="_blank" rel="external">http://nodejs.cn/api/modules.html#modules_cycles</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Node模块机制.html" target="_blank" rel="external">http://blog.langpz.com/Node模块机制.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Node模块机制.html&title=《Node模块机制》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Node模块机制.html&title=《Node模块机制》 — 蓝胖纸&source=Node模块机制JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。所以JavaScript社区提出了commonjs规范来解决..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Node模块机制.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node模块机制》 — 蓝胖纸&url=http://blog.langpz.com/Node模块机制.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Node模块机制.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/http模块.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">http模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/什么是Node-js.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">什么是Node.js</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Node模块机制.html&title=《Node模块机制》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Node模块机制.html&title=《Node模块机制》 — 蓝胖纸&source=Node模块机制JavaScript没有模块系统、标准库比较少、没有标准接口、缺乏包管理系统。所以JavaScript社区提出了commonjs规范来解决..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Node模块机制.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node模块机制》 — 蓝胖纸&url=http://blog.langpz.com/Node模块机制.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Node模块机制.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awU7sQAwEQP7/p/dJnJB4hG6bPSRTc4rYkEzlYHlsf3zE6/W5kr+/vq3rZ369J/mv1cLAwLgt43W5rrebXOcbvb7/lw+EgYFxAOM6mOawn16TAK6vf9kzBgYGxmUQbMNunoZiYGBgzAJuEkzzdLMN6xgYGCcz2lfmCeLmM73lLI6BgXFDxiZde/f1G/sbGBgYN2G8ypW8Jkkik7Sv2BUGBsajGUl7ctYqeF/L88ePiIGB8VBGXuJvi2XtcFg7nPGfUIuBgfFQxubsm5feNsNnRYMTAwPjGEbeHshfmT9/FpQxMDBOYOxf8LfjFKuCHQYGxuMY+a15+pgfiTeDFxgYGOcwZqHzrxqcCaz9HBgYGE9lzMr9s9bC5tRZDFtgYGA8jtGW4GdlsjahbEuBGBgYT2UkadkmKWzxeVsUAwPjHEYeImcp46aFkAT9OtJjYGA8iNHmkpu25aYAh4GBcQ5jluTlB938nrb0hoGBgTEr2edH0M1BFwMD4xxG8tB2Q/t2Zn18xcDAOIDRHj7bBkBbqmubBBgYGM9mzIYnkiDbTny0YxlN6ouBgXFvxmyoIi/StQG0/TQYGBgnMPLVPm6WYubNBgwMjNMYSZDdfJVZaG4bqxgYGCcw2qC53/rsmfXPGBgYhzHafGw2/TF7GgYGBkbbUJyNcaxgGBgYBzCSQ2wxqhUnjpvxsmG5DQMD44aM9gBZpGtlg6EdzqgxGBgY92P8A5IhGQYa+eEzAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

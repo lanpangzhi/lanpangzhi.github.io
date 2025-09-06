@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>JS设计模式-工厂模式 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对象即可。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式-工厂模式">
+<meta property="og:url" content="http://blog.langpz.com/JS设计模式-工厂模式.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对象即可。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS设计模式-工厂模式">
+<meta name="twitter:description" content="工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对象即可。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS设计模式-工厂模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS设计模式-工厂模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-08-30T14:58:36.000Z" itemprop="datePublished" class="page-time">
+  2025-08-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简单工厂模式"><span class="post-toc-number">1.</span> <span class="post-toc-text">简单工厂模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工厂方法模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">工厂方法模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#抽象工厂模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">抽象工厂模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#三种模式对比"><span class="post-toc-number">4.</span> <span class="post-toc-text">三种模式对比</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JS设计模式-工厂模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS设计模式-工厂模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-08-30 14:58:36" datetime="2025-08-30T14:58:36.000Z"  itemprop="datePublished">2025-08-30</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对象即可。<br><a id="more"></a></p><h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><p>简单工厂模式是一种创建型设计模式，它根据参数的不同返回不同类的实例。简单工厂模式的工厂类负责创建所有的实例。<br>例如便利店，你告诉店员想要什么（比如一瓶可乐或一包薯片），店员直接从货架上拿给你，不需要知道商品是如何生产的。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单工厂：集中式对象创建</span></span><br><span class="line"><span class="keyword">class</span> SimpleFactory &#123;</span><br><span class="line">    <span class="comment">// 静态工厂方法，直接通过类调用</span></span><br><span class="line">    <span class="keyword">static</span> createProduct(<span class="keyword">type</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'cola'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Cola();</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'crisps'</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Crisps();</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'没有这种商品'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 产品类</span></span><br><span class="line"><span class="keyword">class</span> Cola &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">'可乐'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    info() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Crisps &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">'薯片'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    info() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line"><span class="keyword">const</span> cola = SimpleFactory.createProduct(<span class="string">'cola'</span>);</span><br><span class="line"><span class="keyword">const</span> crisps = SimpleFactory.createProduct(<span class="string">'crisps'</span>);</span><br><span class="line">cola.info();  <span class="comment">// 输出：可乐</span></span><br><span class="line">crisps.info(); <span class="comment">// 输出：薯片</span></span><br></pre></td></tr></table></figure></div><p></p><h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><p>工厂方法模式定义了一个创建对象的接口，父类定义创建接口，子类负责具体实现，新增产品类型只需添加新的子类，无需改动现有代码。<br>就像不同的专业工厂，每个工厂只专注做一类产品。<br></p><div class="highlight-wrap" data-rel="Scala"><figure class="lpz highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    createCar() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('子类必须实现createCar方法');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 奔驰工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BenzFactory</span> <span class="keyword">extends</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    createCar(model) &#123;</span><br><span class="line">        console.log('使用德国工艺标准生产');</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">BenzCar</span>(model);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 宝马工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BMWFactory</span> <span class="keyword">extends</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    createCar(model) &#123;</span><br><span class="line">        console.log('使用巴伐利亚工艺标准生产');</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">BMWCar</span>(model);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 汽车类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    constructor(brand, model) &#123;</span><br><span class="line">        <span class="keyword">this</span>.brand = brand;</span><br><span class="line">        <span class="keyword">this</span>.model = model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BenzCar</span> <span class="keyword">extends</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    constructor(model) &#123;</span><br><span class="line">        <span class="keyword">super</span>('奔驰', model);</span><br><span class="line">        console.log(`生产了一辆$&#123;<span class="keyword">this</span>.brand&#125; $&#123;<span class="keyword">this</span>.model&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BMWCar</span> <span class="keyword">extends</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    constructor(model) &#123;</span><br><span class="line">        <span class="keyword">super</span>('宝马', model);</span><br><span class="line">        console.log(`生产了一辆$&#123;<span class="keyword">this</span>.brand&#125; $&#123;<span class="keyword">this</span>.model&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line">const benzFactory = <span class="keyword">new</span> <span class="type">BenzFactory</span>();</span><br><span class="line">const benzCar = benzFactory.createCar(<span class="symbol">'S</span>级'); </span><br><span class="line"><span class="comment">// 输出：使用德国工艺标准生产</span></span><br><span class="line"><span class="comment">//      生产了一辆奔驰 S级</span></span><br><span class="line"></span><br><span class="line">const bmwFactory = <span class="keyword">new</span> <span class="type">BMWFactory</span>();</span><br><span class="line">const bmwCar = bmwFactory.createCar(<span class="symbol">'X</span>1');</span><br><span class="line"><span class="comment">// 输出：使用巴伐利亚工艺标准生产</span></span><br><span class="line"><span class="comment">//      生产了一辆宝马 X1</span></span><br></pre></td></tr></table></figure></div><p></p><h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><p>抽象工厂模式提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。它强调产品之间的兼容性，确保创建的对象能够协同工作。<br>抽象工厂就像智能家居生态系统（如小米、苹果），每个生态系统提供一系列兼容的产品（手机、手表、耳机），这些产品专门设计为能无缝协作。<br></p><div class="highlight-wrap" data-rel="Scala"><figure class="lpz highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象工厂：声明创建一系列相关产品的接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">    createPhone() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现createPhone方法');</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createWatch() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现createWatch方法');</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createEarphones() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现createEarphones方法');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体工厂1：小米生态系统</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XiaomiFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">    createPhone() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">XiaomiPhone</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createWatch() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">XiaomiWatch</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createEarphones() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">XiaomiEarphones</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体工厂2：苹果生态系统</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppleFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">    createPhone() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> iPhone();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createWatch() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">AppleWatch</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    createEarphones() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">AirPods</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象产品接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    call() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现call方法');</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 与同系列设备连接的方法</span></span><br><span class="line">    connectToWatch(watch) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现connectToWatch方法');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watch</span> </span>&#123;</span><br><span class="line">    showTime() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现showTime方法');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Earphones</span> </span>&#123;</span><br><span class="line">    playSound() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>('必须实现playSound方法');</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体产品实现</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XiaomiPhone</span> <span class="keyword">extends</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    call() &#123;</span><br><span class="line">        <span class="keyword">return</span> '小米手机打电话';</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connectToWatch(watch) &#123;</span><br><span class="line">        <span class="keyword">if</span> (watch instanceof <span class="type">XiaomiWatch</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> '小米手机连接小米手表';</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> '小米手机连接失败：不兼容的设备';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">iPhone</span> <span class="keyword">extends</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    call() &#123;</span><br><span class="line">        <span class="keyword">return</span> '苹果手机打电话';</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connectToWatch(watch) &#123;</span><br><span class="line">        <span class="keyword">if</span> (watch instanceof <span class="type">AppleWatch</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> '苹果手机连接苹果手表';</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> '苹果手机连接失败：不兼容的设备';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XiaomiWatch</span> <span class="keyword">extends</span> <span class="title">Watch</span> </span>&#123;</span><br><span class="line">    showTime() &#123;</span><br><span class="line">        <span class="keyword">return</span> '小米手表显示时间';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppleWatch</span> <span class="keyword">extends</span> <span class="title">Watch</span> </span>&#123;</span><br><span class="line">    showTime() &#123;</span><br><span class="line">        <span class="keyword">return</span> '苹果手表显示时间';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XiaomiEarphones</span> <span class="keyword">extends</span> <span class="title">Earphones</span> </span>&#123;</span><br><span class="line">    playSound() &#123;</span><br><span class="line">        <span class="keyword">return</span> '小米耳机播放声音';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AirPods</span> <span class="keyword">extends</span> <span class="title">Earphones</span> </span>&#123;</span><br><span class="line">    playSound() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="symbol">'AirPods</span>播放声音';</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line">function createDeviceSuite(factory) &#123;</span><br><span class="line">    const phone = factory.createPhone();</span><br><span class="line">    const watch = factory.createWatch();</span><br><span class="line">    const earphones = factory.createEarphones();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        phone,</span><br><span class="line">        watch,</span><br><span class="line">        earphones,</span><br><span class="line">        testCompatibility() &#123;</span><br><span class="line">            <span class="keyword">return</span> phone.connectToWatch(watch);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line">const xiaomiSuite = createDeviceSuite(<span class="keyword">new</span> <span class="type">XiaomiFactory</span>());</span><br><span class="line">console.log(xiaomiSuite.testCompatibility()); <span class="comment">// 小米手机连接小米手表</span></span><br><span class="line"></span><br><span class="line">const appleSuite = createDeviceSuite(<span class="keyword">new</span> <span class="type">AppleFactory</span>());</span><br><span class="line">console.log(appleSuite.testCompatibility()); <span class="comment">// 苹果手机连接苹果手表</span></span><br></pre></td></tr></table></figure></div><p></p><h1 id="三种模式对比"><a href="#三种模式对比" class="headerlink" title="三种模式对比"></a>三种模式对比</h1><table><thead><tr><th>模式</th><th>特点</th><th>适用场景</th></tr></thead><tbody><tr><td><strong>简单工厂</strong></td><td>一个工厂类负责所有产品创建</td><td>产品种类较少，创建逻辑简单</td></tr><tr><td><strong>工厂方法</strong></td><td>每个工厂类负责一种产品</td><td>产品种类较多，每种产品有独特的创建逻辑</td></tr><tr><td><strong>抽象工厂</strong></td><td>每个工厂创建一系列相关产品</td><td>需要创建一系列相关的产品族</td></tr></tbody></table>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JS设计模式-工厂模式.html" target="_blank" rel="external">http://blog.langpz.com/JS设计模式-工厂模式.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工厂模式/">工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-工厂模式.html&title=《JS设计模式-工厂模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-工厂模式.html&title=《JS设计模式-工厂模式》 — 蓝胖纸&source=工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-工厂模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-工厂模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-工厂模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-工厂模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS设计模式-状态机模式.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-状态机模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-工厂模式.html&title=《JS设计模式-工厂模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-工厂模式.html&title=《JS设计模式-工厂模式》 — 蓝胖纸&source=工厂模式是一种创建型设计模式，它提供了一种创建对象的优雅方式。将对象的创建与使用分离。我们在创建对象时不会对客户端暴露创建逻辑，客户端只需要知道如何使用对..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-工厂模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-工厂模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-工厂模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-工厂模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aS24bMRAFQN3/0jKQXWBr/B5bk0BkcWWMBjRLixb783jE6/lnvev590+f39bjjoWBgfGxjOfluj5Wfujr3V59mpwNAwPjHMb14SYh8vqILfjlcwwMDIwg5K1h1t7EwMDAWLuuJde++W4YGBgnM5LtomSyrIb9h1wcAwPjAxltY+Bf/n1jfwMDA+NDGM8bVtu2nJ8KAwNjb8b1v8mD7xopKd4VgRgDA2NTRnL0Seo4GRpLmgd//W5gYGAcwJiX0pKxiTsGzjAwMPZm5KlmPmaxVlBLWgXXTzAwME5jJInoPK3NRzSKYI2BgbEd446iWPs8D6Yv38HAwNiaMW8MtIE4L6vVn2JgYGzNyEcc8iL+JKS2CS0GBsbejDxZXUtE18Jx3VLFwMDYmpEU2pLwNxmteFdrAQMDY1dGO2zRthgTTFuM+2FPDAyMrRnzlHIyNFZc+5LrJgYGxgGMdqN2VKJtjraDFxgYGCcz8obB/HCjBicGBsYxjHl62VLz/X85JwYGxjGMpEyWJ7dJwM2Rv+yJgYGxNaO92OXUSdF/sRiHgYGxHWMtWc0PMRnaKAI6BgbG1oy1NmQ72nXHmzUAAwPjwxl50f+Ob+ttQx4YGBgHMO5oMbZp7SgXx8DAwBhfDfPKWP4zgIGBgdGOPkwGJuqLIAYGxpGMPPzNU9A27EZXSQwMjK0ZbVBuqW04bt/EwMDYmvEF2DNqmMdIZ/UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

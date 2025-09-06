@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>TypeScript-类型保护 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="类型保护在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保代码的类型安全，提示并规避不合法的操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-类型保护">
+<meta property="og:url" content="http://blog.langpz.com/TypeScript-类型保护.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="类型保护在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保代码的类型安全，提示并规避不合法的操作。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript-类型保护">
+<meta name="twitter:description" content="类型保护在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保代码的类型安全，提示并规避不合法的操作。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-类型保护</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-类型保护</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-05-25T12:48:08.000Z" itemprop="datePublished" class="page-time">
+  2024-05-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#类型保护"><span class="post-toc-number">1.</span> <span class="post-toc-text">类型保护</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#typeof类型保护"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">typeof类型保护</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#instanceof类型保护"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">instanceof类型保护</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#in类型保护"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">in类型保护</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义类型保护"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">自定义类型保护</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可辨识联合类型"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">可辨识联合类型</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-类型保护"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-类型保护</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-05-25 12:48:08" datetime="2024-05-25T12:48:08.000Z"  itemprop="datePublished">2024-05-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="类型保护"><a href="#类型保护" class="headerlink" title="类型保护"></a>类型保护</h1><p>在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保代码的类型安全，提示并规避不合法的操作。<br><a id="more"></a></p><h2 id="typeof类型保护"><a href="#typeof类型保护" class="headerlink" title="typeof类型保护"></a>typeof类型保护</h2><p>typeof 操作符可以用来判断基本类型，如 string、number 等。<br></p><div class="highlight-wrap" data-rel="Cs"><figure class="lpz highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">langpz</span>(<span class="params"><span class="keyword">value</span>: <span class="keyword">string</span> | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">value</span>.toFixed(<span class="number">2</span>) <span class="comment">// 报错 类型“string”上不存在属性“toFixed”</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">value</span> === <span class="string">'string'</span>) &#123;</span><br><span class="line">        console.log(<span class="keyword">value</span>.toUpperCase()); <span class="comment">// value 被识别为 string</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">value</span> === <span class="string">'number'</span>) &#123;</span><br><span class="line">        console.log(<span class="keyword">value</span>.toFixed(<span class="number">2</span>)); <span class="comment">// value 被识别为 number</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">langpz(<span class="string">"hello"</span>); <span class="comment">// 输出: "HELLO"</span></span><br><span class="line">langpz(<span class="number">123.456</span>); <span class="comment">// 输出: "123.46"</span></span><br></pre></td></tr></table></figure></div><p></p><p>通过 typeof 操作符，我们可以对变量进行识别类型，避免调用字符串或者数字方法报错。</p><h2 id="instanceof类型保护"><a href="#instanceof类型保护" class="headerlink" title="instanceof类型保护"></a>instanceof类型保护</h2><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">    miao() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"喵喵"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    wang() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"汪汪"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> speak: <span class="function">(<span class="params">animal: Cat | Dog</span>) =&gt;</span> <span class="keyword">void</span> = <span class="function">(<span class="params">animal</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Dog) &#123;</span><br><span class="line">        animal.wang(); <span class="comment">// animal 被识别为 Dog</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Cat) &#123;</span><br><span class="line">        animal.miao(); <span class="comment">// animal 被识别为 Cat</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="keyword">const</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"></span><br><span class="line">speak(dog); <span class="comment">// 输出: "汪汪!"</span></span><br><span class="line">speak(cat); <span class="comment">// 输出: "喵喵!"</span></span><br></pre></td></tr></table></figure></div><p>instanceof 检查使得 TypeScript 能够在不同的代码块中识别 animal 是 Dog 还是 Cat 的实例，并调用相应的方法。</p><h2 id="in类型保护"><a href="#in类型保护" class="headerlink" title="in类型保护"></a>in类型保护</h2><p>in 操作符用于检查对象上是否存在某个属性。它适用于检查具有不同属性的联合类型。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Fish &#123;</span><br><span class="line">    swim(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Bird &#123;</span><br><span class="line">    fly(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">animal: Fish | Bird</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'swim'</span> <span class="keyword">in</span> animal) &#123;</span><br><span class="line">        animal.swim(); <span class="comment">// animal 被识别为 Fish</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        animal.fly(); <span class="comment">// animal 被识别为 Bird</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fish: Fish = &#123; swim: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Swimming"</span>) &#125;;</span><br><span class="line"><span class="keyword">const</span> bird: Bird = &#123; fly: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Flying"</span>) &#125;;</span><br><span class="line">getType(fish); <span class="comment">// 输出: "Swimming"</span></span><br><span class="line">getType(bird); <span class="comment">// 输出: "Flying"</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="自定义类型保护"><a href="#自定义类型保护" class="headerlink" title="自定义类型保护"></a>自定义类型保护</h2><p>自定义类型保护通常是一个函数，它接受一个参数，并返回一个类型谓词，即一个表达式，其结果为布尔值，用于确定参数是否属于某个特定的类型。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Fish &#123;</span><br><span class="line">    swim(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Bird &#123;</span><br><span class="line">    fly(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isBird</span>(<span class="params">animal: Fish | Bird</span>):<span class="title">animal</span> <span class="title">is</span> <span class="title">Bird</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'fly'</span> <span class="keyword">in</span> animal</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAniaml</span> (<span class="params">animal:Fish | Bird</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(isBird(animal))&#123;</span><br><span class="line">        animal.fly(); <span class="comment">// animal 被识别为 Bird</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        animal.swim(); <span class="comment">// animal 被识别为 Fish</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fish: Fish = &#123; swim: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Swimming"</span>) &#125;;</span><br><span class="line"><span class="keyword">const</span> bird: Bird = &#123; fly: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Flying"</span>) &#125;;</span><br><span class="line"></span><br><span class="line">getAniaml(fish); <span class="comment">// 输出: "Swimming"</span></span><br><span class="line">getAniaml(bird); <span class="comment">// 输出: "Flying"</span></span><br></pre></td></tr></table></figure></div><p></p><p>自定义类型保护函数 isBird 通过检查 fly 方法是否存在来识别 animal 是否为 Bird 类型。</p><h2 id="可辨识联合类型"><a href="#可辨识联合类型" class="headerlink" title="可辨识联合类型"></a>可辨识联合类型</h2><p>可辨识联合类型是一种特殊的联合类型，它允许我们根据某个字段（通常称为“标签”或“可辨识字段”）的值来区分不同的类型。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Fish &#123;</span><br><span class="line">    kind: <span class="string">"fish"</span>;</span><br><span class="line">    swim(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Bird &#123;</span><br><span class="line">    kind: <span class="string">"bird"</span>;</span><br><span class="line">    fly(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal = Fish | Bird;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeSound</span>(<span class="params">animal: Animal</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (animal.kind) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"fish"</span>:</span><br><span class="line">            animal.swim(); <span class="comment">// 在这里，animal 被识别为 Fish 类型</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"bird"</span>:</span><br><span class="line">            animal.fly(); <span class="comment">// 在这里，animal 被识别为 Bird 类型</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// 这是一个类型永远不会到达的分支，但可以为了完整性而保留</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Unknown animal kind"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myFish: Fish = &#123; kind: <span class="string">"fish"</span>, swim: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"langpz fish"</span>) &#125;;</span><br><span class="line"><span class="keyword">const</span> myBird: Bird = &#123; kind: <span class="string">"bird"</span>, fly: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"langpz bird"</span>) &#125;;</span><br><span class="line"></span><br><span class="line">makeSound(myFish); <span class="comment">// 输出: "langpz fish"</span></span><br><span class="line">makeSound(myBird); <span class="comment">// 输出: "langpz bird"</span></span><br></pre></td></tr></table></figure></div><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-类型保护.html" target="_blank" rel="external">http://blog.langpz.com/TypeScript-类型保护.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型保护/">类型保护</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-类型保护.html&title=《TypeScript-类型保护》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-类型保护.html&title=《TypeScript-类型保护》 — 蓝胖纸&source=类型保护在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-类型保护.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-类型保护》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-类型保护.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-类型保护.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-条件类型.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-条件类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-交叉类型.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-交叉类型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-类型保护.html&title=《TypeScript-类型保护》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-类型保护.html&title=《TypeScript-类型保护》 — 蓝胖纸&source=类型保护在 TypeScript 中，类型保护（Type Guards）通过在运行时检查变量的类型，可以在特定的代码块中自动识别变量的属性和方法，从而确保..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-类型保护.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-类型保护》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-类型保护.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-类型保护.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aS27DMAwFwNz/0i7QVYHCziMlB7E0WgWF8xktXilSr1e8jt919vrvun7+/2eefdrrjoWBgfFYxnG5xhlV8PXnn1IxMDA2YCQh2wvEPHx7z2NgYGDkAZqXetebgoGBgTE3cMefSUpDDAwMjGp0JjHaKzE/dBbHwMB4IGN8MHDf64/ONzAwML6ScRRXEqPV783Lx9NfhYGBsTTjupWWJFvyruSIO36sxcDAWJsxEo6zwrd6UWyofMTAwHggI/nKXoOs127LQx8DA2NPRnWImEftSHM/asxhYGAsyshb83nU9vr2veTEwMDYmXFfE626HdHmYmBgbMNIDpl5BCdlYm/7TiexGBgYizJ6g8leYZcEbt68w8DAwMjf3Csoq4OH6HkMDIxFGXkJ2Cv4qpe6em0+DAyMtRnlRwfCtNqeK48rMDAwNmCMXPnKS7rq4bbQCsTAwFiUkRdq46FZbagVoh8DA2NpRq8FNn6donfZolmeYmBgPJxRjbO84Ksej3t/wcDA2IfR+8okuWcF8ZsNwsDAWJqRB+Wsxlx1Iwpbg4GBsSjjKK6RQ+yE/T77J4GBgbE0Y9aFid71r/x6WT74xMDAWJVR/Vn5Va3qD01GodF4AAMDY1FGNWSrvPH15hiMgYGB0boiVm3JJf8ATstKDAwMjEnttt7AIBp/YmBgbMBIDrG9axY9fL7FGBgYOzDuGwzMBeejBQwMjIUYP8gK+ggXxRPgAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

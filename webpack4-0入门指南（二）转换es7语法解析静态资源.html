@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>webpack4.0入门指南（二）转换es7语法解析静态资源 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="webpack4.0入门指南（二）转换es7语法解析静态资源之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就写一下配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack4.0入门指南（二）转换es7语法解析静态资源">
+<meta property="og:url" content="http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="webpack4.0入门指南（二）转换es7语法解析静态资源之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就写一下配置。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613143713.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613160924.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613171021.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack4.0入门指南（二）转换es7语法解析静态资源">
+<meta name="twitter:description" content="webpack4.0入门指南（二）转换es7语法解析静态资源之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就写一下配置。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613143713.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack4.0入门指南（二）转换es7语法解析静态资源</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">webpack4.0入门指南（二）转换es7语法解析静态资源</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-13T13:30:47.000Z" itemprop="datePublished" class="page-time">
+  2018-06-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#webpack4-0入门指南（二）转换es7语法解析静态资源"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack4.0入门指南（二）转换es7语法解析静态资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转换es7语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">转换es7语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析CSS"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">解析CSS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析sass"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">解析sass</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解析图片"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">解析图片</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加载字体"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">加载字体</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo仓库地址"><span class="post-toc-number">2.</span> <span class="post-toc-text">demo仓库地址</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-webpack4-0入门指南（二）转换es7语法解析静态资源"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack4.0入门指南（二）转换es7语法解析静态资源</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-13 13:30:47" datetime="2018-06-13T13:30:47.000Z"  itemprop="datePublished">2018-06-13</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="webpack4-0入门指南（二）转换es7语法解析静态资源"><a href="#webpack4-0入门指南（二）转换es7语法解析静态资源" class="headerlink" title="webpack4.0入门指南（二）转换es7语法解析静态资源"></a>webpack4.0入门指南（二）转换es7语法解析静态资源</h1><p>之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就写一下配置。<br><a id="more"></a></p><h2 id="转换es7语法"><a href="#转换es7语法" class="headerlink" title="转换es7语法"></a>转换es7语法</h2><p>把之前demo3文件夹一份命名为demo4。<br>修改demo4/src/index.js文件<br></p><div class="highlight-wrap" data-rel="Lasso"><figure class="lpz highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;name: <span class="string">'lanpangzhi'</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;blog: <span class="string">'http://blog.langpz.com'</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> newObj = &#123;<span class="params">...</span>obj, <span class="params">...</span>obj2&#125;;  <span class="comment">// es7语法</span></span><br><span class="line">console.<span class="keyword">log</span>(newObj);</span><br></pre></td></tr></table></figure></div><p></p><p>安装babel插件，在项目根目录执行命令<br></p><div class="highlight-wrap" data-rel="Lsl"><figure class="lpz highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-preset-stage<span class="number">-0</span> -D  <span class="comment">// ES7不同阶段语法提案的转码规则（共有4个阶段）</span></span><br></pre></td></tr></table></figure></div><p></p><p>stage-0 包含 stage-1 stage-2 stage-3 阶段 还包含 babel-plugin-transform-do-expressionsbabel-plugin-transform-function-bind 两个插件的功能，<a href="https://github.com/tc39/proposals" target="_blank" rel="external">阶段标准</a></p><p>修改demo4/.babelrc文件<br></p><div class="highlight-wrap" data-rel="Json"><figure class="lpz highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>,<span class="string">"stage-0"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>在demo4路径下执行 webpack，就看到打包成功了打开demo4/index.js文件控制台就输出。<br>{name: “lanpangzhi”, blog: “<a href="http://blog.langpz.com&quot;}">http://blog.langpz.com&quot;}</a><br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613143713.png" alt></div><div class="image-caption"></div></figure><p></p><h2 id="解析CSS"><a href="#解析CSS" class="headerlink" title="解析CSS"></a>解析CSS</h2><p>为了从 JavaScript 模块中 import 一个 CSS 文件，你需要配置如下loader。<br>安装babel插件，在项目根目录执行命令。<br></p><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="built_in">save</span>-dev <span class="built_in">style</span>-loader css-loader</span><br></pre></td></tr></table></figure></div><p></p><p>修改demo4/webpack.config.js文件 在rules数组里添加一个规则。<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">test</span>: /\.css$/, // 匹配所有.css结尾的文件</span><br><span class="line">  use: [ // use要从右往左写，先转成样式，再打包到style标签</span><br><span class="line">    <span class="string">'style-loader'</span>,</span><br><span class="line">    <span class="string">'css-loader'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>创建css文件<br></p><figure class="highlight irpf90"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd src &amp;&amp; <span class="keyword">touch</span> <span class="built_in">index</span>.css</span><br></pre></td></tr></table></figure><p></p><p>修改demo4/src/index.css文件<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>引入css文件<br>修改demo4/src/index.js文件<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最上面添加一行</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> './index.css';</span></span><br></pre></td></tr></table></figure></div><p></p><p>在demo4路径下执行 webpack，就看到打包成功。打开demo4/index.html就有红色的背景色了。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613160924.png" alt></div><div class="image-caption"></div></figure><p></p><h2 id="解析sass"><a href="#解析sass" class="headerlink" title="解析sass"></a>解析sass</h2><p>为了从 JavaScript 模块中 import 一个 scss 文件，你需要配置如下loader。<br>安装babel插件，在项目根目录执行命令。<br></p><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass-loader <span class="keyword">node</span><span class="title">-sass</span> webpack --save-dev</span><br></pre></td></tr></table></figure></div><p></p><p>修改demo4/webpack.config.js文件，在rules数组里添加一个规则。<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.scss$/, <span class="comment">// 匹配所有.scss结尾的文件</span></span><br><span class="line">  <span class="keyword">use</span>: [ </span><br><span class="line">    <span class="string">'style-loader'</span>, <span class="comment">// 将 JS 字符串生成为 style 节点</span></span><br><span class="line">    <span class="string">'css-loader'</span>, <span class="comment">// 将 CSS 转化成 CommonJS 模块</span></span><br><span class="line">    <span class="string">'sass-loader'</span> <span class="comment">// 将 Sass 编译成 CSS</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>创建scss文件<br></p><figure class="highlight irpf90"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd src &amp;&amp; <span class="keyword">touch</span> <span class="built_in">index</span>.scss</span><br></pre></td></tr></table></figure><p></p><p>修改demo4/src/index.scss文件<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$body</span>-<span class="attribute">color</span>: yellow;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">$body</span>-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>修改demo4/src/index.js文件<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最上面一行替换如下代码</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> './index.scss';</span></span><br></pre></td></tr></table></figure></div><p></p><p>在demo4路径下执行 webpack，就看到sass编译成功。打开demo4/index.html就有绿色的背景色了。<br>!()[<a href="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613163909.png" target="_blank" rel="external">http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613163909.png</a>]<br>如果你想解析其他预处理css语言安装对应loader，添加规则就可以编译了。<br>如less less-loader。</p><h2 id="解析图片"><a href="#解析图片" class="headerlink" title="解析图片"></a>解析图片</h2><p>假想，现在我们正在下载 CSS，但是我们的背景和图标这些图片，要如何处理呢？使用 file-loader，我们可以轻松地将这些内容混合到 CSS 中。<br>安装babel插件，在项目根目录执行命令。<br></p><div class="highlight-wrap" data-rel="Fortran"><figure class="lpz highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="keyword">save</span>-dev <span class="keyword">file</span>-loader</span><br></pre></td></tr></table></figure></div><p></p><p>随意再网上下载一个png图片放到demo4/src/目录下，命名为1.png</p><p>修改demo4/src/index.scss文件<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(./1.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>修改demo4/webpack.config.js文件，在rules数组里添加一个规则。<br></p><div class="highlight-wrap" data-rel="Clojure"><figure class="lpz highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.(<span class="name">png</span>|svg|jpg|gif)$/, // 匹配所有.png和.svg和.jpg和.gif结尾的文件</span><br><span class="line">  use: [</span><br><span class="line">    &#123;</span><br><span class="line">      loader: 'file-loader',</span><br><span class="line">      options: &#123;</span><br><span class="line">        publicPath: 'dist/' // 设置public 发布目录。</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>在demo4路径下执行 webpack，就看到图片编译成功。打开demo4/index.html就有背景图。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613171021.png" alt></div><div class="image-caption"></div></figure><p></p><h2 id="加载字体"><a href="#加载字体" class="headerlink" title="加载字体"></a>加载字体</h2><p>像字体这样的其他资源如何处理呢？file-loader 和 url-loader 可以接收并加载任何文件，然后将其输出到构建目录。这就是说，我们可以将它们用于任何类型的文件，包括字体。让我们更新 webpack.config.js 来处理字体文件。<br>修改demo4/webpack.config.js文件，在rules数组里添加一个规则。<br></p><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attribute">test</span>: /\.(woff|woff2|eot|ttf|otf)$/,</span><br><span class="line"> use: [</span><br><span class="line">   <span class="string">'file-loader'</span></span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>如果样式文件里面引入了字体就会被打包，这里就不演示了。</p><h1 id="demo仓库地址"><a href="#demo仓库地址" class="headerlink" title="demo仓库地址"></a>demo仓库地址</h1><p><a href="https://github.com/lanpangzhi/webpack-demo" target="_blank" rel="external">https://github.com/lanpangzhi/webpack-demo</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/webpack4-0入门指南（二）转换es7语法解析静态资源.html" target="_blank" rel="external">http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包工具/">打包工具</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&title=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&title=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&source=webpack4.0入门指南（二）转换es7语法解析静态资源之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/vue的生命周期.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vue2.0的生命周期</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/yarn使用介绍.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">yarn使用介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&title=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&title=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&source=webpack4.0入门指南（二）转换es7语法解析静态资源之前写了怎么转换es6的语法，如果在项目中用了es7的语法和样式，图片，字体该如何配置，下面就..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack4.0入门指南（二）转换es7语法解析静态资源》 — 蓝胖纸&url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/webpack4-0入门指南（二）转换es7语法解析静态资源.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3ay24bMRAEQP//TyfXAMmuuodUoKVKJ0OWVyz60JjHz0/8+vXH6+/37z+fvK6+5eqd+1Nte2FjY2M/hN0e6P4zV89P3m8v6P4irv4WGxsb+1T2/bFmP7dxlT8/ibcXRmxsbOyvZ88KiXtAW35gY2NjY8/Y+dFnBcbsydjY2NjYK02cNlruefk1/adeGjY2NvbHs/Op6Of//Jb5NjY2NvYHs1cWa/KFntmYdtco4h9nwMbGxj6InQdAfqC83ZOHUF7wFMuj2NjY2Mex21DJY6w4ymgdZ3gd2NjY2EewZwPXWeExKzNmxUZUhGBjY2Mfx54NA/Iri9ZolheJorTCxsbGPoi9dx1nNgZoF27yEH1xldjY2NgHsZNWThJy959pY2nlb+smFzY2NvZj2UkYrLT42zHwLOTa78LGxsY+lb3eNkoYeY60EbjUS8PGxsZ+OHvXIdrf5tGVPyeKVWxsbOzj2G2bPg+nWemyPtYthgHY2NjYD2fnkVC0bLau4OwdJ1/Ot7GxsbEfy86XY3bNk/NSZ/a90ROwsbGxj2PvLSFmjar86mcDYGxsbOzvYefgtiTYW+QkizvRVAQbGxv74eyVNlCygtOGTXu5S700bGxs7OPYK2XAbDw8K0hmza/LfyQ2Njb2w9lto3/YxInjJA+wtgi5nGxjY2NjP5ydtJbaQGrHvRtqpnhgHG0qYWNjYz+KnRQe7ZfNRsXtok8bmcWHsLGxsR/IztvrScGQlzdtMdMOp18EGDY2NvYR7HwJpo2N9ZWgvIU0Oyc2Njb2eex2DJAMX9sBcP602QAYGxsb+1R2fh97W05t+dGOe4czBGxsbOwj2LNyIikw8qDKLzE//4sAw8bGxj6OnR/6fVXRSkRFgwFsbGzsh7NnLZ6krb+yppN/+3CwgY2NjX0Qe9YSug+kJDNnw93176rx2NjY2A9ht6PW9ojvGOvmZyj+k9jY2NgPZ+8aALcT1bYUyRP4RSsKGxsbG3t5xScPsCSc2idgY2NjY+ct+7aoyJeB8hjDxsbG/gb2SgHQLvfsDbN8GQgbGxv7VHY+6J2VCsklri/c5FePjY2NfRD7N7upaQQkNqUsAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

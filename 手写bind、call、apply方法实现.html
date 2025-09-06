@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>手写bind、call、apply方法实现 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="bind、call、apply方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便使用数组的方法、Object原型上的toString方法判断数据类型等功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手写bind、call、apply方法实现">
+<meta property="og:url" content="http://blog.langpz.com/手写bind、call、apply方法实现.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="bind、call、apply方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便使用数组的方法、Object原型上的toString方法判断数据类型等功能。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手写bind、call、apply方法实现">
+<meta name="twitter:description" content="bind、call、apply方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便使用数组的方法、Object原型上的toString方法判断数据类型等功能。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">手写bind、call、apply方法实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">手写bind、call、apply方法实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-05-13T15:07:23.000Z" itemprop="datePublished" class="page-time">
+  2023-05-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#call"><span class="post-toc-number">1.</span> <span class="post-toc-text">call</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#apply"><span class="post-toc-number">2.</span> <span class="post-toc-text">apply</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#bind"><span class="post-toc-number">3.</span> <span class="post-toc-text">bind</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">实现</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-手写bind、call、apply方法实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">手写bind、call、apply方法实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-05-13 15:07:23" datetime="2023-05-13T15:07:23.000Z"  itemprop="datePublished">2023-05-13</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>bind、call、apply</strong>方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便使用数组的方法、Object原型上的toString方法判断数据类型等功能。<br><a id="more"></a></p><h1 id="call"><a href="#call" class="headerlink" title="call"></a>call</h1><p>call 方法调用执行函数并用第一个参数改变函数执行时的上下文，可以传多个参数列表</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myCall = <span class="function"><span class="keyword">function</span><span class="params">(context, <span class="rest_arg">...args</span>)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 有bug NaN 0 '' 也会指向window</span></span><br><span class="line">    context = context || window</span><br><span class="line">    <span class="comment">// 使用Symbol 防止替换context属性</span></span><br><span class="line">    <span class="keyword">const</span> symbol = Symbol();</span><br><span class="line">    <span class="comment">// 通过x.xx() 执行改变 this 上下文</span></span><br><span class="line">    context[symbol] = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">const</span> result = context[symbol](...args);</span><br><span class="line">    <span class="keyword">delete</span> context[symbol];</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>测试一下<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1000</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">(<span class="rest_arg">...arg</span>)</span> </span>&#123;</span><br><span class="line">    console.log(<span class="keyword">this</span>.x ,arg)</span><br><span class="line">&#125;</span><br><span class="line">let a = &#123;</span><br><span class="line">  x: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.call(a, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// 输出 1 [2, 3, 4]  this 就变成 a 参数列表也打印了</span></span><br><span class="line"></span><br><span class="line">b.myCall(<span class="literal">null</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// 输出 1000 [2, 3, 4] this 是window</span></span><br></pre></td></tr></table></figure></div><p></p><p><a href="https://jsbin.com/qidebuhebo/edit?js,console" target="_blank" rel="external">demo</a></p><h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>call 方法调用执行函数并用第一个参数改变函数执行时的上下文，第二个参数是一个数组（或一个类数组对象）的形式提供的参数。 和<strong>call 的区别在于第二个参数 call 是参数列表</strong></p><h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span>(<span class="params">context, args</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 有bug NaN 0 '' 也会指向window</span></span><br><span class="line">    context = context || <span class="built_in">window</span></span><br><span class="line">    <span class="comment">// 使用Symbol 防止替换context属性</span></span><br><span class="line">    <span class="keyword">const</span> symbol = <span class="built_in">Symbol</span>();</span><br><span class="line">    <span class="comment">// 通过x.xx() 执行改变 this 上下文</span></span><br><span class="line">    context[symbol] = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">const</span> result = context[symbol](...args);</span><br><span class="line">    <span class="keyword">delete</span> context[symbol];</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>测试一下<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1000</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">(<span class="rest_arg">...arg</span>)</span> </span>&#123;</span><br><span class="line">    console.log(<span class="keyword">this</span>.x ,arg)</span><br><span class="line">&#125;</span><br><span class="line">let a = &#123;</span><br><span class="line">  x: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.apply(a, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="comment">// 输出 1 [2, 3, 4]  this 就变成 a 参数列表也打印了</span></span><br><span class="line"></span><br><span class="line">b.myApply(<span class="literal">null</span>, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="comment">// 输出 1000 [2, 3, 4]  this 是window</span></span><br></pre></td></tr></table></figure></div><p></p><p><a href="https://jsbin.com/fedagicuro/1/edit?js,console" target="_blank" rel="external">demo</a></p><h1 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h1><p>bind方法和call、apply都不一样，先绑定context 上下文和参数，创建一个新的函数返回。参数将作为新函数的参数，供调用时使用。</p><h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = <span class="function"><span class="keyword">function</span><span class="params">(context, <span class="rest_arg">...args1</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(<span class="rest_arg">...args2</span>)</span> </span>&#123;</span><br><span class="line">    context = context || <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(context, [...args1, ...args2]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>测试一下<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.myBind = <span class="function"><span class="keyword">function</span><span class="params">(context, <span class="rest_arg">...args1</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(<span class="rest_arg">...args2</span>)</span> </span>&#123;</span><br><span class="line">    context = context || <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(context, [...args1, ...args2]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1000</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">(<span class="rest_arg">...arg</span>)</span> </span>&#123;</span><br><span class="line">    console.log(<span class="keyword">this</span>.x ,arg)</span><br><span class="line">&#125;</span><br><span class="line">let a = &#123;</span><br><span class="line">  x: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let bind1 = b.bind(a, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">bind1()</span><br><span class="line"><span class="comment">// 输出 1 [2, [3, 4]]</span></span><br><span class="line">let bind2 = b.myBind(<span class="literal">null</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">bind2()</span><br><span class="line"><span class="comment">// 输出 1000 [2, [3, 4]]</span></span><br></pre></td></tr></table></figure></div><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/手写bind、call、apply方法实现.html" target="_blank" rel="external">http://blog.langpz.com/手写bind、call、apply方法实现.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/手写bind、call、apply方法实现.html&title=《手写bind、call、apply方法实现》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/手写bind、call、apply方法实现.html&title=《手写bind、call、apply方法实现》 — 蓝胖纸&source=bind、call、apply方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/手写bind、call、apply方法实现.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写bind、call、apply方法实现》 — 蓝胖纸&url=http://blog.langpz.com/手写bind、call、apply方法实现.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/手写bind、call、apply方法实现.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/pinia使用指南.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">pinia使用指南</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/手写EventHub-发布订阅.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">手写EventHub(发布订阅)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/手写bind、call、apply方法实现.html&title=《手写bind、call、apply方法实现》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/手写bind、call、apply方法实现.html&title=《手写bind、call、apply方法实现》 — 蓝胖纸&source=bind、call、apply方法常用于改调用函数并指定函数执行时的上下文（即this关键字的值）以及参数列表。例如将一个类数组对象转换为真正的数组，以便..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/手写bind、call、apply方法实现.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写bind、call、apply方法实现》 — 蓝胖纸&url=http://blog.langpz.com/手写bind、call、apply方法实现.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/手写bind、call、apply方法实现.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3abW7qMBAF0O5/0+8tgNa582FKpcMvBCTxSSR7uOOvr/j17+X1+u35qNdfnt+fP1l+4eHh4Y2HnlxgMoifjjrfuPNRP14dDw8P7xovGcSZcYZVh56/fxgDHh4e3gfwzkVz8m11OTmX5nh4eHh/hZeX1wm+tzjh4eHh/S4vCSOqEe15Ychj2eT2LWQteHh4eDEvv8DnvL/S38PDw8Mbd9WTZlg+WecttN5i8M1V8PDw8C7w8gk3KbWrZXfSHquWy3h4eHjv4VVr0d7QJ4tQ3myLHhgeHh7eEm831ZgMtwouPDE8PDy8MS/fENCLCarbBSaw6L8CHh4e3pgXbVqKp/tJBFwNF5rLGB4eHt4SbzIF5wFBXspPWmLfXBcPDw9vlVcNRqsLwySeSJaoh1uJh4eHd42XTLu9grsaB09Kdjw8PLx38vKCuFdG5yV79TwPZ8PDw8O7xiuXqq3Yt4epbjj4JozAw8PDW+XNI4BeUy3/JCn0H8aGh4eHt8rb+vPf2yjQa60V4mM8PDy8C7xqgBvtRIjL4uTY6ir38Azx8PDwlniTdlQVU+1P9bZk4eHh4d3m5a2masGdt76q1EJQgoeHh3eNl4cL+dQ/uR15qwwPDw/vnbxquTwPfHvNs7y4L6cseHh4eEVeErzmy8NkiNXspFea4+Hh4W3x8uk7L3a37npeQBf+MeDh4eGt8m5MzffCiKhwx8PDw7vGy7dMVUl5gT4JLB7CXDw8PLwl3mSazpeKredQbo/h4eHhXeD1GlG9i01aaPnta7bc8PDw8Iq8rVNXW2KTjQLnZSM6KR4eHt6Yt1Xg5lP/VhjxYMHDw8P7GF4eKOQLTLVAx8PDw/tbvEmRnW+36sUWeHh4eO/hVYOAPHRIfl89c3lnBB4eHt4qb3KKXvibRxK7UQUeHh7emPcfUNuccd1OUcUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

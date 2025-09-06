@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>vue2.0的生命周期 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="vue2.0的生命周期每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0的生命周期">
+<meta property="og:url" content="http://blog.langpz.com/vue的生命周期.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="vue2.0的生命周期每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614112537.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614113214.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614114126.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614114126.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614130548.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132057.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132548.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132830.png">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614101803.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0的生命周期">
+<meta name="twitter:description" content="vue2.0的生命周期每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614112537.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue2.0的生命周期</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue2.0的生命周期</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-14T09:48:11.000Z" itemprop="datePublished" class="page-time">
+  2018-06-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue2-0的生命周期"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue2.0的生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生命周期钩子函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">生命周期钩子函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#个人总结"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">个人总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生命周期图示"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">生命周期图示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beforeCreate"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">beforeCreate</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#created"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">created</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beforeMount"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">beforeMount</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mounted"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">mounted</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beforeUpdate"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">beforeUpdate</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#updated"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">updated</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#beforeDestroy"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">beforeDestroy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#destroyed"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">destroyed</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue的生命周期"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue2.0的生命周期</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-14 09:48:11" datetime="2018-06-14T09:48:11.000Z"  itemprop="datePublished">2018-06-14</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="vue2-0的生命周期"><a href="#vue2-0的生命周期" class="headerlink" title="vue2.0的生命周期"></a>vue2.0的生命周期</h1><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。<br><a id="more"></a></p><h2 id="生命周期钩子函数"><a href="#生命周期钩子函数" class="headerlink" title="生命周期钩子函数"></a>生命周期钩子函数</h2><p><a href="http://jsbin.com/piwohumoxa/edit?html,console,output" target="_blank" rel="external">代码演示地址</a><br>beforeCreate 在实例初始化之后调用，数据和事件都没绑定。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614112537.png" alt></div><div class="image-caption"></div></figure><br>所以在beforeCreate访问不到任何东西。<br>created 在实例创建完成后被立即调用。数据和事件已经绑定，但是模板没有渲染，$el属性不可见 。<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614113214.png" alt></div><div class="image-caption"></div></figure><br>在created数据和事件都可以访问了，就能打印出数据。<br>beforeMount 模板渲染前调用<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614114126.png" alt></div><div class="image-caption"></div></figure><br>beforeMount的时候可以访问到 $el 但是并没有渲染到页面上（virtual DOM）数据也还是这样的格式，所以不能操作DOM。<br>mounted 模板渲染到页面上调用<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614114126.png" alt></div><div class="image-caption"></div></figure><br>mounted 的时候就可以操作dom，可以把dom操作放到这个生命周期。<br>beforeUpdate 数据更新时调用，发生在虚拟 DOM 打补丁之前。<br>在控制台执行 vm.lanpangzhi = 3<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614130548.png" alt></div><div class="image-caption"></div></figure><br>beforeUpdate 这个钩子函数可以访问更新前的dom元素。这里的dom元素并没有更新掉。<br>updated 数据更新完触发。<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132057.png" alt></div><div class="image-caption"></div></figure><br>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。<br>beforeDestroy 实例销毁之前调用。<br>在控制台执行 vm.$destroy()<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132548.png" alt></div><div class="image-caption"></div></figure><br>当这个钩子被调用时实例还可以用。<br>destroyed 实例销毁后调用。<br><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614132830.png" alt></div><div class="image-caption"></div></figure><br>调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。<p></p><h2 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h2><p>created （实例创建完） 这个钩子函数可以用来请求数据发ajax。<br>mounted （模板渲染完） 这个钩子函数可以用来操作dom一些方法，如果你用了jQuery需要把代码放到这个钩子函数里面。<br>updated （数据更新完） 这个钩子函数通常最好使用计算属性或 watcher 取而代之。<br>beforeDestroy （实例销毁之前调用） 这个钩子函数触发的时候可以用来清理定时器变量。<br>还有几个钩子函数没有说到，建议自行去官网查看。</p><h2 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h2><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/vue2.0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/QQ%E5%9B%BE%E7%89%8720180614101803.png" alt></div><div class="image-caption"></div></figure><h2 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h2><p>在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</p><h2 id="created"><a href="#created" class="headerlink" title="created"></a>created</h2><p>在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。</p><h2 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h2><p>在挂载开始之前被调用：相关的 render 函数首次被调用。<br>该钩子在服务器端渲染期间不被调用。</p><h2 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h2><p>el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。<br>注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted<br>该钩子在服务器端渲染期间不被调用。</p><h2 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h2><p>数据更新时调用，发生在虚拟 DOM 打补丁之前。这里适合在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器。<br>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。</p><h2 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h2><p>由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。<br>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。<br>注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated<br>该钩子在服务器端渲染期间不被调用。</p><h2 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h2><p>实例销毁之前调用。在这一步，实例仍然完全可用。<br>该钩子在服务器端渲染期间不被调用。</p><h2 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h2><p>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。<br>该钩子在服务器端渲染期间不被调用。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://cn.vuejs.org/v2/api/#beforeCreate" target="_blank" rel="external">https://cn.vuejs.org/v2/api/#beforeCreate</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/vue的生命周期.html" target="_blank" rel="external">http://blog.langpz.com/vue的生命周期.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue2-0/">vue2.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生命周期/">生命周期</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/vue的生命周期.html&title=《vue2.0的生命周期》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/vue的生命周期.html&title=《vue2.0的生命周期》 — 蓝胖纸&source=vue2.0的生命周期每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/vue的生命周期.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue2.0的生命周期》 — 蓝胖纸&url=http://blog.langpz.com/vue的生命周期.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/vue的生命周期.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/解决移动端click事件300毫秒延迟和点透问题.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">解决移动端click事件300毫秒延迟和点透问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/webpack4-0入门指南（二）转换es7语法解析静态资源.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack4.0入门指南（二）转换es7语法解析静态资源</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/vue的生命周期.html&title=《vue2.0的生命周期》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/vue的生命周期.html&title=《vue2.0的生命周期》 — 蓝胖纸&source=vue2.0的生命周期每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/vue的生命周期.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue2.0的生命周期》 — 蓝胖纸&url=http://blog.langpz.com/vue的生命周期.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/vue的生命周期.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACGUlEQVR42u3aMY7DQAgF0Nz/0t42ja0POCsZv6miaJzMc4Fg4POJ1/G1vr9JdlZ/M3m2uTAwMB7LOC5XvmdyxLMXVPhfDAyMFzDyn57szKNlfjYMDAyMsz3JN9ehdvL6MDAwMCaM5KkkEcTAwMDoFbHX+6tpXxV2Wy2OgYHxQEZeZP7/55/0NzAwMB7FOIorD6PVcHkMFgYGxm5GHuCqDc6kiJ0EXAwMjPcw8hI0D4tJSyAfyIhGNDAwMFYzeu3GXmJXvegfBWUMDIzXMCbtgervVFuYhYCLgYHxcMZdgbXaCs0ZUYsCAwNjNaOX2PWGHuakZjqIgYGxjpEXlvN0cA44DbgYGBjrGNWj509N2gPVAhsDA2Mro9kgDML0BJZjCp1SDAyMxzLytKx3rPzyLg/fp0gMDIzVjCQRPFqrVwDnLwIDA+MNjMlQRRJMJ62CQuMBAwNjNWOe6uVPNUcoiqU1BgbGbkY15PUASXBvXrdhYGCsZuSH7hWiVUD+7k+7HBgYGC9jzMe5etT8XzAwMDCq12TJK+hdpUUTbRgYGOsY85Zktf2ZNBLK7QcMDIzVjF6w6yWIE9JofgQDA2MFYz5OkeysNinLpSwGBsYLGNUBiHlrs9BZTU6FgYGBEV/358XtzcNhGBgYGMWAWC168wB9c2qIgYHxKEZv5GuSIPbC8el+DAyM1Yxe6ZikgL0Lu96pMDAwljL+ABjqQc9SFDFTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

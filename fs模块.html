@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>fs模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="fs模块fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。所有的方法都有异步和同步的形式。异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fs模块">
+<meta property="og:url" content="http://blog.langpz.com/fs模块.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="fs模块fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。所有的方法都有异步和同步的形式。异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fs模块">
+<meta name="twitter:description" content="fs模块fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。所有的方法都有异步和同步的形式。异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">fs模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">fs模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-22T14:32:19.000Z" itemprop="datePublished" class="page-time">
+  2018-02-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#fs模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">fs模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#读取文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">读取文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-readFileSync"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">同步方法 readFileSync()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-readFile"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">异步方法 readFile()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写入文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">写入文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-writeFileSync"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">同步方法 writeFileSync()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-writeFile"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">异步方法 writeFile()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建目录"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">创建目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-mkdirSync"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">同步方法 mkdirSync()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-mkdir"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">异步方法 mkdir()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#读取目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">读取目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-readdirSync"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">同步方法 readdirSync()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-readdir"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">异步方法 readdir()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看文件信息"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查看文件信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-statSync"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">同步方法 statSync()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#fs-Stats-实例的方法"><span class="post-toc-number">1.5.1.1.</span> <span class="post-toc-text">fs.Stats 实例的方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Stat-时间值"><span class="post-toc-number">1.5.1.2.</span> <span class="post-toc-text">Stat 时间值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-stat"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">异步方法 stat()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除文件"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">删除文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步方法-unlinkSync"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">同步方法 unlinkSync()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步方法-unlink"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">异步方法 unlink()</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-fs模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">fs模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-22 14:32:19" datetime="2018-02-22T14:32:19.000Z"  itemprop="datePublished">2018-02-22</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h1><p>fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。<br>所有的方法都有异步和同步的形式。<br>异步方法最后一个参数都是一个回调函数，回调函数的第一个参数是异常。 如果操作成功完成，则第一个参数会是 null 或 undefined。<br>当使用同步方法时，任何异常都会被立即抛出。 可以使用 try/catch 来处理异常，或让异常向上冒泡。<br><a id="more"></a></p><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><h3 id="同步方法-readFileSync"><a href="#同步方法-readFileSync" class="headerlink" title="同步方法 readFileSync()"></a>同步方法 readFileSync()</h3><div class="highlight-wrap" data-rel="Livescript"><figure class="lpz highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> buf = fs.readFileSync(<span class="string">'./hello.txt'</span>, &#123; encoding: <span class="string">'utf-8'</span> &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(buf); <span class="comment"># 输出: 入坑了..</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'读取失败了: '</span> + err.message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>readFileSync方法的第一个参数是文件路径可以是（string|Buffer|URL|integer）类型，第二个参数可以是一个表示配置的对象。默认的配置对象是{ encoding: null, flag: ‘r’ }，encoding：文件编码默认为null，flag：读取模式默认为r（只读）。如果第二个参数不指定编码（encoding），readFileSync方法返回原始的 buffer。</p><h3 id="异步方法-readFile"><a href="#异步方法-readFile" class="headerlink" title="异步方法 readFile()"></a>异步方法 readFile()</h3><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.readFile(<span class="string">'./hello.txt'</span>, &#123; encoding: <span class="string">'utf-8'</span> &#125;, <span class="function"><span class="params">(err,data)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(data); <span class="comment"># 输出: 入坑了..</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div><p>和readFileSync方法参数一样，只多了一个回调函数。<br>回调有两个参数 (err, data)，其中 data 是文件的内容。</p><h2 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h2><h3 id="同步方法-writeFileSync"><a href="#同步方法-writeFileSync" class="headerlink" title="同步方法 writeFileSync()"></a>同步方法 writeFileSync()</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFileSync(<span class="string">'./1.txt'</span>,<span class="string">'node入坑指南...'</span>,&#123;<span class="attr">encoding</span>: <span class="string">'utf8'</span>&#125;)</span><br></pre></td></tr></table></figure></div><p>第一个参数是路径<br>第二的参数是写入的数据<br>第三个参数是一个可配置的对象{encoding：utf8, mode: 0o666, flag: ‘w’}</p><ul><li>encoding: 文件编码默认为utf8</li><li>mode： 设置文件模式(权限)，文件创建默认权限为 0o666(可读，可写)。</li><li>flag： 文件打开模式默认为w(写入)</li></ul><p>如果 options 是一个字符串，则它指定了字符编码。例如：<br></p><div class="highlight-wrap" data-rel="Less"><figure class="lpz highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fs</span><span class="selector-class">.writeFileSync</span>(<span class="string">'./1.txt'</span>, <span class="string">'111...'</span>, <span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure></div><p></p><h3 id="异步方法-writeFile"><a href="#异步方法-writeFile" class="headerlink" title="异步方法 writeFile()"></a>异步方法 writeFile()</h3><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">'./2.txt'</span>,<span class="string">'蓝胖纸'</span>,<span class="function"><span class="params">(err)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'写入成功'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p>异步地写入数据到文件，如果文件已经存在，则替代文件。 data 可以是一个字符串或一个 buffer。<br>如果 data 是一个 buffer，则忽略 encoding 选项。它默认为 ‘utf8’。<br>和writeFileSync方法参数一样，只多了一个回调函数。</p><h2 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h2><h3 id="同步方法-mkdirSync"><a href="#同步方法-mkdirSync" class="headerlink" title="同步方法 mkdirSync()"></a>同步方法 mkdirSync()</h3><div class="highlight-wrap" data-rel="Less"><figure class="lpz highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fs</span><span class="selector-class">.mkdirSync</span>(<span class="string">'./hello'</span>,<span class="number">0</span>o777);</span><br></pre></td></tr></table></figure></div><p>在当前目录下面创建一个hello的文件夹。<br>第一个参数是路径。<br>第二个参数是设置文件模式(权限)，默认为0o777。</p><h3 id="异步方法-mkdir"><a href="#异步方法-mkdir" class="headerlink" title="异步方法 mkdir()"></a>异步方法 mkdir()</h3><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.mkdir(<span class="string">'./lanpangzhi'</span>, <span class="number">0</span>o777, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div><p>和mkdirSync方法参数一样，只多了一个回调函数。<br>注： 所有的异步方法最后一个参数都是回调函数，回调函数的第一个参数都是异常。</p><h2 id="读取目录"><a href="#读取目录" class="headerlink" title="读取目录"></a>读取目录</h2><h3 id="同步方法-readdirSync"><a href="#同步方法-readdirSync" class="headerlink" title="同步方法 readdirSync()"></a>同步方法 readdirSync()</h3><div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let <span class="keyword">a</span> = fs.readdirSync(<span class="built_in">process</span>.cwd())</span><br><span class="line">console.<span class="built_in">log</span>(<span class="keyword">a</span>)</span><br></pre></td></tr></table></figure></div><p>输出当前工作目录下的文件数组列表。<br>第一个参数是路径。<br>第二个参数是设置编码。</p><h3 id="异步方法-readdir"><a href="#异步方法-readdir" class="headerlink" title="异步方法 readdir()"></a>异步方法 readdir()</h3><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.readdir(process.cwd(),<span class="function"><span class="params">(err, files)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err)&#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(files)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p>和readdirSync方法参数一样，只多了一个回调函数。<br>回调函数有两个参数，第二个参数是文件数组列表。</p><h2 id="查看文件信息"><a href="#查看文件信息" class="headerlink" title="查看文件信息"></a>查看文件信息</h2><h3 id="同步方法-statSync"><a href="#同步方法-statSync" class="headerlink" title="同步方法 statSync()"></a>同步方法 statSync()</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stats = fs.statSync(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(stats)</span><br></pre></td></tr></table></figure></div><p>接受一个路径参数，返回一个 fs.Stats 实例。</p><h4 id="fs-Stats-实例的方法"><a href="#fs-Stats-实例的方法" class="headerlink" title="fs.Stats 实例的方法"></a>fs.Stats 实例的方法</h4><table><thead><tr><th style="text-align:center">方法</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:center">stats.isFile()</td><td style="text-align:left">如果是文件返回 true，否则返回 false。</td></tr><tr><td style="text-align:center">stats.isDirectory()</td><td style="text-align:left">如果是目录返回 true，否则返回 false。</td></tr><tr><td style="text-align:center">stats.isBlockDevice()</td><td style="text-align:left">如果是块设备返回 true，否则返回 false。</td></tr><tr><td style="text-align:center">stats.isCharacterDevice()</td><td style="text-align:left">如果是字符设备返回 true，否则返回 false。</td></tr><tr><td style="text-align:center">stats.isSymbolicLink()</td><td style="text-align:left">如果是软链接返回 true，否则返回 false。</td></tr><tr><td style="text-align:center">stats.isFIFO()</td><td style="text-align:left">如果是FIFO，返回true，否则返回 false。FIFO是UNIX中的一种特殊类型的命令管道。</td></tr><tr><td style="text-align:center">stats.isSocket()</td><td style="text-align:left">如果是 Socket 返回 true，否则返回 false。</td></tr></tbody></table><h4 id="Stat-时间值"><a href="#Stat-时间值" class="headerlink" title="Stat 时间值"></a>Stat 时间值</h4><table><thead><tr><th style="text-align:center">属性</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:center">atime</td><td style="text-align:left">“访问时间” - 文件数据最近被访问的时间。</td></tr><tr><td style="text-align:center">mtime</td><td style="text-align:left">“修改时间” - 文件数据最近被修改的时间。</td></tr><tr><td style="text-align:center">ctime</td><td style="text-align:left">“变化时间” - 文件状态最近更改的时间。</td></tr><tr><td style="text-align:center">birthtime</td><td style="text-align:left">“创建时间” - 文件创建的时间。</td></tr></tbody></table><h3 id="异步方法-stat"><a href="#异步方法-stat" class="headerlink" title="异步方法 stat()"></a>异步方法 stat()</h3><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.stat(<span class="string">'./hello'</span>, <span class="function"><span class="params">(err, stats)</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(stats);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div><p>和statSync方法参数一样，只多了一个回调函数。<br>回调函数有两个参数，第二个参数是fs.Stats实例。</p><h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><h3 id="同步方法-unlinkSync"><a href="#同步方法-unlinkSync" class="headerlink" title="同步方法 unlinkSync()"></a>同步方法 unlinkSync()</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.unlinkSync(<span class="string">'./1.txt'</span>);</span><br></pre></td></tr></table></figure></div><p>删除当前目录下的1.txt文件，返回undefined。<br>第一个参数是路径。</p><h3 id="异步方法-unlink"><a href="#异步方法-unlink" class="headerlink" title="异步方法 unlink()"></a>异步方法 unlink()</h3><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.unlink(<span class="string">'./2.txt'</span>, <span class="function"><span class="params">(err)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p>和unlinkSync方法参数一样。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://nodejs.cn/api/fs.html" target="_blank" rel="external">http://nodejs.cn/api/fs.html</a><br><a href="http://www.runoob.com/nodejs/nodejs-fs.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-fs.html</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/fs模块.html" target="_blank" rel="external">http://blog.langpz.com/fs模块.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/fs模块.html&title=《fs模块》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/fs模块.html&title=《fs模块》 — 蓝胖纸&source=fs模块fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。所有的方法都有异步和同步的形式。异步方法最后一个参数都是一个回调函..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/fs模块.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《fs模块》 — 蓝胖纸&url=http://blog.langpz.com/fs模块.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/fs模块.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/path模块.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">path模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/querystring模块.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">querystring模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/fs模块.html&title=《fs模块》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/fs模块.html&title=《fs模块》 — 蓝胖纸&source=fs模块fs模块是Node.js提供来操作本地文件（读、写、复制、删除…）等功能的模块。所有的方法都有异步和同步的形式。异步方法最后一个参数都是一个回调函..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/fs模块.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《fs模块》 — 蓝胖纸&url=http://blog.langpz.com/fs模块.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/fs模块.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aSW7DMAwF0Nz/0u62QCDnkxqcAE+rQgmc5y4ITq9XfK5/5/1+dPP+6f3Tlh1cXNxp7nV7Rt+5R4/oo5dJDLi4uOe5yY9VEfevmoc8XFzcX+H2bvKXxMXF/S1uXpXMPx8XF/dZblL83Lc27psdD9RquLi4E9y8S7nv7y39XVxc3Bb3Kp58iJLfF34dFxf3CHdVYVNNkvL0BRcX9zy3GkTy4qSH+zDQxcXFPcLtDVNnBiG9tsgw7uLi4j7ETVqlO5Y5hv8OXFzczdwz0F46NSx+cHFxj3DnWxu9BKga5nBxcc9we2GoepNnW4WVDlxc3G3cJGVJWhv5IDZ//rD4wcXFfYibpCnzg5bq8AYXF/cMd2YpMy9mqp9G38TFxd3M7TVE5kumJCUq74zg4uJu4OYBrtx3iQex0UwYFxf3CDenr0I3EyBcXNzN3Kt4Vi1VJOkOLi7uU9xqcOk1N3vJ01RAxMXFnebOrGRVRy95IGtuk+Hi4i7l9gJNHiPzCPohOOLi4n4xtzcImS+3cHFxv5k7T8wbpsviLi4ubpHbXJ2cGKxur9VwcXEnuNXBZ/JK1aWNxcNaXFzcPvcP/5m5aOR3NdsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

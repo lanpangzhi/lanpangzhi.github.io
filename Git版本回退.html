@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Git版本回退 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Git版本回退在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git版本回退">
+<meta property="og:url" content="http://blog.langpz.com/Git版本回退.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Git版本回退在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git版本回退">
+<meta name="twitter:description" content="Git版本回退在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Git版本回退</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Git版本回退</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-09T18:04:28.000Z" itemprop="datePublished" class="page-time">
+  2019-06-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git版本回退"><span class="post-toc-number">1.</span> <span class="post-toc-text">Git版本回退</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回退指定commit"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">回退指定commit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回退命令"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">回退命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cherry-pick"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">cherry-pick</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#已经提交远端仓库"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">已经提交远端仓库</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Git版本回退"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Git版本回退</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-09 18:04:28" datetime="2019-06-09T18:04:28.000Z"  itemprop="datePublished">2019-06-09</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Git版本回退"><a href="#Git版本回退" class="headerlink" title="Git版本回退"></a>Git版本回退</h1><p>在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。</p><a id="more"></a><h2 id="回退指定commit"><a href="#回退指定commit" class="headerlink" title="回退指定commit"></a>回退指定commit</h2><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git reset <span class="comment">--hard 版本号</span></span><br></pre></td></tr></table></figure></div><p>git log 查看之前提交的commit版本号，然后执行回退。</p><h2 id="回退命令"><a href="#回退命令" class="headerlink" title="回退命令"></a>回退命令</h2><div class="highlight-wrap" data-rel="Sql"><figure class="lpz highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard 版本号</span></span><br></pre></td></tr></table></figure></div><p>git reflog 查看之前执行命令版本号，然后执行回退。</p><h2 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h2><p>还有一种场景， 比如有三个commit，保留1和3，2舍去这个时候就要用到 cherry-pick<br></p><div class="highlight-wrap" data-rel="Lsl"><figure class="lpz highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reflog </span><br><span class="line">git reset --hard <span class="number">1</span>的版本号</span><br><span class="line">git cherry-pick  <span class="number">3</span>的版本号</span><br></pre></td></tr></table></figure></div><p></p><p>git reflog 找到commit 1和3的版本号 回退到第一个版本，然后再执行cherry-pick把3的修改合并到1里，<strong>如果有冲突就解决冲突</strong>。</p><h2 id="已经提交远端仓库"><a href="#已经提交远端仓库" class="headerlink" title="已经提交远端仓库"></a>已经提交远端仓库</h2><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">reset</span> --hard 版本号</span><br><span class="line">git <span class="built_in">push</span> -f <span class="built_in">origin</span>/远端分支</span><br></pre></td></tr></table></figure></div><p>先回退版本，然后<strong>强制推送到远端仓库</strong>。</p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Git版本回退.html" target="_blank" rel="external">http://blog.langpz.com/Git版本回退.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Git版本回退.html&title=《Git版本回退》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Git版本回退.html&title=《Git版本回退》 — 蓝胖纸&source=Git版本回退在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Git版本回退.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git版本回退》 — 蓝胖纸&url=http://blog.langpz.com/Git版本回退.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Git版本回退.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/解决node-sass安装失败.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">解决node-sass安装失败</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/给项目加一个骨架屏吧.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">给项目加一个骨架屏吧</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Git版本回退.html&title=《Git版本回退》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Git版本回退.html&title=《Git版本回退》 — 蓝胖纸&source=Git版本回退在工作中会碰见这个功能不要了，回退到上一个版本、或者merge错分支，下面简单记录下如何解决这些问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Git版本回退.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git版本回退》 — 蓝胖纸&url=http://blog.langpz.com/Git版本回退.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Git版本回退.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aQY6DMAwF0N7/0sx2pAr67UArzMtqVDohj8WvSfx6xWN7G/8/z7+zN/P7DK8rBgYGxm0Z2+HIb5DPs/dfyaPZXQkGBsYDGEkU5iGbXK0G+oc1Y2BgYBx+Jxn5zBgYGBjnBm4yT1Jc/vh3AwMD4yaM6svn8eLy2ZLAPfldHAMD44aMfNf9+39fcr6BgYFxK8ZWHNUir3owubUGBgbGbEYecElZlhdwydV8PRgYGBjVVomVDbheuGNgYMxmrLdwJVtmx0s84XACAwPjMYz1Y8WVFo2EGgUuBgbGUEYecL12rt7RYyGCMTAwRjPyoi1fSl5c9krS3btjYGAMZZy7WZaXgyvhvvu7gYGBMZRRPbDMF12N1+NIbbaxYmBgjGDkRdh6KK+UmOUzWAwMjEGMagNEtdmrt9zeJxgYGFMZvQaI6kZb3vjVXA8GBsZoxgqm2jCRPJSVcMfAwHgOo7etn7wSH0dztXWjsEeIgYHxAEZ1s773mPJiNGq5wMDAGMrIX1N7N1spH6PjCgwMjAcw8lIsb5uoHg98de8QAwPjhozTSrRW4FbjPioNMTAwRjC24ki2zKrxmsz2IXYxMDBGM07L7Li8y+dpHg9gYGAMZSQhW23tWnkovTVgYGA8gZEH3xXHCdXZChcwMDAez0iCuHcIkQcxBgYGRm9BveBOtvYuKQ0xMDBuwsg3y3rHnL0WjXw7DwMDYzaj9+q4ssWWBHQeuxgYGKMZf3PodHIsw13yAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

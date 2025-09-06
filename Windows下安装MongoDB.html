@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Windows下安装MongoDB | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Windows下安装MongoDBMongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下安装MongoDB">
+<meta property="og:url" content="http://blog.langpz.com/Windows下安装MongoDB.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Windows下安装MongoDBMongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows下安装MongoDB">
+<meta name="twitter:description" content="Windows下安装MongoDBMongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Windows下安装MongoDB</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Windows下安装MongoDB</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-08T15:30:32.000Z" itemprop="datePublished" class="page-time">
+  2018-05-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Windows下安装MongoDB"><span class="post-toc-number">1.</span> <span class="post-toc-text">Windows下安装MongoDB</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MongoDB特点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">MongoDB特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MongoDB基本概念"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">MongoDB基本概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载和安装"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">下载和安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行MongoDB"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">运行MongoDB</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#连接MongoDB"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">连接MongoDB</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作MongoDB"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">操作MongoDB</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Windows下安装MongoDB"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Windows下安装MongoDB</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-08 15:30:32" datetime="2018-05-08T15:30:32.000Z"  itemprop="datePublished">2018-05-08</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Windows下安装MongoDB"><a href="#Windows下安装MongoDB" class="headerlink" title="Windows下安装MongoDB"></a>Windows下安装MongoDB</h1><p>MongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。<br><a id="more"></a></p><h2 id="MongoDB特点"><a href="#MongoDB特点" class="headerlink" title="MongoDB特点"></a>MongoDB特点</h2><p>和关系型数据库比较，面向文档的数据库不再有“行”（row）的概念，取而代之的是更为灵活的“文档”（document）模型。通过再文档中嵌入文档和数组，面向文档的方法能够仅使用一条记录来表现复杂的层次关系。<br>另外，不再有预定义模式，文档的键（key）和值（value）不再是固定的类型和大小。由于没有固定的模式，根据需要添加或删除字段变得更容易。可以进行快速迭代，所以开发进程得到加快。</p><h2 id="MongoDB基本概念"><a href="#MongoDB基本概念" class="headerlink" title="MongoDB基本概念"></a>MongoDB基本概念</h2><p>文档是MongoDB中数据的基本单元，非常类似于关系型数据库管理系统中的行。<br>集合(collection)可以看作是一个拥有动态模式(dynamic schema)的表。<br>MongoDB的一个实例可以拥有多个相互独立的数据库(database)，每一个数据库都拥有自己的集合。<br>每一个文档都有一个特殊的键“_id”，这个键在文档所属的集合中是唯一的。</p><h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><p><a href="https://www.mongodb.com/download-center#atlas" target="_blank" rel="external">下载地址</a><br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png" alt></div><div class="image-caption"></div></figure><br>点击下载，下载完安装，用默认设置。<p></p><h2 id="运行MongoDB"><a href="#运行MongoDB" class="headerlink" title="运行MongoDB"></a>运行MongoDB</h2><p>命令提示符（cmd）执行，具体路径需要看安装的版本，我的是3.6版本。<br></p><div class="highlight-wrap" data-rel="Taggerscript"><figure class="lpz highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd C:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.6<span class="symbol">\b</span>in</span><br><span class="line">mongod --dbpath d:<span class="symbol">\d</span>b</span><br></pre></td></tr></table></figure></div><p></p><p>控制台会输出一些东西，没有报错MongoDB就启动了。<br>这样启动比较麻烦，每次都要启动，所以可以把它注册成windows 的服务<br></p><div class="highlight-wrap" data-rel="Lasso"><figure class="lpz highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用管理员权限运行</span></span><br><span class="line">mongod -<span class="params">-install</span> -<span class="params">-dbpath</span> d:\<span class="built_in">data</span>\db -<span class="params">-logpath</span> d:\<span class="built_in">data</span>\<span class="keyword">log</span>\<span class="keyword">log</span>.txt</span><br><span class="line">net start MongoDB  <span class="comment">// 启动服务</span></span><br></pre></td></tr></table></figure></div><p></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">services<span class="selector-class">.msc</span> <span class="comment">// 查看服务</span></span><br><span class="line">net stop mongodb   <span class="comment">// 停止服务</span></span><br></pre></td></tr></table></figure></div><p>删除服务<br></p><div class="highlight-wrap" data-rel="Jboss-cli"><figure class="lpz highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod <span class="params">--remove</span> <span class="params">--serviceName</span> MongoDB  <span class="string">//</span> MongoDB是服务名</span><br></pre></td></tr></table></figure></div><p></p><p>MongoDB 还可以通过配置文件启动<br>可以去官网查看<a href="https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank" rel="external">https://docs.mongodb.com/manual/reference/configuration-options/</a></p><h2 id="连接MongoDB"><a href="#连接MongoDB" class="headerlink" title="连接MongoDB"></a>连接MongoDB</h2><p>在打开一个命令提示符（cmd）之前运行的MongoDB那个不要关闭，因为没有注册成windows的服务，关闭就找不到数据库了。<br></p><div class="highlight-wrap" data-rel="Taggerscript"><figure class="lpz highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd C:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ongoDB<span class="symbol">\S</span>erver<span class="symbol">\3</span>.6<span class="symbol">\b</span>in</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure></div><p></p><p>这样就链接上数据库了，当然还会输出一大堆东西。</p><h2 id="操作MongoDB"><a href="#操作MongoDB" class="headerlink" title="操作MongoDB"></a>操作MongoDB</h2><p>我们先创建一个数据库，再刚才连接MongoDB的cmd执行<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> test02</span><br></pre></td></tr></table></figure></div><p></p><p>创建一个test02的数据库并切换过去。<br>db变量指向当前数据库。<br>向集合里插入文档，之前也讲了MongoDB没有预定义模式，所以不用新建表和表结构了。<br>insert方法 把一条文档保存到集合里。<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.user_table</span><span class="selector-class">.insert</span>(&#123;<span class="string">"name"</span>, <span class="string">"lanpangzhi"</span>, <span class="string">"age"</span>: <span class="number">18</span>&#125;)</span><br></pre></td></tr></table></figure></div><p></p><p>查看集合里面的文档。<br>find和findOne方法可以用于查询集合里的文档。只想查看一个文件，可以用findOne<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.user_table</span><span class="selector-class">.find</span>()</span><br><span class="line">db<span class="selector-class">.user_table</span><span class="selector-class">.findOne</span>()</span><br></pre></td></tr></table></figure></div><p></p><p>find和findOne还可以接受一个查询文档作为限定条件。<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.user_table</span><span class="selector-class">.find</span>(&#123;<span class="string">"name"</span>: <span class="string">"lanpangzhi"</span>&#125;)</span><br></pre></td></tr></table></figure></div><p></p><p>更新集合里面的文档<br>update方法接受（至少）两个参数：第一个是限定条件（用于匹配待更新的文档），第二个是新的文档。<br></p><div class="highlight-wrap" data-rel="Xquery"><figure class="lpz highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user_table.<span class="keyword">update</span>(&#123;name: lanpangzhi&#125;,&#123;<span class="string">"name"</span>: <span class="string">"lanpangzhi"</span>, <span class="string">"age"</span>: <span class="number">18</span>, <span class="string">"sex"</span>: <span class="number">1</span>&#125;);</span><br></pre></td></tr></table></figure></div><p></p><p>删除集合里面的文档<br>remove方法可将数据库的集合永久删除，如果不加参数默认把集合里面所有的文档删除。它可以接受一个限定条件的文档作为参数。<br></p><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db<span class="selector-class">.user_table</span><span class="selector-class">.remove</span>(&#123;<span class="string">"name"</span>: <span class="string">"aaa"</span>&#125;)</span><br></pre></td></tr></table></figure></div><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Windows下安装MongoDB.html" target="_blank" rel="external">http://blog.langpz.com/Windows下安装MongoDB.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Windows下安装MongoDB.html&title=《Windows下安装MongoDB》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Windows下安装MongoDB.html&title=《Windows下安装MongoDB》 — 蓝胖纸&source=Windows下安装MongoDBMongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Windows下安装MongoDB.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows下安装MongoDB》 — 蓝胖纸&url=http://blog.langpz.com/Windows下安装MongoDB.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Windows下安装MongoDB.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node连接MySQL.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node连接MySQL</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Windows下安装MySQL.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Windows下安装MySQL</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Windows下安装MongoDB.html&title=《Windows下安装MongoDB》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Windows下安装MongoDB.html&title=《Windows下安装MongoDB》 — 蓝胖纸&source=Windows下安装MongoDBMongoDB是一种面向文档的数据库管理系统，由C++撰写而成，以此来解决应用程序开发社区中的大量现实问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Windows下安装MongoDB.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows下安装MongoDB》 — 蓝胖纸&url=http://blog.langpz.com/Windows下安装MongoDB.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Windows下安装MongoDB.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQW7DMAwF0dz/0inQVYvU9nzSaSBxtDJiO9bTghBJPR54PL/H0S+v1z/H61vnv7/evW3IkCFjWcbzdPBJE+TRW3xRDqkyZMgYwDgPsuQ6XRoScMncZMiQIYNMiwdQvk2UIUOGjH7ArSWuBCxDhgwZnSSWb/J4+CbJ7c25uAwZMhZkpI2B/7x+Y39DhgwZizCejVELo7VN5MU/yJAhY2vG+ef5wYs+iRTjLmYoQ4aMTRlpEe38mRRMkGjpZciQMYBBJsdLb7UNXxrcf92VIUPG1ozOtHhhLm0A8P958F2nDBkylmXwYxNpwE2Xgx+w+ONJGTJkbM0gf8HrdnGkD79+kQbLkCFja0b6WtqS5CGbBG4ZMmRMY6TFMr5RSyfd2XTKkCFjGoNv0fiRi1rZjhcHZciQMYdRazT2i2j8rcMkWYYMGVszeCEsDYW15/uLKEOGjP0YaasyTTV5qa62EEE+LUOGjGUZ/YMO5MOdlkCwxZQhQ8YARnrAK71LAmurtSlDhowxDF5EI0G2VsIrlu1kyJAxkkEORvDTDrXkliyxDBkyJjA6yWcaoGtpcGvIkCFjcca7D1vwtihnf+DMiAwZMj7KuDf4cvDN6asMGTIGMNLUsdZ6TINv3MiUIUPGAEYnRJKkNN1EkrKgDBkyZBBG/93aUQ8ZMmTISJuU/ew5bTbIkCFjJuPeY6n9J/kWU4YMGRMYncZAmuKSpPT8ydYRDRkyZKzH+AIUuA8sUjQR+wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

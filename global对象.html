@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>global对象 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="global全局对象在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。在游览器Javascript中全局对象是window，而Node.js中全局对象是global。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="global对象">
+<meta property="og:url" content="http://blog.langpz.com/global对象.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="global全局对象在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。在游览器Javascript中全局对象是window，而Node.js中全局对象是global。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="global对象">
+<meta name="twitter:description" content="global全局对象在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。在游览器Javascript中全局对象是window，而Node.js中全局对象是global。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">global对象</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">global对象</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-02T14:33:27.000Z" itemprop="datePublished" class="page-time">
+  2018-02-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#global全局对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">global全局对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全局变量在所有模块中均可使用。-但以下变量的作用域只在模块内"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">全局变量在所有模块中均可使用。 但以下变量的作用域只在模块内</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dirname"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">__dirname</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#filename"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">__filename</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#setImmediate-callback-…args"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">setImmediate(callback[, …args])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#clearImmediate-immediate"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">clearImmediate(immediate)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#process-进程"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">process 进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-cwd"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">process.cwd()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-argv"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">process.argv</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-env"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">process.env</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-memoryUsage"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">process.memoryUsage()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-chdir-directory"><span class="post-toc-number">1.6.5.</span> <span class="post-toc-text">process.chdir(directory)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#process-nextTick-callback-…args"><span class="post-toc-number">1.6.6.</span> <span class="post-toc-text">process.nextTick(callback[, …args])</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-global对象"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">global对象</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-02 14:33:27" datetime="2018-02-02T14:33:27.000Z"  itemprop="datePublished">2018-02-02</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="global全局对象"><a href="#global全局对象" class="headerlink" title="global全局对象"></a>global全局对象</h1><p>在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。<br>在游览器Javascript中全局对象是window，而Node.js中全局对象是global。<br><a id="more"></a></p><h2 id="全局变量在所有模块中均可使用。-但以下变量的作用域只在模块内"><a href="#全局变量在所有模块中均可使用。-但以下变量的作用域只在模块内" class="headerlink" title="全局变量在所有模块中均可使用。 但以下变量的作用域只在模块内"></a>全局变量在所有模块中均可使用。 但以下变量的作用域只在模块内</h2><div class="highlight-wrap" data-rel="Crystal"><figure class="lpz highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__dirname</span><br><span class="line">__filename</span><br><span class="line">exports</span><br><span class="line"><span class="class"><span class="keyword">module</span></span></span><br><span class="line"><span class="keyword">require</span>()</span><br></pre></td></tr></table></figure></div><h2 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(__dirname) <span class="meta"># 获取当前模块的文件所在的文件夹名称的绝对路径</span></span><br></pre></td></tr></table></figure><h2 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(__filename) <span class="meta"># 获取当前模块的文件名称-解析后的绝对路径</span></span><br></pre></td></tr></table></figure><h2 id="setImmediate-callback-…args"><a href="#setImmediate-callback-…args" class="headerlink" title="setImmediate(callback[, …args])"></a>setImmediate(callback[, …args])</h2><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'坑呀'</span>) <span class="comment"># 把参数函数放到下一个时间环中执行</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div><h2 id="clearImmediate-immediate"><a href="#clearImmediate-immediate" class="headerlink" title="clearImmediate(immediate)"></a>clearImmediate(immediate)</h2><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'坑呀'</span>) <span class="comment"># 取消一个由 setImmediate() 创建的 Immediate 对象</span></span><br><span class="line">&#125;);</span><br><span class="line">clearImmediate(a)</span><br></pre></td></tr></table></figure></div><h2 id="process-进程"><a href="#process-进程" class="headerlink" title="process 进程"></a>process 进程</h2><h3 id="process-cwd"><a href="#process-cwd" class="headerlink" title="process.cwd()"></a>process.cwd()</h3><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">process</span><span class="selector-class">.cwd</span>()) # 方法返回 <span class="selector-tag">Node</span><span class="selector-class">.js</span> 进程当前工作的目录。</span><br></pre></td></tr></table></figure></div><h3 id="process-argv"><a href="#process-argv" class="headerlink" title="process.argv"></a>process.argv</h3><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.js</span></span><br><span class="line">console.log(process.argv) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line">node <span class="selector-tag">a</span><span class="selector-class">.js</span> a=<span class="number">1</span> b=<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">[ <span class="string">'C:\\Program Files\\nodejs\\node.exe'</span>,</span><br><span class="line">  <span class="string">'c:\\Users\\windows\\Desktop\\新建文件夹\\a.js'</span>,</span><br><span class="line">  <span class="string">'a=1'</span>,</span><br><span class="line">  <span class="string">'b=2'</span> ]</span><br></pre></td></tr></table></figure></div><p>process.argv 属性返回一个数组，这个数组包含了启动Node.js进程时的命令行参数。第一个元素为process.execPath。如果需要获取argv[0]的值请参见 process.argv0。第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。</p><h3 id="process-env"><a href="#process-env" class="headerlink" title="process.env"></a>process.env</h3><div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="built_in">process</span>.env) <span class="comment"># 返回一个包含用户环境信息的对象</span></span><br></pre></td></tr></table></figure></div><p>可以修改这个对象<br></p><div class="highlight-wrap" data-rel="Dockerfile"><figure class="lpz highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">process.<span class="keyword">env</span>.foo = <span class="string">'bar'</span>;</span><br><span class="line">console.log(process.<span class="keyword">env</span>.foo); <span class="comment"># 输出bar</span></span><br></pre></td></tr></table></figure></div><p></p><p>但是不可以用这种方法去修改<br></p><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">node</span> <span class="title">http</span>.js  'process.env.foo = <span class="string">"bar"</span>'</span><br></pre></td></tr></table></figure></div><p></p><p>用 delete从process.env中删除一个属性<br></p><div class="highlight-wrap" data-rel="Mel"><figure class="lpz highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process.<span class="keyword">env</span>.foo = <span class="string">'bar'</span>;</span><br><span class="line"><span class="keyword">delete</span> process.<span class="keyword">env</span>.foo;</span><br><span class="line">console.<span class="keyword">log</span>(process.<span class="keyword">env</span>.foo); # 输出 undefined</span><br></pre></td></tr></table></figure></div><p></p><p>注: 在process.env中新增一个属性，会将属性值转换成字符串、 在Windows系统下，环境变量是不区分大小写的。</p><h3 id="process-memoryUsage"><a href="#process-memoryUsage" class="headerlink" title="process.memoryUsage()"></a>process.memoryUsage()</h3><div class="highlight-wrap" data-rel="Less"><figure class="lpz highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">console</span><span class="selector-class">.log</span>(process.memoryUsage()) # 返回<span class="selector-tag">Node</span><span class="selector-class">.js</span>进程的内存使用情况的对象，该对象每个属性值的单位为字节。</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">&#123; <span class="attribute">rss</span>: <span class="number">23588864</span>,</span><br><span class="line">  <span class="attribute">heapTotal</span>: <span class="number">7708672</span>,</span><br><span class="line">  <span class="attribute">heapUsed</span>: <span class="number">4430656</span>,</span><br><span class="line">  <span class="attribute">external</span>: <span class="number">8224</span> &#125;</span><br></pre></td></tr></table></figure></div><p>rss（resident set size）：所有内存占用，包括指令区和堆栈。<br>heapTotal：”堆”占用的内存，包括用到的和没用到的。<br>heapUsed：用到的堆的部分。<br>external： V8 引擎内部的 C++ 对象占用的内存。</p><h3 id="process-chdir-directory"><a href="#process-chdir-directory" class="headerlink" title="process.chdir(directory)"></a>process.chdir(directory)</h3><div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="built_in">process</span>.cwd())</span><br><span class="line"><span class="built_in">process</span>.chdir(<span class="string">'..'</span>) <span class="comment"># 方法变更Node.js进程的当前工作目录，如果变更目录失败会抛出异常(例如，如果指定的目录不存在)。</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">process</span>.cwd())</span><br><span class="line"><span class="comment"></span><br><span class="line">// 输出   '..'切换到上一级目录</span></span><br><span class="line">C:\Users\windows\Desktop\新建文件夹</span><br><span class="line">C:\Users\windows\Desktop</span><br></pre></td></tr></table></figure></div><h3 id="process-nextTick-callback-…args"><a href="#process-nextTick-callback-…args" class="headerlink" title="process.nextTick(callback[, …args])"></a>process.nextTick(callback[, …args])</h3><div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">process</span>.nextTick(<span class="function"><span class="keyword">function</span>()&#123;</span></span><br><span class="line">  console.<span class="built_in">log</span>(<span class="string">'nextTick'</span>); <span class="comment"># 放到当前任务末尾执行</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2017/04/memory-leak.html</a><br><a href="http://nodejs.cn/api/process.html#process_process" target="_blank" rel="external">http://nodejs.cn/api/process.html#process_process</a><br><a href="http://nodejs.cn/api/globals.html" target="_blank" rel="external">http://nodejs.cn/api/globals.html</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/global对象.html" target="_blank" rel="external">http://blog.langpz.com/global对象.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/global对象.html&title=《global对象》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/global对象.html&title=《global对象》 — 蓝胖纸&source=global全局对象在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。在游览器Javascript中全局对象是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/global对象.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《global对象》 — 蓝胖纸&url=http://blog.langpz.com/global对象.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/global对象.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Buffer对象.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Buffer对象</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/http模块.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">http模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/global对象.html&title=《global对象》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/global对象.html&title=《global对象》 — 蓝胖纸&source=global全局对象在Node.js里面有一个叫global的对象，它的属性和方法可以在全局中访问到，即全局变量。在游览器Javascript中全局对象是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/global对象.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《global对象》 — 蓝胖纸&url=http://blog.langpz.com/global对象.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/global对象.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aMY7EIAwF0Nz/0rPSVtsMfGNAWelRTTFKHiks+8PzxOvzu/7+/raqz3lOLFxc3DY3ef0nWN+eOd5w+RPg4uJe5ObFa622jAtZYsDFxX0nN9/GmDIuc7i4uP+Xu7aZcQuFi4v7Nm4y/IxfWS1tx2c1XFzcBnctMN37+3i+i4uLu+lUIg84kuhkw9txcXGvcPsDSdKm9Dcz2SUuLu5W7toYUw1Gk0+z2OLg4uIe4ybhaX5JqxOOTLaEi4t7hZugqxFqv+RNnoaLi3uY2x94krEneXJ0kIOLi3uR24FWZ5M8gpk0N7i4uMe4a8Uob3qqA0/hA+Hi4h7jJvHluRg0P4bBxcW9ya3WvOpxSycenZQzXFzcw9xxGtkPTKvdVlQQcXFxj3HXLl6sNT3VK6GT4QcXF/cid1yecmi1nG04ZMXFxd3E7Ryr5AcqBUT+f1xc3GPctRak88rqdU9cXNz73HwlA1J1k7tKJy4u7gluXrzyGCUpQ2tXPHFxcW9y+0HG2kBVntVwcXFfxk2OParEcjnDxcV9MTcZbPojU6vFwcXFbXPz4Sc/ZK0WqagI4uLiXuFWA9Nq41INSjbQcXFx17k/y/wz0vuf+DEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>js浮点运算0.1+0.2 = 0.30000000000000004 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="js浮点运算0.1+0.2 == 0.30000000000000004由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型。计算的时候会将超出精度部分进行”零舍一入”。导致 0.1+0.2 = 0.30000000000000004，其他采用IEEE 754标准的语言也有误差，可以去这个网站上查看https://0.30000000000000004.com/。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js浮点运算0.1+0.2 = 0.30000000000000004">
+<meta property="og:url" content="http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="js浮点运算0.1+0.2 == 0.30000000000000004由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型。计算的时候会将超出精度部分进行”零舍一入”。导致 0.1+0.2 = 0.30000000000000004，其他采用IEEE 754标准的语言也有误差，可以去这个网站上查看https://0.30000000000000004.com/。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js浮点运算0.1+0.2 = 0.30000000000000004">
+<meta name="twitter:description" content="js浮点运算0.1+0.2 == 0.30000000000000004由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型。计算的时候会将超出精度部分进行”零舍一入”。导致 0.1+0.2 = 0.30000000000000004，其他采用IEEE 754标准的语言也有误差，可以去这个网站上查看https://0.30000000000000004.com/。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js浮点运算0.1+0.2 = 0.30000000000000004</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js浮点运算0.1+0.2 = 0.30000000000000004</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-12-31T19:30:53.000Z" itemprop="datePublished" class="page-time">
+  2021-12-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js浮点运算0-1-0-2-0-30000000000000004"><span class="post-toc-number">1.</span> <span class="post-toc-text">js浮点运算0.1+0.2 == 0.30000000000000004</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#decimal-js"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">decimal.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mathjs"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">mathjs</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-js浮点运算0-1-0-2-0-30000000000000004"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js浮点运算0.1+0.2 = 0.30000000000000004</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-12-31 19:30:53" datetime="2021-12-31T19:30:53.000Z"  itemprop="datePublished">2021-12-31</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="js浮点运算0-1-0-2-0-30000000000000004"><a href="#js浮点运算0-1-0-2-0-30000000000000004" class="headerlink" title="js浮点运算0.1+0.2 == 0.30000000000000004"></a>js浮点运算0.1+0.2 == 0.30000000000000004</h1><p>由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型。计算的时候会将超出精度部分进行”零舍一入”。导致 0.1+0.2 = 0.30000000000000004，其他采用<a href="https://standards.ieee.org/standard/754-2008.html" target="_blank" rel="external">IEEE 754标准</a>的语言也有误差，可以去这个网站上查看<a href="https://0.30000000000000004.com/#javascript" target="_blank" rel="external">https://0.30000000000000004.com/</a>。<br><a id="more"></a></p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>可以用第三方库来解决，或者如果是一位小数x10后再运算后再除以10</p><h3 id="decimal-js"><a href="#decimal-js" class="headerlink" title="decimal.js"></a>decimal.js</h3><div class="highlight-wrap" data-rel="Pony"><figure class="lpz highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="function"><span class="keyword">new</span> <span class="title">Decimal</span>(<span class="number">0.1</span>)</span><br><span class="line"><span class="title">x</span> = <span class="title">x</span>.<span class="title">plus</span>(<span class="number">0.2</span>)               <span class="comment">// '0.3'</span></span></span><br></pre></td></tr></table></figure></div><p><a href="https://jsbin.com/kehogopixo/edit?html,js,console" target="_blank" rel="external">demo</a><br><a href="https://github.com/MikeMcl/decimal.js" target="_blank" rel="external">https://github.com/MikeMcl/decimal.js</a></p><h3 id="mathjs"><a href="#mathjs" class="headerlink" title="mathjs"></a>mathjs</h3><div class="highlight-wrap" data-rel="Groovy"><figure class="lpz highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let x = math.format(<span class="number">0.1</span>+<span class="number">0.2</span>, &#123;<span class="string">notation:</span> <span class="string">'fixed'</span>, <span class="string">precision:</span> <span class="number">1</span>&#125;)               <span class="comment">// '0.3'</span></span><br><span class="line"><span class="comment">// precision 保留几位小数</span></span><br></pre></td></tr></table></figure></div><p><a href="https://jsbin.com/fatowebuyo/2/edit?html,js,console" target="_blank" rel="external">demo</a><br><a href="https://github.com/josdejong/mathjs" target="_blank" rel="external">https://github.com/josdejong/mathjs</a></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://standards.ieee.org/standard/754-2008.html" target="_blank" rel="external">IEEE 754标准</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/js浮点运算0-1-0-2-0-30000000000000004.html" target="_blank" rel="external">http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&title=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&title=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&source=js浮点运算0.1+0.2 == 0.30000000000000004由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Node-js使用Nodemailer发送邮件通知.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Node.js使用Nodemailer发送邮件通知</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/vue-cli4配置生产环境删除console-log.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-cli4配置生产环境删除console.log</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&title=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&title=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&source=js浮点运算0.1+0.2 == 0.30000000000000004由于JavaScript的Number类型为双精度IEEE 754 64位浮点类型..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js浮点运算0.1+0.2 = 0.30000000000000004》 — 蓝胖纸&url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/js浮点运算0-1-0-2-0-30000000000000004.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aUW6DUAwEwN7/0u0BUpJdm5dG1fAVEQoMlbCzfl9f8fb9sF0d83z/4zGP317tuTr/DRseHh7e+tbzyzw/5uq2kmOujm+vhYeHh3eOl7/Q8xd3ctP5eZ4XmMv9eHh4eB/D25SQpJnGw8PD+3+85G/zVjhh4OHh4X0aL7nwrL1O4tc8zD2YteDh4eHFvHyK9Dmfj8z38PDw8NZT9TZanS042Lfjl3eLh4eHd4DXtryzYX8eHOTBRL7IAA8PD+8E7/kX+VBq9mjuiiGKMBcPDw9vwWtfxDPSbLjVLlx4MdnDw8PDu5WX15A2qmgz1Vl5ePFbAQ8PD+9WXrRoKfjj/DL1DcWxRT3Hw8PDwxvxTkQJOTJp2VdLr/Dw8PAO8PYv6Nm4K2+4Z2dY5c14eHh4JS8vA7OtjWhnJSFKXPDw8PBGvP0AbLMnKTZ5WfrlGDw8PLwDvOR13540eUCbRrmNRfDw8PDO8TaFYf/6ztl1u4+Hh4f3Fl47gmqLSh7mbgILPDw8vBO82WKmzeO4d2D2IibGw8PDO8CrZ2WLUVY+7G/HYHUYgYeHh7fgnRhTbYLg+tdAUhLw8PDw3s6btct5yckLUh184OHh4R3gJQ3uPn5Nztm27PXyLDw8PLw38vJ4IrnR9mzJoqt6yoeHh4e35m2GXu0igzbsyEvRi0VXeHh4eMd4m9b2RCTRLrrCw8PD+yve5iXeDr3yc64CXDw8PLybeJvX9CwmSD63i7Eu/zF4eHh4B3gnxlF5k92GvHctAsPDw8Pb8/YR7X7xQTvcKq6Oh4eHd4w3G4y1o69Zq70KJvDw8PA+gJeP7ffDs/xx31YY8PDw8A7z8gu37LzA1PM9PDw8vJt4eRCwYbTLCNq2fpW14OHh4d00VW+D11nJ2dz6ZsEWHh4eXsn7AXkM5CljXQSsAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

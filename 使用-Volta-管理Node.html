@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>使用 Volta 管理Node | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="VoltaVolta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 跨平台，支持 macOS、Windows、Linux 、按项目自动版本切换、多个包管理器等优势。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Volta 管理Node">
+<meta property="og:url" content="http://blog.langpz.com/使用-Volta-管理Node.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="VoltaVolta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 跨平台，支持 macOS、Windows、Linux 、按项目自动版本切换、多个包管理器等优势。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Volta 管理Node">
+<meta name="twitter:description" content="VoltaVolta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 跨平台，支持 macOS、Windows、Linux 、按项目自动版本切换、多个包管理器等优势。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用 Volta 管理Node</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用 Volta 管理Node</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-06-24T15:11:37.000Z" itemprop="datePublished" class="page-time">
+  2023-06-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Volta"><span class="post-toc-number">1.</span> <span class="post-toc-text">Volta</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#macOS-Unix-安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">macOS / Unix 安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows安装"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Windows安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-node-和yarn"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装 node 和yarn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用项目工具"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用项目工具</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Volta-命令"><span class="post-toc-number">4.</span> <span class="post-toc-text">Volta 命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#workspaces"><span class="post-toc-number">5.</span> <span class="post-toc-text">workspaces</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pnpm支持"><span class="post-toc-number">6.</span> <span class="post-toc-text">pnpm支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全局安装"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">全局安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#迁移"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">迁移</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Volta-Could-not-download-node"><span class="post-toc-number">7.</span> <span class="post-toc-text">Volta Could not download node</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Volta-error-Could-not-create-shared-environment-for-package"><span class="post-toc-number">8.</span> <span class="post-toc-text">Volta error: Could not create shared environment for package</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">9.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用-Volta-管理Node"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用 Volta 管理Node</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-06-24 15:11:37" datetime="2023-06-24T15:11:37.000Z"  itemprop="datePublished">2023-06-24</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Volta"><a href="#Volta" class="headerlink" title="Volta"></a>Volta</h1><p>Volta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 <strong>跨平台，支持 macOS、Windows、Linux </strong>、<strong>按项目自动版本切换</strong>、<strong>多个包管理器</strong>等优势。<br><a id="more"></a></p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>如果之前安装过<code>node</code> 或者 <code>nvm n</code> 请先卸载掉再安装 Volta</p><h2 id="macOS-Unix-安装"><a href="#macOS-Unix-安装" class="headerlink" title="macOS / Unix 安装"></a>macOS / Unix 安装</h2><div class="highlight-wrap" data-rel="Vim"><figure class="lpz highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http<span class="variable">s:</span>//<span class="built_in">get</span>.volta.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure></div><p>如果没有自动添加到环境变量，需要自己手动配置</p><p>如果您的shell是bash，进入终端，编辑环境变量文件~/.bash_profile, 输入如下内容<br>如果您的shell是zsh，进入终端，编辑环境变量文件~/.zprofile，输入如下内容<br></p><div class="highlight-wrap" data-rel="Routeros"><figure class="lpz highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">VOLTA_HOME</span>=<span class="string">"<span class="variable">$HOME</span>/.volta"</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">"<span class="variable">$VOLTA_HOME</span>/bin:<span class="variable">$PATH</span>"</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="Windows安装"><a href="#Windows安装" class="headerlink" title="Windows安装"></a>Windows安装</h2><p><a href="https://github.com/volta-cli/volta/releases" target="_blank" rel="external">下载地址</a> 目前最新版是 volta-1.1.1-windows-x86_64.msi<br>安装过程中需要把360卫士之类的安全管家关闭掉，否则有可能无法自动添加到环境变量。</p><p>安装完可以在命令行输入 <code>volta</code> 检查是否能正常运行。</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装-node-和yarn"><a href="#安装-node-和yarn" class="headerlink" title="安装 node 和yarn"></a>安装 node 和yarn</h2><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volta install <span class="keyword">node</span><span class="title">@11</span>.<span class="number">0.0</span>  // 安装 <span class="keyword">node</span> <span class="title">11</span>.<span class="number">0.0</span>版本</span><br><span class="line">volta install yarn@<span class="number">1.19</span> // 安装 yarn <span class="number">1.19</span>版本</span><br><span class="line">volta install <span class="keyword">node</span><span class="title">@latest</span>  // 安装 <span class="keyword">node</span> <span class="title">最新版本</span></span><br></pre></td></tr></table></figure></div><p>固定项目节点引擎（在项目根目录执行）<br></p><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volta pin <span class="keyword">node</span><span class="title">@11</span>.<span class="number">0.0</span></span><br><span class="line">volta pin yarn@<span class="number">1.19</span></span><br></pre></td></tr></table></figure></div><p></p><p>将Volta保存到package.json<br></p><div class="highlight-wrap" data-rel="Xquery"><figure class="lpz highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"volta"</span>: &#123;</span><br><span class="line">  <span class="string">"node"</span>: <span class="string">"11.0.0"</span>,</span><br><span class="line">  <span class="string">"yarn"</span>: <span class="string">"1.19.2"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>Volta 将 Node 引擎的确切版本保存在您的中package.json，以便您可以将您的选择提交到 git。从那时起，每次您在项目目录中运行 Node 时，Volta 都会<strong>自动切换到您选择的 Node 版本</strong>。同样，您的所有协作者都可以通过在其开发计算机上安装 Volta 来执行相同的操作。</p><h2 id="使用项目工具"><a href="#使用项目工具" class="headerlink" title="使用项目工具"></a>使用项目工具</h2><p>node和包管理工具可执行文件不是工具链中唯一的智能工具。工具链中的包二进制文件也可以识别当前目录并尊重当前项目结构。<br>例如，安装 Typescript 包会将编译器可执行文件 ( tsc) 添加到工具链中。</p><div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install --<span class="built_in">global</span> typescript</span><br></pre></td></tr></table></figure></div><p>根据您所在的项目，此可执行文件将切换到项目选择的 TypeScript 版本：<br></p><div class="highlight-wrap" data-rel="Jboss-cli"><figure class="lpz highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/path/to/project-using-typescript-3.9.4</span></span><br><span class="line">tsc <span class="params">--version</span> <span class="string">//</span> 3.9.4</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="string">/path/to/project-using-typescript-4.1.5</span></span><br><span class="line">tsc <span class="params">--version</span> <span class="string">//</span> 4.1.5</span><br></pre></td></tr></table></figure></div><p></p><p>不仅 Node 和 npm / Yarn 等包管理器，而且通过它们安装的包二进制文件都受到 Volta 的监控。因此，它会<strong>自动切换每个项目的版本</strong>。注:目前volta支持<code>pnpm</code>但是不支持全局安装 <code>例如pnpm install -g</code></p><h1 id="Volta-命令"><a href="#Volta-命令" class="headerlink" title="Volta 命令"></a>Volta 命令</h1><p>这是命令行二进制文件的命令参考volta，其语法如下：<br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">The JavaScript Launcher ⚡</span><br><span class="line"></span><br><span class="line">    To install a tool <span class="keyword">in</span> your toolchain, use `volta install`.</span><br><span class="line">    To pin your project's runtime <span class="keyword">or</span> package manager, use `volta pin`.</span><br><span class="line"></span><br><span class="line">USAGE:</span><br><span class="line">    volta [FLAGS] [SUBCOMMAND]</span><br><span class="line"></span><br><span class="line">FLAGS:</span><br><span class="line">        <span class="comment">--verbose    </span></span><br><span class="line">            Enables verbose diagnostics</span><br><span class="line"></span><br><span class="line">        <span class="comment">--quiet      </span></span><br><span class="line">            Prevents unnecessary output</span><br><span class="line"></span><br><span class="line">    -v, <span class="comment">--version    </span></span><br><span class="line">            Prints <span class="keyword">the</span> current <span class="built_in">version</span> <span class="keyword">of</span> Volta</span><br><span class="line"></span><br><span class="line">    -h, <span class="comment">--help       </span></span><br><span class="line">            Prints help information</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SUBCOMMANDS:</span><br><span class="line">    fetch          Fetches a tool <span class="keyword">to</span> <span class="keyword">the</span> <span class="keyword">local</span> machine</span><br><span class="line">    install        Installs a tool <span class="keyword">in</span> your toolchain</span><br><span class="line">    uninstall      Uninstalls a tool <span class="keyword">from</span> your toolchain</span><br><span class="line">    pin            Pins your project's runtime <span class="keyword">or</span> package manager</span><br><span class="line">    <span class="built_in">list</span>           Displays <span class="keyword">the</span> current toolchain</span><br><span class="line">    completions    Generates Volta completions</span><br><span class="line">    which          Locates <span class="keyword">the</span> actual binary <span class="keyword">that</span> will be called <span class="keyword">by</span> Volta</span><br><span class="line">    setup          Enables Volta <span class="keyword">for</span> <span class="keyword">the</span> current user / shell</span><br><span class="line">    <span class="built_in">run</span>            Run a command <span class="keyword">with</span> custom Node, npm, pnpm, <span class="keyword">and</span>/<span class="keyword">or</span> Yarn versions</span><br><span class="line">    help           Prints this message <span class="keyword">or</span> <span class="keyword">the</span> help <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">given</span> subcommand(s)</span><br></pre></td></tr></table></figure></div><p></p><ul><li><code>volta fetch</code> 允许您将工具提取到本地缓存中，而无需将其设置为默认值或使其可用，以供将来离线使用。</li><li><strong>volta install</strong> 安装工具的默认版本。如果该工具尚未在本地缓存，它也会下载该工具。</li><li><strong>volta uninstall</strong> 允许您删除任何已安装的全局包volta install。</li><li><strong>volta pin</strong> 更新项目package.json文件以使用选定版本的工具。</li><li><strong>volta list</strong> 查看已安装的 Node 运行时、包管理器和带有二进制文件的包。</li><li><code>volta completions</code> 为您的 shell 生成命令完成信息。</li><li><code>volta which</code> 定位并打开 Volta 启动实际的二进制文件。</li><li><code>volta setup</code> 通过修改当前用户的 来volta setup启用 Volta （以依赖于平台的方式）以包含 Volta shim 目录。PATH</li><li><code>volta run</code> 使用在命令行中指定的工具版本来运行您提供的命令。</li><li><code>volta help</code> 打印此消息或给定子命令的帮助。</li></ul><p><code>常用的命令</code>用蓝色标注出来了，对比nvm的好处是无感自动切换版本（<code>在项目目录执行的时候已经切换好版本了</code>）。速度更快。</p><h1 id="workspaces"><a href="#workspaces" class="headerlink" title="workspaces"></a>workspaces</h1><p>如果在单个存储库中有多个项目，都共享 Volta 设置。<br>“volta”在 中的部分中package.json，您可以使用 key 指定一个条目<strong>“extends”</strong>。该条目的值应该是另一个也有一个部分的 JSON 文件的路径”volta”。相对路径将相对于设置它们的文件进行解析。<br></p><div class="highlight-wrap" data-rel="Json"><figure class="lpz highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"volta"</span>: &#123;</span><br><span class="line">    <span class="attr">"extends"</span>: <span class="string">"../../package.json"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><p>只需要仓库根目录执行<code>volta pin</code> 固定版本 子项目通过<strong>extends</strong>引入根项目的<code>package.json</code>就可以实现共享 Volta 设置。</p><h1 id="pnpm支持"><a href="#pnpm支持" class="headerlink" title="pnpm支持"></a>pnpm支持</h1><p>pnpm目前处于实验阶段。要启用它，请确保将<strong>环境变量VOLTA_FEATURE_PNPM设置为1</strong>。在 Windows 上，可以将其添加到系统设置中的用户或系统环境变量中。在 Linux/Mac 上，您可以在配置文件脚本中设置值（例如.bash_profile、.zshrc或类似的）。<br>由于此支持是实验性的，因此可能存在一些悬而未决的问题。下面列出了一些已知的限制。</p><h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><p>目前，不支持全局安装（例如<code>pnpm install -g</code>），并且会导致错误。</p><h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>目前没有自动迁移功能，因此如果您之前已pnpm作为 Volta 全局安装，则需要通过调用 手动重新安装它volta install pnpm。在启用支持并重新安装之前，您可以pnpm通过卸载以前安装的软件包volta uninstall pnpm。一旦切换到本机 pnpm 支持，您可能无法pnpm通过调用相同的命令来删除隔离的旧包，因为目前还缺乏卸载实现。</p><h1 id="Volta-Could-not-download-node"><a href="#Volta-Could-not-download-node" class="headerlink" title="Volta Could not download node"></a>Volta Could not download node</h1><p>如果碰见 <strong>volta install node@11.0.0</strong>报错 <code>Volta Could not download node</code> 可以手动下载安装包再执行 <strong>volta install node@11.0.0</strong> 就可以安装成功了。</p><p><a href="https://registry.npmmirror.com/binary.html?path=node/" target="_blank" rel="external">node下载地址</a><br>然后找到对应版本<strong>Windows</strong> 下载 <code>win-xnn.zip</code>后缀 我这边下载的是 <code>node-v11.0.0-win-x64.zip</code><br><code>C:\Users\电脑账号名\AppData\Local\Volta\tools\inventory\node</code><br>放到这个目录下再执行<br></p><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volta install <span class="keyword">node</span><span class="title">@11</span>.<span class="number">0.0</span></span><br></pre></td></tr></table></figure></div><p></p><p>注:如果你有修改过<code>VOLTA_HOME</code> 环境变量请把node 放到配置环境变量的地址。</p><h1 id="Volta-error-Could-not-create-shared-environment-for-package"><a href="#Volta-error-Could-not-create-shared-environment-for-package" class="headerlink" title="Volta error: Could not create shared environment for package"></a>Volta error: Could not create shared environment for package</h1><p>如果npm or yarn 安装全局包出现这个报错，请使用<strong>管理员权限</strong>的命令行工具。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://volta.sh/" target="_blank" rel="external">volta</a><br><a href="https://zhuanlan.zhihu.com/p/585494072?utm_id=0" target="_blank" rel="external">Window下volta安装node失败解决方案</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/使用-Volta-管理Node.html" target="_blank" rel="external">http://blog.langpz.com/使用-Volta-管理Node.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Volta/">Volta</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用-Volta-管理Node.html&title=《使用 Volta 管理Node》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用-Volta-管理Node.html&title=《使用 Volta 管理Node》 — 蓝胖纸&source=VoltaVolta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 跨平台，支持 macOS、Windows、Lin..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用-Volta-管理Node.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用 Volta 管理Node》 — 蓝胖纸&url=http://blog.langpz.com/使用-Volta-管理Node.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用-Volta-管理Node.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/for-in-和-for-of-区别.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">for in 和 for of 区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/nvm切换node版本-npm-ERR-Unexpected-token.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">nvm切换node版本 npm ERR! Unexpected token &#39;.&#39;</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用-Volta-管理Node.html&title=《使用 Volta 管理Node》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用-Volta-管理Node.html&title=《使用 Volta 管理Node》 — 蓝胖纸&source=VoltaVolta 是一个JavaScript包管理器，基于rust构建的没有外部依赖项方便安装，支持 跨平台，支持 macOS、Windows、Lin..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用-Volta-管理Node.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用 Volta 管理Node》 — 蓝胖纸&url=http://blog.langpz.com/使用-Volta-管理Node.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用-Volta-管理Node.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27DMAxFUe9/0w7QqRP5fZICpq5GRWonOhoQFMnjkNf5t66fXD//9Pz6rfOyjl8sGDBgPJZxLtd1W8pPrp9Rvl/fGwwYMPZhrIOmy3CDqXJ8N3uGAQMGDDkQ62niOumEAQMGjD7gKkneOr3T/wsDBgwY+iU2C44Kfn0oX76Lw4AB44EMtzHwn3//sL8BAwaMhzDOLy292ak3DIxfhwEDxmiGMjbhhmB92EJvFUiBGAYMGEMZbvGrKeUrB5c1R2HAgDGbkbUw3a24xbLwQgsDBozRDD3LyoJmdq3NDhEGDBhTGXor0U0Nm7fsRiYMGDBGM/SkMBuSaJqjejEOBgwYOzCy4r57Dc6KesYxwYABYzSjaU8qsOxy6x4xDBgw5jHcVMy9piqFObcB8HG6DQYMGBsw9FJX0xbNrrI3bBgwYIxmuJdYd+RLGapoRjpgwICxAyMbV+1h68uqfQQwYMAYzXB7m9nP92MT1VwbDBgwRjCyMr07ltqkgNLzMGDA2IChj03oAdEdsMhGOmDAgLEzw03alG/Q00S3tQADBozZjGxDeoBujsku8MGAAWMc4zSX/q5bztOTyzdvwYABYzSjTx+bpDBLVZtgDQMGjOcy9FK+G/iyQQ19DzBgwNiN0ZThsjQuu77eTIvAgAEDRjQGoQfWaoAMBgwYMKLRLvfiWhXXYMCAsQHDHTnNAqjyZJhQwoABYzQjG3HoQ2TPrvobMGDAeAbjBQSlS6k0PR9PAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

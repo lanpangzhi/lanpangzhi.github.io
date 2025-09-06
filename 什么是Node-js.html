@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>什么是Node.js | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="什么是Node.jsNode.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是Node.js">
+<meta property="og:url" content="http://blog.langpz.com/什么是Node-js.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="什么是Node.jsNode.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么是Node.js">
+<meta name="twitter:description" content="什么是Node.jsNode.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">什么是Node.js</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">什么是Node.js</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-08T13:29:21.000Z" itemprop="datePublished" class="page-time">
+  2018-01-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是Node-js"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Node.js</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#I-O"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">I/O</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同步和异步"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">同步和异步</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻塞式和非阻塞式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">阻塞式和非阻塞式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单线程和多线程"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">单线程和多线程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件驱动"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">事件驱动</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-什么是Node-js"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">什么是Node.js</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-08 13:29:21" datetime="2018-01-08T13:29:21.000Z"  itemprop="datePublished">2018-01-08</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="什么是Node-js"><a href="#什么是Node-js" class="headerlink" title="什么是Node.js"></a>什么是Node.js</h1><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个解析器。<br>它实现了操作磁盘文件和搭建HTTP服务器，模块，操作系统进程等一些以前js没有实现功能。<br>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。<br><a id="more"></a></p><h2 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h2><p>输入(Input)： 从系统写入文件<br>输出(Output)： 从系统读取文件</p><h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><p>同步是指发起一个调用之后主线程挂起，调用者主动等待调用返回结果。<br>异步是指发起一个调用之后主线程还可以发起别的调用，被调用者通知调用者返回结果。</p><h2 id="阻塞式和非阻塞式"><a href="#阻塞式和非阻塞式" class="headerlink" title="阻塞式和非阻塞式"></a>阻塞式和非阻塞式</h2><p>非阻塞式是指发起一个调用不会阻塞主线程的执行，非阻塞式是实现异步的前提。<br>阻塞式是指发起一个调用主线程是被挂起，调用完成后才可以执行其他操作。</p><h2 id="单线程和多线程"><a href="#单线程和多线程" class="headerlink" title="单线程和多线程"></a>单线程和多线程</h2><p>单线程是指程序按顺序执行,前面的程序执行完后面才程序可以执行。<br>多线程是指同时执行多个程序，当前程序执行不影响其他程序执行。</p><h2 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h2><p>这种模型的程序运行流程是由用户的动作（如鼠标的按键，键盘的按键动作）或者是由其他程序的消息来决定的。</p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/什么是Node-js.html" target="_blank" rel="external">http://blog.langpz.com/什么是Node-js.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/什么是Node-js.html&title=《什么是Node.js》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/什么是Node-js.html&title=《什么是Node.js》 — 蓝胖纸&source=什么是Node.jsNode.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/什么是Node-js.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《什么是Node.js》 — 蓝胖纸&url=http://blog.langpz.com/什么是Node-js.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/什么是Node-js.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Node模块机制.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Node模块机制</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/VSCode-配置Node调试环境.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VSCode 配置Node调试环境</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/什么是Node-js.html&title=《什么是Node.js》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/什么是Node-js.html&title=《什么是Node.js》 — 蓝胖纸&source=什么是Node.jsNode.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 可以让JavaScript运行在服务器端一个..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/什么是Node-js.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《什么是Node.js》 — 蓝胖纸&url=http://blog.langpz.com/什么是Node-js.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/什么是Node-js.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACGklEQVR42u3aS27DMAwFwN7/0i7QVTZxHkmlgKXxymj90bgAS5H8+YmP6+9Ifn69HMkzX6/M720eGBgYj2Vct8f9cpPzfKH3179bGwYGxjmM+2D64RHBNcm99+cf1oyBgYFRDKOThA8DAwPj2wG3mm7mnwMDAwOj+sp73pz9xb04BgbGAxmTdO3b51/sb2BgYDyEcRWPJKFMAnSS9hVWhYGBsTUjaU8mydwEsGpbi4GBsTejVyzLl56E5upwRvQ3wcDA2I7Ruy0vgU2KegUABgbGpowkjasOUiTX559sQYaLgYGxBaP3uGpRLNmUNst8GBgYxzCqYxPJxrUXoMtbWQwMjMMYq1K6JLhXB87e3oWBgbE1o9cMqI52VUcremVBDAyM/RiTRHAOWNWQwMDAOIcxGdUqvzhuT0afEgMDY2tGr67+P9c3QzkGBsZ2jGTrWC26zcc18hIbBgbGmYy8MVAtoq0a12j2YDEwMB7LmITUXqNxbfDFwMA4gZFbqw2DXtGt13jAwMA4gbFqYKtHXdAuxcDA2JqRb1ajsldcys83w4UmKAYGxqaMecGrupTeSOuH32JgYGzN6L2ylxRWN7rV7TEGBsbejCTI5q3HeSJYXQMGBsY5jMloV2/p1f8DGBgYGL0UrZom5g3UcrDGwMDAaLUkV21To2CNgYFxAGMeRnuLmBfvMDAwTmCsagxUy2erElAMDIytGb8X4lbkTsxjiQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

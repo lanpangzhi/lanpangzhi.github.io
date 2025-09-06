@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>TypeScript-基础类型 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="基础类型TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。TS中冒号后面的都为类型标识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-基础类型">
+<meta property="og:url" content="http://blog.langpz.com/TypeScript-基础类型.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="基础类型TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。TS中冒号后面的都为类型标识。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript-基础类型">
+<meta name="twitter:description" content="基础类型TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。TS中冒号后面的都为类型标识。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-基础类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-基础类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-10-14T10:00:09.000Z" itemprop="datePublished" class="page-time">
+  2023-10-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基础类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布尔值"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">布尔值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数字"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组类型"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">元组类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null-和-undefined"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">null 和 undefined</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#void类型"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">void类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#any类型"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">any类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#枚举类型"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">枚举类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#never类型"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">never类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Symbol类型"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">Symbol类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BigInt类型"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">BigInt类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#object对象类型"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">object对象类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类型断言"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">类型断言</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-基础类型"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-基础类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-10-14 10:00:09" datetime="2023-10-14T10:00:09.000Z"  itemprop="datePublished">2023-10-14</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h1><p>TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。<br>TS中冒号后面的都为类型标识。<br><a id="more"></a></p><h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">bool</span>:<span class="keyword">boolean</span> = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure></div><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>和JavaScript一样，TypeScript里的所有数字都是浮点数。 这些浮点数的类型是number。 除了支持十进制和十六进制字面量，TypeScript还支持ECMAScript 2015中引入的二进制和八进制字面量。</p><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> decLiteral: number = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">let</span> hexLiteral: number = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="built_in">let</span> binaryLiteral: number = <span class="number">0b1010</span>;</span><br><span class="line"><span class="built_in">let</span> octalLiteral: number = <span class="number">0o744</span>;</span><br></pre></td></tr></table></figure></div><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><div class="highlight-wrap" data-rel="Sml"><figure class="lpz highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str:<span class="built_in">string</span> = <span class="symbol">'hello</span> langpz';</span><br></pre></td></tr></table></figure></div><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>声明数组中元素数据类型<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1:<span class="built_in">number</span>[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2:<span class="built_in">string</span>[] = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>];</span><br><span class="line"><span class="keyword">let</span> arr3:(<span class="built_in">number</span>|<span class="built_in">string</span>)[] = [<span class="number">1</span>,<span class="string">'2'</span>,<span class="number">3</span>]; <span class="comment">// 联合类型  </span></span><br><span class="line"><span class="keyword">let</span> arr4:<span class="built_in">Array</span>&lt;<span class="built_in">number</span> | <span class="built_in">string</span>&gt; = [<span class="number">1</span>,<span class="string">'2'</span>,<span class="number">3</span>]; <span class="comment">// 泛型方式来声明</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h2><p>元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。<br></p><div class="highlight-wrap" data-rel="Vhdl"><figure class="lpz highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let tuple:[<span class="built_in">string</span>, <span class="built_in">boolean</span>] = [<span class="symbol">'langpz</span>',<span class="literal">true</span>];</span><br><span class="line">// 像元组中增加数据，只能增加元组中存放的类型</span><br><span class="line">tuple.push(<span class="number">1</span>); // 会报错 Argument <span class="keyword">of</span> <span class="keyword">type</span> <span class="string">'1'</span> <span class="keyword">is</span> <span class="keyword">not</span> assignable <span class="keyword">to</span> parameter <span class="keyword">of</span> <span class="keyword">type</span> <span class="symbol">'string</span> | <span class="built_in">boolean</span>'</span><br></pre></td></tr></table></figure></div><p></p><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>任何类型的子类型,如果<strong>strictNullChecks</strong>的值为true，则不能把null 和 undefined付给其他类型。<br></p><div class="highlight-wrap" data-rel="Applescript"><figure class="lpz highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">name</span>:<span class="built_in">number</span> | <span class="built_in">boolean</span>;</span><br><span class="line"><span class="built_in">name</span> = null;</span><br></pre></td></tr></table></figure></div><p></p><h2 id="void类型"><a href="#void类型" class="headerlink" title="void类型"></a>void类型</h2><p>只能接受null，undefined。一般用于函数的返回值。<strong>严格模式</strong>下不能将null赋予给void。<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a:<span class="keyword">void</span>;</span><br><span class="line">a = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure></div><p></p><h2 id="any类型"><a href="#any类型" class="headerlink" title="any类型"></a>any类型</h2><p>不进行类型检测，可以任意赋值。<br></p><div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s:<span class="attr">any</span> = 'langpz'</span><br><span class="line"><span class="attr">s</span> = <span class="number">10</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><div class="highlight-wrap" data-rel="Capnproto"><figure class="lpz highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">USER_ROLE</span> </span>&#123;</span><br><span class="line">    USER, // 默认从<span class="number">0</span>开始</span><br><span class="line">    ADMIN,</span><br><span class="line">    MANAGER</span><br><span class="line">&#125;</span><br><span class="line">// &#123;<span class="string">"0"</span>: <span class="string">"USER"</span>, <span class="string">"1"</span>: <span class="string">"ADMIN"</span>, <span class="string">"2"</span>: <span class="string">"MANAGER"</span>, <span class="string">"USER"</span>: <span class="number">0</span>, <span class="string">"ADMIN"</span>: <span class="number">1</span>, <span class="string">"MANAGER"</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></div><p>默认情况下，从0开始为元素编号。 你也可以手动的指定成员的数值。</p><div class="highlight-wrap" data-rel="Capnproto"><figure class="lpz highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">USER_ROLE</span> </span>&#123;</span><br><span class="line">    USER = 'langpz',</span><br><span class="line">    ADMIN = <span class="number">1</span>,</span><br><span class="line">    MANAGER,</span><br><span class="line">&#125;</span><br><span class="line">// &#123;<span class="string">"1"</span>: <span class="string">"ADMIN"</span>, <span class="string">"2"</span>: <span class="string">"MANAGER"</span>, <span class="string">"USER"</span>: <span class="string">"langpz"</span>, <span class="string">"ADMIN"</span>: <span class="number">1</span>, <span class="string">"MANAGER"</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure></div><h2 id="never类型"><a href="#never类型" class="headerlink" title="never类型"></a>never类型</h2><p>任何类型的子类型,never代表永不存在的值。不能把其他类型赋值给never。<br></p><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">(message: string)</span>: never </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"err"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span><span class="params">()</span>: never </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">(x:number | string)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> x == <span class="string">'number'</span>)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> x === <span class="string">'string'</span>)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        console.log(x); <span class="comment">// never</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><h2 id="Symbol类型"><a href="#Symbol类型" class="headerlink" title="Symbol类型"></a>Symbol类型</h2><p>Symbol的值是不可变且唯一的。<br></p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s1 = <span class="built_in">Symbol</span>(<span class="string">'langpz'</span>);</span><br><span class="line"><span class="keyword">const</span> s2 = <span class="built_in">Symbol</span>(<span class="string">'langpz'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(s1 == s2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="BigInt类型"><a href="#BigInt类型" class="headerlink" title="BigInt类型"></a>BigInt类型</h2><p>JavaScript 中可以用 Number 表示的最大整数为 2^53 - 1，可以写为 Number.MAX_SAFE_INTEGER。如果超过了这个界限，可以用 BigInt来表示，它可以表示任意大的整数。<br></p><div class="highlight-wrap" data-rel="Cpp"><figure class="lpz highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> theBiggestInt: bigint = <span class="number">9007199254740991</span>n</span><br><span class="line"><span class="keyword">const</span> alsoHuge: bigint = BigInt(<span class="number">9007199254740991</span>)</span><br><span class="line"><span class="keyword">const</span> hugeString: bigint = BigInt(<span class="string">"9007199254740991"</span>)</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(theBiggestInt === alsoHuge) <span class="comment">// true</span></span><br><span class="line">console.<span class="built_in">log</span>(theBiggestInt === hugeString) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="object对象类型"><a href="#object对象类型" class="headerlink" title="object对象类型"></a>object对象类型</h2><p>object表示非原始类型，也就是除number，string，boolean，symbol，null或undefined之外的类型。<br></p><div class="highlight-wrap" data-rel="Sql"><figure class="lpz highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let <span class="keyword">create</span> = (obj:<span class="keyword">object</span>):<span class="built_in">void</span>=&gt;&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span>(&#123; prop: <span class="number">0</span> &#125;); // OK</span><br><span class="line"><span class="keyword">create</span>(<span class="literal">null</span>); // OK</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span>(<span class="number">42</span>); // Error</span><br><span class="line"><span class="keyword">create</span>(<span class="string">"string"</span>); // Error</span><br></pre></td></tr></table></figure></div><p></p><h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><p>类型断言允许您告诉编译器一个值的类型，并且您可以使用两种语法进行类型断言。<br></p><div class="highlight-wrap" data-rel="Cs"><figure class="lpz highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">value</span>: any = <span class="string">"langpz"</span>;</span><br><span class="line"><span class="keyword">let</span> length: number = (<span class="keyword">value</span> <span class="keyword">as</span> <span class="keyword">string</span>).length;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">let</span> length2: number = (&lt;<span class="keyword">string</span>&gt;<span class="keyword">value</span>).length;</span><br></pre></td></tr></table></figure></div><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-基础类型.html" target="_blank" rel="external">http://blog.langpz.com/TypeScript-基础类型.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础类型/">基础类型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-基础类型.html&title=《TypeScript-基础类型》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-基础类型.html&title=《TypeScript-基础类型》 — 蓝胖纸&source=基础类型TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。TS中冒号后面的都为类型标识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-基础类型.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-基础类型》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-基础类型.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-基础类型.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-函数类型.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-函数类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript简介.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript简介</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-基础类型.html&title=《TypeScript-基础类型》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-基础类型.html&title=《TypeScript-基础类型》 — 蓝胖纸&source=基础类型TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举等类型方便我们使用。TS中冒号后面的都为类型标识。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-基础类型.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-基础类型》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-基础类型.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-基础类型.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3awW7DQAhF0fz/T7tSVpWi2PeBszDcWVWpm/GZBYWB1wuv472+ff5/fT5P/vbbJzcvGTJkPJZxnK5vr8WfPwdz2MU3yJAhYwHjPMiSFyXBmu/Fn5chQ4aMNOCSVI98swwZMmR0Ai5J+9IjkCFDhgzC4BsQTO04agWzDBkyNjA6heivf/5hf0OGDBkPYRzh4pdxfN8b3kqGDBmjGeftRj5aQQJlLekMGhIyZMgYyiAhkg9SpMGXv/TFkcmQIWM0g5SsPFwSdvrbNK2UIUPGPEatAVALtWl5HFzMyZAhYwGDh8X0Si4dI+PFsAwZMjYziuViY0giDq+fO8qQIWMNI7367wxvkX4F30uGDBmzGbz47FDTRDBNUmXIkLGNwUci0tZCbVCMFMYyZMiYzagFzVoRm16lkXAfnIEMGTIezuiHy841XBr00XWbDBkyxjHSK/u72pBpUA7KVxkyZIxjkJKSUNNgyluYF/8YZMiQMZpRKyzJ9uQqjTcG0FvJkCFjKKM/EpFerqWNTBR8ZciQsYDBBx1qrYI0rYwLXRkyZIxm9JO8u0rTG4YzZMiQMZRxhKuTDtZeEZW4MmTIGM2oDUzUMP3imRyuDBkypjLSkaxaOsiDZjGUy5AhYwGDbEZ4xaQtDPrxcJgMGTLWMHi61mlJ8m8LslcZMmQsY3QGKdKGAQ/9MmTI2MBIRx940CTBlBwlCrgyZMgYyugUkCmPD3DUjkmGDBnjGH9BWGC+0qW5hQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

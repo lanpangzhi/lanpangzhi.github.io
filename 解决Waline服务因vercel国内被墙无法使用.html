@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>解决Waline服务因vercel国内被墙无法使用 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Waline评论服务最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Waline服务因vercel国内被墙无法使用">
+<meta property="og:url" content="http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Waline评论服务最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E8%A7%A3%E5%86%B3Waline%E6%9C%8D%E5%8A%A1%E5%9B%A0vercel%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/20230304192202.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E8%A7%A3%E5%86%B3Waline%E6%9C%8D%E5%8A%A1%E5%9B%A0vercel%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/20230304192503.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决Waline服务因vercel国内被墙无法使用">
+<meta name="twitter:description" content="Waline评论服务最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E8%A7%A3%E5%86%B3Waline%E6%9C%8D%E5%8A%A1%E5%9B%A0vercel%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/20230304192202.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">解决Waline服务因vercel国内被墙无法使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">解决Waline服务因vercel国内被墙无法使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-03-04T16:40:24.000Z" itemprop="datePublished" class="page-time">
+  2023-03-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Waline评论服务"><span class="post-toc-number">1.</span> <span class="post-toc-text">Waline评论服务</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决方案自定义域名"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案自定义域名</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-解决Waline服务因vercel国内被墙无法使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">解决Waline服务因vercel国内被墙无法使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-03-04 16:40:24" datetime="2023-03-04T16:40:24.000Z"  itemprop="datePublished">2023-03-04</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Waline评论服务"><a href="#Waline评论服务" class="headerlink" title="Waline评论服务"></a>Waline评论服务</h1><p>最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。<br><a id="more"></a></p><h1 id="解决方案自定义域名"><a href="#解决方案自定义域名" class="headerlink" title="解决方案自定义域名"></a>解决方案自定义域名</h1><p>在你的域名下面添加一个新的子域名记录类型<code>CNAME</code>记录值<code>cname.vercel-dns.com</code><br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E8%A7%A3%E5%86%B3Waline%E6%9C%8D%E5%8A%A1%E5%9B%A0vercel%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/20230304192202.png" alt></div><div class="image-caption"></div></figure><p></p><p>然后再去<a href="https://vercel.com/" target="_blank" rel="external">vercel</a> 给你的Waline服务添加上刚才的子域名</p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E8%A7%A3%E5%86%B3Waline%E6%9C%8D%E5%8A%A1%E5%9B%A0vercel%E5%9B%BD%E5%86%85%E8%A2%AB%E5%A2%99%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/20230304192503.png" alt></div><div class="image-caption"></div></figure><p>然后再把hexo博客里面Waline服务地址更换成刚才的子域名</p><p>如果没有域名可以去<a href="https://my.freenom.com/" target="_blank" rel="external">https://my.freenom.com/</a> 注册免费的域名<br>后续继续被墙可以考虑换服务或者套个cdn中转一下</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://lisenhui.cn/blog/use-custom-domain-active-vercel-waline.html" target="_blank" rel="external">使用自定义域名激活Vercel部署的Waline服务</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/解决Waline服务因vercel国内被墙无法使用.html" target="_blank" rel="external">http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Waline/">Waline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vercel/">vercel</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&title=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&title=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&source=Waline评论服务最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/JavaScript的事件委托原理.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript的事件委托原理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/从Travis-CI迁移到GitHub-Actions.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo博客从Travis-CI迁移到GitHub Actions</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&title=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&title=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&source=Waline评论服务最近发现博客详情页面偶尔有报错，评论无法使用，查询发现是vercel被墙了。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解决Waline服务因vercel国内被墙无法使用》 — 蓝胖纸&url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/解决Waline服务因vercel国内被墙无法使用.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3a22rDMBAFwP7/T6fQ1yJz9qI2gfFTME6sUUHantXXV3y9fq7fd05X8uTpl0/vfX5ydOHh4eG1hr41iPkzp7ef7jxPLh4eHt49Xr4oV9nJVlHdGJIx4+Hh4b0Dr4fpbS3PmxMeHh7ep/DyKagu93h4eHifyEvCiNMgJgv9hLecteDh4eHFvGoD7B0+X+zv4eHh4Q266vNjAb32WPVdxzHg4eHhXeDlEW0eyz7frxbu1VK7nC7j4eHhtXjVcLa3iG+1yhZ+AQ8PD2/Mmxy6yl+fx7j55F7p7+Hh4eHFa+YkSkjK316pXf5b9RIOPDw8vFXeJGxNNoB8Up6n/hjg4uHh4a3yeq+fh795MV0NOI6FNR4eHt4qr7eK9lr7vZgjL7LLs4uHh4fX4uWlau/JPGLolezllBoPDw9vvy9fCEyT2Ld3vKB3lGG0H+Lh4eEF390tYavDrZbd1V/Gw8PDu8GrlqTJolwd1vzQVeFAGB4eHt6Yl3yt1wDrbSp5yR616/Dw8PAu8OYDSp7Pw9n5SKKjV3h4eHhLvIsRQLGunx+3wsPDw7vNS772HBz0DhDMO1bR4S08PDy8VV7eiOq1+XuhbfW9x+nGw8PDu8DLl/t8KFGfLS6yJ5sQHh4e3j1eHgHkjfx8uHksO9q68PDw8K7x8tK519DKB5pPQbQV4eHh4a3yqpFrvihvHeSaFOt4eHh493jJC/LBzU8xJIxogvDw8PBWea/i1TsalbfElg8l4OHh4V3gVRfcvMytBq/Vt8zLbjw8PLwJLw9Y8yW7GjfkIUh+0AEPDw/vNi9v88+L4Ophr97WhYeHh/fOvOrGUP08Kcrx8PDw/pc3aVlNSvD8uBUeHh7eX/J6wWsVMw9Bms0tPDw8vFVe9V/9PN7tLeXVmGMeZODh4eHFd74BvaDuA81zlZgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

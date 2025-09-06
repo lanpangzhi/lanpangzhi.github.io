@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>使用apidoc文档神器，快速生成api文档 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="使用apidoc文档神器，快速生成api文档写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用apidoc文档神器，快速生成api文档">
+<meta property="og:url" content="http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="使用apidoc文档神器，快速生成api文档写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。">
+<meta property="og:image" content="http://hexo-1252491761.file.myqcloud.com/apidoc/111.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用apidoc文档神器，快速生成api文档">
+<meta name="twitter:description" content="使用apidoc文档神器，快速生成api文档写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。">
+<meta name="twitter:image" content="http://hexo-1252491761.file.myqcloud.com/apidoc/111.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用apidoc文档神器，快速生成api文档</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用apidoc文档神器，快速生成api文档</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-26T11:13:37.000Z" itemprop="datePublished" class="page-time">
+  2018-05-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用apidoc文档神器，快速生成api文档"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用apidoc文档神器，快速生成api文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改接口的注释"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改接口的注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置npm-run-doc"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">配置npm run doc</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用apidoc文档神器，快速生成api文档"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用apidoc文档神器，快速生成api文档</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-26 11:13:37" datetime="2018-05-26T11:13:37.000Z"  itemprop="datePublished">2018-05-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用apidoc文档神器，快速生成api文档"><a href="#使用apidoc文档神器，快速生成api文档" class="headerlink" title="使用apidoc文档神器，快速生成api文档"></a>使用apidoc文档神器，快速生成api文档</h1><p>写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可以快速生成文档了。<br><a id="more"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>第一步先安装全局模块apidoc。<br></p><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> apidoc -g</span><br></pre></td></tr></table></figure></div><p></p><h2 id="修改接口的注释"><a href="#修改接口的注释" class="headerlink" title="修改接口的注释"></a>修改接口的注释</h2><p>找到novel-api项目routes下面的index.js文件，注释修改成如下<br></p><div class="highlight-wrap" data-rel="Perl"><figure class="lpz highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @api <span class="string">&#123;get&#125;</span> /<span class="keyword">index</span> 请求首页数据</span><br><span class="line"> * @apiVersion <span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line"> * @apiName 获取首页数据</span><br><span class="line"> * @apiGroup <span class="keyword">index</span></span><br><span class="line"> *</span><br><span class="line"> *</span><br><span class="line"> * @apiSuccess <span class="string">&#123;Number&#125;</span> flag 是否获取到数据 <span class="number">1</span>成功 <span class="number">0</span>失败</span><br><span class="line"> * @apiSuccess <span class="string">&#123;Array&#125;</span> books 返回书籍内容</span><br><span class="line"> * @apiSuccess <span class="string">&#123;String&#125;</span> msg  返回信息</span><br><span class="line"> *</span><br><span class="line"> * @apiSuccessExample <span class="string">&#123;json&#125;</span> Success-Response:</span><br><span class="line"> *     HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"> *    &#123;</span><br><span class="line"> *      <span class="string">"flag"</span>: <span class="number">1</span>,</span><br><span class="line"> *      <span class="string">"books"</span>: [</span><br><span class="line"> *          &#123;</span><br><span class="line"> *             <span class="string">"_id"</span>: <span class="string">"5816b415b06d1d32157790b1"</span>,</span><br><span class="line"> *            <span class="string">"title"</span>: <span class="string">"圣墟"</span>,</span><br><span class="line"> *            <span class="string">"author"</span>: <span class="string">"辰东"</span>,</span><br><span class="line"> *            <span class="string">"shortIntro"</span>: <span class="string">"在破败中崛起，在寂灭中复苏。沧海成尘，雷电枯竭，那一缕幽雾又一次临近大地，世间的枷锁被打开了，一个全新的世界就此揭开神秘的一角……"</span>,</span><br><span class="line"> *            <span class="string">"cover"</span>: <span class="string">"http://statics.zhuishushenqi.com/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1228859%2F1228859_fac7917a960547eb953edf0b740cef3a.jpg%2F"</span>,</span><br><span class="line"> *            <span class="string">"site"</span>: <span class="string">"zhuishuvip"</span>,</span><br><span class="line"> *            <span class="string">"majorCate"</span>: <span class="string">"玄幻"</span>,</span><br><span class="line"> *            <span class="string">"minorCate"</span>: <span class="string">"东方玄幻"</span>,</span><br><span class="line"> *            <span class="string">"allowMonthly"</span>: false,</span><br><span class="line"> *            <span class="string">"banned"</span>: <span class="number">0</span>,</span><br><span class="line"> *            <span class="string">"latelyFollower"</span>: <span class="number">283375</span>,</span><br><span class="line"> *            <span class="string">"retentionRatio"</span>: <span class="string">"73.42"</span></span><br><span class="line"> *          &#125;</span><br><span class="line"> *      ],</span><br><span class="line"> *      <span class="string">"msg"</span>: <span class="string">"OK"</span></span><br><span class="line"> *    &#125;</span><br><span class="line"> *</span><br><span class="line"> *</span><br><span class="line"> * @apiErrorExample Error-Response:</span><br><span class="line"> *     HTTP/<span class="number">1.1</span> <span class="number">404</span> Not Found</span><br><span class="line"> *     &#123; <span class="string">"flag"</span>: <span class="number">0</span>, <span class="string">"msg"</span>: <span class="string">"rankingId有问题"</span> &#125;</span><br><span class="line"> *<span class="regexp">/</span></span><br></pre></td></tr></table></figure></div><p></p><p>@api {method} path [title]<br>@api 如果没有@api apidoc会忽略这段注释<br>method 请求的方法<br>path 路径<br>title 标题</p><p>@apiVersion version<br>设置文档块的版本。<br>version 版本号</p><p>@apiName name<br>定义方法文档块的名称。名称将用于生成的输出中的子导航。<br>name 方法的名称</p><p>@apiGroup name<br>定义方法文档块属于哪个组。组将用于生成的输出中的主导航。<br>name 组的名称。也用作导航标题。</p><p>@apiSuccess [(group)] [{type}] field [description]<br>成功返回参数。<br>(group) 可选 所有参数将按这个名称分组。没有组，默认Success 200设置。<br>{type} 可选 返回类型<br>field 返回标识符<br>description 描述</p><p>@apiParamExample [{type}] [title]<br>example<br>参数请求示例。<br>{type} 可选 响应格式<br>title 示例的简称<br>example 详细的例子</p><p>@apiErrorExample [{type}] [title]<br>example<br>错误返回消息的示例，输出为预格式化代码。<br>{type} 可选 响应格式<br>title 示例的简称<br>example 详细的例子</p><h2 id="配置npm-run-doc"><a href="#配置npm-run-doc" class="headerlink" title="配置npm run doc"></a>配置npm run doc</h2><p>打开package.json文件增加doc命令配置<br></p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"doc"</span>: <span class="string">"apidoc -i routes/ -o public/"</span></span><br></pre></td></tr></table></figure><p></p><p>routes/ 要输出API文档的文件夹。<br>public/ 输出文档到public文件夹，没有回自动创建。<br>执行 npm run doc<br>访问 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> 就可以看到生成好的API文档了。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="http://hexo-1252491761.file.myqcloud.com/apidoc/111.png" alt></div><div class="image-caption"></div></figure><p></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/apidoc/apidoc" target="_blank" rel="external">https://github.com/apidoc/apidoc</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/使用apidoc文档神器，快速生成api文档.html" target="_blank" rel="external">http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apidoc/">apidoc</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&title=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&title=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&source=使用apidoc文档神器，快速生成api文档写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/部署小说api服务到腾讯云.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">部署小说api服务到腾讯云</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/使用Express开发小说API接口服务1-0（三）.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用Express开发小说API接口服务1.0（三）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&title=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&title=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&source=使用apidoc文档神器，快速生成api文档写完api接口，就需要编写api文档了，如果一个个手写的话就很麻烦，就得使用apidoc只需要通过写注释，就可..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用apidoc文档神器，快速生成api文档》 — 蓝胖纸&url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/使用apidoc文档神器，快速生成api文档.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3a0WrDQAwEwPz/T7fQp0JxvJJOSQrjp5I4zo0DPnWlxyM+vn6O/N3fr1x9dnLNwwceHh5ea+lXx9Vy/55TxTw/8+ob8zXj4eHhbfOeL+hqccnr1TNzcLTZ4OHh4b2Vlyy0umFUNwM8PDy8/8XLC+VkU5lcBw8PD+8TeEkY0Qsp8ivnt3gla8HDw8OLedUG2Cf8vdjfw8PDwxt01fOj2uCfxBmFVeHh4eEt8JKidhJAVIvs6tBAdEPx8PDwFnjzwaZ8YCt5JR9ZaIa5eHh4eGPefHQgGa6qxsHPP1sA4+Hh4R3lTb4g/5pJxJD8ANHvhoeHh7fG2wgFqkMDeUB8swY8PDy8BV5vsKk62Fq9ib0YollY4+Hh4Q14ySO71/7Pw4s8zii06PDw8PCO8qpldE6ttqyqrbLoluHh4eEt8PKm1IH9pxhSnMpj8fDw8DZ4vfGpecibn18NKfDw8PC2edWyNQ9Vq8NSydhBebvCw8PDW+D14oN8dKAXOuRrw8PDw3sXr/qxCftU7Fv4FB4eHt4hXjVQmBzPC+XJL3OzGeDh4eEd5SWXyzeD5DZNYove33h4eHhnefmQU6+pP290jWJcPDw8vDVeL4rdGDWoXv9m48HDw8Nb4FUXkTyyJ6MAk6tdrhkPDw9vgdcrr3sl8qTITkYQRtMKeHh4eK0Rq97QVS/wrQa1vW0MDw8Pb4/Xa4BNkMnt6w0oRFk1Hh4eXovXCxSqpXlvDCvfri6Lcjw8PLwFXvWBe1O8Bu/2Np5JqY2Hh4e3wcsfyr0HcQ+TF+I368HDw8Nb4+XRanUzqIYdkxii8AYeHh7eC3mTMaw83u1tBlEDDA8PD++FvCQCqMbBecSQFNB4eHh4r+RNmk/V+GBSypcLcTw8PLwFXu9f/TxQyMvivFyejzjg4eHhtXjfn04r8GP4fg4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

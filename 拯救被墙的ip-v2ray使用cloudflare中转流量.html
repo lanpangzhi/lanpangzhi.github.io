@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>拯救被墙的ip,v2ray使用cloudflare中转流量 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="拯救被墙的ip最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。坏处就是速度变慢，时不时抽风连不上。v2ray我这里使用的是V2Ray一键安装脚本https://github.com/233boy/v2ray/tree/master">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拯救被墙的ip,v2ray使用cloudflare中转流量">
+<meta property="og:url" content="http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="拯救被墙的ip最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。坏处就是速度变慢，时不时抽风连不上。v2ray我这里使用的是V2Ray一键安装脚本https://github.com/233boy/v2ray/tree/master">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="拯救被墙的ip,v2ray使用cloudflare中转流量">
+<meta name="twitter:description" content="拯救被墙的ip最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。坏处就是速度变慢，时不时抽风连不上。v2ray我这里使用的是V2Ray一键安装脚本https://github.com/233boy/v2ray/tree/master">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">拯救被墙的ip,v2ray使用cloudflare中转流量</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">拯救被墙的ip,v2ray使用cloudflare中转流量</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-05-25T18:40:58.000Z" itemprop="datePublished" class="page-time">
+  2022-05-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#拯救被墙的ip"><span class="post-toc-number">1.</span> <span class="post-toc-text">拯救被墙的ip</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#首先注册一个免费域名"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">首先注册一个免费域名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cloudflare"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Cloudflare</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加域名解析和域名设置自定义dns"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">添加域名解析和域名设置自定义dns</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VPS设置v2ray"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">VPS设置v2ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#收尾"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">收尾</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-拯救被墙的ip-v2ray使用cloudflare中转流量"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">拯救被墙的ip,v2ray使用cloudflare中转流量</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-05-25 18:40:58" datetime="2022-05-25T18:40:58.000Z"  itemprop="datePublished">2022-05-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="拯救被墙的ip"><a href="#拯救被墙的ip" class="headerlink" title="拯救被墙的ip"></a>拯救被墙的ip</h1><p>最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。<br>坏处就是速度变慢，时不时抽风连不上。v2ray我这里使用的是V2Ray一键安装脚本<a href="https://github.com/233boy/v2ray/tree/master" target="_blank" rel="external">https://github.com/233boy/v2ray/tree/master</a><br><a id="more"></a></p><h2 id="首先注册一个免费域名"><a href="#首先注册一个免费域名" class="headerlink" title="首先注册一个免费域名"></a>首先注册一个免费域名</h2><p><a href="https://my.freenom.com/" target="_blank" rel="external">https://my.freenom.com/</a> 最好先注册一个免费的顶级域名。最长一年时间，域名期限在到期14天内可以重复续上一年时间。<br>注：freenom 这个网站的个人信息地址要和申请注册ip地址一样否则申请域名失败。</p><h2 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h2><p><a href="https://dash.cloudflare.com/login" target="_blank" rel="external">https://dash.cloudflare.com/login</a>注册一个账号，然后好给你的域名提供cdn加速。<br>注册完之后添加站点这个时候输入您刚注册的域名。</p><h2 id="添加域名解析和域名设置自定义dns"><a href="#添加域名解析和域名设置自定义dns" class="headerlink" title="添加域名解析和域名设置自定义dns"></a>添加域名解析和域名设置自定义dns</h2><p>Cloudflare 找到刚才添加的站点左侧菜单dns，找到Cloudflare 名称服务器会有两个地址，把两个地址添加到 freenom 网站上域名自定义dns 服务器设置上。<br>管理 （你的域名） 的 DNS添加记录，添加一个 A 记录的域名解析，假设你的域名是 langpz.com，并且想要使用 www.langpz.com 作为翻墙的域名。<br>那么在 DNS 那里配置，Name 写 www，IPv4 address 写你的 VPS IP，务必把云朵点灰， 保存解析记录即可。<br>(如果你已经添加域名解析，请务必把云朵点灰。)</p><h2 id="VPS设置v2ray"><a href="#VPS设置v2ray" class="headerlink" title="VPS设置v2ray"></a>VPS设置v2ray</h2><p>如果没安装就去安装，安装的改下协议，传输协议选择 <strong>WebSocket + TLS (即是选择 4 )</strong>，V2Ray 端口随便，不要是 80 和 443 即可，然后输入你的域名，域名解析 Y ，自动配置 TLS 也是 Y ，其他就默认吧，一路回车。等待安装完成。<br>然后输入 v2ray status 查看一下运行状态，<strong>请确保 V2Ray 和 Caddy 都在运行</strong></p><h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>然后去dns 解析那里把云朵点亮，再进入左侧菜单SSL/TLS 勾选 <strong>完全（严格）</strong></p><p>v2ray info 或者 v2ray qr 生成 V2Ray 配置二维码链接把配置添加到你的客户端。就可以正常使用了。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/233boy/v2ray/wiki/%E4%BD%BF%E7%94%A8Cloudflare%E4%B8%AD%E8%BD%ACV2Ray%E6%B5%81%E9%87%8F" target="_blank" rel="external">https://github.com/233boy/v2ray/wiki/%E4%BD%BF%E7%94%A8Cloudflare%E4%B8%AD%E8%BD%ACV2Ray%E6%B5%81%E9%87%8F</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/拯救被墙的ip-v2ray使用cloudflare中转流量.html" target="_blank" rel="external">http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudflare/">cloudflare</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v2ray/">v2ray</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/被墙/">被墙</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&title=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&title=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&source=拯救被墙的ip最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。坏处..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/手写简易Promise.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">手写简易Promise</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Node-js使用Nodemailer发送邮件通知.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Node.js使用Nodemailer发送邮件通知</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&title=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&title=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&source=拯救被墙的ip最近ip又被墙了，只能套cloudflare通过cdn来中转v2ray的WebSocket 流量，搬瓦工付费换ip太贵，也容易继续被墙。坏处..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《拯救被墙的ip,v2ray使用cloudflare中转流量》 — 蓝胖纸&url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/拯救被墙的ip-v2ray使用cloudflare中转流量.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQXJbIRAEUN3/0s42qUioewBFqXp/5ZJsPo8F4J55POLn57dn/XnySf753+M8bjx4eHh4G1NfD71+QUvKAev5vBoNDw8P7zYvmW6+rSd/tZ7uerRkznh4eHjfxmu37wTZjoyHh4f3v/DaCeUX4v054OHh4X2Sl8cE62t0C0im+KGsBQ8PDy/mta/8hp+v1Pfw8PDwtqvq6w13P9htr9r1bPHw8PAu8HbChdkR0rYm7Ae+eHh4eGd5eXg6C2HrlR61F7xcVjw8PLwLvORledi6P8WkUWAY4OLh4eEd4rVTzCOAPLxIjqJhmQ0PDw/vAi/ZdpMmpzb2PdVMEIUpeHh4eNd4STTQXnlnTQn7BbMnpx8eHh7eZV6+rbeHR3tFbr8t/jPAw8PD2+blW21SNsuPlraBIA9K8PDw8O7xZpt4srm3R0tbbMuXHg8PD+8sr92O86FPLVa7KC/DCDw8PLxt3mw9iiCg3MRnF/c3TQN4eHh4R3mnivRJbJG3TK2n2x5OeHh4eGd5ubtepzKYOHUU/fFGPDw8vI/w8vapnbJZvpRtS9aTMAIPDw/vKG8Wv85K/m3gmy/0myXDw8PDO8rbf/H+Mq2PllkbwZMCGB4eHt5R3mwXTQKC9lrcYorLNB4eHt4hXjvpNoDYiYN3Lu4ve8rw8PDwLvDaaKCNJ+49b7IWPDw8vGu8nDrMjEdHzs7IeHh4ePd4+R+32/SNMCIJQfDw8PBu8H7KZ6eNYFjEir/Fw8PD+wyv3ehnxf5ZHFwXunYONjw8PLySl8eybUvBqeaDrWMDDw8P7xov38qTw2MWBF8pmOHh4eF9Da9th8pj3Fn715srNR4eHt4/5eWYJNidtasWUQgeHh7eNd6s9Wp/imeLW1sxLh4eHt6hqvr+lTr5/VkzwbEIAw8PDy/l/QLxbhbbfMLrZQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

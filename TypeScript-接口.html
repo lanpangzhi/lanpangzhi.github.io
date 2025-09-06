@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>TypeScript-接口 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="接口接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来描述对象的形状。(接口中不能含有具体的实现逻辑)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-接口">
+<meta property="og:url" content="http://blog.langpz.com/TypeScript-接口.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="接口接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来描述对象的形状。(接口中不能含有具体的实现逻辑)">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript-接口">
+<meta name="twitter:description" content="接口接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来描述对象的形状。(接口中不能含有具体的实现逻辑)">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-接口</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-接口</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-01-20T17:24:42.000Z" itemprop="datePublished" class="page-time">
+  2024-01-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#接口"><span class="post-toc-number">1.</span> <span class="post-toc-text">接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数接口参数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">函数接口参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数类型接口"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数类型接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数混合类型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">函数混合类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象接口、可选属性、只读属性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">对象接口、可选属性、只读属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可索引接口"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">可索引接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#任意属性"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">任意属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类接口"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">类接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口继承"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">接口继承</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-接口"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-接口</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-01-20 17:24:42" datetime="2024-01-20T17:24:42.000Z"  itemprop="datePublished">2024-01-20</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来描述对象的形状。(接口中不能含有具体的实现逻辑)<br><a id="more"></a></p><h2 id="函数接口参数"><a href="#函数接口参数" class="headerlink" title="函数接口参数"></a>函数接口参数</h2><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> LabelledValue &#123;</span><br><span class="line">  label: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span>(<span class="params">labelledObj: LabelledValue</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(labelledObj.label);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myObj = &#123;label: <span class="string">"Size 10 Object"</span>&#125;;</span><br><span class="line">printLabel(myObj); <span class="comment">//输出:  Size 10 Object</span></span><br></pre></td></tr></table></figure></div><h2 id="函数类型接口"><a href="#函数类型接口" class="headerlink" title="函数类型接口"></a>函数类型接口</h2><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IFullName &#123;</span><br><span class="line">    firstName:<span class="built_in">string</span>,</span><br><span class="line">    lastName:<span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> IFn &#123;</span><br><span class="line">    (obj:IFullName):<span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fullName:IFn = <span class="function">(<span class="params">&#123;firstName,lastName&#125;</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> firstName + lastName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>通过接口限制函数的参数类型和返回值类型</p><h2 id="函数混合类型"><a href="#函数混合类型" class="headerlink" title="函数混合类型"></a>函数混合类型</h2><div class="highlight-wrap" data-rel="Gauss"><figure class="lpz highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface ICounter &#123;</span><br><span class="line">    (): number; <span class="comment">// 限制函数类型</span></span><br><span class="line">    count: <span class="number">0</span> <span class="comment">// 限制函数上的属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="function"><span class="keyword">fn</span>: <span class="title">any</span> = <span class="params">()</span> =&gt; &#123;</span><br><span class="line">    <span class="keyword">fn</span>.count++</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">fn</span>.count</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span>.<span class="title">count</span> = <span class="number">0</span></span>;</span><br><span class="line"><span class="keyword">let</span> counter:ICounter = <span class="function"><span class="keyword">fn</span></span>;</span><br><span class="line">counter.xx = <span class="number">0</span>; <span class="comment">// 输出: Property 'xx' does not exist on type 'ICounter'. ICounter上没有xx 属性</span></span><br><span class="line">console.<span class="built_in">log</span>(counter());  <span class="comment">// 输出: 1</span></span><br><span class="line">console.<span class="built_in">log</span>(counter());  <span class="comment">// 输出: 2</span></span><br></pre></td></tr></table></figure></div><h2 id="对象接口、可选属性、只读属性"><a href="#对象接口、可选属性、只读属性" class="headerlink" title="对象接口、可选属性、只读属性"></a>对象接口、可选属性、只读属性</h2><div class="highlight-wrap" data-rel="Cs"><figure class="lpz highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">Iinfo</span>&#123;</span><br><span class="line">    age?:number, <span class="comment">// 可选属性</span></span><br><span class="line">    name:<span class="string">'lanpz'</span>|<span class="string">'langpz'</span>,</span><br><span class="line">    <span class="keyword">readonly</span> gender: <span class="keyword">string</span> <span class="comment">// 只读属性</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title">Iinfo</span>&#123;</span><br><span class="line">    size: <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> info:Iinfo = &#123;</span><br><span class="line">    name: <span class="string">'lanpz'</span>,</span><br><span class="line">    gender: <span class="string">'男'</span>,</span><br><span class="line">    size: <span class="string">'1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>?标识的属性为可选属性<br>readonly标识的属性则不能修改<br>多个同名的接口会自动合并</p><h2 id="可索引接口"><a href="#可索引接口" class="headerlink" title="可索引接口"></a>可索引接口</h2><p>接口还支持可索引的成员，使我们能够通过索引访问对象的属性。<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> StringArray &#123;</span><br><span class="line">  readonly [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myArray: StringArray = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</span><br><span class="line"><span class="keyword">let</span> obj: StringArray = &#123;</span><br><span class="line">    <span class="number">0</span>:<span class="string">'1'</span>,<span class="number">1</span>:<span class="string">'2'</span>,<span class="number">3</span>:<span class="string">'3'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj[<span class="number">0</span>]); <span class="comment">// 输出: "1"</span></span><br><span class="line"><span class="built_in">console</span>.log(myArray[<span class="number">0</span>]); <span class="comment">// 输出: "a"</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="任意属性"><a href="#任意属性" class="headerlink" title="任意属性"></a>任意属性</h2><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> MyObject &#123;</span><br><span class="line">  [key: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObj: MyObject = &#123;</span><br><span class="line">  name: <span class="string">"John"</span>,</span><br><span class="line">  age: <span class="number">25</span>,</span><br><span class="line">  job: <span class="string">"Engineer"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> MyArray &#123;</span><br><span class="line">    [index: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr: MyArray = [<span class="string">'lanpz'</span>, <span class="string">'aaa'</span>];</span><br></pre></td></tr></table></figure></div><h2 id="类接口"><a href="#类接口" class="headerlink" title="类接口"></a>类接口</h2><p>接口中不能含有具体的实现逻辑<br></p><div class="highlight-wrap" data-rel="Java"><figure class="lpz highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Speakable</span> </span>&#123;</span><br><span class="line">    name:string;</span><br><span class="line">    speak():<span class="keyword">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ChineseSpeakable</span></span>&#123;</span><br><span class="line">    speakChinese():<span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Speak</span> <span class="keyword">implements</span> <span class="title">Speakable</span>,<span class="title">ChineseSpeakable</span></span>&#123;</span><br><span class="line">    name!:<span class="function">string</span><br><span class="line">    <span class="title">speak</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    speakChinese()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p></p><h2 id="接口继承"><a href="#接口继承" class="headerlink" title="接口继承"></a>接口继承</h2><p>接口的继承使用 extends 关键字。接口之间的（继承）允许你创建一个新的接口，该接口包含了另一个或多个已存在接口的属性和方法。<br></p><div class="highlight-wrap" data-rel="Routeros"><figure class="lpz highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface Shape &#123;</span><br><span class="line">  color: string;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in"></span><br><span class="line">interface </span>Square extends Shape &#123;</span><br><span class="line">  sideLength: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const square: Square = &#123;</span><br><span class="line">  color: <span class="string">"red"</span>,</span><br><span class="line">  sideLength: 10</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-接口.html" target="_blank" rel="external">http://blog.langpz.com/TypeScript-接口.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/接口/">接口</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-接口.html&title=《TypeScript-接口》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-接口.html&title=《TypeScript-接口》 — 蓝胖纸&source=接口接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-接口.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-接口》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-接口.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-接口.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/解决github拉取推送代码报错-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-类.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-类</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/TypeScript-接口.html&title=《TypeScript-接口》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/TypeScript-接口.html&title=《TypeScript-接口》 — 蓝胖纸&source=接口接口（Interfaces）是 TypeScript 中强大而灵活的特性之一。接口用于定义代码结构，使得代码更易读、易维护，同时提供了一种强大的方式来..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/TypeScript-接口.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-接口》 — 蓝胖纸&url=http://blog.langpz.com/TypeScript-接口.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/TypeScript-接口.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aQXLDMAgF0N7/0ukJonzAyYzx8yoztWWeFxSB/v7i63W8zncmfz0/ddmFgYFxW0YS4jmgJMTJ7+TzYWBgPIHxLoP17oleHNyZvBcDAwPjfE9OikKZPIuBgYERFHxn6nlbm7wFAwMDIynR8nZbtbk2fy8GBsZuRt51//3vr8w3MDAwbsV4Fa98nUlRWI4KAwNjNWMywkxCrD5VvRMDA+M5jKuabr3Wf564Ix4GBsZSRt7inzS/8uNi1cMcGBgYuxnnhapHu64Krtphw8DA2M1IBo2/GQ+c3xUVjhgYGEsZveXOpV51SFDdJH/Yf2NgYKxj9IaRk9ZbNQWXBwMYGBjrGOekOWnWJytMQn+7fcXAwHgMY5I087ZdtQSMDoRhYGCsYyQ1Y14s9rbH1QI0ujAwMNYxmgXZ4FhY7yNGvUMMDIyljDx15kFMhpTNwxYYGBiPYXyjcZ8Xf9U1MTAwnsxIruowYL5aOeFiYGAsYuQtszzh5uEmMUQ8DAyMRzKuGi5OPlMhEWNgYKxmRJXj8cXJZnhy4KwaJwYGxibGZKvZ4+UrNNMrBgbGOsYkT/d4eeu/isfAwNjN6LXsexvX6icrJFwMDIwHMJLE1yvXkm1qzv4wg8XAwMAolnS90Wa+AgYGBsZky5qv3Dt+cUFpiIGBcUNG9SBXdSNaHT+UG3YYGBirGXlYSVOsOlqo/gMYDTUxMDDux/gHF8aOdDirCKcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

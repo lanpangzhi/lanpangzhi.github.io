@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>JavaScript的事件委托原理 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="事件委托事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript的事件委托原理">
+<meta property="og:url" content="http://blog.langpz.com/JavaScript的事件委托原理.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="事件委托事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript的事件委托原理">
+<meta name="twitter:description" content="事件委托事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript的事件委托原理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript的事件委托原理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-03-26T15:48:44.000Z" itemprop="datePublished" class="page-time">
+  2023-03-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#事件委托"><span class="post-toc-number">1.</span> <span class="post-toc-text">事件委托</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">代码实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原始版"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">原始版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#委托版"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">委托版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最终版"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">最终版</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Demo"><span class="post-toc-number">2.</span> <span class="post-toc-text">Demo</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript的事件委托原理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript的事件委托原理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-03-26 15:48:44" datetime="2023-03-26T15:48:44.000Z"  itemprop="datePublished">2023-03-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。<br><a id="more"></a></p><p>事件委托的原理是将<strong>事件绑定在元素的祖先元素上</strong>，然后通过<strong>事件冒泡</strong>的机制，把事件传播到目标元素。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="原始版"><a href="#原始版" class="headerlink" title="原始版"></a>原始版</h3><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="string">"a"</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">li</span>&gt;<span class="number">11</span>&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">li</span>&gt;<span class="number">22</span>&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">li</span>&gt;<span class="number">33</span>&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = document.querySelector('#a')</span><br><span class="line"><span class="built_in">let</span> aLi = a.querySelectorAll('<span class="built_in">li</span>')</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = <span class="number">0</span>; i &lt; aLi.<span class="built_in">length</span>; i++) &#123;</span><br><span class="line">  aLi[i].addEventListener('click', function(event) &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(event.target.innerText)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p>给每个li添加一个click事件，如果数量过多每个LI都会添加事件这样会添加N个事件。</p><h3 id="委托版"><a href="#委托版" class="headerlink" title="委托版"></a>委托版</h3><div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">ul</span> id=<span class="string">"aa"</span>&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">111</span>&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;<span class="number">222</span>&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;span&gt;<span class="number">333</span>&lt;/span&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">let aa = document.querySelector(<span class="string">'#aa'</span>)</span><br><span class="line">aa.addEventListener(<span class="string">'click'</span>, function(event) &#123;</span><br><span class="line">  <span class="keyword">if</span> (event<span class="selector-class">.target</span><span class="selector-class">.tagName</span><span class="selector-class">.toLocaleLowerCase</span>() == <span class="string">'li'</span>) &#123;</span><br><span class="line">    console.log(event<span class="selector-class">.target</span><span class="selector-class">.innerText</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p>通过把事件委托到祖先元素上冒泡机制触发，然后再判断用户是不是点击的是li再执行某些操作。但是这样写会有一个问题，<strong>li里面又包了一个span标签再点击li里面的span就不会再执行某些操作</strong>。</p><h3 id="最终版"><a href="#最终版" class="headerlink" title="最终版"></a>最终版</h3><div class="highlight-wrap" data-rel="Vim"><figure class="lpz highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="string">"aaa"</span>&gt;</span><br><span class="line">  <span class="symbol">&lt;li&gt;</span><span class="number">1111</span>&lt;/li&gt;</span><br><span class="line">  <span class="symbol">&lt;li&gt;</span><span class="number">2222</span>&lt;/li&gt;</span><br><span class="line">  <span class="symbol">&lt;li&gt;</span></span><br><span class="line">    <span class="symbol">&lt;span&gt;</span><span class="number">3333</span>&lt;/span&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onEvent</span><span class="params">(element, eventType, selector, fn)</span> &#123;</span></span><br><span class="line">  element.addEventListener(eventType, <span class="keyword">e</span> =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">el</span> = <span class="keyword">e</span>.target</span><br><span class="line">    <span class="keyword">while</span> (!el.matches(selector)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (element === <span class="keyword">el</span>) &#123;</span><br><span class="line">        <span class="keyword">el</span> = null</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">el</span> = <span class="keyword">el</span>.parentNode</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">el</span> &amp;&amp; fn.<span class="keyword">call</span>(<span class="keyword">el</span>, <span class="keyword">e</span>, <span class="keyword">el</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> element</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">onEvent(document.querySelector(<span class="string">'#aaa'</span>), <span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span><span class="params">(ev, el)</span> &#123;</span></span><br><span class="line">  console.<span class="built_in">log</span>(<span class="keyword">el</span>.innerText)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p><strong>最终版</strong>利用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/matches" target="_blank" rel="external">Element.matches()</a>来匹配。<br><strong>onEvent函数</strong> 最后封装好的方法</p><ol><li>第一个参数祖先元素，</li><li>第二个参数绑定的事件</li><li>第三个参数绑定的元素，可以是<strong>css选择器</strong> 例: ‘.ax img’、’”input[name=’xxx’]:checked”‘</li><li>第四个参数触发的函数</li></ol><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li><p>减少了DOM操作次数，提高了性能。事件委托利用事件冒泡机制，将事件绑定在父元素上，可以在子元素触发事件时进行响应，避免了对每个子元素都绑定事件的开销，减少了DOM操作次数，提高了性能。</p></li><li><p>动态监听绑定事件，减少代码量。在动态添加子元素时，如果采用传统的事件绑定方式，需要对每个新添加的子元素都进行事件绑定操作，代码量会非常大。而事件委托只需要在父元素上绑定一次事件即可。</p></li></ul><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul><li><p>事件委托无法处理一些不能冒泡的事件，例如focus、blur等，需要对这些事件进行单独处理。</p></li><li><p>调试比较复杂，不容易确定监听者。因为所有子元素的事件都被绑定在一个父元素上。</p></li></ul><h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p><a href="https://jsbin.com/kogojehiso/6/edit?html,js,console,output" target="_blank" rel="external">Demo地址</a></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JavaScript的事件委托原理.html" target="_blank" rel="external">http://blog.langpz.com/JavaScript的事件委托原理.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事件委托/">事件委托</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JavaScript的事件委托原理.html&title=《JavaScript的事件委托原理》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JavaScript的事件委托原理.html&title=《JavaScript的事件委托原理》 — 蓝胖纸&source=事件委托事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JavaScript的事件委托原理.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript的事件委托原理》 — 蓝胖纸&url=http://blog.langpz.com/JavaScript的事件委托原理.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JavaScript的事件委托原理.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Vue3组合式API(Composition API) .html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Vue3组合式API(Composition API)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/解决Waline服务因vercel国内被墙无法使用.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">解决Waline服务因vercel国内被墙无法使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JavaScript的事件委托原理.html&title=《JavaScript的事件委托原理》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JavaScript的事件委托原理.html&title=《JavaScript的事件委托原理》 — 蓝胖纸&source=事件委托事件委托是JavaScript中常用的一种事件处理方式，也称为事件代理。它可以让我们在处理多个相似元素事件时，减少重复代码，提高性能和代码可维护性。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JavaScript的事件委托原理.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript的事件委托原理》 — 蓝胖纸&url=http://blog.langpz.com/JavaScript的事件委托原理.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JavaScript的事件委托原理.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3awW7rMAwEwPz/T/tdC7Q2dsXkAZFGp6C1JY0PBCnq9YrH9WP8/nv++27m51XeNjAwML6WcT2OfIGWmn+O571hYGCcw2inzpefR8jnvWFgYGAkz6yF6bvQjIGBgfGJgJsXnwkVAwMDY1LEPr9Vl51BQvmRWhwDA+MLGfmp+////ZH+BgYGxlcxrnK087SNyWtpYGBg7M3IA9zaUVqbUE72g4GBsStjkqglG022lRext8dtGBgYhzHWAl9bab65uMXAwNia0RaQydRJAdy2H/Jwj4GBsTcjf6i95jVJHEchGAMDYyNGfm2iTSjzdsJauvlau/2BgYHx5Yx5ydomkckHTebHwMDYm/EcRieJYNvsfMOTGBgY2zHWLk8kaWLbmGwTxKKFiYGBsR2jDayLBWdZxEangxgYGMcwJkds7XX8tTD9x/4xMDCOYbQRrC0781Bez4yBgXEAI3mtTR/b1HNy7QwDA2NvRtt6bJsB8xDcNjgxMDB2ZbQl5eRAv73eUayOgYFxDONdmBY2L5gxMDBOYCStyrzduNZaSJC3z2NgYGzKuMqxBlg7YiuoGBgYWzPy0Zad+bWM/NrZWsGMgYGxByMJss/hdW3551BeH+1hYGAcwFhraq6VnZO0L2phYmBgYAQNg/a/k4+FgYGBMUn12kuxSbJ4+yQGBsYBjDxo5m/lJWvLxsDAOI0xL0fzDC1PN9sZMDAwNmX8A6raDctEGGamAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

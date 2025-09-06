@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Vue3组合式API(Composition API) | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是Vue 3 及 Vue 2.7 的内置功能。对于更老的 Vue 2 版本，可以使用官方维护的插件 @vue/composition-api。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3组合式API(Composition API)">
+<meta property="og:url" content="http://blog.langpz.com/Vue3组合式API(Composition API) .html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是Vue 3 及 Vue 2.7 的内置功能。对于更老的 Vue 2 版本，可以使用官方维护的插件 @vue/composition-api。">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue3组合式API(Composition API)">
+<meta name="twitter:description" content="组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是Vue 3 及 Vue 2.7 的内置功能。对于更老的 Vue 2 版本，可以使用官方维护的插件 @vue/composition-api。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Vue3组合式API(Composition API)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Vue3组合式API(Composition API)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-04-22T11:36:22.000Z" itemprop="datePublished" class="page-time">
+  2023-04-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是组合式-API？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是组合式 API？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组合式-API优点"><span class="post-toc-number">2.</span> <span class="post-toc-text">组合式 API优点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对比"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">对比</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选项式-API（Options-API）"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">选项式 API（Options API）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组合式-API-Composition-API"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">组合式 API (Composition API)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lt-script-setup-gt"><span class="post-toc-number">3.</span> <span class="post-toc-text"><script setup></span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#setup-函数"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">setup() 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lt-script-setup-gt-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text"><script setup></span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#响应式-API"><span class="post-toc-number">4.</span> <span class="post-toc-text">响应式 API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ref"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">ref()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reactive"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">reactive()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#toRef"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">toRef()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#toRefs"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">toRefs()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#computed"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">computed()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#watch-source，callback，options"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">watch(source，callback，options)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#watchEffect-effect-options"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">watchEffect(effect, options)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#生命周期钩子"><span class="post-toc-number">5.</span> <span class="post-toc-text">生命周期钩子</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Vue3组合式API(Composition API) "
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Vue3组合式API(Composition API)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-04-22 11:36:22" datetime="2023-04-22T11:36:22.000Z"  itemprop="datePublished">2023-04-22</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>组合式 API (Composition API)</strong> 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是<strong>Vue 3 及 Vue 2.7</strong> 的内置功能。对于更老的 Vue 2 版本，可以使用官方维护的插件 <strong>@vue/composition-api</strong>。<br><a id="more"></a><br>Vue3并没有强制必须要使用<strong>组合式 API (Composition API)</strong> 在Vue3中还是可以使用 <strong>选项式（Options API）</strong>的写法。</p><h1 id="什么是组合式-API？"><a href="#什么是组合式-API？" class="headerlink" title="什么是组合式 API？"></a>什么是组合式 API？</h1><p>组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。它是一个概括性的术语，涵盖了以下方面的 API：</p><ul><li><p><strong>响应式 API</strong>：例如 <strong>ref()</strong> 和 <strong>reactive()</strong>，使我们可以直接创建响应式状态、计算属性和侦听器。</p></li><li><p><strong>生命周期钩子</strong>：例如 <strong>onMounted()</strong> 和 <strong>onUnmounted()</strong>，使我们可以在组件各个生命周期阶段添加逻辑。</p></li><li><p><strong>依赖注入</strong>：例如 <strong>provide()</strong> 和 <strong>inject()</strong>，使我们可以在使用响应式 API 时，利用 Vue 的依赖注入系统。</p></li></ul><h1 id="组合式-API优点"><a href="#组合式-API优点" class="headerlink" title="组合式 API优点"></a>组合式 API优点</h1><ul><li>提高代码逻辑的可复用性</li><li>更灵活的代码组织</li></ul><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><h3 id="选项式-API（Options-API）"><a href="#选项式-API（Options-API）" class="headerlink" title="选项式 API（Options API）"></a>选项式 API（Options API）</h3><div class="highlight-wrap" data-rel="Xml"><figure class="lpz highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">props</span>: [<span class="string">'msg'</span>],</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">count</span>: <span class="number">0</span>, <span class="comment">// 逻辑1的数据</span></span><br><span class="line">      name: <span class="string">'langpz'</span> <span class="comment">// 逻辑2的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    onAdd() &#123; <span class="comment">// 逻辑1的⽅法</span></span><br><span class="line">      <span class="keyword">this</span>.count++</span><br><span class="line">    &#125;,</span><br><span class="line">    getCount() &#123; <span class="comment">// 逻辑2的⽅法</span></span><br><span class="line">      <span class="keyword">this</span>.count = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    helloText() &#123; <span class="comment">// 逻辑2的计算属性</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.msg + <span class="string">' '</span> + <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    count() &#123; <span class="comment">// 逻辑1的Watch</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'count 变了'</span>)</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getCount() <span class="comment">// 逻辑2的初始化操作</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div><h3 id="组合式-API-Composition-API"><a href="#组合式-API-Composition-API" class="headerlink" title="组合式 API (Composition API)"></a>组合式 API (Composition API)</h3><div class="highlight-wrap" data-rel="Xml"><figure class="lpz highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">import</span> &#123; ref, watch, computed, onMounted &#125; <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">const</span> props = defineProps([<span class="string">'msg'</span>])</span><br><span class="line"><span class="comment">// 逻辑1的数据</span></span><br><span class="line"><span class="keyword">let</span> count = ref(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// 逻辑1的⽅法</span></span><br><span class="line"><span class="keyword">const</span> onAdd = <span class="function"><span class="params">()</span> =&gt;</span> count.value++</span><br><span class="line"><span class="comment">// 逻辑1的Watch</span></span><br><span class="line">watch(count, (val, oldVal) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`count 从<span class="subst">$&#123;oldVal&#125;</span> 变成了 <span class="subst">$&#123;val&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 逻辑2的⽅法</span></span><br><span class="line"><span class="keyword">const</span> getCount = <span class="function"><span class="params">()</span> =&gt;</span> count.value = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>)</span><br><span class="line"><span class="comment">// 逻辑2的初始化操作</span></span><br><span class="line">onMounted(getCount)</span><br><span class="line"><span class="comment">// 逻辑2的数据</span></span><br><span class="line"><span class="keyword">let</span> name = ref(<span class="string">'langpz'</span>)</span><br><span class="line"><span class="comment">// 逻辑2的计算属性</span></span><br><span class="line"><span class="keyword">let</span> helloText = computed(<span class="function"><span class="params">()</span> =&gt;</span> props.msg + <span class="string">' '</span> +name.value)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div><p>通过上面的例子相同的业务逻辑，组合式 API 里面同一个逻辑关注点相关的代码被归为了一组：我们无需再为了一个逻辑关注点在不同的选项块间来回滚动切换。此外，我们现在可以很轻松地将这一组代码移动到一个外部文件中，不再需要为了抽象而重新组织代码，大大降低了重构成本，这在长期维护的大型项目中非常关键。</p><h1 id="lt-script-setup-gt"><a href="#lt-script-setup-gt" class="headerlink" title="&lt;script setup&gt;"></a>&lt;script setup&gt;</h1><p>在 setup() 函数中手动暴露大量的状态和方法非常繁琐。幸运的是，我们可以通过使用构建工具来简化该操作。当使用单文件组件（SFC）时，我们可以使用 <strong>&lt;script setup&gt;</strong> 来大幅度地简化代码。</p><h2 id="setup-函数"><a href="#setup-函数" class="headerlink" title="setup() 函数"></a>setup() 函数</h2><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; reactive &#125; <span class="keyword">from</span> 'vue'</span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    const <span class="keyword">state</span> = reactive(&#123; count: <span class="number">0</span> &#125;)</span><br><span class="line"></span><br><span class="line">    function increment() &#123;</span><br><span class="line">      <span class="keyword">state</span>.count++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 还需要把值和方法return 返回</span><br><span class="line">    return &#123;</span><br><span class="line">      <span class="keyword">state</span>,</span><br><span class="line">      increment</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">&lt;template&gt;</span></span><br><span class="line">  <span class="variable">&lt;button @click="increment"&gt;</span></span><br><span class="line">    &#123;&#123; <span class="keyword">state</span>.count &#125;&#125;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></div><h2 id="lt-script-setup-gt-1"><a href="#lt-script-setup-gt-1" class="headerlink" title="&lt;script setup&gt;"></a>&lt;script setup&gt;</h2><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">&lt;script setup&gt;</span></span><br><span class="line">import &#123; reactive &#125; <span class="keyword">from</span> 'vue'</span><br><span class="line"></span><br><span class="line">const <span class="keyword">state</span> = reactive(&#123; count: <span class="number">0</span> &#125;)</span><br><span class="line"></span><br><span class="line">function increment() &#123;</span><br><span class="line">  <span class="keyword">state</span>.count++</span><br><span class="line">&#125;</span><br><span class="line">&lt;/&gt;</span><br><span class="line"></span><br><span class="line"><span class="variable">&lt;template&gt;</span></span><br><span class="line">  <span class="variable">&lt;button @click="increment"&gt;</span></span><br><span class="line">    &#123;&#123; <span class="keyword">state</span>.count &#125;&#125;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></div><h1 id="响应式-API"><a href="#响应式-API" class="headerlink" title="响应式 API"></a>响应式 API</h1><h2 id="ref"><a href="#ref" class="headerlink" title="ref()"></a>ref()</h2><p>接受一个内部值，返回一个响应式的、可更改的 ref 对象，此对象只有一个指向其内部值的属性 .value。如果在 <strong>&lt;template&gt;</strong> 可以不用写.value<br></p><div class="highlight-wrap" data-rel="Fortran"><figure class="lpz highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">count</span> = ref(<span class="number">0</span>)</span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">count</span>.<span class="keyword">value</span>) // <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">count</span>.<span class="keyword">value</span>++</span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">count</span>.<span class="keyword">value</span>) // <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &#123;&#123; <span class="built_in">count</span> &#125;&#125;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></div><p></p><p>给ref传一个对象内部会去调用reactive()</p><h2 id="reactive"><a href="#reactive" class="headerlink" title="reactive()"></a>reactive()</h2><p>返回一个对象的响应式代理。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">state</span> = reactive(&#123;</span><br><span class="line">  count: <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">state</span>.count++</span><br><span class="line">console.<span class="keyword">log</span>(<span class="keyword">state</span>.count) // <span class="number">1</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="toRef"><a href="#toRef" class="headerlink" title="toRef()"></a>toRef()</h2><p>基于响应式对象上的一个属性，创建一个对应的 ref。这样创建的 ref 与其源属性保持同步：改变源属性的值也会同步关联修改。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">state</span> = reactive(&#123;</span><br><span class="line">  foo: <span class="number">1</span>,</span><br><span class="line">  bar: <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const fooRef = <span class="keyword">to</span>Ref(<span class="keyword">state</span>, 'foo')</span><br><span class="line"></span><br><span class="line">// 更改该 ref 会更新源属性</span><br><span class="line">fooRef.value++</span><br><span class="line">console.<span class="keyword">log</span>(<span class="keyword">state</span>.foo) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">// 更改源属性也会更新该 ref</span><br><span class="line"><span class="keyword">state</span>.foo++</span><br><span class="line">console.<span class="keyword">log</span>(fooRef.value) // <span class="number">3</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="toRefs"><a href="#toRefs" class="headerlink" title="toRefs()"></a>toRefs()</h2><p>将一个响应式对象转换为一个普通对象，这个普通对象的每个属性都是指向源对象相应属性的 ref。每个单独的 ref 都是使用 toRef() 创建的。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">state</span> = reactive(&#123;</span><br><span class="line"> foo: <span class="number">1</span>,</span><br><span class="line"> bar: <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const <span class="keyword">state</span>AsRefs = <span class="keyword">to</span>Refs(<span class="keyword">state</span>)</span><br><span class="line"><span class="keyword">state</span>.foo++</span><br><span class="line">console.<span class="keyword">log</span>(<span class="keyword">state</span>AsRefs.foo.value) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">state</span>AsRefs.foo.value++</span><br><span class="line">console.<span class="keyword">log</span>(<span class="keyword">state</span>.foo) // <span class="number">3</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="computed"><a href="#computed" class="headerlink" title="computed()"></a>computed()</h2><p>接受一个 getter 函数，返回一个只读的响应式 ref 对象。该 ref 通过 .value 暴露 getter 函数的返回值。它也可以接受一个带有 get 和 set 函数的对象来创建一个可写的 ref 对象。<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">state</span> = reactive(&#123;</span><br><span class="line">  count: <span class="number">0</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const doubleCount = computed(() =&gt; &#123;</span><br><span class="line">  return <span class="keyword">state</span>.count * <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.<span class="keyword">log</span>(doubleCount.value) // 输出 <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">state</span>.count++</span><br><span class="line">console.<span class="keyword">log</span>(doubleCount.value) // 输出 <span class="number">2</span></span><br></pre></td></tr></table></figure></div><p></p><h2 id="watch-source，callback，options"><a href="#watch-source，callback，options" class="headerlink" title="watch(source，callback，options)"></a>watch(source，callback，options)</h2><p>侦听一个或多个响应式数据源，并在数据源变化时调用所给的回调函数。</p><ul><li>第一个参数是侦听器的源。</li><li>第二个参数是在发生变化时要调用的回调函数。这个回调函数接受三个参数：新值、旧值，以及一个用于注册副作用清理的回调函数。当侦听多个来源时，回调函数接受两个数组，分别对应来源数组中的新值和旧值。</li><li>第三个可选的参数是一个对象，支持以下这些选项：<ul><li><strong>immediate</strong>：在侦听器创建时立即触发回调。 <strong>默认：false</strong></li><li><strong>deep</strong>：如果源是对象，强制深度遍历，以便在深层级变更时触发回调。 当直接侦听一个响应式对象时，侦听器会自动启用深层模式。 <strong>默认：false</strong></li><li><strong>onTrack / onTrigger</strong>：调试侦听器的依赖。</li><li><strong>flush</strong>：调整回调函数的刷新时机。 ‘pre’ | ‘post’ | ‘sync’ <strong>默认：’pre’</strong><ul><li>默认情况下，用户创建的侦听器回调，都会在 Vue 组件更新之前被调用。这意味着你在侦听器回调中访问的 DOM 将是被 Vue 更新之前的状态。</li><li>如果想在侦听器回调中能<strong>访问被 Vue 更新之后的 DOM</strong>，你需要指明 flush: ‘post’</li><li>sync 同步调用</li></ul></li></ul></li></ul><div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">count</span> = ref(0);</span><br><span class="line"></span><br><span class="line">watch(<span class="keyword">count</span>, (newVal, oldVal) =&gt; &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(`<span class="keyword">count</span> changed from <span class="variable">$&#123;oldVal&#125;</span> to <span class="variable">$&#123;newVal&#125;</span>`);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">count</span>.value++</span><br></pre></td></tr></table></figure></div><p>多个值<br></p><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> count1 = ref(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">const</span> count2 = ref(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">watch([count1, count2], <span class="function">(<span class="params">[newVal1, newVal2] , [oldVal1, oldVal2]</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`count1 changed from <span class="subst">$&#123;oldVal1&#125;</span> to <span class="subst">$&#123;newVal1&#125;</span>`</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`count2 changed from <span class="subst">$&#123;oldVal2&#125;</span> to <span class="subst">$&#123;newVal2&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line">count1.value++</span><br><span class="line">count2.value++</span><br></pre></td></tr></table></figure></div><p></p><p>当直接侦听一个响应式对象时，侦听器会自动启用深层模式：<br></p><div class="highlight-wrap" data-rel="Pf"><figure class="lpz highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">state</span> = reactive(&#123; count: <span class="number">0</span> &#125;)</span><br><span class="line">watch(<span class="keyword">state</span>, () =&gt; &#123;</span><br><span class="line">  /* 深层级变更状态所触发的回调 */</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div><p></p><p>停止侦听器：<br></p><div class="highlight-wrap" data-rel="Arduino"><figure class="lpz highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">stop</span> = watch(source, callback)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当已不再需要该侦听器时：</span></span><br><span class="line"><span class="built_in">stop</span>()</span><br></pre></td></tr></table></figure></div><p></p><h2 id="watchEffect-effect-options"><a href="#watchEffect-effect-options" class="headerlink" title="watchEffect(effect, options)"></a>watchEffect(effect, options)</h2><p>立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行。</p><ul><li>第一个参数就是要运行的副作用函数。会自动收集函数里面的依赖监听。</li><li>第二个参数是一个可选的选项，可以用来调整副作用的刷新时机或调试副作用的依赖。<ul><li><strong>onTrack / onTrigger</strong>：调试侦听器的依赖。</li><li><strong>flush</strong>：调整回调函数的刷新时机。 ‘pre’ | ‘post’ | ‘sync’ <strong>默认：’pre’</strong></li></ul></li></ul><div class="highlight-wrap" data-rel="Q"><figure class="lpz highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">count</span> = ref(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">watchEffect(() =&gt; console.log(<span class="built_in">count</span>.<span class="built_in">value</span>))</span><br><span class="line"><span class="comment">// -&gt; 输出 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">count</span>.<span class="built_in">value</span>++</span><br><span class="line"><span class="comment">// -&gt; 输出 1</span></span><br></pre></td></tr></table></figure></div><p>和<strong>watch()</strong>用法一样，区别watchEffect可以自动收集需要监听的依赖。<br>常用的响应式API就这些，更多API可以去官网查看</p><h1 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h1><p>⽣命周期钩⼦写法微调，xxx变成 OnXxx，如mouted 变成 onMounted。created和beforeCreate不再需要。Vue2中 <del>destroyed</del> 和 <del>beforeDestroy</del> 在Vue3换了名字，换成 <strong>beforeUnmount</strong> 和 <strong>unmounted</strong> 。</p><table><thead><tr><th>选项式 API</th><th>组合式 API</th></tr></thead><tbody><tr><td>beforeCreate</td><td>setup()</td></tr><tr><td>created</td><td>setup()</td></tr><tr><td>beforeMount</td><td>onBeforeMount</td></tr><tr><td>mounted</td><td>onMounted</td></tr><tr><td>beforeUpdate</td><td>onBeforeUpdate</td></tr><tr><td>updated</td><td>onUpdated</td></tr><tr><td>beforeUnmount</td><td>onBeforeUnmount</td></tr><tr><td>unmounted</td><td>onUnmounted</td></tr><tr><td>errorCaptured</td><td>onErrorCaptured</td></tr><tr><td>renderTracked</td><td>onRenderTracked</td></tr><tr><td>renderTriggered</td><td>onRenderTriggered</td></tr><tr><td>activated</td><td>onActivated</td></tr><tr><td>deactivated</td><td>onDeactivated</td></tr><tr><td>serverPrefetch</td><td>onServerPrefetch</td></tr></tbody></table>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Vue3组合式API(Composition API) .html" target="_blank" rel="external">http://blog.langpz.com/Vue3组合式API(Composition API) .html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue3-0/">vue3.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组合式API/">组合式API</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&title=《Vue3组合式API(Composition API)》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&title=《Vue3组合式API(Composition API)》 — 蓝胖纸&source=组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Vue3组合式API(Composition API) .html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue3组合式API(Composition API)》 — 蓝胖纸&url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/手写EventHub-发布订阅.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">手写EventHub(发布订阅)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JavaScript的事件委托原理.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript的事件委托原理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&title=《Vue3组合式API(Composition API)》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&title=《Vue3组合式API(Composition API)》 — 蓝胖纸&source=组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。组合式 API 是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Vue3组合式API(Composition API) .html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue3组合式API(Composition API)》 — 蓝胖纸&url=http://blog.langpz.com/Vue3组合式API(Composition API) .html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Vue3组合式API(Composition API) .html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQW7DMAwF0dz/0u62i9qZTypFRI1WAWLFfi7AkiJfL7yuX+vu27vPz7v49QuWDBkytmVcj+v5Bs/Xr/r8/GwyZMg4h5GG0drtebTkzyZDhgwZJOEjgThNGWXIkCGjw+D1Iy+D+QuSIUPGyQwSIklB2y+PP16Ly5AhY0MGP3X//88f6W/IkCFjK8YVLnLLtKBNg+wfvyNDhozRDB7g0oP7zu+kzyNDhozZjNrhPi9K+RFbOih2+3eQIUPGaEYnveuMhdX2xp0NGTJkbMvgTcTa4oUubz+ghqgMGTIGMdJxCg5OG5lpCA4yXBkyZIxjrAqm5KXwFPNNUihDhowDGOkBWacErR3SvUklZciQcQCjdljPh8Z4OVpMLmXIkDGasepmtQCals1v9sqQIWMog6eArbmzsNyN98qQIeMABm8x8tSQH+vz8vX2hcqQIWM0g3xNgmytNO3sivuxMmTI2JxRG9iqHcylR3gkQMuQIeNMBk/dVpW+vAEQj1/IkCFjBGNtMF1V3JLwijJcGTJkjGOsHZ7oB9wg6MuQIeMYRq0lwENnkKXiAluGDBmzGVe40nDMG5AkrN/ukiFDxmhGpyXJQ2f/+s4RngwZMmYw0iDbeQU8+MYBV4YMGQcw+oFv7bBFXHLLkCFDRvhAfDgjzWGXTbTJkCFjNIM3NQmp01RY/H9DhgwZX89Ix0bTwYt0kIKEaRkyZJzDqA06cMaqBuSyFqYMGTJ2YvwATn+Jh3QFNuQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

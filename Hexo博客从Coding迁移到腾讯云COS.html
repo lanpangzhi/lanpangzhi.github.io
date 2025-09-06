@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Hexo博客从Coding迁移到腾讯云COS | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Hexo博客从Coding迁移到腾讯云COS最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages 不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客从Coding迁移到腾讯云COS">
+<meta property="og:url" content="http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Hexo博客从Coding迁移到腾讯云COS最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages 不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/1.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/2.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/3.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/4.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/5.png">
+<meta property="og:updated_time" content="2025-09-06T12:42:50.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客从Coding迁移到腾讯云COS">
+<meta name="twitter:description" content="Hexo博客从Coding迁移到腾讯云COS最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages 不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo博客从Coding迁移到腾讯云COS</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo博客从Coding迁移到腾讯云COS</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-30T17:34:07.000Z" itemprop="datePublished" class="page-time">
+  2019-03-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hexo博客从Coding迁移到腾讯云COS"><span class="post-toc-number">1.</span> <span class="post-toc-text">Hexo博客从Coding迁移到腾讯云COS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建存储桶"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">创建存储桶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在基础设置开启静态网站"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">在基础设置开启静态网站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在域名管理开启自定义加速域名（CDN加速）"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">在域名管理开启自定义加速域名（CDN加速）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#域名解析"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">域名解析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装发布COS插件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装发布COS插件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置-config-yml"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">配置_config.yml</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加持续集成自动发布到COS（Travis-CI）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">添加持续集成自动发布到COS（Travis CI）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo博客从Coding迁移到腾讯云COS"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo博客从Coding迁移到腾讯云COS</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-30 17:34:07" datetime="2019-03-30T17:34:07.000Z"  itemprop="datePublished">2019-03-30</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Hexo博客从Coding迁移到腾讯云COS"><a href="#Hexo博客从Coding迁移到腾讯云COS" class="headerlink" title="Hexo博客从Coding迁移到腾讯云COS"></a>Hexo博客从Coding迁移到腾讯云COS</h1><p>最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub Pages 不是很快，而且百度SEO也爬不到。码云自定义域名收费，只好迁移到腾讯云COS上了。<br><a id="more"></a></p><h2 id="创建存储桶"><a href="#创建存储桶" class="headerlink" title="创建存储桶"></a>创建存储桶</h2><p><a href="https://console.cloud.tencent.com/cos5/bucket" target="_blank" rel="external">https://console.cloud.tencent.com/cos5/bucket</a> 首先要创建存储桶。区域看各自情况任选，访问权限必须要选择公有读私有写。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/1.png" alt></div><div class="image-caption"></div></figure><p></p><h3 id="在基础设置开启静态网站"><a href="#在基础设置开启静态网站" class="headerlink" title="在基础设置开启静态网站"></a>在<code>基础设置</code>开启静态网站</h3><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/2.png" alt></div><div class="image-caption"></div></figure><p>索引文档一定要填index.html，错误文档就看自定义的是什么文件了。</p><h3 id="在域名管理开启自定义加速域名（CDN加速）"><a href="#在域名管理开启自定义加速域名（CDN加速）" class="headerlink" title="在域名管理开启自定义加速域名（CDN加速）"></a>在<code>域名管理</code>开启自定义加速域名（CDN加速）</h3><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/3.png" alt></div><div class="image-caption"></div></figure><p>填写上自己的域名就可以了。</p><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>在域名解析这里添加上刚才配置的自定义加速域名的CNAME地址。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/4.png" alt></div><div class="image-caption"></div></figure><p></p><h2 id="安装发布COS插件"><a href="#安装发布COS插件" class="headerlink" title="安装发布COS插件"></a>安装发布COS插件</h2><div class="highlight-wrap" data-rel="Q"><figure class="lpz highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-<span class="built_in">cos</span>-enhanced-<span class="built_in">dev</span> --<span class="built_in">save</span></span><br></pre></td></tr></table></figure></div><h3 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置_config.yml"></a>配置_config.yml</h3><p>把之前deploy的配置替换掉<br></p><div class="highlight-wrap" data-rel="Yml"><figure class="lpz highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line"><span class="attr">  type:</span> <span class="string">cos</span></span><br><span class="line"><span class="attr">  bucket:</span> <span class="string">blog-1251123456</span></span><br><span class="line"><span class="attr">  region:</span> <span class="string">ap-shanghai</span></span><br><span class="line"><span class="attr">  secretId:</span> <span class="string">AKIDIgxxxxxxxxxxxxxxxxxxxx0SepjX</span></span><br><span class="line"><span class="attr">  secretKey:</span> <span class="string">qXPCbxxxxxxxxxxxxxxxxxxxxsJZfdR</span></span><br><span class="line"><span class="attr">    cdnConfig:</span></span><br><span class="line"><span class="attr">      enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      cdnUrl:</span> <span class="attr">http://yourCdnSite.com</span></span><br><span class="line"><span class="attr">      bucket:</span> <span class="string">static-1251123456</span></span><br><span class="line"><span class="attr">      region:</span> <span class="string">ap-shanghai</span></span><br><span class="line"><span class="attr">      folder:</span> <span class="string">static-1251123456</span></span><br><span class="line"><span class="attr">      secretId:</span> <span class="string">AKIDIgxxxxxxxxxxxxxxxxxxxx0SepjX</span></span><br><span class="line"><span class="attr">      secretKey:</span> <span class="string">qXPCbxxxxxxxxxxxxxxxxxxxxsJZfdR</span></span><br></pre></td></tr></table></figure></div><p></p><p><code>secretId</code> <code>secretKey</code> 包括cdnConfig下面这两个字段都可以不用填写， 直接从环境变量取</p><p><code>type</code>： 是固定死的，只能是 cos。</p><p><code>cdnUrl</code>： 是你的对象存储绑定的CDN域名，没有启用 CDN的话，推荐使用 <a href="https://github.com/sdlzhd/hexo-deployer-cos" target="_blank" rel="external">https://github.com/sdlzhd/hexo-deployer-cos</a></p><p><code>bucket</code> 和 <code>region</code>： 在腾讯云的对象存储中，新建或找到你的 bucket，然后找到 <strong>默认域名</strong> 信息，会看到一个类似这样的域名: <code>blog-1251123456.cos.ap-shanghai.myqcloud.com</code>，第一个点前面的 <code>blog-1251123456</code> 就是 <code>bucket</code> 名称，第二个点和第三个点之间的 <code>ap-shanghai</code>，就是你的 COS 所在地域，填写到 <code>region</code> 中。</p><p><code>secretId</code> 和 <code>secretKey</code>：在 COS控制台中，找到左侧的<strong>密钥管理</strong>，点进去，按照提示添加子账号，并设置秘钥。同时要给子账号赋予 COS相关的权限，还有CDN刷新的权限。不会配置的可以参考 <a href="https://cloud.tencent.com/document/product/228/14867" target="_blank" rel="external">官方示例</a></p><div class="highlight-wrap" data-rel="Ebnf"><figure class="lpz highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure></div><p>直接就发布到腾讯云COS上了，访问速度相当快，对SEO也好。</p><h2 id="添加持续集成自动发布到COS（Travis-CI）"><a href="#添加持续集成自动发布到COS（Travis-CI）" class="headerlink" title="添加持续集成自动发布到COS（Travis CI）"></a>添加持续集成自动发布到COS（Travis CI）</h2><p>我的博客使用Travis CI，而且备份也是在GitHub公开仓库， <code>secretId</code> <code>secretKey</code> 这两个字段我只能写到Travis CI环境变量里面。</p><div class="highlight-wrap" data-rel="Haml"><figure class="lpz highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script </span><br><span class="line">-<span class="ruby"> hexo d</span><br><span class="line"></span>env:</span><br><span class="line"> global:</span><br><span class="line">   -<span class="ruby"> <span class="symbol">SecretId:</span> $&#123;SecretId&#125;</span><br><span class="line"></span>   -<span class="ruby"> <span class="symbol">SecretKey:</span> $&#123;SecretKey&#125;</span></span><br></pre></td></tr></table></figure></div><p>只需要在.travis.yml 文件 script 下面加 hexo d 全局变量增加SecretId和SecretKey 这两个变量。<br></p><figure class="image-bubble"><div class="img-lightbox"><div class="overlay"></div><img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E8%BF%81%E7%A7%BB/5.png" alt></div><div class="image-caption"></div></figure><p></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Hexo博客从Coding迁移到腾讯云COS.html" target="_blank" rel="external">http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COS/">COS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&title=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&title=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&source=Hexo博客从Coding迁移到腾讯云COS最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/发布一个自己的NPM包.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">发布一个自己的NPM包</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/vue-cli3设置默认打开浏览器.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-cli3设置默认打开浏览器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2025</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&title=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&title=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&source=Hexo博客从Coding迁移到腾讯云COS最近coding的Pages 服务一直不稳定，这两天访问还出现404，重新部署也无法解决。国内访问GitHub..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客从Coding迁移到腾讯云COS》 — 蓝胖纸&url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Hexo博客从Coding迁移到腾讯云COS.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW7jQAwEwPz/015gTzmsrG5SE2+A0imwE82UApjjJr++4uv19/r+8/dX2jtcvft+lXbFLzw8PLxjvNfb64qXUN/f7eqVze//Yyd4eHh4x3hJMUg2nbPf3y0pG1H5wcPDw/soL99KfrCekfDw8PB+C+/9Fp86IuPh4eH9Fl6+ofe8GX5WGB7OWvDw8PBi3qwB9tmfj/f38PDw8EZd9bZg5EUij4M3u8XDw8M7wdsMUc2Wzz/i2wN6fSM8PDy8BW9zu82H+2xIKxlQuElc8PDw8Ba8/A/awPepYYIWeXOYxsPDw1vzkmWSA3c7BNCu+Nj3Bjw8PLw1b9/O3zfS9sjLu+Hh4eH9CO+pZdp322KQlAo8PDy8c7zZoXnzbhtqtPu8nIzAw8PDW/PyKCEPGk6MVSUP8TLmwMPDwzvM2zSl2hGBPSyKjPHw8PAO8JLjaQ54xdemX/dA0IyHh4c34s2Wb8cC2jGpTRG6iXHx8PDwHuK1o1HRDFf5m7O73ZQTPDw8vAO8vI20+fieFYZ2wKv4Kzw8PLw1b/ZRm2xiEyi0scgD/T08PDy8mDfbUHv4zhtaefZcDxbg4eHhrXlts2rWvjp3+I7+V3h4eHiP8vbBa9sqy1dsD9BFmIuHh4d3jDcbKZiNWO2/GQxTajw8PLwFrw1zN6/ka+UhclHr8PDw8Na8PICYLdZGFbPHelMS8PDw8I7x2qDh2UeTvN625fDw8PCe5b3Kq40A8tbUphl2uUM8PDy8A7xZt32YDZejA21I0e4EDw8Pb8PbFIN9nLEH3BQGPDw8vGO8WTHIt5XHsrPrpgGGh4eH9x/w2hC2PXa3xeamAYaHh4f3Id7mGJ03w2ZjWzf9PTw8PLwDvHy77SPYRAmbR4OHh4d3jjdrgLUBRN7an4XCw84eHh4eXsf7AwWUsYY6YisWAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
