@@ -2,6 +2,7 @@
 
 ## AI
 - [DeepSeek本地部署](https://blog.langpz.com/DeepSeek本地部署.html)
+- [Claude-Code安装和使用指南](https://blog.langpz.com/Claude-Code安装和使用指南.html)
 
 ## TypeScript
 - [TypeScript简介](https://blog.langpz.com/TypeScript简介.html)
@@ -28,6 +29,7 @@
 - [中介者模式](https://blog.langpz.com/JS设计模式-中介者模式.html)
 - [状态机模式](https://blog.langpz.com/JS设计模式-状态机模式.html)
 - [工厂模式](https://blog.langpz.com/JS设计模式-工厂模式.html)
+- [原型模式](https://blog.langpz.com/JS设计模式-原型模式.html)
 
 ## vue2.0
 - [vue2.0的生命周期](https://blog.langpz.com/vue的生命周期.html)
