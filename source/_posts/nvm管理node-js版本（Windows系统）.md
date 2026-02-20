@@ -15,12 +15,12 @@ keywords: nvm管理node.js版本（Windows系统）
 ## 安装nvm-windows
 刚才下载的是 nvm-setup.zip 这个文件
 
-![](http://hexo-1252491761.file.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226143805.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226143805.png)
 
 ```
 	输入 nvm 
 ```
-![](http://hexo-1252491761.file.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226150807.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226150807.png)
 这就安装成功了。
 
 ## 安装node
@@ -30,7 +30,7 @@ keywords: nvm管理node.js版本（Windows系统）
 	nvm install latest
 ```
 
-![](http://hexo-1252491761.file.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226154557.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226154557.png)
 
 安装指定版本 node
 
@@ -38,7 +38,7 @@ keywords: nvm管理node.js版本（Windows系统）
 	nvm install 8.9.0
 ```
 
-![](http://hexo-1252491761.file.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226155411.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226155411.png)
 
 ## 切换node版本
 
@@ -48,7 +48,7 @@ keywords: nvm管理node.js版本（Windows系统）
 
 nvm list 显示当前安装node版本列表  * 代表当前使用的版本
 
-![](http://hexo-1252491761.file.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226161037.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%ACWindows/20171226161037.png)
 
 	 注: 安装的npm全局模块不会在各个版本的node.js之间共享。还有可能有些npm包不支持当前使用的node版本 
 

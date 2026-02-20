@@ -24,4 +24,4 @@ Array.prototype.removal = function removal(){
 }
 ```
 
-![javascript数组去重](http://hexo-1252491761.file.myqcloud.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/20180102105153.png)
+![javascript数组去重](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/20180102105153.png)

@@ -77,7 +77,7 @@ module.exports = {
 };
 ```
 在项目的demo2目录执行webpack。如下图就代表打包成功。打开demo2下面的index.html 就可以弹出我的博客地址。
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608132222.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608132222.png)
 
 ## 使用babel转换es6语法 => es5
 
@@ -131,7 +131,7 @@ touch .babelrc
 }
 ```
 执行webpack就可以看见打包成功了。
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608145725.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608145725.png)
 
 ### babel-polyfill
 由于 Babel 只转换语法(如箭头函数)， 你可以使用 babel-polyfill 支持新的全局变量，例如 Promise 、新的原生方法如 String.padStart (left-pad) 等。
@@ -146,7 +146,7 @@ module.exports = {
 };
 ```
 执行webpack命令，如下图就成功了。
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608151354.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180608151354.png)
 
 # demo仓库地址
 [https://github.com/lanpangzhi/webpack-demo](https://github.com/lanpangzhi/webpack-demo)

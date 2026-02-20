@@ -15,18 +15,18 @@ keywords: Node.js安装 Windows
 [点这里去下载](http://nodejs.cn/download/)
 
 ## 如下图，选择系统对应的位数下载
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212103816.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212103816.png)
 
 ## 双击打开你下载node-v8.9.0-x64.msi安装包
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212113959.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212113959.png)
 
 <center>一路下一步</center>
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212114548.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212114548.png)
 
 <center>Node.js默认安装目录，你也可以点Change修改目录，点击下一步(Next)</center>
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132319.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132319.png)
 <center>点击下一步(Next)</center>
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132540.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212132540.png)
 <center>点击安装(Install)</center>
 
 ## 安装完检测PATH环境变量是否配置Node.js
@@ -36,5 +36,5 @@ keywords: Node.js安装 Windows
   输入 cmd 回车
   输入 node -v 和 npm -v
 ```
-![](http://hexo-1252491761.file.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212133014.jpg)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/node-js-Windows%E4%B8%8B%E5%AE%89%E8%A3%85/20171212133014.jpg)
 <center>会显示你安装node和npm的版本</center>

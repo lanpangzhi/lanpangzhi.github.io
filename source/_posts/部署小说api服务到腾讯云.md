@@ -61,7 +61,7 @@ pm2 stop app_name |app_id 停止指定的应用。 all 停止所有应用
 
 ## 第三步设置子域名
 添加一个api开头的子域名[https://console.cloud.tencent.com/domain](https://console.cloud.tencent.com/domain)，然后添加解析。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529113617.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529113617.png)
 
 ## 第四步登陆服务器安装软件
 登陆到服务器然后执行以下安装命令。
@@ -121,7 +121,7 @@ npm run deploy
 nginx
 ```
 http://123.206.45.87 在浏览器输入服务器ip就可以看到nginx已经启动了。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529134733.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529134733.png)
 进入nginx配置目录，新建文件。
 ```
 cd /etc/nginx/conf.d
@@ -174,7 +174,7 @@ gzip_http_version 1.1;
 gzip_types text/plain text/css application/json application/x-javascript image/gif image/jpeg image/png image/tiff image/x-icon application/font-woff application/vnd.ms-fontobject text/javascript;
 ```
 ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。可以去站长之家看你的压缩率[http://tool.chinaz.com/gzips/](http://tool.chinaz.com/gzips/)
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140415.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140415.png)
 
 ### 隐藏nginx版本号
 还是修改nginx.conf这个文件
@@ -186,19 +186,19 @@ vi nginx.conf
 server_tokens off;
 ```
 ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140928.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529140928.png)
 这里就不显示nginx版本号了。
 
 ### 配置ssl证书https，给你的网站加个小绿锁
 我用的是腾讯云的免费证书，也可以自己生成。[https://cloud.tencent.com/product/ssl?from=qcloudHpHeaderSsl](https://cloud.tencent.com/product/ssl?from=qcloudHpHeaderSsl)，使用域名免费版。
 
 #### 申请腾讯云ssl证书
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529141439.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529141439.png)
 直接点下一步，然后用推荐选项验证。申请很快不到十分钟就下来，到时候还会有邮件和短信通知。
 
 #### 下载证书上传到服务器
 找到腾讯云的ssl证书管理去下载证书。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529142105.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529142105.png)
 压缩包里面有三个文件夹找到Nginx这个文件夹。
 在服务器进入nginx所在目录新建一个文件夹。
 ```
@@ -275,13 +275,13 @@ server {
 ```
 ctrl + c 输入:wq  退出并保存。再执行nginx -s reload。
 现在就可以访问[https://api.langpz.com](https://api.langpz.com)。如果访问http协议就会强制跳转到https协议。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143306.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143306.png)
 
 ## SSL安全测试
 [](https://www.ssllabs.com/ssltest/index.html)
 输入你的域名。
 之前在nginx配置加强 HTTPS 安全性，所以结果是A+。
-![](http://hexo-1252491761.file.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143835.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E9%83%A8%E7%BD%B2%E5%B0%8F%E8%AF%B4api%E6%9C%8D%E5%8A%A1%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/QQ%E5%9B%BE%E7%89%8720180529143835.png)
 
 ## 总结
 这种部署比较麻烦，部署完发现pm2也有部署功能，2.0用koa.js重构的时候用pm2部署，docker 生成镜像。

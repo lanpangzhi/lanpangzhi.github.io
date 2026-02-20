@@ -38,14 +38,14 @@ NrRFi9wrf+M7Q== schacon@agadorlaptop.local
 ```
 ssh git@github.com
 ```
-![](http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505165306.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505165306.png)
 现在就添加成功了。
 
 测试Coding
 ```
 ssh -T git@git.coding.net
 ```
-![](http://hexo-1252491761.file.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505170650.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Git%E7%94%9F%E6%88%90SSH%E5%85%AC%E9%92%A5/QQ%E5%9B%BE%E7%89%8720180505170650.png)
 
 # 参考
 [https://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5](https://git-scm.com/book/zh/v1/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)

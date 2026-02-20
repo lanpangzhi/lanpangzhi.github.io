@@ -10,16 +10,16 @@ MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，
 
 ## 下载
 [下载地址](https://dev.mysql.com/downloads/mysql/)
-![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508112259.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508112259.png)
 点击，进入页面。注：MySQL安装程序是32位的，但会安装32位和64位二进制文件。
-![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508113607.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508113607.png)
 点击download然后跳转到页面。可以不需要登陆和注册也可以下载。
-![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508113906.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508113906.png)
 再点击，安装程序就下载了。
 
 ## 安装
 打开安装程序，勾选同意协议，点击下一步(Next)
-![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508115626.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL/QQ%E5%9B%BE%E7%89%8720180508115626.png)
 现在只安装MySQL的服务端，点击下一步然后安装。
 设置MySQL密码，继续下一步。然后完成，其余配置都是用默认配置。
 

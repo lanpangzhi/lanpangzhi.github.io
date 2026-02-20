@@ -20,7 +20,7 @@ MongoDB的一个实例可以拥有多个相互独立的数据库(database)，每
 
 ## 下载和安装
 [下载地址](https://www.mongodb.com/download-center#atlas)
-![](http://hexo-1252491761.file.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB/QQ%E5%9B%BE%E7%89%8720180508155317.png)
 点击下载，下载完安装，用默认设置。
 
 ## 运行MongoDB

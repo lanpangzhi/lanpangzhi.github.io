@@ -32,7 +32,7 @@ stage-0 包含 stage-1 stage-2 stage-3 阶段 还包含 babel-plugin-transform-d
 ```
 在demo4路径下执行 webpack，就看到打包成功了打开demo4/index.js文件控制台就输出。
 {name: "lanpangzhi", blog: "http://blog.langpz.com"}
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613143713.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613143713.png)
 
 ## 解析CSS
 为了从 JavaScript 模块中 import 一个 CSS 文件，你需要配置如下loader。
@@ -67,7 +67,7 @@ body {
 import './index.css';
 ```
 在demo4路径下执行 webpack，就看到打包成功。打开demo4/index.html就有红色的背景色了。
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613160924.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613160924.png)
 
 ## 解析sass
 为了从 JavaScript 模块中 import 一个 scss 文件，你需要配置如下loader。
@@ -103,7 +103,7 @@ body {
 import './index.scss';
 ```
 在demo4路径下执行 webpack，就看到sass编译成功。打开demo4/index.html就有绿色的背景色了。
-!()[http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613163909.png]
+!()[https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613163909.png]
 如果你想解析其他预处理css语言安装对应loader，添加规则就可以编译了。
 如less  less-loader。
 
@@ -137,7 +137,7 @@ body {
 }
 ```
 在demo4路径下执行 webpack，就看到图片编译成功。打开demo4/index.html就有背景图。
-![](http://hexo-1252491761.file.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613171021.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/webpack4.0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/QQ%E5%9B%BE%E7%89%8720180613171021.png)
 
 ## 加载字体
 像字体这样的其他资源如何处理呢？file-loader 和 url-loader 可以接收并加载任何文件，然后将其输出到构建目录。这就是说，我们可以将它们用于任何类型的文件，包括字体。让我们更新 webpack.config.js 来处理字体文件。

@@ -24,15 +24,15 @@ keywords: Hexo博客多端同步问题
 
 这就成功了，github上已经有博客的源文件了。
 
-![github查看提交成功](http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170524.png)
+![github查看提交成功](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170524.png)
 
 推荐把hexo设置为默认分支。
 
-![hexo设置为默认分支](http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170951.png)
+![hexo设置为默认分支](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229170951.png)
 
 ## git submodule 实现第三方主题同步
 因为之前是直接把第三方主题克隆到博客目录，有什么改动是无法推送到作者Git仓库的，这个时候需要把第三方主题的项目Fork到自己仓库，自己账号下生成一个同名的仓库，并对应一个url，我们应该git clone自己账号下仓库的url。
-![Fork第三方主题](http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229172902.png)
+![Fork第三方主题](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229172902.png)
 
 执行如下操作。
 ```
@@ -41,7 +41,7 @@ keywords: Hexo博客多端同步问题
 把自己仓库下面第三方主题添加到Git子模块， **注 : themes/next 这里的目录是因为我用的next主题才会写themes/next  如果你用的不是next请把next替换成你的第三方主题文件夹名字。**  
 
 博客的根目录会多一个.gitmodules文件,这是一个配置文件，保存了项目 URL 和你拉取到的本地子目录。
-![.gitmodules文件](http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229174101.png)
+![.gitmodules文件](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229174101.png)
 
 这就添加成功了，然后执行如下操作。
 ```
@@ -85,7 +85,7 @@ keywords: Hexo博客多端同步问题
   git push origin master   	# 推送master分支
 ```
 这样就会把修改的主题推送到自己的仓库。
-![修改的主题推送到自己的仓库](http://hexo-1252491761.file.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229175442.png)
+![修改的主题推送到自己的仓库](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/Hexo%E5%8D%9A%E5%AE%A2%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98/20171229175442.png)
 
 这样就实现多端同步了。
 

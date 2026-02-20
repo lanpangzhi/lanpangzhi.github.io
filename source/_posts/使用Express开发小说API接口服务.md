@@ -10,7 +10,7 @@ keywords: 使用Express开发小说API接口服务1.0（一）
 <!--more-->
 ## github创建仓库
 先创建一个仓库放文件
-![](http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png)
 然后克隆创建好的仓库
 ```
 git clone https://github.com/lanpangzhi/novel-api.git
@@ -32,7 +32,7 @@ DEBUG=novel-api:* & npm start
 set DEBUG=novel-api:* & npm start
 ```
 生成好的目录结构和文件
-![](http://hexo-1252491761.file.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png)
+![](https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png)
 
 ## 设置cors 跨域
 打开项目根目录app.js,放在路由上面。
