@@ -5,6 +5,9 @@
 - [Claude-Code安装和使用指南](https://blog.langpz.com/Claude-Code安装和使用指南.html)
 - [OpenCode-AI编程助手使用教程](https://blog.langpz.com/OpenCode-AI编程助手使用教程.html)
 
+## 前端架构
+- [前端架构实战：使用pnpm+ Turborepo重构BabelEditor的Monorepo之旅](https://blog.langpz.com/前端架构实战：使用pnpm+%20Turborepo重构BabelEditor的Monorepo之旅.html)
+
 ## TypeScript
 - [TypeScript简介](https://blog.langpz.com/TypeScript简介.html)
 - [TypeScript-基础类型](https://blog.langpz.com/TypeScript-基础类型.html)
