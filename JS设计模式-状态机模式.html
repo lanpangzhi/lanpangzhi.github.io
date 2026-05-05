@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>JS设计模式-状态机模式 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="状态机模式状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同的行为表现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式-状态机模式">
+<meta property="og:url" content="http://blog.langpz.com/JS设计模式-状态机模式.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="状态机模式状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同的行为表现。">
+<meta property="og:updated_time" content="2026-05-05T05:08:30.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS设计模式-状态机模式">
+<meta name="twitter:description" content="状态机模式状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同的行为表现。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS设计模式-状态机模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS设计模式-状态机模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-07-26T10:18:49.000Z" itemprop="datePublished" class="page-time">
+  2025-07-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#状态机模式"><span class="post-toc-number">1.</span> <span class="post-toc-text">状态机模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么要使用状态机模式？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为什么要使用状态机模式？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传统方式的问题"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">传统方式的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态机模式的优势"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">状态机模式的优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态机模式的实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">状态机模式的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础实现"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">基础实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实际案例：音乐播放器"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">实际案例：音乐播放器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进阶案例：订单状态管理"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">进阶案例：订单状态管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用状态机模式的最佳实践"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用状态机模式的最佳实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-状态转换图"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">1. 状态转换图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-状态验证"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">2. 状态验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-状态持久化"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">3. 状态持久化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">缺点</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JS设计模式-状态机模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS设计模式-状态机模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-07-26 10:18:49" datetime="2025-07-26T10:18:49.000Z"  itemprop="datePublished">2025-07-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h1><p>状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同的行为表现。<br><a id="more"></a><br>状态机由以下几个核心组件构成：</p><ul><li><strong>状态（State）</strong>：对象在某一时刻的特定条件或模式。</li><li><strong>事件（Event）</strong>：导致状态从一个状态转换到另一个状态的动作或触发器。</li><li><strong>转换（Transition）</strong>：从一个状态到另一个状态的改变，通常由事件触发，并且可能伴随某些动作。</li></ul><p>可以想象一下你的手机：</p><ul><li><strong>待机状态</strong>：屏幕黑屏，按电源键可以唤醒</li><li><strong>解锁状态</strong>：屏幕亮起，可以滑动解锁</li><li><strong>使用状态</strong>：可以打开应用、拨打电话等</li><li><strong>充电状态</strong>：显示充电图标，限制某些功能</li></ul><p>每个状态都有特定的行为，状态之间可以相互转换，这就是状态机的核心思想。</p><h2 id="为什么要使用状态机模式？"><a href="#为什么要使用状态机模式？" class="headerlink" title="为什么要使用状态机模式？"></a>为什么要使用状态机模式？</h2><h3 id="传统方式的问题"><a href="#传统方式的问题" class="headerlink" title="传统方式的问题"></a>传统方式的问题</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统的if-else方式处理状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrafficLight</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = <span class="string">'red'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  changeLight() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'red'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.state = <span class="string">'green'</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'绿灯亮起，可以通行'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'green'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.state = <span class="string">'yellow'</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'黄灯亮起，准备停车'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'yellow'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.state = <span class="string">'red'</span>;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'红灯亮起，禁止通行'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 如果要添加新状态或新行为，代码会变得越来越复杂</span></span><br><span class="line">  handleEmergency() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'red'</span>) &#123;</span><br><span class="line">      <span class="comment">// 红灯时的紧急处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'green'</span>) &#123;</span><br><span class="line">      <span class="comment">// 绿灯时的紧急处理</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.state === <span class="string">'yellow'</span>) &#123;</span><br><span class="line">      <span class="comment">// 黄灯时的紧急处理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h3 id="状态机模式的优势"><a href="#状态机模式的优势" class="headerlink" title="状态机模式的优势"></a>状态机模式的优势</h3><ol><li><strong>代码更清晰</strong>：每个状态的逻辑独立，易于理解</li><li><strong>易于扩展</strong>：添加新状态不影响现有代码</li><li><strong>减少bug</strong>：状态转换规则明确，避免非法状态</li><li><strong>便于维护</strong>：修改某个状态的行为只需修改对应的状态类</li></ol><h2 id="状态机模式的实现"><a href="#状态机模式的实现" class="headerlink" title="状态机模式的实现"></a>状态机模式的实现</h2><h3 id="基础实现"><a href="#基础实现" class="headerlink" title="基础实现"></a>基础实现</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 状态接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">  handle(context) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'子类必须实现handle方法'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体状态类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedLight</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">  handle(context) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'红灯亮起，禁止通行'</span>);</span><br><span class="line">    context.setState(<span class="keyword">new</span> GreenLight());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreenLight</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">  handle(context) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'绿灯亮起，可以通行'</span>);</span><br><span class="line">    context.setState(<span class="keyword">new</span> YellowLight());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">YellowLight</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">  handle(context) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'黄灯亮起，准备停车'</span>);</span><br><span class="line">    context.setState(<span class="keyword">new</span> RedLight());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上下文类（状态机）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrafficLight</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = <span class="keyword">new</span> RedLight();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  setState(state) &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = state;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  changeLight() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.handle(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">const</span> trafficLight = <span class="keyword">new</span> TrafficLight();</span><br><span class="line">trafficLight.changeLight(); <span class="comment">// 红灯亮起，禁止通行</span></span><br><span class="line">trafficLight.changeLight(); <span class="comment">// 绿灯亮起，可以通行</span></span><br><span class="line">trafficLight.changeLight(); <span class="comment">// 黄灯亮起，准备停车</span></span><br><span class="line">trafficLight.changeLight(); <span class="comment">// 红灯亮起，禁止通行</span></span><br></pre></td></tr></table></figure></div><h2 id="实际案例：音乐播放器"><a href="#实际案例：音乐播放器" class="headerlink" title="实际案例：音乐播放器"></a>实际案例：音乐播放器</h2><p>让我们用一个更贴近生活的例子——音乐播放器来演示状态机模式：</p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 播放器状态基类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayerState</span> </span>&#123;</span><br><span class="line">  play(player) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'子类必须实现play方法'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pause(player) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'子类必须实现pause方法'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  stop(player) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'子类必须实现stop方法'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StoppedState</span> <span class="keyword">extends</span> <span class="title">PlayerState</span> </span>&#123;</span><br><span class="line">  play(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'开始播放音乐 🎵'</span>);</span><br><span class="line">    player.setState(<span class="keyword">new</span> PlayingState());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pause(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当前已停止，无法暂停'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  stop(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当前已经是停止状态'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 播放状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayingState</span> <span class="keyword">extends</span> <span class="title">PlayerState</span> </span>&#123;</span><br><span class="line">  play(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当前正在播放中'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pause(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'暂停播放 ⏸️'</span>);</span><br><span class="line">    player.setState(<span class="keyword">new</span> PausedState());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  stop(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'停止播放 ⏹️'</span>);</span><br><span class="line">    player.setState(<span class="keyword">new</span> StoppedState());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 暂停状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PausedState</span> <span class="keyword">extends</span> <span class="title">PlayerState</span> </span>&#123;</span><br><span class="line">  play(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'继续播放 ▶️'</span>);</span><br><span class="line">    player.setState(<span class="keyword">new</span> PlayingState());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pause(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当前已经是暂停状态'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  stop(player) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'停止播放 ⏹️'</span>);</span><br><span class="line">    player.setState(<span class="keyword">new</span> StoppedState());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 音乐播放器类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = <span class="keyword">new</span> StoppedState();</span><br><span class="line">    <span class="keyword">this</span>.currentSong = <span class="string">''</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  setState(state) &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = state;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  play() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.play(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pause() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.pause(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  stop() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.stop(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  loadSong(song) &#123;</span><br><span class="line">    <span class="keyword">this</span>.currentSong = song;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`加载歌曲: <span class="subst">$&#123;song&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">const</span> player = <span class="keyword">new</span> MusicPlayer();</span><br><span class="line">player.loadSong(<span class="string">'陈奕迅 - 爱情转移'</span>);</span><br><span class="line"></span><br><span class="line">player.play();  <span class="comment">// 开始播放音乐 🎵</span></span><br><span class="line">player.play();  <span class="comment">// 当前正在播放中</span></span><br><span class="line">player.pause(); <span class="comment">// 暂停播放 ⏸️</span></span><br><span class="line">player.pause(); <span class="comment">// 当前已经是暂停状态</span></span><br><span class="line">player.play();  <span class="comment">// 继续播放 ▶️</span></span><br><span class="line">player.stop();  <span class="comment">// 停止播放 ⏹️</span></span><br><span class="line">player.pause(); <span class="comment">// 当前已停止，无法暂停</span></span><br></pre></td></tr></table></figure></div><h2 id="进阶案例：订单状态管理"><a href="#进阶案例：订单状态管理" class="headerlink" title="进阶案例：订单状态管理"></a>进阶案例：订单状态管理</h2><p>在电商系统中，订单状态管理是状态机模式的经典应用：</p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订单状态基类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pay(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`订单<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>状态下无法支付`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ship(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`订单<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>状态下无法发货`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  receive(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`订单<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>状态下无法确认收货`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  cancel(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`订单<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>状态下无法取消`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 待支付状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PendingPaymentState</span> <span class="keyword">extends</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'待支付'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pay(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'✅ 支付成功，订单进入待发货状态'</span>);</span><br><span class="line">    order.setState(<span class="keyword">new</span> PendingShipmentState());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  cancel(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'❌ 订单已取消'</span>);</span><br><span class="line">    order.setState(<span class="keyword">new</span> CancelledState());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 待发货状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PendingShipmentState</span> <span class="keyword">extends</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'待发货'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ship(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'🚚 订单已发货，进入待收货状态'</span>);</span><br><span class="line">    order.setState(<span class="keyword">new</span> ShippedState());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  cancel(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'❌ 订单已取消，将退款处理'</span>);</span><br><span class="line">    order.setState(<span class="keyword">new</span> CancelledState());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已发货状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShippedState</span> <span class="keyword">extends</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'已发货'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  receive(order) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'📦 确认收货，订单完成'</span>);</span><br><span class="line">    order.setState(<span class="keyword">new</span> CompletedState());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已完成状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CompletedState</span> <span class="keyword">extends</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'已完成'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已取消状态</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CancelledState</span> <span class="keyword">extends</span> <span class="title">OrderState</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'已取消'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订单类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(id, items) &#123;</span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">    <span class="keyword">this</span>.items = items;</span><br><span class="line">    <span class="keyword">this</span>.state = <span class="keyword">new</span> PendingPaymentState();</span><br><span class="line">    <span class="keyword">this</span>.createTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  setState(state) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`订单状态变更: <span class="subst">$&#123;<span class="keyword">this</span>.state.name&#125;</span> -&gt; <span class="subst">$&#123;state.name&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">this</span>.state = state;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  pay() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.pay(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ship() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.ship(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  receive() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.receive(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  cancel() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state.cancel(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  getStatus() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.state.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">const</span> order = <span class="keyword">new</span> Order(<span class="string">'ORD001'</span>, [<span class="string">'iPhone 15'</span>, <span class="string">'AirPods'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`订单创建，当前状态: <span class="subst">$&#123;order.getStatus()&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">order.pay();     <span class="comment">// ✅ 支付成功，订单进入待发货状态</span></span><br><span class="line">order.ship();    <span class="comment">// 🚚 订单已发货，进入待收货状态</span></span><br><span class="line">order.receive(); <span class="comment">// 📦 确认收货，订单完成</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 演示错误操作</span></span><br><span class="line">order.pay();     <span class="comment">// 订单已完成状态下无法支付</span></span><br><span class="line">order.cancel();  <span class="comment">// 订单已完成状态下无法取消</span></span><br></pre></td></tr></table></figure></div><h2 id="使用状态机模式的最佳实践"><a href="#使用状态机模式的最佳实践" class="headerlink" title="使用状态机模式的最佳实践"></a>使用状态机模式的最佳实践</h2><h3 id="1-状态转换图"><a href="#1-状态转换图" class="headerlink" title="1. 状态转换图"></a>1. 状态转换图</h3><p>在实现状态机之前，先画出状态转换图：</p><div class="highlight-wrap" data-rel="Brainfuck"><figure class="lpz highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">待支付</span> <span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">支付</span><span class="title">]</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">待发货</span> <span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">发货</span><span class="title">]</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">已发货</span> <span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">确认收货</span><span class="title">]</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">已完成</span></span><br><span class="line">   <span class="comment">|</span>                  <span class="comment">|</span>                              </span><br><span class="line">   <span class="comment">|</span>                  <span class="comment">|</span>                              </span><br><span class="line">   <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">取消</span><span class="title">]</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="title">[</span><span class="comment">取消</span><span class="title">]</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">已取消</span></span><br></pre></td></tr></table></figure></div><h3 id="2-状态验证"><a href="#2-状态验证" class="headerlink" title="2. 状态验证"></a>2. 状态验证</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrderStateMachine</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 定义允许的状态转换</span></span><br><span class="line">    <span class="keyword">this</span>.transitions = &#123;</span><br><span class="line">      <span class="string">'pending_payment'</span>: [<span class="string">'paid'</span>, <span class="string">'cancelled'</span>],</span><br><span class="line">      <span class="string">'paid'</span>: [<span class="string">'shipped'</span>, <span class="string">'cancelled'</span>],</span><br><span class="line">      <span class="string">'shipped'</span>: [<span class="string">'delivered'</span>],</span><br><span class="line">      <span class="string">'delivered'</span>: [],</span><br><span class="line">      <span class="string">'cancelled'</span>: []</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  canTransition(fromState, toState) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.transitions[fromState]?.includes(toState) || <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  transition(order, toState) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.canTransition(order.currentState, toState)) &#123;</span><br><span class="line">      order.currentState = toState;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`状态转换成功: <span class="subst">$&#123;toState&#125;</span>`</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`非法状态转换: <span class="subst">$&#123;order.currentState&#125;</span> -&gt; <span class="subst">$&#123;toState&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h3 id="3-状态持久化"><a href="#3-状态持久化" class="headerlink" title="3. 状态持久化"></a>3. 状态持久化</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersistentOrder</span> <span class="keyword">extends</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(id, items) &#123;</span><br><span class="line">    <span class="keyword">super</span>(id, items);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  setState(state) &#123;</span><br><span class="line">    <span class="keyword">super</span>.setState(state);</span><br><span class="line">    <span class="comment">// 保存状态到数据库</span></span><br><span class="line">    <span class="keyword">this</span>.saveToDatabase();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  saveToDatabase() &#123;</span><br><span class="line">    <span class="comment">// 模拟保存到数据库</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`保存订单 <span class="subst">$&#123;<span class="keyword">this</span>.id&#125;</span> 状态: <span class="subst">$&#123;<span class="keyword">this</span>.state.name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> loadFromDatabase(id) &#123;</span><br><span class="line">    <span class="comment">// 模拟从数据库加载</span></span><br><span class="line">    <span class="keyword">const</span> orderData = &#123; id, <span class="attr">state</span>: <span class="string">'paid'</span>, <span class="attr">items</span>: [<span class="string">'商品1'</span>] &#125;;</span><br><span class="line">    <span class="keyword">const</span> order = <span class="keyword">new</span> PersistentOrder(orderData.id, orderData.items);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据保存的状态恢复对象状态</span></span><br><span class="line">    <span class="keyword">switch</span>(orderData.state) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'pending_payment'</span>:</span><br><span class="line">        order.state = <span class="keyword">new</span> PendingPaymentState();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'paid'</span>:</span><br><span class="line">        order.state = <span class="keyword">new</span> PendingShipmentState();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="comment">// ... 其他状态</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>状态机模式是一个非常实用的设计模式，特别适合以下场景：</p><ol><li><strong>对象行为依赖于状态</strong>：如播放器、订单、游戏角色等</li><li><strong>状态转换规则复杂</strong>：有多个状态和转换条件</li><li><strong>需要避免大量if-else</strong>：让代码更清晰易维护</li></ol><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul><li>📝 <strong>代码清晰</strong>：每个状态的逻辑独立</li><li>🔧 <strong>易于扩展</strong>：添加新状态不影响现有代码</li><li>🐛 <strong>减少bug</strong>：状态转换规则明确</li><li>🔄 <strong>符合开闭原则</strong>：对扩展开放，对修改关闭</li></ul><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul><li>📈 <strong>增加类的数量</strong>：每个状态都需要一个类</li><li>🏗️ <strong>结构复杂</strong>：对于简单状态可能过度设计</li></ul>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JS设计模式-状态机模式.html" target="_blank" rel="external">http://blog.langpz.com/JS设计模式-状态机模式.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状态机模式/">状态机模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-状态机模式.html&title=《JS设计模式-状态机模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-状态机模式.html&title=《JS设计模式-状态机模式》 — 蓝胖纸&source=状态机模式状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-状态机模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-状态机模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-状态机模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-状态机模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/JS设计模式-工厂模式.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS设计模式-工厂模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS设计模式-适配器模式.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-适配器模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-状态机模式.html&title=《JS设计模式-状态机模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-状态机模式.html&title=《JS设计模式-状态机模式》 — 蓝胖纸&source=状态机模式状态机模式（State Pattern）是一种行为设计模式，它允许对象在内部状态改变时改变它的行为。简单来说，就像一个开关，不同的状态下会有不同..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-状态机模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-状态机模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-状态机模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-状态机模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQW7DMAwF0dz/0u4BUivzSaWoqdEqCATZLwuGIvl64XW9rffv1zvXJ9+dtnnJkCHjsYxrudZ7yJnrb8hn9HQZMmQcwCChkIRIHnz5z7d+NxkyZMhY76ntX++UIUOGjL0Bt7Zz/UQZMmTI6FxiefDlL5cW7zbcxWXIkPFABn+Vv//8lf6GDBkyHsW4wtUvt/E0NHgrGTJkjGakpTQyGMGvoJ2AK0OGjDMZ/JGdwFobyFg/XYYMGbMZaaOxg+GpYRyUZciQcQwjvV7evXrayOTN0VukDBkyDmDUxsJ4u3FD9tq/vsqQIePhDN683LuTtxM+nC9DhoxjGCTw8f270j70lyBDhowjGdemtQ6gtXbm7cyIDBkyhjI6dfW03MZHzWKADBkyRjN2Ff3Ji9bGONA3MmTIOICRDkCkwxm1pJMEehkyZJzA4KUunj7W9vMinQwZMk5jpGkcSenShDINpr/slCFDxmhGGgTTS2kt7PaTVBkyZMxjfJDhQ3lit2so7bZ2KEOGjAMY/UQwPY0nl6gTK0OGjNGMWtuy1toMCv0klZQhQ8ZQxhUuXvbqDIGl7UwZMmTMZqQXV54I1n6a1oCFDBkyRjP641nkokvKc2nxLvj3kCFDxgjGrsDXueLWQr8MGTJk9K+p/ALMhzOCbqcMGTKOZKSlt/RkkmJ+5X9DhgwZ/57RGnQoDVLUrqwfUkMZMmQMZfCrY9puDIpl+IdAaaIMGTLmMH4AvK6Jh9NUj/MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>JS设计模式-原型模式 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="原型模式（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆原型对象来创建新对象，避免了重复的初始化代码。在 JavaScript 中，原型模式是语言的核心特性之一，因为 JavaScript 本身就是基于原型的语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式-原型模式">
+<meta property="og:url" content="http://blog.langpz.com/JS设计模式-原型模式.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="原型模式（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆原型对象来创建新对象，避免了重复的初始化代码。在 JavaScript 中，原型模式是语言的核心特性之一，因为 JavaScript 本身就是基于原型的语言。">
+<meta property="og:updated_time" content="2026-05-05T05:08:30.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS设计模式-原型模式">
+<meta name="twitter:description" content="原型模式（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆原型对象来创建新对象，避免了重复的初始化代码。在 JavaScript 中，原型模式是语言的核心特性之一，因为 JavaScript 本身就是基于原型的语言。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS设计模式-原型模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS设计模式-原型模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-10-18T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2025-10-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原型模式"><span class="post-toc-number">1.</span> <span class="post-toc-text">原型模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#核心概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">核心概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型对象"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">原型对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型链"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">原型链</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">实现方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Object-create-方式"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1. Object.create() 方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-构造函数与原型"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2. 构造函数与原型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-克隆方法实现"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3. 克隆方法实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实际应用场景"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">实际应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-插件系统"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1. 插件系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-配置对象克隆"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">2. 配置对象克隆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-游戏角色克隆"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3. 游戏角色克隆</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与其他模式的区别"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">与其他模式的区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型模式-vs-工厂模式"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">原型模式 vs 工厂模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原型模式-vs-单例模式"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">原型模式 vs 单例模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JS设计模式-原型模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS设计模式-原型模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-10-18 10:00:00" datetime="2025-10-18T10:00:00.000Z"  itemprop="datePublished">2025-10-18</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><p>（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆原型对象来创建新对象，避免了重复的初始化代码。</p><p>在 JavaScript 中，原型模式是语言的核心特性之一，因为 JavaScript 本身就是基于原型的语言。</p><a id="more"></a><h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><p>每个 JavaScript 对象都有一个原型对象<code>（prototype）</code>，新对象可以从原型对象继承属性和方法。</p><h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>当访问一个对象的属性时，如果对象本身没有这个属性，JavaScript 会沿着原型链向上查找，直到找到该属性或到达原型链的末端。</p><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原型链查找示例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is eating.`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name, breed</span>) </span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>, name); <span class="comment">// 继承属性</span></span><br><span class="line">  <span class="keyword">this</span>.breed = breed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立原型链</span></span><br><span class="line">Dog.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Dog.prototype.constructor = Dog;</span><br><span class="line"></span><br><span class="line">Dog.prototype.bark = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is barking!`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dog = <span class="keyword">new</span> Dog(<span class="string">'旺财'</span>, <span class="string">'中华田园犬'</span>);</span><br><span class="line">dog.eat();  <span class="comment">// 旺财 is eating. (从 Animal.prototype 继承)</span></span><br><span class="line">dog.bark(); <span class="comment">// 旺财 is barking!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 原型链查找过程：</span></span><br><span class="line"><span class="comment">// 1. dog.eat() -&gt; dog 自身没有 eat 方法</span></span><br><span class="line"><span class="comment">// 2. 查找 Dog.prototype -&gt; 也没有 eat 方法</span></span><br><span class="line"><span class="comment">// 3. 查找 Animal.prototype -&gt; 找到 eat 方法并执行</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(dog.hasOwnProperty(<span class="string">'name'</span>));  <span class="comment">// true (实例自身属性)</span></span><br><span class="line"><span class="built_in">console</span>.log(dog.hasOwnProperty(<span class="string">'eat'</span>));   <span class="comment">// false (从原型继承)</span></span><br></pre></td></tr></table></figure></div><h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="1-Object-create-方式"><a href="#1-Object-create-方式" class="headerlink" title="1. Object.create() 方式"></a>1. Object.create() 方式</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原型对象</span></span><br><span class="line"><span class="keyword">const</span> carPrototype = &#123;</span><br><span class="line">  <span class="attr">wheels</span>: <span class="number">4</span>,</span><br><span class="line">  <span class="attr">engine</span>: <span class="string">'V8'</span>,</span><br><span class="line">  drive() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`驾驶这辆 <span class="subst">$&#123;<span class="keyword">this</span>.brand&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.model&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  getInfo() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`品牌: <span class="subst">$&#123;<span class="keyword">this</span>.brand&#125;</span>, 型号: <span class="subst">$&#123;<span class="keyword">this</span>.model&#125;</span>, 引擎: <span class="subst">$&#123;<span class="keyword">this</span>.engine&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过原型创建新对象</span></span><br><span class="line"><span class="keyword">const</span> car1 = <span class="built_in">Object</span>.create(carPrototype);</span><br><span class="line">car1.brand = <span class="string">'Tesla'</span>;</span><br><span class="line">car1.model = <span class="string">'Model S'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> car2 = <span class="built_in">Object</span>.create(carPrototype);</span><br><span class="line">car2.brand = <span class="string">'BMW'</span>;</span><br><span class="line">car2.model = <span class="string">'X5'</span>;</span><br><span class="line"></span><br><span class="line">car1.drive(); <span class="comment">// 驾驶这辆 Tesla Model S</span></span><br><span class="line">car2.getInfo(); <span class="comment">// 品牌: BMW, 型号: X5, 引擎: V8</span></span><br></pre></td></tr></table></figure></div><h3 id="2-构造函数与原型"><a href="#2-构造函数与原型" class="headerlink" title="2. 构造函数与原型"></a>2. 构造函数与原型</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在原型上添加方法</span></span><br><span class="line">Person.prototype.introduce = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`大家好，我是 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>，今年 <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> 岁`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`你好，我是 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建实例</span></span><br><span class="line"><span class="keyword">const</span> person1 = <span class="keyword">new</span> Person(<span class="string">'张三'</span>, <span class="number">25</span>);</span><br><span class="line"><span class="keyword">const</span> person2 = <span class="keyword">new</span> Person(<span class="string">'李四'</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">person1.introduce(); <span class="comment">// 大家好，我是 张三，今年 25 岁</span></span><br><span class="line">person2.sayHello(); <span class="comment">// 你好，我是 李四</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有实例共享原型上的方法</span></span><br><span class="line"><span class="built_in">console</span>.log(person1.introduce === person2.introduce); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div><h3 id="3-克隆方法实现"><a href="#3-克隆方法实现" class="headerlink" title="3. 克隆方法实现"></a>3. 克隆方法实现</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.data = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 浅克隆</span></span><br><span class="line">  clone() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.create(</span><br><span class="line">      <span class="built_in">Object</span>.getPrototypeOf(<span class="keyword">this</span>),</span><br><span class="line">      <span class="built_in">Object</span>.getOwnPropertyDescriptors(<span class="keyword">this</span>)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 深克隆</span></span><br><span class="line">  deepClone() &#123;</span><br><span class="line">    <span class="keyword">const</span> cloned = <span class="keyword">this</span>.clone();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> cloned) &#123;</span><br><span class="line">      <span class="keyword">if</span> (cloned.hasOwnProperty(key) &amp;&amp; <span class="keyword">typeof</span> cloned[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">        cloned[key] = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(cloned[key]));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cloned;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> <span class="keyword">extends</span> <span class="title">Prototype</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, price, features) &#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.price = price;</span><br><span class="line">    <span class="keyword">this</span>.features = features;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  display() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`产品: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, 价格: <span class="subst">$&#123;<span class="keyword">this</span>.price&#125;</span>元`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'特性:'</span>, <span class="keyword">this</span>.features);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建原型对象</span></span><br><span class="line"><span class="keyword">const</span> originalProduct = <span class="keyword">new</span> Product(<span class="string">'iPhone'</span>, <span class="number">6999</span>, &#123;</span><br><span class="line">  <span class="attr">color</span>: <span class="string">'白色'</span>,</span><br><span class="line">  <span class="attr">storage</span>: <span class="string">'128GB'</span>,</span><br><span class="line">  <span class="attr">camera</span>: <span class="string">'双摄'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 浅克隆</span></span><br><span class="line"><span class="keyword">const</span> clonedProduct = originalProduct.clone();</span><br><span class="line">clonedProduct.name = <span class="string">'iPhone Pro'</span>;</span><br><span class="line">clonedProduct.price = <span class="number">8999</span>;</span><br><span class="line">clonedProduct.features.camera = <span class="string">'三摄'</span>; <span class="comment">// 会影响原对象</span></span><br><span class="line"></span><br><span class="line">originalProduct.display();</span><br><span class="line"><span class="comment">// 产品: iPhone, 价格: 6999元</span></span><br><span class="line"><span class="comment">// 特性: &#123; color: '白色', storage: '128GB', camera: '三摄' &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 深克隆</span></span><br><span class="line"><span class="keyword">const</span> deepClonedProduct = originalProduct.deepClone();</span><br><span class="line">deepClonedProduct.features.color = <span class="string">'黑色'</span>;</span><br><span class="line"></span><br><span class="line">originalProduct.display();</span><br><span class="line"><span class="comment">// 产品: iPhone, 价格: 6999元</span></span><br><span class="line"><span class="comment">// 特性: &#123; color: '白色', storage: '128GB', camera: '三摄' &#125;</span></span><br></pre></td></tr></table></figure></div><h2 id="实际应用场景"><a href="#实际应用场景" class="headerlink" title="实际应用场景"></a>实际应用场景</h2><h3 id="1-插件系统"><a href="#1-插件系统" class="headerlink" title="1. 插件系统"></a>1. 插件系统</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Editor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.content = <span class="string">''</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Editor.prototype.plugins = [];</span><br><span class="line"></span><br><span class="line">Editor.prototype.use = <span class="function"><span class="keyword">function</span>(<span class="params">plugin</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.plugins.push(plugin);</span><br><span class="line">  plugin.init(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义插件</span></span><br><span class="line"><span class="keyword">const</span> spellChecker = &#123;</span><br><span class="line">  init(editor) &#123;</span><br><span class="line">    editor.checkSpelling = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'检查拼写...'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> autoSave = &#123;</span><br><span class="line">  init(editor) &#123;</span><br><span class="line">    editor.autoSave = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'自动保存:'</span>, <span class="keyword">this</span>.content);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> editor = <span class="keyword">new</span> Editor();</span><br><span class="line">editor.use(spellChecker);</span><br><span class="line">editor.use(autoSave);</span><br><span class="line"></span><br><span class="line">editor.checkSpelling(); <span class="comment">// 检查拼写...</span></span><br><span class="line">editor.autoSave();      <span class="comment">// 自动保存:</span></span><br></pre></td></tr></table></figure></div><h3 id="2-配置对象克隆"><a href="#2-配置对象克隆" class="headerlink" title="2. 配置对象克隆"></a>2. 配置对象克隆</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认配置原型</span></span><br><span class="line"><span class="keyword">const</span> defaultConfig = &#123;</span><br><span class="line">  <span class="attr">theme</span>: <span class="string">'light'</span>,</span><br><span class="line">  <span class="attr">language</span>: <span class="string">'zh-CN'</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">notifications</span>: &#123;</span><br><span class="line">    <span class="attr">email</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">sms</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">push</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">display</span>: &#123;</span><br><span class="line">    <span class="attr">showSidebar</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">showToolbar</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建用户配置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createUserConfig</span>(<span class="params">customConfig</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 深克隆默认配置</span></span><br><span class="line">  <span class="keyword">const</span> config = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(defaultConfig));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 合并自定义配置</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(config, customConfig);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userConfig1 = createUserConfig(&#123;</span><br><span class="line">  <span class="attr">theme</span>: <span class="string">'dark'</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="number">16</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userConfig2 = createUserConfig(&#123;</span><br><span class="line">  <span class="attr">language</span>: <span class="string">'en-US'</span>,</span><br><span class="line">  <span class="attr">notifications</span>: &#123;</span><br><span class="line">    <span class="attr">email</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(userConfig1);</span><br><span class="line"><span class="comment">// &#123; theme: 'dark', language: 'zh-CN', fontSize: 16, ... &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(userConfig2);</span><br><span class="line"><span class="comment">// &#123; theme: 'light', language: 'en-US', fontSize: 14, ... &#125;</span></span><br></pre></td></tr></table></figure></div><h3 id="3-游戏角色克隆"><a href="#3-游戏角色克隆" class="headerlink" title="3. 游戏角色克隆"></a>3. 游戏角色克隆</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameCharacter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(config) &#123;</span><br><span class="line">    <span class="keyword">this</span>.type = config.type;</span><br><span class="line">    <span class="keyword">this</span>.health = config.health;</span><br><span class="line">    <span class="keyword">this</span>.attack = config.attack;</span><br><span class="line">    <span class="keyword">this</span>.defense = config.defense;</span><br><span class="line">    <span class="keyword">this</span>.skills = [...config.skills];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  clone() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> GameCharacter(&#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="keyword">this</span>.type,</span><br><span class="line">      <span class="attr">health</span>: <span class="keyword">this</span>.health,</span><br><span class="line">      <span class="attr">attack</span>: <span class="keyword">this</span>.attack,</span><br><span class="line">      <span class="attr">defense</span>: <span class="keyword">this</span>.defense,</span><br><span class="line">      <span class="attr">skills</span>: <span class="keyword">this</span>.skills</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  display() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`类型: <span class="subst">$&#123;<span class="keyword">this</span>.type&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`生命值: <span class="subst">$&#123;<span class="keyword">this</span>.health&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`攻击力: <span class="subst">$&#123;<span class="keyword">this</span>.attack&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`防御力: <span class="subst">$&#123;<span class="keyword">this</span>.defense&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`技能: <span class="subst">$&#123;<span class="keyword">this</span>.skills.join(<span class="string">', '</span>)&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建战士原型</span></span><br><span class="line"><span class="keyword">const</span> warriorPrototype = <span class="keyword">new</span> GameCharacter(&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">'战士'</span>,</span><br><span class="line">  <span class="attr">health</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">attack</span>: <span class="number">80</span>,</span><br><span class="line">  <span class="attr">defense</span>: <span class="number">60</span>,</span><br><span class="line">  <span class="attr">skills</span>: [<span class="string">'冲锋'</span>, <span class="string">'旋风斩'</span>, <span class="string">'嘲讽'</span>]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建法师原型</span></span><br><span class="line"><span class="keyword">const</span> magePrototype = <span class="keyword">new</span> GameCharacter(&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">'法师'</span>,</span><br><span class="line">  <span class="attr">health</span>: <span class="number">60</span>,</span><br><span class="line">  <span class="attr">attack</span>: <span class="number">100</span>,</span><br><span class="line">  <span class="attr">defense</span>: <span class="number">30</span>,</span><br><span class="line">  <span class="attr">skills</span>: [<span class="string">'火球术'</span>, <span class="string">'冰霜新星'</span>, <span class="string">'传送'</span>]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 克隆角色</span></span><br><span class="line"><span class="keyword">const</span> warrior1 = warriorPrototype.clone();</span><br><span class="line"><span class="keyword">const</span> warrior2 = warriorPrototype.clone();</span><br><span class="line"><span class="keyword">const</span> mage1 = magePrototype.clone();</span><br><span class="line"></span><br><span class="line">warrior1.health = <span class="number">90</span>; <span class="comment">// 只影响当前实例</span></span><br><span class="line">warrior1.display();</span><br></pre></td></tr></table></figure></div><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol><li>引用类型的共享问题，需在构造函数中初始化引用类型属性</li><li>构造函数的 constructor 属性，重写原型对象时，记得修复 constructor 指向。</li><li>虽然原型可以节省内存，但过长的原型链会影响属性查找性能。</li></ol><h2 id="与其他模式的区别"><a href="#与其他模式的区别" class="headerlink" title="与其他模式的区别"></a>与其他模式的区别</h2><h3 id="原型模式-vs-工厂模式"><a href="#原型模式-vs-工厂模式" class="headerlink" title="原型模式 vs 工厂模式"></a>原型模式 vs 工厂模式</h3><ul><li><strong>原型模式</strong>：通过克隆现有对象创建新对象</li><li><strong>工厂模式</strong>：通过工厂方法创建新对象</li></ul><h3 id="原型模式-vs-单例模式"><a href="#原型模式-vs-单例模式" class="headerlink" title="原型模式 vs 单例模式"></a>原型模式 vs 单例模式</h3><ul><li><strong>原型模式</strong>：可以创建多个相似的对象实例</li><li><strong>单例模式</strong>：确保只有一个实例存在</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>原型模式是 JavaScript 的基础，理解原型模式对于掌握 JavaScript 至关重要。它的核心优势包括：</p><ul><li><strong>内存效率</strong>：通过共享方法减少内存占用</li><li><strong>灵活性</strong>：支持动态扩展和修改</li><li><strong>继承机制</strong>：通过原型链实现对象继承</li></ul>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JS设计模式-原型模式.html" target="_blank" rel="external">http://blog.langpz.com/JS设计模式-原型模式.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型模式/">原型模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-原型模式.html&title=《JS设计模式-原型模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-原型模式.html&title=《JS设计模式-原型模式》 — 蓝胖纸&source=原型模式（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-原型模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-原型模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-原型模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-原型模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Claude-Code安装和使用指南.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Claude Code安装和使用指南</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS设计模式-工厂模式.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-工厂模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/JS设计模式-原型模式.html&title=《JS设计模式-原型模式》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/JS设计模式-原型模式.html&title=《JS设计模式-原型模式》 — 蓝胖纸&source=原型模式（Prototype Pattern）原型模式是一种创建型设计模式，通过复制现有对象来创建新对象，而不是通过实例化类来创建。这种模式允许你通过克隆..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/JS设计模式-原型模式.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-原型模式》 — 蓝胖纸&url=http://blog.langpz.com/JS设计模式-原型模式.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/JS设计模式-原型模式.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS27kMAwFwNz/0g4wqyxi5ZF0D2CptGoE7rZKC0b8fH3F6/q31n+5+9bPJ6+bdff8wwsDA+O1jGu51htak9a/dncoCfuXN2JgYBzAWAfZ6lYmITs/IAwMDIwkvK6DY++YMDAwMOaMPIvMM808rGNgYJzMSF6Qp6wJLGc8nItjYGC8kFFtDPzPzx/sb2BgYLyEcRXXp4Nsb2FgYOzN6JW6krbBZESjOsCBgYGxNyNJCKvBtLqJyWXxl/8bGBgYBzB6w1tR4X4QxP8I7hgYGMcwHhghbTUy10fWzMUxMDA2YkQ5bjF9rYbanBoFfQwMjO0Yk4Gw5JLXG7AoHx8GBsZhjF4hbNLgzC9/t8EdAwPjMEa+6V7jMw+mhaIbBgbGMYy8nVm9OCYFuCrpNuBiYGBsx+iV0pLrYLXcP2kwYGBgnMnojVnkz+TXx2Z5DgMDYztG7yrWK5YlIbU56oGBgbE1Y/2aJNV8ahQjCawYGBgYvTbkHDlpkWJgYOzNmAxp9Ua4esfxBxgDA+MwRl6gT0py1SJdtXlQqOFhYGC8ltELoE+FyzxhnrQWMDAw3s64iutzIXj0+xgYGFszJklpUpLLMcl3m1vHwMDYglENstVbZxKy8zLcLRIDA+MARh5key9uDk/k6S4GBgZG62XVElueuN4W3TAwMDDiVHNemCsfEAYGxgGMamLZa0/2an7RhRIDA2Nrxih1LAboyXDG/DgwMDBeyPgGjmPgBlYUD50AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
