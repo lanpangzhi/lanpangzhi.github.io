@@ -7,6 +7,7 @@
 - [AI-Prompt-MCP-Skills-Harness入门指南](https://blog.langpz.com/AI-Prompt-MCP-Skills-Harness入门指南.html)
 - [Spec Coding vs Vibe Coding：AI 编程的两条路线](https://blog.langpz.com/Spec-Coding-vs-Vibe-Coding-AI编程的两条路线.html)
 - [Spec-Driven AI Coding 落地指南]](https://blog.langpz.com/Spec-Driven-AI-Coding%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97.html)
+- [Codex CLI 子代理工程化工作流指南](https://blog.langpz.com/Codex-CLI%E5%AD%90%E4%BB%A3%E7%90%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97.html)
 
 ## 前端架构
 - [前端架构实战：使用pnpm+ Turborepo重构BabelEditor的Monorepo之旅](https://blog.langpz.com/前端架构实战：使用pnpm+%20Turborepo重构BabelEditor的Monorepo之旅.html)
