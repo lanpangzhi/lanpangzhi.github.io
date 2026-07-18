@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    
+    <title>Codex CLI 子代理工程化工作流指南 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Codex CLI 子代理工程化工作流指南当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。Codex CLI 的子代理（Subagent）能力，可以把前端分析、后端分析、代码审查等独立任务并行交给不同角色，再由主线程统一判断、修改和验证。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codex CLI 子代理工程化工作流指南">
+<meta property="og:url" content="http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Codex CLI 子代理工程化工作流指南当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。Codex CLI 的子代理（Subagent）能力，可以把前端分析、后端分析、代码审查等独立任务并行交给不同角色，再由主线程统一判断、修改和验证。">
+<meta property="og:updated_time" content="2026-07-18T00:29:32.699Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codex CLI 子代理工程化工作流指南">
+<meta name="twitter:description" content="Codex CLI 子代理工程化工作流指南当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。Codex CLI 的子代理（Subagent）能力，可以把前端分析、后端分析、代码审查等独立任务并行交给不同角色，再由主线程统一判断、修改和验证。">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Codex CLI 子代理工程化工作流指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Codex CLI 子代理工程化工作流指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2026-07-11T10:05:22.000Z" itemprop="datePublished" class="page-time">
+  2026-07-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Codex-CLI-子代理工程化工作流指南"><span class="post-toc-number">1.</span> <span class="post-toc-text">Codex CLI 子代理工程化工作流指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-分钟快速开始"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">5 分钟快速开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一步：检查-Codex-环境"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">第一步：检查 Codex 环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步：准备项目目录"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">第二步：准备项目目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步：创建最小配置"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">第三步：创建最小配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四步：信任项目并以只读权限新开会话"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">第四步：信任项目并以只读权限新开会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第五步：执行第一次委派"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">第五步：执行第一次委派</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子代理是什么"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">子代理是什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么时候使用子代理"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">什么时候使用子代理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#角色设计"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">角色设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内置-Agent"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">内置 Agent</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目自定义角色"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">项目自定义角色</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置并行数量"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">配置并行数量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模型选择"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">模型选择</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三个可复制的-Agent-配置"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">三个可复制的 Agent 配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前端分析-Agent"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">前端分析 Agent</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#后端分析-Agent"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">后端分析 Agent</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码审查-Agent"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">代码审查 Agent</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#权限边界"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">权限边界</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出合同与主线程汇总"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">输出合同与主线程汇总</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#端到端案例：会员列表返回-500"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">端到端案例：会员列表返回 500</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#派发任务"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">派发任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#frontend-mapper-报告"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">frontend_mapper 报告</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#backend-mapper-报告"><span class="post-toc-number">1.10.3.</span> <span class="post-toc-text">backend_mapper 报告</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主线程汇总"><span class="post-toc-number">1.10.4.</span> <span class="post-toc-text">主线程汇总</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可直接使用的提示词"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">可直接使用的提示词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析现有功能"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">分析现有功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根据分析执行修改"><span class="post-toc-number">1.11.2.</span> <span class="post-toc-text">根据分析执行修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提交前代码审查"><span class="post-toc-number">1.11.3.</span> <span class="post-toc-text">提交前代码审查</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#日常开发的七步工作流"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">日常开发的七步工作流</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见反模式"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">常见反模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选-Agent"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">可选 Agent</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跨项目迁移"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">跨项目迁移</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置验证与排错"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">配置验证与排错</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#官方参考"><span class="post-toc-number">1.17.</span> <span class="post-toc-text">官方参考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.18.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Codex-CLI子代理工程化工作流指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Codex CLI 子代理工程化工作流指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2026-07-11 10:05:22" datetime="2026-07-11T10:05:22.000Z"  itemprop="datePublished">2026-07-11</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Codex-CLI-子代理工程化工作流指南"><a href="#Codex-CLI-子代理工程化工作流指南" class="headerlink" title="Codex CLI 子代理工程化工作流指南"></a>Codex CLI 子代理工程化工作流指南</h1><p>当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。Codex CLI 的子代理（Subagent）能力，可以把前端分析、后端分析、代码审查等独立任务并行交给不同角色，再由主线程统一判断、修改和验证。<a id="more"></a></p><p>真正有效的多代理协作，不是简单地“多开几个 Agent”，而是同时明确三件事：</p><ul><li>每个 Agent 负责什么</li><li>它能使用哪些能力</li><li>它必须交付什么证据</li></ul><p>本文先带你完成一次最小可用配置，再介绍 Vue + Go 项目常用的角色设计、权限边界、端到端案例和日常工作流。</p><blockquote><p>本文依据 2026-07-13 的官方文档，并使用 <code>codex-cli 0.144.1</code> 核验命令和配置。Codex 更新较快，版本敏感内容应以当前环境和文末官方文档为准。</p></blockquote><h2 id="5-分钟快速开始"><a href="#5-分钟快速开始" class="headerlink" title="5 分钟快速开始"></a>5 分钟快速开始</h2><p>先用一个面向只读分析的最小 Agent 验证配置链路，再扩展成前端、后端和审查三个角色。</p><h3 id="第一步：检查-Codex-环境"><a href="#第一步：检查-Codex-环境" class="headerlink" title="第一步：检查 Codex 环境"></a>第一步：检查 Codex 环境</h3><p>在项目根目录执行：</p><div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">codex --version</span><br><span class="line">codex features list</span><br><span class="line">codex debug models</span><br><span class="line">codex doctor --summary</span><br></pre></td></tr></table></figure></div><p>这些命令分别用于确认：</p><ul><li>Codex CLI 版本</li><li><code>multi_agent</code> 功能的当前状态</li><li>当前账号和登录方式可见的模型</li><li>配置、认证和本地运行环境</li></ul><p>当前 Codex 版本通常已经默认启用多 Agent。如果命令或功能不存在，应先确认 CLI 版本，而不是直接照抄后面的配置。</p><h3 id="第二步：准备项目目录"><a href="#第二步：准备项目目录" class="headerlink" title="第二步：准备项目目录"></a>第二步：准备项目目录</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">项目根目录/</span><br><span class="line">├── AGENTS.md</span><br><span class="line">├── .codex/</span><br><span class="line">│   ├── config.toml</span><br><span class="line">│   └── agents/</span><br><span class="line">│       └── code-mapper.toml</span><br><span class="line">└── services/</span><br><span class="line">    └── payment/</span><br><span class="line">        └── AGENTS.override.md    # 可选：只覆盖支付子目录规则</span><br></pre></td></tr></table></figure></div><p>这里有一个容易踩坑的规则：</p><blockquote><p>同一目录最多加载一个指导文件，并按 <code>AGENTS.override.md</code>、<code>AGENTS.md</code> 的顺序查找。不要在项目根目录同时放这两个文件，否则根目录的 <code>AGENTS.md</code> 会被忽略。</p></blockquote><p>根目录的 <code>AGENTS.md</code> 适合保存仓库结构、构建命令、测试命令和交付标准。某个子目录需要更严格的规则时，再在那个子目录放 <code>AGENTS.override.md</code>。</p><h3 id="第三步：创建最小配置"><a href="#第三步：创建最小配置" class="headerlink" title="第三步：创建最小配置"></a>第三步：创建最小配置</h3><p>文件 <code>.codex/config.toml</code>：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[agents]</span></span><br><span class="line"><span class="attr">max_threads</span> = <span class="number">4</span></span><br><span class="line"><span class="attr">max_depth</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure></div><p>文件 <code>.codex/agents/code-mapper.toml</code>：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span>                   = <span class="string">"code_mapper"</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">"Read-only agent for locating code paths and returning evidence."</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">"read-only"</span></span><br><span class="line"><span class="attr">approval_policy</span>        = <span class="string">"never"</span></span><br><span class="line"><span class="attr">web_search</span>             = <span class="string">"disabled"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">"""</span><br><span class="line">只读分析当前项目，不要修改文件。</span><br><span class="line">查找与任务相关的入口、调用链和影响范围。</span><br><span class="line">结论必须附带文件路径和行号，并明确列出不确定点。</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure></div><p>独立 Agent 文件必须包含 <code>name</code>、<code>description</code> 和 <code>developer_instructions</code>。没有显式指定模型时，它会继承父会话的模型配置。</p><p><code>.codex/agents/*.toml</code> 会被自动发现，不需要再通过 <code>[agents.&lt;name&gt;]</code> 和 <code>config_file</code> 重复注册。Agent 类型以 <code>name</code> 字段为准，文件名只是便于维护的约定。</p><h3 id="第四步：信任项目并以只读权限新开会话"><a href="#第四步：信任项目并以只读权限新开会话" class="headerlink" title="第四步：信任项目并以只读权限新开会话"></a>第四步：信任项目并以只读权限新开会话</h3><p>项目级 <code>.codex/</code> 配置只会在项目被信任时加载。信任前应先检查仓库中的配置、Hook 和外部服务，确认项目来源可靠。</p><p>首次从仓库启动 Codex 时，如果出现 trust 提示，应在检查配置后选择信任。新增或修改 Agent TOML 后，不要依赖当前会话热加载，应退出旧会话并重新启动。</p><p>本节要验证本地文件系统与命令执行的只读边界，因此从项目根目录使用：</p><div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">codex --sandbox <span class="built_in">read</span>-only --ask-for-approval never</span><br></pre></td></tr></table></figure></div><p>当前 CLI 创建子代理时，会在加载角色配置后重新应用父会话的实时权限。也就是说，TOML 中的 <code>sandbox_mode</code> 和 <code>approval_policy</code> 不能单独保证子代理只读；委派时父会话对本地文件系统和命令执行的实时权限，才是这部分的最终边界。</p><h3 id="第五步：执行第一次委派"><a href="#第五步：执行第一次委派" class="headerlink" title="第五步：执行第一次委派"></a>第五步：执行第一次委派</h3><p>在新会话中输入：</p><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请使用 code_mapper 子代理，只读分析当前项目的构建入口。</span><br><span class="line">返回入口文件、主要调用链、文件路径、行号和不确定点。</span><br><span class="line">等待子代理完成后，由主线程汇总结论。</span><br></pre></td></tr></table></figure></div><p>子代理开始运行后，可以使用 <code>/agent</code> 查看和切换正在运行的 Agent 线程。</p><p><code>/agent</code> 不是可用 Agent 类型列表。还没有派出子代理时看不到 <code>code_mapper</code>，并不代表配置失败。</p><h2 id="子代理是什么"><a href="#子代理是什么" class="headerlink" title="子代理是什么"></a>子代理是什么</h2><p>子代理可以理解为主线程临时派出的独立工作单元。一个典型协作结构如下：</p><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主线程（Orchestrator）</span><br><span class="line">├── frontend_mapper：分析页面、组件、路由和 API 调用</span><br><span class="line">├── backend_mapper：分析接口、Service、数据库和数据结构</span><br><span class="line">└── reviewer：检查 Bug、回归、权限风险和缺失测试</span><br></pre></td></tr></table></figure></div><p>三类职责需要明确分开：</p><ul><li><strong>主线程</strong>：识别意图、拆分任务、合并证据、制定方案、修改代码和验证结果</li><li><strong>分析子代理</strong>：在限定范围内查找代码和证据，默认不修改文件</li><li><strong>审查子代理</strong>：检查真实风险，按严重程度输出发现，不负责凑数量</li></ul><p>子代理的报告只是决策输入。最终仍要由主线程判断结论是否可信、证据是否冲突，以及哪些假设还需要验证。</p><h2 id="什么时候使用子代理"><a href="#什么时候使用子代理" class="headerlink" title="什么时候使用子代理"></a>什么时候使用子代理</h2><p>子代理的价值是降低不确定性，不是增加流程仪式。</p><table><thead><tr><th>任务类型</th><th>是否推荐</th><th>处理方式</th></tr></thead><tbody><tr><td>文案修改、样式微调</td><td>不推荐</td><td>主线程直接修改并自查</td></tr><tr><td>已定位的单文件 Bug</td><td>一般不需要</td><td>主线程修复，可选审查 Agent 检查 diff</td></tr><tr><td>普通 Bug，根因不明确</td><td>推荐</td><td>前端和后端 Agent 并行排查</td></tr><tr><td>新功能或跨模块需求</td><td>推荐</td><td>mapper 分析现状，reviewer 检查方案风险</td></tr><tr><td>权限、支付、医疗数据、事务</td><td>强烈推荐</td><td>增加安全或数据库专用 Agent</td></tr><tr><td>上线前检查</td><td>推荐</td><td>reviewer 检查回归和缺失测试</td></tr></tbody></table><p>可以用一个简单标准判断：</p><blockquote><p>已经知道改哪个文件、为什么改、怎么验证，就直接修改；仍需寻找调用链、确认影响范围或比较方案，再使用子代理。</p></blockquote><h2 id="角色设计"><a href="#角色设计" class="headerlink" title="角色设计"></a>角色设计</h2><h3 id="内置-Agent"><a href="#内置-Agent" class="headerlink" title="内置 Agent"></a>内置 Agent</h3><p>Codex 当前提供三种内置 Agent：</p><table><thead><tr><th>Agent</th><th>定位</th><th>适用场景</th></tr></thead><tbody><tr><td><code>default</code></td><td>通用后备角色</td><td>未指定专业角色的通用任务</td></tr><tr><td><code>worker</code></td><td>偏执行</td><td>实现功能、修复 Bug</td></tr><tr><td><code>explorer</code></td><td>偏只读探索</td><td>查找代码、分析结构和调用链</td></tr></tbody></table><p>内置 Agent 的实际能力仍受父会话权限和运行时配置影响。可用类型也可能随版本变化，不能把 <code>/agent</code> 当作配置类型列表。</p><h3 id="项目自定义角色"><a href="#项目自定义角色" class="headerlink" title="项目自定义角色"></a>项目自定义角色</h3><p>对于常见前后端项目，可以先从“一主三从”开始：</p><table><thead><tr><th>Agent</th><th>负责范围</th><th>不负责</th></tr></thead><tbody><tr><td><code>frontend_mapper</code></td><td>路由、页面、组件、状态、API 调用和 UI 回归点</td><td>修改页面或实现功能</td></tr><tr><td><code>backend_mapper</code></td><td>Router、Handler、Service、Repository、Model、事务和鉴权</td><td>连接数据库或执行迁移</td></tr><tr><td><code>reviewer</code></td><td>正确性、回归、权限、并发、事务和缺失测试</td><td>泛泛点评风格或代替主线程改代码</td></tr></tbody></table><p>不要把 <code>reviewer</code> 简称为“测试”。本文中的 reviewer 只做审查，真正负责运行验证步骤的角色应另命名为 <code>qa_verifier</code>。</p><h2 id="配置并行数量"><a href="#配置并行数量" class="headerlink" title="配置并行数量"></a>配置并行数量</h2><p>文件 <code>.codex/config.toml</code> 可以这样配置：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[agents]</span></span><br><span class="line"><span class="attr">max_threads</span> = <span class="number">4</span></span><br><span class="line"><span class="attr">max_depth</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">job_max_runtime_seconds</span> = <span class="number">1800</span></span><br></pre></td></tr></table></figure></div><table><thead><tr><th>配置项</th><th>准确含义</th></tr></thead><tbody><tr><td><code>max_threads</code></td><td>同时打开的代理线程上限；不是简单的“子代理个数”</td></tr><tr><td><code>max_depth</code></td><td>嵌套创建深度；根线程深度为 0，设为 1 时只允许创建一层子代理</td></tr><tr><td><code>job_max_runtime_seconds</code></td><td><code>spawn_agents_on_csv</code> 批量任务中每个 CSV 工作项的默认超时</td></tr></tbody></table><p><code>max_threads</code> 默认是 <code>6</code>，<code>max_depth</code> 默认是 <code>1</code>；CSV 工作项未显式设置时，默认超时为 1800 秒。普通子代理的运行时间不能只靠 <code>job_max_runtime_seconds</code> 控制。</p><h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><p>当前 GPT-5.6 模型可以按任务性质选择：</p><table><thead><tr><th>模型</th><th>定位</th><th>适合任务</th></tr></thead><tbody><tr><td><code>gpt-5.6-luna</code></td><td>高吞吐、适合明确且重复的任务</td><td>结构化提取、分类、固定格式扫描</td></tr><tr><td><code>gpt-5.6-terra</code></td><td>日常均衡</td><td>需要一定判断和工具调用的代码探索</td></tr><tr><td><code>gpt-5.6-sol</code></td><td>复杂开放任务</td><td>深度审查、安全分析、复杂方案决策</td></tr></tbody></table><p>本文示例使用：</p><ul><li><code>frontend_mapper</code>、<code>backend_mapper</code>：<code>gpt-5.6-luna</code> + <code>medium</code></li><li><code>reviewer</code>：<code>gpt-5.6-sol</code> + <code>high</code></li></ul><p>如果 mapper 面对陌生大型仓库、任务边界不清或 Luna 输出不稳定，可以先切换到 Terra。模型可用性取决于套餐、工作区策略、登录方式和当前模型目录，应通过 <code>/model</code> 或 <code>codex debug models</code> 确认，不要依赖文章中的静态列表。</p><h2 id="三个可复制的-Agent-配置"><a href="#三个可复制的-Agent-配置" class="headerlink" title="三个可复制的 Agent 配置"></a>三个可复制的 Agent 配置</h2><p>下面仍在角色文件中声明 <code>sandbox_mode</code> 和 <code>approval_policy</code>，用于表达这个角色期望的权限。当前 CLI 会用父会话的实时权限覆盖它们，因此委派前仍要确认父会话处于只读模式。</p><h3 id="前端分析-Agent"><a href="#前端分析-Agent" class="headerlink" title="前端分析 Agent"></a>前端分析 Agent</h3><p>文件 <code>.codex/agents/frontend-mapper.toml</code>：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span>                   = <span class="string">"frontend_mapper"</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">"Read-only Vue frontend mapper for routes, components, stores, and API usage."</span></span><br><span class="line"><span class="attr">model</span>                  = <span class="string">"gpt-5.6-luna"</span></span><br><span class="line"><span class="attr">model_reasoning_effort</span> = <span class="string">"medium"</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">"read-only"</span></span><br><span class="line"><span class="attr">approval_policy</span>        = <span class="string">"never"</span></span><br><span class="line"><span class="attr">web_search</span>             = <span class="string">"disabled"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">"""</span><br><span class="line">你是一个只读的 Vue 前端分析 Agent。</span><br><span class="line"></span><br><span class="line">## 任务</span><br><span class="line">- 映射路由、页面和组件依赖</span><br><span class="line">- 追踪 axios/fetch 请求、字段契约和错误处理</span><br><span class="line">- 分析 Vuex/Pinia 数据流、权限判断和 UI 回归点</span><br><span class="line"></span><br><span class="line">## 允许动作</span><br><span class="line">- 读取文件和目录</span><br><span class="line">- 运行 rg、git grep、git diff、git show、git status 等只读命令</span><br><span class="line"></span><br><span class="line">## 输出</span><br><span class="line">- 结论</span><br><span class="line">- 证据：文件路径、行号和调用链</span><br><span class="line">- 影响范围</span><br><span class="line">- 未确认假设</span><br><span class="line">- 建议下一步</span><br><span class="line"></span><br><span class="line">## 约束</span><br><span class="line">- 不编辑文件，不启动服务，不安装依赖</span><br><span class="line">- 不写实现代码，不报告没有证据的猜测</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure></div><h3 id="后端分析-Agent"><a href="#后端分析-Agent" class="headerlink" title="后端分析 Agent"></a>后端分析 Agent</h3><p>文件 <code>.codex/agents/backend-mapper.toml</code>：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span>                   = <span class="string">"backend_mapper"</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">"Read-only Go backend mapper for handlers, services, repositories, models, and API contracts."</span></span><br><span class="line"><span class="attr">model</span>                  = <span class="string">"gpt-5.6-luna"</span></span><br><span class="line"><span class="attr">model_reasoning_effort</span> = <span class="string">"medium"</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">"read-only"</span></span><br><span class="line"><span class="attr">approval_policy</span>        = <span class="string">"never"</span></span><br><span class="line"><span class="attr">web_search</span>             = <span class="string">"disabled"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">"""</span><br><span class="line">你是一个只读的 Go 后端分析 Agent。</span><br><span class="line"></span><br><span class="line">## 任务</span><br><span class="line">- 映射 Router、Handler、Service、Repository 调用链</span><br><span class="line">- 分析 Request、Response、Model、Struct 和字段映射</span><br><span class="line">- 检查鉴权、中间件、事务、错误处理和敏感字段风险</span><br><span class="line"></span><br><span class="line">## 允许动作</span><br><span class="line">- 读取文件和目录</span><br><span class="line">- 运行 rg、git grep、git diff、git show、git status 等只读命令</span><br><span class="line"></span><br><span class="line">## 输出</span><br><span class="line">- 结论</span><br><span class="line">- 证据：文件路径、行号和完整调用链</span><br><span class="line">- 影响范围</span><br><span class="line">- 未确认假设</span><br><span class="line">- 建议下一步</span><br><span class="line"></span><br><span class="line">## 约束</span><br><span class="line">- 不编辑文件，不连接数据库，不执行迁移</span><br><span class="line">- 不启动服务，不安装依赖，不报告无证据猜测</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure></div><h3 id="代码审查-Agent"><a href="#代码审查-Agent" class="headerlink" title="代码审查 Agent"></a>代码审查 Agent</h3><p>文件 <code>.codex/agents/reviewer.toml</code>：</p><div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name</span>                   = <span class="string">"reviewer"</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">"Read-only reviewer focused on correctness, regressions, security, and missing tests."</span></span><br><span class="line"><span class="attr">model</span>                  = <span class="string">"gpt-5.6-sol"</span></span><br><span class="line"><span class="attr">model_reasoning_effort</span> = <span class="string">"high"</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">"read-only"</span></span><br><span class="line"><span class="attr">approval_policy</span>        = <span class="string">"never"</span></span><br><span class="line"><span class="attr">web_search</span>             = <span class="string">"disabled"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">"""</span><br><span class="line">你是一个只读代码审查 Agent，像代码 Owner 一样检查改动。</span><br><span class="line"></span><br><span class="line">## 审查重点</span><br><span class="line">1. 真实 Bug、边界错误和并发安全</span><br><span class="line">2. 行为回归、权限绕过和敏感数据泄露</span><br><span class="line">3. 事务、数据一致性和错误处理</span><br><span class="line">4. 缺失测试和需求外改动</span><br><span class="line"></span><br><span class="line">## 输出</span><br><span class="line">- 按 Critical、High、Medium、Low 排序</span><br><span class="line">- 每条包含文件路径、行号、问题、影响、建议和置信度</span><br><span class="line">- 标出是否阻塞发布</span><br><span class="line">- 没有发现问题时明确说明，不要凑数</span><br><span class="line"></span><br><span class="line">## 约束</span><br><span class="line">- 不编辑文件，不代替主线程修改代码</span><br><span class="line">- 不运行测试、启动服务或安装依赖</span><br><span class="line">- 优先报告真实问题，不报告纯风格偏好</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure></div><p>如果项目不是 Vue + Go，应替换名称、技术术语和必查调用链，而不是机械复制这三份配置。</p><h2 id="权限边界"><a href="#权限边界" class="headerlink" title="权限边界"></a>权限边界</h2><p>只读不是在提示词里写一句“不要修改”就绝对安全。需要理解下面几层控制：</p><table><thead><tr><th>控制层</th><th>作用</th></tr></thead><tbody><tr><td>父会话的 sandbox 和 approval</td><td>当前 CLI 创建子代理时会重新应用，是实际生效的权限边界</td></tr><tr><td>Agent TOML 中的 <code>sandbox_mode</code>、<code>approval_policy</code></td><td>表达角色期望权限，但不能单独保证子代理只读</td></tr><tr><td><code>sandbox_mode = &quot;read-only&quot;</code></td><td>在生效时禁止命令写入文件系统，并限制命令网络访问</td></tr><tr><td><code>approval_policy = &quot;never&quot;</code></td><td>从不发起批准请求；被沙箱或组织策略拒绝的动作直接失败</td></tr><tr><td><code>web_search = &quot;disabled&quot;</code></td><td>关闭原生 Web Search 工具</td></tr><tr><td>MCP 和应用工具</td><td>拥有独立权限面，需要单独审查、禁用或收窄</td></tr><tr><td><code>developer_instructions</code></td><td>约束 Agent 行为，但不是硬工具白名单</td></tr><tr><td>项目 trust</td><td>未信任项目会忽略项目级 <code>.codex/</code> 配置</td></tr></tbody></table><p>因此，高风险项目应在委派前把父会话切换到 Read Only，检查继承的 MCP 和工具，并避免使用 <code>--dangerously-bypass-approvals-and-sandbox</code> 等放宽沙箱的参数。角色文件中的权限配置只能表达意图，不能替代父会话的实际权限。</p><h2 id="输出合同与主线程汇总"><a href="#输出合同与主线程汇总" class="headerlink" title="输出合同与主线程汇总"></a>输出合同与主线程汇总</h2><p>多个 Agent 能否协作，关键不在名称，而在统一输出格式。建议分析 Agent 固定返回五项：</p><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 结论：一句话说明当前功能如何工作</span><br><span class="line">2. 证据：文件路径、行号和调用链</span><br><span class="line">3. 影响范围：可能受影响的页面、接口和数据结构</span><br><span class="line">4. 未确认假设：缺少哪些日志、环境或业务信息</span><br><span class="line">5. 建议下一步：最小修改方向或验证方式</span><br></pre></td></tr></table></figure></div><p>审查 Agent 再增加严重程度、问题影响、置信度和是否阻塞发布。</p><p>主线程汇总时应遵循五条规则：</p><ol><li>合并不同 Agent 指向同一字段或接口的证据</li><li>保留冲突结论及双方依据，不相信表达最自信的一方</li><li>明确区分代码事实、运行结果和未验证假设</li><li>列出最小修改文件，并说明哪些文件明确不改</li><li>给出自动测试、构建和人工回归清单</li></ol><h2 id="端到端案例：会员列表返回-500"><a href="#端到端案例：会员列表返回-500" class="headerlink" title="端到端案例：会员列表返回 500"></a>端到端案例：会员列表返回 500</h2><p>下面的路径和行号都是虚构内容，只用于演示合格的子代理报告。</p><h3 id="派发任务"><a href="#派发任务" class="headerlink" title="派发任务"></a>派发任务</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">线上问题：会员列表接口 /api/member/list 返回 500。</span><br><span class="line"></span><br><span class="line">先不要修改代码，请并行启动：</span><br><span class="line">1. frontend_mapper：检查请求参数、默认值和错误处理</span><br><span class="line">2. backend_mapper：追踪 Router → Handler → Service → Repository → DB</span><br><span class="line"></span><br><span class="line">每个结论必须包含文件路径和行号。</span><br><span class="line">主线程汇总事实、假设、根因候选、最小修复和验证步骤。</span><br></pre></td></tr></table></figure></div><h3 id="frontend-mapper-报告"><a href="#frontend-mapper-报告" class="headerlink" title="frontend_mapper 报告"></a>frontend_mapper 报告</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">结论：</span><br><span class="line">会员列表首次加载发送 sort_by=createdAt，与后端字段命名不一致。</span><br><span class="line"></span><br><span class="line">事实与证据：</span><br><span class="line">- web/src/views/member/MemberList.vue:48 默认排序字段为 createdAt</span><br><span class="line">- web/src/views/member/MemberList.vue:86 页面挂载后调用 loadMembers</span><br><span class="line">- web/src/api/member.ts:22 将该值原样写入 sort_by</span><br><span class="line"></span><br><span class="line">影响范围：</span><br><span class="line">首次进入列表和重置筛选都会携带该参数。</span><br><span class="line"></span><br><span class="line">未确认假设：</span><br><span class="line">线上部署的前端版本与当前代码一致。</span><br><span class="line"></span><br><span class="line">建议验证：</span><br><span class="line">在浏览器 Network 中确认失败请求的 sort_by 参数。</span><br></pre></td></tr></table></figure></div><h3 id="backend-mapper-报告"><a href="#backend-mapper-报告" class="headerlink" title="backend_mapper 报告"></a>backend_mapper 报告</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">结论：</span><br><span class="line">后端没有保护未知排序字段，createdAt 最终生成无效 SQL。</span><br><span class="line"></span><br><span class="line">事实与证据：</span><br><span class="line">- api/internal/member/router/router.go:26 注册 GET /api/member/list</span><br><span class="line">- api/internal/member/handler/member_handler.go:42 解析 sort_by 查询参数</span><br><span class="line">- api/internal/member/handler/member_handler.go:49 调用 MemberService.List</span><br><span class="line">- api/internal/member/service/member_service.go:73 将 SortBy 传给 Repository</span><br><span class="line">- api/internal/member/repository/member_repository.go:31 白名单只有 created_at、name、level</span><br><span class="line">- api/internal/member/repository/member_repository.go:118 使用 sortColumns[query.SortBy] 取列名，但未检查键是否存在</span><br><span class="line">- api/internal/member/repository/member_repository.go:121 将空列名拼入 ORDER BY，生成 ORDER BY  DESC</span><br><span class="line">- api/internal/member/repository/member_repository.go:124 执行查询，数据库返回 DESC 附近的语法错误</span><br><span class="line">- api/internal/member/service/member_service.go:78 将 Repository 错误原样返回</span><br><span class="line">- api/internal/member/handler/member_handler.go:57 将 Service 错误转换为 500</span><br><span class="line"></span><br><span class="line">影响范围：</span><br><span class="line">任何未知 sort_by 值都可能触发相同错误。</span><br><span class="line"></span><br><span class="line">未确认假设：</span><br><span class="line">生产环境的 500 确实来自该 SQL 分支。</span><br><span class="line"></span><br><span class="line">建议验证：</span><br><span class="line">分别请求 sort_by=createdAt 和 sort_by=created_at，并检查服务日志。</span><br></pre></td></tr></table></figure></div><h3 id="主线程汇总"><a href="#主线程汇总" class="headerlink" title="主线程汇总"></a>主线程汇总</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">一致结论：</span><br><span class="line">前端发送 createdAt，后端只识别 created_at，两份证据组成完整调用链。</span><br><span class="line"></span><br><span class="line">验证结果：</span><br><span class="line">- 本地请求 sort_by=createdAt，稳定复现 500</span><br><span class="line">- 服务日志记录 ORDER BY DESC 附近存在 SQL 语法错误</span><br><span class="line">- 改用 sort_by=created_at 后返回 200</span><br><span class="line"></span><br><span class="line">已确认根因：</span><br><span class="line">前后端排序字段契约不一致，且 Repository 缺少未知值保护。</span><br><span class="line"></span><br><span class="line">最小修复：</span><br><span class="line">1. 前端默认排序值改为 created_at</span><br><span class="line">2. Repository 遇到未知字段时回退到 created_at</span><br><span class="line">3. 不修改会员表、分页逻辑和无关筛选条件</span><br><span class="line"></span><br><span class="line">验证清单：</span><br><span class="line">- created_at 返回 200 且排序正确</span><br><span class="line">- createdAt 和未知字段不再生成无效 SQL</span><br><span class="line">- 回归首次加载、切换排序和重置筛选</span><br><span class="line">- 补充 Repository 单元测试并运行前端构建</span><br></pre></td></tr></table></figure></div><p>这个示例的重点不是猜中答案，而是让每一步都可以被复核。</p><h2 id="可直接使用的提示词"><a href="#可直接使用的提示词" class="headerlink" title="可直接使用的提示词"></a>可直接使用的提示词</h2><h3 id="分析现有功能"><a href="#分析现有功能" class="headerlink" title="分析现有功能"></a>分析现有功能</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">第一阶段先不要修改代码。</span><br><span class="line"></span><br><span class="line">请并行启动 frontend_mapper 和 backend_mapper，</span><br><span class="line">分析“会员等级”功能的前端链路、后端契约和影响范围。</span><br><span class="line"></span><br><span class="line">每个 Agent 输出结论、文件路径和行号、影响范围、未确认假设和建议下一步。</span><br><span class="line">主线程汇总一致结论、冲突结论、未验证假设和最小修改方案。</span><br></pre></td></tr></table></figure></div><h3 id="根据分析执行修改"><a href="#根据分析执行修改" class="headerlink" title="根据分析执行修改"></a>根据分析执行修改</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">根据刚才确认的分析报告执行修改。</span><br><span class="line"></span><br><span class="line">- 只修改报告确认相关的文件</span><br><span class="line">- 不做顺手重构</span><br><span class="line">- 每个改动对应需求点或代码证据</span><br><span class="line">- 完成后列出文件、位置和修改原因</span><br><span class="line">- 运行最小验证，并说明未验证风险</span><br></pre></td></tr></table></figure></div><h3 id="提交前代码审查"><a href="#提交前代码审查" class="headerlink" title="提交前代码审查"></a>提交前代码审查</h3><div class="highlight-wrap" data-rel="Code"><figure class="lpz highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">请启动 reviewer 审查本次改动。</span><br><span class="line"></span><br><span class="line">重点检查正确性、权限、并发、事务、边界情况、行为回归和缺失测试。</span><br><span class="line">按 Critical、High、Medium、Low 排序。</span><br><span class="line">每条包含文件路径、行号、影响、建议、置信度和是否阻塞。</span><br><span class="line">没有发现问题时明确说明，不要凑数。</span><br></pre></td></tr></table></figure></div><p>写在 <code>AGENTS.md</code> 里的“前端”“后端”等短名只是自然语言约定，不是 CLI 正式注册的别名。高风险任务应直接使用准确的 Agent <code>name</code>。</p><h2 id="日常开发的七步工作流"><a href="#日常开发的七步工作流" class="headerlink" title="日常开发的七步工作流"></a>日常开发的七步工作流</h2><ol><li><strong>描述目标和约束</strong>：说明要实现什么、不能修改什么、如何验收</li><li><strong>判断任务风险</strong>：位置和验证路径明确就直接做，影响面未知再委派</li><li><strong>并行收集证据</strong>：让不同 Agent 分析独立调用链，并统一输出格式</li><li><strong>主线程汇总方案</strong>：合并一致结论，标记冲突、事实和假设</li><li><strong>执行最小修改</strong>：只修改需求直接相关文件，不顺手重构</li><li><strong>审查和验证</strong>：reviewer 检查风险，主线程运行测试、构建和人工回归</li><li><strong>沉淀项目规则</strong>：把反复出现的约定写入合适的 <code>AGENTS.md</code> 或 Agent 指令</li></ol><h2 id="常见反模式"><a href="#常见反模式" class="headerlink" title="常见反模式"></a>常见反模式</h2><table><thead><tr><th>反模式</th><th>问题</th><th>正确做法</th></tr></thead><tbody><tr><td>只说“开几个 Agent 看看”</td><td>多个 Agent 重复搜索</td><td>指定角色、范围和输出合同</td></tr><tr><td>看完顺便修改</td><td>分析与执行混在一起</td><td>先只读收集证据，再由主线程修改</td></tr><tr><td>只输出总结</td><td>无法复核</td><td>必须带路径、行号、影响和假设</td></tr><tr><td>所有项目用相同角色</td><td>技术栈调用链不同</td><td>按真实架构调整名称和术语</td></tr><tr><td>Agent 越多越好</td><td>增加令牌、延迟和汇总成本</td><td>先从 2 到 3 个独立角色开始</td></tr></tbody></table><h2 id="可选-Agent"><a href="#可选-Agent" class="headerlink" title="可选 Agent"></a>可选 Agent</h2><p>只有任务反复出现或风险足够高时，才增加专用角色：</p><table><thead><tr><th>Agent</th><th>何时使用</th><th>输出重点</th></tr></thead><tbody><tr><td><code>advisor_reviewer</code></td><td>方案争议大，需要第二意见</td><td>反方观点、隐藏假设、替代方案</td></tr><tr><td><code>qa_verifier</code></td><td>修复后或上线前需要验证</td><td>最小命令、人工步骤、回归路径</td></tr><tr><td><code>security_reviewer</code></td><td>登录、权限、支付、医疗数据</td><td>越权、注入、敏感字段和可利用性</td></tr><tr><td><code>api_contract_mapper</code></td><td>前后端字段或兼容性改造</td><td>请求、响应、错误码和兼容影响</td></tr><tr><td><code>db_mapper</code></td><td>迁移、事务、索引和一致性</td><td>表结构、事务边界、锁和索引风险</td></tr></tbody></table><h2 id="跨项目迁移"><a href="#跨项目迁移" class="headerlink" title="跨项目迁移"></a>跨项目迁移</h2><p>迁移时不要只替换目录名，还要调整：</p><ul><li><code>name</code> 和 <code>description</code></li><li>技术栈术语和调用链</li><li>允许的命令、外部工具和权限</li><li>必查入口、数据结构和风险点</li><li>输出合同和验证方式</li></ul><p>常见映射可以从下面开始：</p><table><thead><tr><th>项目类型</th><th>推荐角色</th></tr></thead><tbody><tr><td>Vue + Go</td><td><code>frontend_mapper</code>、<code>backend_mapper</code>、<code>reviewer</code></td></tr><tr><td>React + Node.js</td><td><code>react_mapper</code>、<code>node_mapper</code>、<code>reviewer</code></td></tr><tr><td>Spring Boot</td><td><code>spring_mapper</code>、<code>db_mapper</code>、<code>security_reviewer</code></td></tr><tr><td>移动端 App</td><td><code>ios_mapper</code> 或 <code>android_mapper</code>、<code>api_contract_mapper</code></td></tr><tr><td>SDK 或纯接口服务</td><td><code>api_contract_mapper</code>、<code>qa_verifier</code>、<code>reviewer</code></td></tr></tbody></table><p>子代理应该适配项目，而不是让项目迁就模板。</p><h2 id="配置验证与排错"><a href="#配置验证与排错" class="headerlink" title="配置验证与排错"></a>配置验证与排错</h2><table><thead><tr><th>现象</th><th>检查方法</th></tr></thead><tbody><tr><td>自定义 Agent 没生效</td><td>确认项目已信任、文件位于 <code>.codex/agents/</code>，然后新开会话</td></tr><tr><td>Codex 不认识 Agent 名称</td><td>检查三个必填字段，调用时使用 TOML 中的 <code>name</code></td></tr><tr><td>修改配置后行为没变化</td><td>退出旧会话并重新启动，不依赖热加载</td></tr><tr><td><code>/agent</code> 中没有自定义 Agent</td><td>先明确要求启动；该命令只显示运行线程</td></tr><tr><td>启动时报告 TOML 错误</td><td>检查引号、多行字符串和重复字段，再运行 <code>codex doctor --all</code></td></tr><tr><td>配置模型不可用</td><td>使用 <code>codex debug models</code> 查看当前模型目录并替换</td></tr><tr><td>没有多 Agent 能力</td><td>使用 <code>codex features list</code> 检查 <code>multi_agent</code> 和 CLI 版本</td></tr><tr><td>只读 Agent 仍获得外部能力</td><td>检查父会话运行时权限、Web Search、MCP 和应用工具</td></tr><tr><td>CSV worker 超时</td><td>调整 <code>job_max_runtime_seconds</code>；它不控制普通子代理</td></tr></tbody></table><h2 id="官方参考"><a href="#官方参考" class="headerlink" title="官方参考"></a>官方参考</h2><ul><li><a href="https://developers.openai.com/codex/subagents" target="_blank" rel="external">Subagents</a></li><li><a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="external">AGENTS.md 指南</a></li><li><a href="https://developers.openai.com/codex/config-basic" target="_blank" rel="external">Codex 配置基础</a></li><li><a href="https://developers.openai.com/codex/config-reference" target="_blank" rel="external">Codex 配置参考</a></li><li><a href="https://developers.openai.com/codex/models" target="_blank" rel="external">Codex 模型</a></li><li><a href="https://developers.openai.com/api/docs/guides/latest-model.md" target="_blank" rel="external">GPT-5.6 使用指南</a></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>稳定的 Codex 子代理工作流依靠四件事：</p><ul><li>清晰的角色边界</li><li>与风险匹配的工具权限</li><li>可以复核的证据合同</li><li>主线程负责的修改和验证闭环</li></ul><p>先用最小配置跑通一次，再根据真实项目增加角色。不要为了显得“多 Agent”而拆分任务，也不要把子代理输出直接当成事实。只有证据、权限和验证都形成闭环，多代理协作才真正具有工程价值。</p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Codex-CLI子代理工程化工作流指南.html" target="_blank" rel="external">http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codex/">Codex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Subagent/">Subagent</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作流/">工作流</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发工具/">开发工具</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&title=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&title=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&source=Codex CLI 子代理工程化工作流指南当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。C..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Spec-Driven-AI-Coding落地指南..html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Spec-Driven AI Coding 落地指南：OpenSpec / Kiro / Spec Kit / Superpowers</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="//unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.7.2"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://pages.coding.me" target="_blank" style="font-weight: bold" rel="external nofollow">Coding Pages</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&title=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&pic=http://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&title=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&source=Codex CLI 子代理工程化工作流指南当项目越来越复杂，只让一个 AI 从头分析到尾，容易出现上下文混乱、遗漏调用链、重复搜索和修改范围失控等问题。C..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Codex CLI 子代理工程化工作流指南》 — 蓝胖纸&url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html&via=http://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.langpz.com/Codex-CLI子代理工程化工作流指南.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3aW27jQAwEQN//0rsH2LXSfDkJUPoyEMuekoEZpsnXK77+vLmSd+afkNz7urjw8PDwlpb+/AUJMln0v6+fPydfMx4eHt41r/fRz5+TIOfULyx4eHh4P4CX4HvIpCrGw8PD+72856VMXlfvwsPDw/suXhJGbDGqMXEeCuPh4eF9hveZ7X739Ul/Dw8PD2/cVZ9s08lxkh8YzdXi4eHhHfDyDTcZk5qUv1uBCB4eHt41L9/cCxtxsXHVexBR+IuHh4d3wOtt3POiuYfMx79GKTUeHh5e3BXKN/f5aNQcVo428PDw8JZ4vVA1v2thQ2+tEw8PD++aV40hkmMgj2gnBXSzv4eHh4c37T01N+JqoNBrsPVWiIeHh3fNe15Kr9mfHzB5Cd48DPDw8PAOePmVRBX5dr/1gBZgeHh4eEu8/MBIQt7dA2byM+Dh4eFd83pBwNZga/UhLpxyeHh4eI+r7cUQ82GCvCWWBxZrAS4eHh5ekVcto+fldRJk5O23aDICDw8P75g3iVDzIa1eGPFFCY6Hh4d3wOtFt73W16R8r45t4eHh4X2GV2389yKJ+VBXfgjh4eHhXfCSVlbe6KoWx3nzLC/Ty506PDw8vCIvL0/zdtTWA6qyC2A8PDy8Ma9X+F5U970RhOi3wsPDwzvg5cFrddSgutD8KIqKbDw8PLxjXu/AmMS++fBB88LDw8Nb5c0Hrarg5K+98YL/rAEPDw/vgDfZY/OBg2rrqxdbLLfE8PDw8IIOUTWorR4eecwxb5iV0w48PDy8Fq/XpsqL4LXspBdJ4OHh4X0rr/rOXthRLa/f/q+Ah4eH98N4kyUm35iPLKyV1Hh4eHgxr7pZ9wLZ6l+rJfjbgwEPDw9vlTe/rfqAqgdG9VDBw8PDO+P9BXwPpkumVX9JAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.7.2"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
