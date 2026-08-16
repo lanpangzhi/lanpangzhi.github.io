@@ -44,6 +44,16 @@ assert(cname === 'blog.langpz.com', `Unexpected CNAME: ${cname}`);
 
 const indexHtml = read('index.html');
 const postHtml = read('Loop与Graph-Engineering-AI-Agent编排演进指南..html');
+const mainJs = read('js/main.min.js');
+
+assert(mainJs.includes('decodeURIComponent'), 'TOC script does not decode Hexo 8 URL-encoded heading fragments');
+assert(mainJs.includes('getElementById'), 'TOC script does not resolve decoded heading IDs safely');
+
+const mainScriptIndex = postHtml.search(/<script src="\/js\/main\.min\.js\?v=[^"]+"><\/script>/);
+const searchScriptIndex = postHtml.search(/<script src="\/js\/search\.min\.js\?v=[^"]+"><\/script>/);
+assert(mainScriptIndex >= 0, 'Main script tag is missing from generated post HTML');
+assert(searchScriptIndex > mainScriptIndex, 'Search script must execute after the main script');
+assert(!/<script[^>]*\basync\b[^>]*src="\/js\/search\.min\.js/.test(postHtml), 'Search script must not load asynchronously');
 
 for (const html of [indexHtml, postHtml]) {
   assert(html.includes('京ICP备17033838号'), 'ICP license is missing from generated HTML');
