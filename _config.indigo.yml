@@ -1,0 +1,95 @@
+# Personal overrides for the self-maintained Indigo theme.
+# Keeping these values outside the submodule prevents theme updates from
+# silently dropping the site's identity and regulatory information.
+menu:
+  home:
+    text: 主页
+    url: /
+  archives:
+    url: /archives/
+  tags:
+    url: /tags/
+  github:
+    url: https://github.com/lanpangzhi
+    target: _blank
+
+avatar: /img/avatar.png
+avatar_link: /
+brand: /img/brand.jpg
+favicon: /favicon.ico
+email: 875727617@qq.com
+color: '#3F51B5'
+
+tags_title: Tags
+archives_title: Archives
+categories_title: Categories
+
+excerpt_render: false
+excerpt_length: 200
+excerpt_link: 阅读全文...
+mathjax: false
+archive_yearly: true
+show_last_updated: false
+share: true
+search: true
+hideMenu: true
+toc:
+  list_number: true
+
+postMessage: <a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
+
+cnzz: false
+baidu_tongji: 6793943ebee3558917970a50987cf13b
+tajs: false
+google_analytics: false
+google_site_verification: false
+sogou_site_verification: false
+
+less:
+  compress: true
+  paths:
+    - source/css/style.less
+
+disqus_shortname: false
+uyan_uid: false
+gitment: false
+valine:
+  enable: true
+  serverURL: https://waline.langpz.com
+  clientVersion: 3.15.2
+  appId: UbXfwhbx6jnOYqOLwxCBCWOh-gzGzoHsz
+  appKey: ivuSqsuVkomI9MQzJXCoFRbR
+  notify: true
+  verify: false
+  avatar: mm
+  placeholder: Just go go
+  guest_info: nick,mail,link
+  pageSize: 10
+hyper_id: false
+
+canonical: https://blog.langpz.com
+since_year: 2016
+about: 用户页面中作者相关的描述性文字，如不需要设为 false
+
+title_change:
+  normal: (つェ⊂)咦!又好了!
+  leave: 死鬼去哪里了！
+
+cdn: false
+lightbox: true
+
+live2d:
+  enable: true
+  display:
+    position: right
+    width: 100
+    height: 200
+  mobile:
+    show: false
+  react:
+    opacityDefault: 1
+    opacityOnHover: 0.2
+
+# This number and link are required on every production page.
+ICP_license: 京ICP备17033838号
+ICP_link: https://beian.miit.gov.cn/
