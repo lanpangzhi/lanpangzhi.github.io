@@ -122,7 +122,7 @@ keywords: Loop Engineering, Graph Engineering, AI Agent, Claude Code Workflow, C
 
 一句话：**Loop Engineering 的核心不是 `for` 循环本身，而是「把人从循环里拿出来，让系统自己转」**——任务发现、验收闭环、状态持久化是它的三根支柱，`/goal` 只是其中验收那根。
 
-> 辨析三个容易混的命令：Claude `/loop`（bundled Skill）是**按时间间隔反复跑提示词**（定时调度，对应上表「任务发现」层，和 Loop Engineering 方法论不是一回事；省略间隔时，Anthropic API 上 Claude 会自适应步频 1 分–1 小时，但 Bedrock / Vertex AI / Microsoft Foundry 上是固定 10 分钟）；Codex 没有官方 `/loop`；`/goal`（两端都有）才是状态驱动的「设目标、持续对齐」，对应「验收闭环」层。别把方法论和命令搞混。
+> 辨析三个容易混的命令：Claude `/loop`（bundled Skill）是**按时间间隔反复跑提示词**（定时调度，对应上表「任务发现」层，和 Loop Engineering 方法论不是一回事；省略间隔时，Anthropic API 上 Claude 会自适应步频 1 分–1 小时，但 Amazon Bedrock / Claude Platform on AWS / Google Cloud's Agent Platform / Microsoft Foundry 上是固定 10 分钟，且这些平台上裸 `/loop` 不带提示词时只打印用法信息）；Codex 没有官方 `/loop`；`/goal`（两端都有）才是状态驱动的「设目标、持续对齐」，对应「验收闭环」层。别把方法论和命令搞混。
 
 ### 一个最小闭环骨架
 
@@ -254,7 +254,7 @@ graph 的"新"主要新在**节点里能放什么**：早期节点是确定性�
 
 > 判断你能不能套 fan-out：**把任务说成「对每个 X 做 Y」说得通就用**；说不通（任务是一条链、前后依赖）那就用 prompt chaining 或闭环（实战三），别硬并行。
 
-> **触发语 `use a workflow to` 是什么**：下面四篇实战的触发语都以 `use a workflow to …` 开头——这是 Claude Code [官方文档](https://code.claude.com/docs/en/workflows)点名的**自然语言激活说法**（原话：*"Asking in your own words, for example 'use a workflow' or 'run a workflow', also works"*），和 `ultracode` 关键字、`/effort ultracode` 三者等效。它让 Claude 去写并跑一段 fan-out / 闭环的编排脚本，而不是单 agent 顺着做；**不写它（又不换 `ultracode`），就退回普通单 agent 任务**，并行/闭环跑不起来。另外它**只对你本人键入的输入生效**，对 `-p` / 定时任务 / webhook 不触发（v2.1.160 前的触发关键字是 `workflow`，自然语言说法两个版本都行）。
+> **触发语 `use a workflow to` 是什么**：下面四篇实战的触发语都以 `use a workflow to …` 开头——这是 Claude Code [官方文档](https://code.claude.com/docs/en/workflows)点名的**自然语言激活说法**（原话：*"Asking in your own words, for example 'use a workflow' or 'run a workflow', also works"*），和 `ultracode` 关键字、`/effort ultracode` 三者等效。它让 Claude 去写并跑一段 fan-out / 闭环的编排脚本，而不是单 agent 顺着做；**不写它（又不换 `ultracode`），就退回普通单 agent 任务**，并行/闭环跑不起来。另外它**只对你本人键入的输入生效**，对 `-p` / 定时任务 / webhook 不触发（v2.1.160 前的触发关键字是 `workflow`，自然语言说法两个版本都行）。另外触发语**不要求英文**——判定的是意图而不是字符串匹配，中文直接说「用工作流把 X 全部审一遍」「起一个工作流反复跑测试修到全绿」同样生效；只有 `ultracode` 关键字必须敲英文原词。
 
 ### 日常场景速查：Vue / Element UI 项目怎么套
 
@@ -270,6 +270,14 @@ use a workflow to 扫描 src/views/ 下所有 .vue 文件，检查每个组件�
 这是只读审计，不得修改或创建任何文件。
 ```
 
+中文等效触发语（判定的是意图，不是英文关键字）：
+
+```
+用工作流扫描 src/views/ 下所有 .vue 文件，检查每个组件里的 API 调用
+（axios / this.$http / request）是否都有 loading 态和 error 处理。
+输出每个缺失项的文件路径、行号、缺失类型。这是只读审计，不得修改任何文件。
+```
+
 **场景 B：批量 Options API → Composition API 迁移**（fan-out 改 + 闭环兜底）
 
 ```
@@ -280,6 +288,17 @@ use a workflow to 把 src/views/opticianManagement/ 下每个 .vue 文件
 
 # 第二步：闭环兜底（改完后跑）
 use a workflow to 反复跑 npm run build，把编译报错改到零为止；
+连续 3 轮报错没变化或满 8 轮就停。
+```
+
+中文等效触发语：
+
+```
+# 第一步：fan-out 每文件改
+用工作流把 src/views/opticianManagement/ 下每个 .vue 文件从 Options API
+迁移到 Composition API，保持功能不变，不改 template 结构。
+# 第二步：闭环兜底（改完后跑）
+起一个工作流反复跑 npm run build，把编译报错改到零为止；
 连续 3 轮报错没变化或满 8 轮就停。
 ```
 
@@ -321,14 +340,15 @@ Claude Code 把「编排图」做成了官方能力，叫 **Dynamic Workflows（
 **跑起来**：
 
 - [ ] Claude Code ≥ v2.1.154，`/config` 里 **Dynamic workflows** 已开
-- [ ] 切到**干净 worktree**（子 agent 固定 `acceptEdits`、改动自动批准——无论你会话什么模式）
+- [ ] 建议切到**干净 worktree**（防误改未提交内容的**安全实践，非运行条件**——workflow 对工作区是否干净没有要求；子 agent 固定 `acceptEdits`、文件改动自动批准——无论你会话什么模式）
 - [ ] 贴触发语：
   ```
   use a workflow to 审计 src/routes/ 下每个 API 端点是否缺少鉴权检查，
   并对每条发现做对抗式复核后再报告。这是只读审计，不得修改或创建任何文件。
   ```
   （含 `ultracode` 关键字也行；v2.1.160 前是 `workflow`，只对你本人键入生效，不对 `-p`/定时/webhook 生效）
-- [ ] 看 planned phases → **Yes, run it**（Auto 仅首次弹、`ultracode` 会话跳过、`claude -p`/Bypass/Agent SDK 从不弹）
+  （中文等效触发语：「用工作流审计 src/routes/ 下每个 API 端点是否缺少鉴权检查，并对每条发现做对抗式复核后再报告。只读审计，不得修改任何文件。」）
+- [ ] 看 planned phases → **Yes, run it**（Auto 权限模式仅首次弹，且 **Auto 模式下 `ultracode` 会话连首次也跳过**；Manual/acceptEdits 模式每次弹，`ultracode` 不豁免；`claude -p`/Bypass/Agent SDK 从不弹）
 - [ ] `/workflows` 跟进度：`↑↓` 选 phase、`Enter` 钻入、`p` 暂停、`x` 停
 - [ ] 拿报告：每条带 **路径/行号/影响/置信度**，复核分 **confirmed / unverified** 两栏（refuted 静默丢弃；复核本身超时/限流的发现进 unverified 留人工，不被当成「不成立」）
 - [ ] 满意 → `/workflows` 选中按 `s`，存到 `.claude/workflows/`（项目级）或 `~/.claude/workflows/`（个人级），变成 `/audit-auth` 下次复用
@@ -589,12 +609,13 @@ developer_instructions = """
 
 **跑起来**：
 
-- [ ] 切到**干净 worktree**（这个 workflow 会**改你的代码**，不是只读——和实战一不同）
+- [ ] 强烈建议切到**干净 worktree**（这个 workflow 会**改你的代码**，不是只读——干净基线便于事后 `git diff` 逐项核对；这是安全实践而非运行条件）
 - [ ] 贴触发语：
   ```
   use a workflow to 反复跑 ruff + pytest，把失败项改到全绿为止；连续 3 轮失败项没变化、
   或满 8 轮就停，把剩下的失败项列给我。跑完我会 git diff 逐项核对，别顺手重构无关代码。
   ```
+  （中文等效：「起一个工作流，反复跑 ruff + pytest 把失败项修到全绿；连续 3 轮失败项没变化或满 8 轮就停，把剩下的列给我，别顺手重构无关代码。」）
 - [ ] `/workflows` 跟进度——达标 / 连续无进展 / 预算耗尽时自动停并报告
 - [ ] 拿结果后 **`git diff` 逐项核对**再提交
 
@@ -692,7 +713,7 @@ return { summary: `✗ ${MAX_ITER} 轮预算耗尽，升级人工`, iterations: 
 
 **套到你项目**：把 `ruff + pytest` 换成你的检查命令（`npm test`、`go test ./...`、`tsc --noEmit`…），gate agent 的 prompt 里改命令名；失败项的 schema（file/line/message）通用，不用动。
 
-**注意**：和实战一一样，子 agent 固定 `acceptEdits`、**必须在干净 worktree 跑**、跑完 `git diff` 核对；脚本本身无 shell 访问，跑 ruff/pytest 靠子 agent 调 Bash（Claude Code 子代理默认就有；锁了工具白名单就改读 CI 预生成的报告，别让 agent 现跑）；想再快可把每轮修复也 fan-out 并行（做法同实战一的两趟 fan-out），但**落在同一文件的并行改写会互相覆盖**——按文件聚合或用 worktree 隔离。
+**注意**：和实战一一样，子 agent 固定 `acceptEdits`、建议在干净 worktree 跑、跑完 `git diff` 核对；脚本本身无 shell 访问，跑 ruff/pytest 靠子 agent 调 Bash（Claude Code 子代理默认就有；锁了工具白名单就改读 CI 预生成的报告，别让 agent 现跑）；想再快可把每轮修复也 fan-out 并行（做法同实战一的两趟 fan-out），但**落在同一文件的并行改写会互相覆盖**——按文件聚合或用 worktree 隔离。
 
 ## 实战四：Codex 的 Loop Engineering 闭环（`/goal` 驱动）
 
@@ -797,6 +818,21 @@ Codex 官方 Goal 指南建议稳健目标覆盖以下六类信息，本文将�
 
 ## 项目里到底怎么选 + 最快落地路径
 
+### 第一步：先选原语（/loop、/goal、Workflow 各管一件事）
+
+落到 Claude Code 的产品原语层，先回答「谁驱动」——时钟、状态，还是结构：
+
+| 你的需求 | 用什么 | 一句话判据 |
+| --- | --- | --- |
+| 定时反复做（盯 CI、轮询发布状态） | `/loop` | **时间驱动**：每隔 N 分钟跑一遍提示词 |
+| 单会话里修到某个条件满足（测试全绿） | `/goal` | **状态驱动**：小模型每轮验收对话里的证据，没过自动再来一轮 |
+| 批量 + 并行 + 交叉验证，流程要存成命令复用 | **Dynamic Workflows** | **结构驱动**：脚本持有流程（循环/分支/扇出），可 fan-out 可闭环 |
+| 以上都不是 | 单 agent 直接做 | 最简方案优先 |
+
+关键差别：`/goal` 的评估器**不调工具、不读文件**，只能看对话里已有的证据——干活的和验收的在同一个会话，有自证偏差；Workflow 的 gate agent 是独立 subagent，能真跑命令拿退出码。三者不互斥，常见组合：Workflow 做批量审计（fan-out + 对抗复核）+ `/goal` 兜「改到全绿」+ `/loop` 盯发布后的 CI。
+
+> 与后文的递进关系：**先选原语（本节）→ 再选范式（loop/graph 两个维度）→ 最后选工具（Claude / Codex / 框架）**。
+
 ### 选范式（回到两个维度）
 
 1. **任务简单/路径明确** → 直接做，别上 agent 也别上 graph（Anthropic：最简方案优先）
@@ -870,7 +906,7 @@ Codex 官方 Goal 指南建议稳健目标覆盖以下六类信息，本文将�
 
 | 现象 | 可能原因 | 排查方法 |
 | --- | --- | --- |
-| **workflow 启动后卡在 "planned phases"** | 触发语没含 `use a workflow` 或 `ultracode`；工作区不干净有未提交改动 | 确认触发语格式；`git status` 查干净度 |
+| **workflow 启动后卡在 "planned phases"** | 触发语里**没有明确要求跑 workflow**（缺 opt-in）——Claude 按普通单 agent 任务顺着做，根本不会起 workflow | 重写触发语：包含 `use a workflow` / 「用工作流…」这类明确要求，或加 `ultracode` 关键字（注意：工作区干不干净**不是**运行条件，别往这查） |
 | **子 agent 返回空结果或纯文本** | schema 定义的必填字段与 prompt 不匹配；或 agent 幻觉了一个不存在的文件 | 在 `/workflows` 里钻入该 phase，看 agent 的原始输出；schema 里加 `description` 字段帮 agent 理解期望格式 |
 | **并行 agent 结果互相覆盖** | 多个 agent 同时改同一文件 | 按文件聚合分派（一个文件只派一个 agent）或用 worktree 隔离 |
 | **Codex subagent 没被 spawn** | TOML 内的 `name` 与委派语不一致；项目未 trust | 检查 `.codex/agents/xxx.toml` 的 `name` 字段；确认项目已标记为信任（trusted）项目。文件名同名只是推荐约定 |
