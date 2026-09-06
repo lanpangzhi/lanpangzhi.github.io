@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html">
+    
+    
+    <title>TypeScript-5.0装饰器 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="装饰器TypeScript 装饰器是一种特殊的声明，可以附加到类声明、方法、属性或参数上。它允许开发者在不修改原有代码的情况下，对类和它的成员进行额外的功能。它就像是在代码的外面包了一层，使得代码可以有更多的功能，而不用重复写同样的逻辑。装饰器本质上是一个函数，在运行时被调用，并接受被装饰的元素作为参数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-5.0装饰器">
+<meta property="og:url" content="https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="装饰器TypeScript 装饰器是一种特殊的声明，可以附加到类声明、方法、属性或参数上。它允许开发者在不修改原有代码的情况下，对类和它的成员进行额外的功能。它就像是在代码的外面包了一层，使得代码可以有更多的功能，而不用重复写同样的逻辑。装饰器本质上是一个函数，在运行时被调用，并接受被装饰的元素作为参数。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-19T08:08:53.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.305Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="装饰器">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-5.0装饰器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-5.0装饰器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-10-19T08:08:53.000Z" itemprop="datePublished" class="page-time">
+  2024-10-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="post-toc-number">1.</span> <span class="post-toc-text">装饰器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">装饰器类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B1%BB%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">类装饰器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">方法装饰器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B1%9E%E6%80%A7%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">属性装饰器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#getter-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%8Csetter-%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">getter 装饰器，setter 装饰器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#accessor-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">accessor 关键字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#addInitializer-%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">addInitializer() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-装饰器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-5.0装饰器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-10-19 16:08:53" datetime="2024-10-19T08:08:53.000Z"  itemprop="datePublished">2024-10-19</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>TypeScript 装饰器是一种特殊的声明，可以附加到类声明、方法、属性或参数上。它允许开发者在不修改原有代码的情况下，对类和它的成员进行额外的功能。它就像是在代码的外面包了一层，使得代码可以有更多的功能，而不用重复写同样的逻辑。装饰器本质上是一个函数，在运行时被调用，并接受被装饰的元素作为参数。</p>
+<span id="more"></span>
+<p>在 TypeScript 5.0 中，将对全新的处于 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-decorators">stage3</a> 阶段的装饰器提案提供支持。</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>装饰器使用 @ 符号来表示，后面跟着一个表达式。这个表达式必须是一个函数。</p>
+<div class="highlight-wrap" data-rel="Perl"><figure class="lpz highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function decorator(constructor: Function) &#123;</span><br><span class="line">  console.log(<span class="string">&#x27;decorator&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">@decorator</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">method</span>() </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 输出：decorator</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="装饰器类型"><a href="#装饰器类型" class="headerlink" title="装饰器类型"></a>装饰器类型</h2><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Decorator</span> = <span class="function">(<span class="params"><span class="attr">value</span>: <span class="title class_">Input</span>, <span class="attr">context</span>: &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">  kind: <span class="built_in">string</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">  name: <span class="built_in">string</span> | <span class="built_in">symbol</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">  access: &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">    get?(): <span class="built_in">unknown</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">    set?(value: <span class="built_in">unknown</span>): <span class="built_in">void</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">  &#125;;</span></span></span><br><span class="line"><span class="params"><span class="function">  <span class="keyword">private</span>?: <span class="built_in">boolean</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">  <span class="keyword">static</span>?: <span class="built_in">boolean</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">  addInitializer(initializer: () =&gt; <span class="built_in">void</span>): <span class="built_in">void</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">&#125;</span>) =&gt;</span> <span class="title class_">Output</span> | <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>装饰器函数有两个参数。运行时，JavaScript 引擎会提供这两个参数。</p>
+<ul>
+<li>value：所要装饰的值，某些情况下可能是undefined（装饰属性时）。</li>
+<li>context：上下文信息对象。<br>装饰器函数的返回值，是一个新版本的装饰对象，但也可以不返回任何值（void）。</li>
+</ul>
+<p>上下文对象也会根据被修饰的值而变化。分解属性：</p>
+<ol>
+<li>kind：字符串，表示装饰类型，值有class、method、getter、setter、field、accessor。</li>
+<li>name：被装饰的值的名称: 或者在私有元素的情况下，对其的描述（例如可读名称）。</li>
+<li>access：对象，包含访问这个值的方法，即存值器和取值器。</li>
+<li>static: 布尔值，该值是否为静态元素。仅适用于类元素。</li>
+<li>private：布尔值，该值是否为私有元素。仅适用于类元素。</li>
+<li>addInitializer：函数，允许用户增加初始化逻辑。</li>
+</ol>
+<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>类装饰器是用来装饰整个类的。它可以在类定义的时候加上一些额外的功能。例如我们想在每次创建类的时候记录日志，告诉我们类被创建了。</p>
+<div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LogClass</span>(<span class="params">constructor: <span class="built_in">Function</span></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;类被创建了&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="title class_">LogClass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;MyClass 实例创建&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出：类被创建了</span></span><br></pre></td></tr></table></figure></div>
+<p>这个例子中，每次创建 MyClass 的实例时，控制台都会打印 “类被创建了”。</p>
+<h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><p>方法装饰器是用来装饰类里面的方法的。可以通过方法装饰器来修改方法的行为，例如在方法执行前后打印一些信息。</p>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法装饰器</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">LogMethod</span>(<span class="params"><span class="attr">target</span>: <span class="built_in">any</span>, <span class="attr">context</span>: <span class="title class_">ClassMethodDecoratorContext</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> originalMethod = target; <span class="comment">// target 就是当前被装饰的 class 方法</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义一个新方法</span></span><br><span class="line">  <span class="keyword">const</span> decoratedMethod = <span class="keyword">function</span> (<span class="params"><span class="attr">this</span>: <span class="built_in">unknown</span>, ...<span class="attr">args</span>: <span class="built_in">unknown</span>[]</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`参数是：`</span>, args); <span class="comment">// 打印参数</span></span><br><span class="line">    <span class="keyword">const</span> returnValue = originalMethod.<span class="title function_">call</span>(<span class="variable language_">this</span>, ...args); <span class="comment">// 调用原有方法</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;代码执行完了&#x27;</span>);  <span class="comment">// 执行完后打印信息</span></span><br><span class="line">    <span class="keyword">return</span> returnValue;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> decoratedMethod</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">  <span class="meta">@LogMethod</span></span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"><span class="attr">name</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>); <span class="comment">// 输出 Hello, lgpz!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> m = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line">m.<span class="title function_">greet</span>(<span class="string">&#x27;lgpz&#x27;</span>); <span class="comment">// 调用方法</span></span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中，每次调用 greet 方法时，控制台会先打印参数，然后再执行原来的逻辑，原有逻辑执行完再输出：代码执行完了。</p>
+<h2 id="属性装饰器"><a href="#属性装饰器" class="headerlink" title="属性装饰器"></a>属性装饰器</h2><p>属性装饰器不直接修改属性值，但可以在属性定义时附加一些信息，比如做权限检查或设置默认值。</p>
+<div class="highlight-wrap" data-rel="Perl"><figure class="lpz highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function LogProperty(target: any, context: DecoratorContext) &#123;</span><br><span class="line">  console.log(<span class="string">`属性 $&#123;[context.name]&#125; 被定义`</span>, context.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="variable">@LogProperty</span></span><br><span class="line">  name: string = <span class="string">&#x27;TypeScript&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中，定义 name 属性时，控制台会打印 “属性 name 被定义”。</p>
+<h2 id="getter-装饰器，setter-装饰器"><a href="#getter-装饰器，setter-装饰器" class="headerlink" title="getter 装饰器，setter 装饰器"></a>getter 装饰器，setter 装饰器</h2><p>getter 装饰器和 setter 装饰器，是分别针对类的取值器（getter）和存值器（setter）的装饰器。</p>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">logged</span>(<span class="params"><span class="attr">value</span>: <span class="built_in">any</span>, &#123; kind, name &#125;: <span class="title class_">ClassMemberDecoratorContext</span></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (kind === <span class="string">&quot;method&quot;</span> || kind === <span class="string">&quot;getter&quot;</span> || kind === <span class="string">&quot;setter&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"><span class="attr">this</span>: <span class="built_in">unknown</span>, ...<span class="attr">args</span>: <span class="built_in">any</span>[]</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`开始 <span class="subst">$&#123;[name]&#125;</span> with arguments <span class="subst">$&#123;args.join(<span class="string">&quot;, &quot;</span>)&#125;</span>`</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">const</span> ret = value.<span class="title function_">call</span>(<span class="variable language_">this</span>, ...args);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`结束 <span class="subst">$&#123;[name]&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: <span class="built_in">string</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="meta">@logged</span></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">x</span>(<span class="params"><span class="attr">arg</span>: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = arg</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@logged</span></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">x</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title function_">C</span>()</span><br><span class="line">a.<span class="property">x</span> = <span class="string">&#x27;langpz&#x27;</span> <span class="comment">// 输出： 开始 x with arguments langpz&quot;  结束 x</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">x</span>) <span class="comment">// 输出：开始 x with arguments  结束 x  langpz</span></span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中，get和set x 的时候都会打印开始和和结束。</p>
+<h2 id="accessor-关键字"><a href="#accessor-关键字" class="headerlink" title="accessor 关键字"></a>accessor 关键字</h2><p>类装饰器引入了一个关键字accessor（自动访问器），用来属性的前缀。自动访问器与常规字段不同，它在类原型上定义 getter 和 setter。此 getter 和 setter 默认用于在私有槽上获取和设置值。accessor关键字前面，还可以加上static关键字和private关键字。</p>
+<div class="highlight-wrap" data-rel="Perl"><figure class="lpz highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">  accessor <span class="keyword">x</span> = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>它是一种简写形式，相当于声明属性x是私有属性#x的存取接口。上面的代码等同于下面的代码。</p>
+<div class="highlight-wrap" data-rel="Csharp"><figure class="lpz highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">C</span> &#123;</span><br><span class="line">  <span class="meta">#x = 1;</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">get</span> <span class="title">x</span>()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.<span class="meta">#x;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">set</span> <span class="title">x</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.<span class="meta">#x = val;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">logged</span>(<span class="params"><span class="attr">value</span>: <span class="built_in">any</span>, &#123; kind, name &#125;: <span class="title class_">ClassMemberDecoratorContext</span></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (kind === <span class="string">&quot;accessor&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; get, set &#125; = value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`getting <span class="subst">$&#123;[name]&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> get.<span class="title function_">call</span>(<span class="variable language_">this</span>);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="title function_">set</span>(<span class="params"><span class="attr">val</span>: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`setting <span class="subst">$&#123;[name]&#125;</span> to <span class="subst">$&#123;val&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> set.<span class="title function_">call</span>(<span class="variable language_">this</span>, val);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="title function_">init</span>(<span class="params"><span class="attr">initialValue</span>:<span class="built_in">any</span></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`initializing <span class="subst">$&#123;[name]&#125;</span> with value <span class="subst">$&#123;initialValue&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> initialValue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">  <span class="meta">@logged</span> accessor x = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="title function_">C</span>();</span><br><span class="line"><span class="comment">// initializing x with value &#x27;1&#x27;</span></span><br><span class="line">c.<span class="property">x</span>;</span><br><span class="line"><span class="comment">// getting x</span></span><br><span class="line">c.<span class="property">x</span> = <span class="string">&#x27;langpz&#x27;</span>;</span><br><span class="line"><span class="comment">// setting x to langpz</span></span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中改写accessor属性的 getter 和 setter 方法。自动访问器初始化时以及每次访问时进行记录。</p>
+<h2 id="addInitializer-方法"><a href="#addInitializer-方法" class="headerlink" title="addInitializer() 方法"></a>addInitializer() 方法</h2><p>addInitializer方法可用于为每种类型的值提供给装饰器的上下文对象。可以调用此方法将初始化函数与类或类元素关联起来，该函数可用于在定义值后运行任意代码以完成设置。<br>设置时机</p>
+<ul>
+<li>类装饰器：在类完全定义之后，并且类静态字段被分配之后。</li>
+<li>类静态元素<ul>
+<li>方法和 Getter&#x2F;Setter 装饰器：在类定义期间，在分配静态类方法之后，在初始化任何静态类字段之前。</li>
+<li>字段和访问器装饰器：在类定义期间，在应用它们的字段或访问器初始化之后立即初始化。</li>
+</ul>
+</li>
+<li>类非静态元素</li>
+<li>方法和 Getter&#x2F;Setter 装饰器：在类构造期间，在任何类字段初始化之前。</li>
+<li>字段和访问器装饰器：在类构造期间，在应用它们的字段或访问器初始化之后立即初始化。</li>
+</ul>
+<div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bound</span>(<span class="params">value: any, &#123; name, addInitializer &#125;:ClassMethodDecoratorContext</span>) &#123;</span><br><span class="line">  <span class="title function_">addInitializer</span>(<span class="keyword">function</span> (<span class="params"><span class="variable language_">this</span>: any</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>[name] = <span class="variable language_">this</span>[name].<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">  message = <span class="string">&quot;hello!&quot;</span>;</span><br><span class="line"></span><br><span class="line">  @bound</span><br><span class="line">  <span class="title function_">m</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">c</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; m, c &#125; = <span class="keyword">new</span> <span class="title function_">C</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">m</span>(); <span class="comment">// hello!</span></span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中addInitializer方法装饰器实现了@bound装饰器，将方法this绑定到类。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators">ts5.0装饰器</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" target="_blank" rel="external">https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/" rel="tag">装饰器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&title=《TypeScript-5.0装饰器》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&title=《TypeScript-5.0装饰器》 — 蓝胖纸&source=装饰器TypeScript 装饰器是一种特殊的声明，可以附加到类声明、方法、属性或参数上。它允许开发者在不修改原有代码的情况下，对类和它的成员进行额外的功..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-5.0装饰器》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/git-reset-%E5%92%8C-git-revert%E7%9A%84%E5%8C%BA%E5%88%AB.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">git reset 和 git revert的区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-声明文件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&title=《TypeScript-5.0装饰器》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&title=《TypeScript-5.0装饰器》 — 蓝胖纸&source=装饰器TypeScript 装饰器是一种特殊的声明，可以附加到类声明、方法、属性或参数上。它允许开发者在不修改原有代码的情况下，对类和它的成员进行额外的功..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-5.0装饰器》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACoElEQVR42u3cQW7DMAwEwPz/0+0DCju7ouT6MDn1EMseF5DYJdHPJ/783H6uvn+/Wn6v5KrRBw8PD+/AoydL31P/rpasf/Wd4nXj4eHhHeNNlr6/qj0Gdr0OPDw8vLfxcsBk5eQqPDw8vDfz1rbsdv1kZTw8PLw38PKidsK7L8TzQORI1oKHh4fXdaw2F8Gnfz7S38PDw8Mbd9XzDXctqG0L6/pp8fDw8A7w5uVsXii3m3v+yr5ci4eHh7eVN9+m7wOIyRhBC8bDw8N7hre2RPIQeWk+KdzrABcPDw/vGG9eTO9tsK09Gx4eHt45Xr6xzlv+ebCbDG9FA154eHh4W3ntQ0yGDPLyPSnWkzEsPDw8vHO8ZCOejKvmTbK8kRatj4eHh/cgr/2Df3JsTAaqimQFDw8PbytvrSBea4nlKcHaLwAPDw/vGV5bIrdhbgurQ4erlfHw8PAO8NaaWPnoQD25UA4fRIcEHh4e3lbevD2fD1GtHSeTEQQ8PDy8Z3hJMLGr5T8ZMogOKjw8PLxjvHaAIG+kFTOzg2Pmcn08PDy8A7y14GByswmgHrrCw8PDO8DLw4Jngtc8FMbDw8N7D6+9QXLV2tBqMiD75fXh4eHhHeDVwWg5ojoZyZoMdeHh4eGd5rU3WGv/rx057Ysr+nh4eHh4Y95ac2tXOJsfS3UDDA8PD+8Yb7KXtiFCG1i08XGRoODh4eGVV01K4TksHzJo7xil1Hh4eHifLf/pLhoF2FVqt5HE2sABHh4e3gnevETO49pJ/FH39PDw8PAO8/JWU1vI/nNsgYeHh/cCXv79NWpeakcvBQ8PD+8FvORB84ebNNvqmTI8PDy8rbwTYcQudt48uzwY8PDw8Lby2j/4d5Xaa3FtO46Ah4eHt5X3C49G1WJMCBawAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

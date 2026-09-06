@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html">
+    
+    
+    <title>css实现单行、多行文本溢出显示省略号 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="css实现单行文本溢出显示省略号123white-space: nowrap;  		&#x2F;&#x2F; 规定段落中的文本不进行换行overflow: hidden; 		&#x2F;&#x2F; 溢出隐藏text-overflow: ellipsis;	&#x2F;&#x2F; 文本溢出显示省略号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css实现单行、多行文本溢出显示省略号">
+<meta property="og:url" content="https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="css实现单行文本溢出显示省略号123white-space: nowrap;  		&#x2F;&#x2F; 规定段落中的文本不进行换行overflow: hidden; 		&#x2F;&#x2F; 溢出隐藏text-overflow: ellipsis;	&#x2F;&#x2F; 文本溢出显示省略号">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111057.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111828.png">
+<meta property="article:published_time" content="2017-12-19T02:58:41.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.306Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111057.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">css实现单行、多行文本溢出显示省略号</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">css实现单行、多行文本溢出显示省略号</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-19T02:58:41.000Z" itemprop="datePublished" class="page-time">
+  2017-12-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="post-toc-number">1.</span> <span class="post-toc-text">css实现单行文本溢出显示省略号</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#css%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="post-toc-number">2.</span> <span class="post-toc-text">css实现多行文本溢出显示省略号</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-css实现单行、多行文本溢出显示省略号"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">css实现单行、多行文本溢出显示省略号</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-19 10:58:41" datetime="2017-12-19T02:58:41.000Z"  itemprop="datePublished">2017-12-19</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="css实现单行文本溢出显示省略号"><a href="#css实现单行文本溢出显示省略号" class="headerlink" title="css实现单行文本溢出显示省略号"></a>css实现单行文本溢出显示省略号</h1><div class="highlight-wrap" data-rel="Arduino"><figure class="lpz highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">white-space: nowrap;  		<span class="comment">// 规定段落中的文本不进行换行</span></span><br><span class="line">overflow: hidden; 		<span class="comment">// 溢出隐藏</span></span><br><span class="line">text-overflow: ellipsis;	<span class="comment">// 文本溢出显示省略号</span></span><br></pre></td></tr></table></figure></div>
+<span id="more"></span>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111057.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h1 id="css实现多行文本溢出显示省略号"><a href="#css实现多行文本溢出显示省略号" class="headerlink" title="css实现多行文本溢出显示省略号"></a>css实现多行文本溢出显示省略号</h1><div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: -webkit-box; 		// 设置弹性盒子模型</span><br><span class="line"><span class="attribute">overflow</span> : hidden;		// 溢出隐藏</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;	// 文本溢出显示省略号</span><br><span class="line">-webkit-<span class="selector-tag">line</span>-clamp: <span class="number">2</span>;		// 限制在一个块元素显示的文本的行数</span><br><span class="line">-webkit-<span class="attribute">box-orient</span>: vertical; 	// 属性规定框的子元素应该被水平或垂直排列。</span><br></pre></td></tr></table></figure></div>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/20171219111828.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>注：因为用了webkit的私有属性，建议只在移动端使用。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html" target="_blank" rel="external">https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&title=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&title=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&source=css实现单行文本溢出显示省略号123white-space: nowrap;  		// 规定段落中的文本不进行换行overflow: hidden; ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E5%9B%BD%E5%86%85%E5%AD%A6%E7%94%9F%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BC%98%E6%83%A0%E6%95%B4%E7%90%86.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">国内学生云主机优惠整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/npm%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm设置淘宝镜像</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&title=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&title=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&source=css实现单行文本溢出显示省略号123white-space: nowrap;  		// 规定段落中的文本不进行换行overflow: hidden; ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css实现单行、多行文本溢出显示省略号》 — 蓝胖纸&url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/css%E5%AE%9E%E7%8E%B0%E5%8D%95%E8%A1%8C%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFMklEQVR42u3dwY4bRwwE0P3/n1aAXG2NikUqQeKnkyHtjrrfCFA1yYV/fuLH6+/Hu38/P/Pr88+v/vouz+tJXn3388+rOnvgw4cPHz58j5d4RvnGxqa35Hmd3aqer/927/jw4cOHD1/Fl4eVK4gpR/KOyccij1/RbcCHDx8+fPi+xtdtL99SHizyQsYUER8+fPjw4fsv8uVMXYl8w3FcesCHDx8+fPgqvs0X/DSgdI2BpDSQr2pawjjodeDDhw8fPnxHA2r/v3//o/N9+PDhw4fvj+F7VY/uEJ6XEq5a5tPy/dgBHz58+PDhaxzGm08K+t1I2T5UdSPpSeEg6nXgw4cPHz58jztKNnMbIKb0edF83yAft/Px4cOHDx++ii/5+h8fpKt36W5PF26mzfW3wQUfPnz48OEb8uXjXPmIdj7Kti/Tb8bUpsWCD70OfPjw4cOHL+DrZrG6jU2hp6WHaRG/awDgw4cPHz58HV9ewr46iuc03WDcdCWb4j4+fPjw4cO34bu96JRsGla6BsPtiAA+fPjw4cM35esCwfTI3RFHoaEapJuu5+3V8OHDhw8fviFf/oXdDZN1BfS8db0fertqDODDhw8fPnxTvuQXXsPHhn5faLgKTNFHCh8+fPjw4Qv48kJ2sr28OJ6X4J830DFNhwM+fOLw4cOHDx++Wa95NcY93fD+AD9tHnQ3vkTEhw8fPnz44vgyXejVGNntsNp+/XnJAx8+fPjw4bvi+8aw2nT4LH8miSNdMIpY8eHDhw8fvnWfd9rGTgJENwSWR4rn56fNg1WvAx8+fPjw4Xt9/hui6S8nuF2BIG+3d7ft6gOBDx8+fPjwTfm6Xnp+LO8K99Oi/+b56X5X/QF8+PDhw4evGubeoO/b5LfF904DHz58+PDh+x5f98b7onxXXMgLAftAgw8fPnz48HWzZFfBJW9UXwWILu5MA9OHNePDhw8fPnwV3+bwP130vlh/O7y+iXf48OHDhw9fzjcthedH9O4GdJvJo8w0pnz4QODDhw8fPnynfN3Xed66ng5njxNZXPrvQhI+fPjw4cNX9bhXf+aUo+SBYBqVut9K2vnR1fDhw4cPH76KLznYT39m+mq+pTJkxFfIbxs+fPjw4cPX8XUDZJstTaPPvp2QvHseufDhw4cPH76OrxvVuj2ud9fPb/9twMKHDx8+fPi6V7ulTFvamxL/tFg/veWbtgQ+fPjw4cM35UvepmtIb0oDOf0eruMbZDp8+PDhw4dvWBTomuVXh/88PCXPdyvMr4kPHz58+PAl18y3MY0X06UkW90QT9sS0dAbPnz48OHD97P9c+hpIXtTepjCTY/0+TqnIQYfPnz48OHr+KYH/q5wMI1HXZM7vyWb8sFqzg4fPnz48P3BfPvNT0fKptueDsxtBtfGQ2n48OHDhw/fKd90KZtI1I2UTa/8M3ysggs+fPjw4cP3evpPnvKG9zQETMfgunDT0XTjdL/pdeDDhw8fPnwxX9cavyXYbH76k1fc+PDhw4cP356viyz7ONKNyl3FoPJVfPjw4cOHr391/rV9NIKWN7+7Nvb09nRNd3z48OHDhy/ny8sBXfk+DzddcLkqTCTB5TfXxIcPHz58+Cq+fTkg38A3yvRdlMlDFT58+PDhw/dv8eXH6a5Y0LUH9kWBPLgM7ic+fPjw4cO34NuEmPzAn9DnzfKco1wbPnz48OHDV/FNG963geDq+dtYFn0I8OHDhw8fvr67XR7sr8r6HVwXRPIANB22w4cPHz58+N48/xfLsXgvDIARqAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html">
+    
+    
+    <title>JS设计模式-单例模式 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="单例模式（Singleton Pattern），其核心思想是保证一个类只有一个实例，并提供一个全局访问点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式-单例模式">
+<meta property="og:url" content="https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="单例模式（Singleton Pattern），其核心思想是保证一个类只有一个实例，并提供一个全局访问点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-22T01:40:26.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="单例模式">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS设计模式-单例模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS设计模式-单例模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-02-22T01:40:26.000Z" itemprop="datePublished" class="page-time">
+  2025-02-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">单例模式实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="post-toc-number">2.</span> <span class="post-toc-text">单例模式的优缺点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%98%E7%82%B9"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">缺点</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JS设计模式-单例模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS设计模式-单例模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-02-22 09:40:26" datetime="2025-02-22T01:40:26.000Z"  itemprop="datePublished">2025-02-22</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>单例模式（Singleton Pattern），其核心思想是保证一个类只有一个实例，并提供一个全局访问点。</p>
+<span id="more"></span>
+<p>单例模式可以用来管理一些共享资源，例如全局配置、应用配置管理器、事件总线等。</p>
+<h1 id="单例模式实现"><a href="#单例模式实现" class="headerlink" title="单例模式实现"></a>单例模式实现</h1><div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span> </span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Single</span>.instance) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Single</span>.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.data = []</span><br><span class="line">    <span class="title class_">Single</span>.instance = <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">addData</span>(data) &#123;</span><br><span class="line">    <span class="keyword">this</span>.data.<span class="title function_">push</span>(data)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getData</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> single1 = <span class="keyword">new</span> <span class="title class_">Single</span>()</span><br><span class="line"><span class="keyword">const</span> single2 = <span class="keyword">new</span> <span class="title class_">Single</span>()</span><br><span class="line">single1.<span class="title function_">addData</span>(<span class="number">1</span>)</span><br><span class="line">console.<span class="title function_">log</span>(single2.<span class="title function_">getData</span>()) <span class="comment">// [1]</span></span><br><span class="line">console.<span class="title function_">log</span>(single1 === single2) <span class="comment">// true, single1 和 single2 为同一实例</span></span><br></pre></td></tr></table></figure></div>
+<p>例子中，构造函数检查 Single.instance 是否已存在。如果存在则返回已有实例，否则创建新实例并缓存。这样，无论调用多少次构造函数，都只能得到同一个实例。</p>
+<h1 id="单例模式的优缺点"><a href="#单例模式的优缺点" class="headerlink" title="单例模式的优缺点"></a>单例模式的优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><table>
+<thead>
+<tr>
+<th>优点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>节省资源</td>
+<td>只创建一个实例，避免重复创建和销毁对象</td>
+</tr>
+<tr>
+<td>保证数据一致性</td>
+<td>所有代码访问的都是同一个对象实例</td>
+</tr>
+<tr>
+<td>全局访问点</td>
+<td>提供一个全局访问点，方便在应用的不同部分使用</td>
+</tr>
+</tbody></table>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><table>
+<thead>
+<tr>
+<th>缺点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全局状态</td>
+<td>单例引入了全局状态，可能导致代码耦合度增加</td>
+</tr>
+<tr>
+<td>测试困难</td>
+<td>单例对象的状态在测试之间可能会相互影响，使测试变得困难</td>
+</tr>
+<tr>
+<td>隐藏依赖</td>
+<td>使用单例可能会隐藏类之间的依赖关系</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" target="_blank" rel="external">https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="tag">单例模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&title=《JS设计模式-单例模式》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&title=《JS设计模式-单例模式》 — 蓝胖纸&source=单例模式（Singleton Pattern），其核心思想是保证一个类只有一个实例，并提供一个全局访问点。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-单例模式》 — 蓝胖纸&url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS设计模式-代理模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-观察者模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&title=《JS设计模式-单例模式》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&title=《JS设计模式-单例模式》 — 蓝胖纸&source=单例模式（Singleton Pattern），其核心思想是保证一个类只有一个实例，并提供一个全局访问点。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS设计模式-单例模式》 — 蓝胖纸&url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADKUlEQVR42u3awa7bMAwEwP7/T6dA0UOBtsku6QCxMjo9FI6t0YXVkj9+xOvxa7XPPP5YyZPJb/9+PtnbcGFjY2PfhP14up4/k/DyJ5O/Z/v8x9FgY2NjH8eeFYnoA3Eh3OBzCzY2NvY3s/OC9L7SiI2NjY39DvamFLUh1PM9YGNjY38zOy8MycVjEzO1R/P2LA0bGxv749lto/eT/35jfxsbGxv7I9mP0dqM4+ybtZvnf/8KGxsb+yB2e81o4/v8CjH7+ux6g42NjX0SexPHz0rLtTxsbGxs7OQi0Q7K5EdZt2ZH34omQLGxsbFvy34HbxPx5+9Mdp7sExsbG/vu7CTiyRvAbbFpj2z2nihFw8bGxr4tu8XnEX8eBuXf3YxvrsoYNjY29gezZ4H+LBhqfzsLpKInsbGxsQ9it/HQphHbhkqbg07egI2NjX0qe3bNyP8lH7jchFzP8djY2NgnsZPe72z8vR2vb4c1Z22J/4ZK2NjY2Aex22GdtqjMpopyZFQ4sbGxsQ9lb2CzKOoRr7bd++IN2NjY2AexZ/FQvpX8erAPp/ImATY2NvZ57LYw5B+7qt27OXpsbGzss9ntQEw7HLlv7m6GNV+EStjY2NhHsDejM+0Vol15caobvdjY2NhfwN4M7swGffIDnbUrXrQHsLGxsY9gt/9Lz7eYH+U7RnzqpjU2Njb2bdmzgZhZOLV5TxtgRaESNjY29m3ZswDoqpPOY6l8TCcqYNjY2NjHsfPbSX7BaId18q1f0O7FxsbG/gL2VRttC9gmPKonlbCxsbGPYLdt1HpgvbxgXHuIRe8XGxsb+7bsZOvtWGR+hZi9rR3ueXEVwcbGxr45exO+t1FUHj+1Y52rgUtsbGzsm7Mf5UrGd/IC047ybL71IkvDxsbGvi27jZzenWzNCli7N2xsbOzz2LOilWx0E0VdFUJFLV5sbGzsI9htW3cWMLX91joby5/HxsbG/np2G0UlV4WrSld0KcLGxsb+Svas/LQN3avaAMNhHWxsbOzbsvNQKW8DtCVq1mweFlRsbGzsg9ibRm9b3jZlbNZOeMvIDjY2NvansH8CdF0cXyUu25cAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

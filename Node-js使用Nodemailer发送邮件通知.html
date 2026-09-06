@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html">
+    
+    
+    <title>Node.js使用Nodemailer发送邮件通知 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Node.js使用Nodemailer发送邮件通知Nodemailer是一个用于 Node.js 应用程序的模块，可以轻松发送电子邮件。支持Windows系统，使用要求Node.js v6.0.0或更新版本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js使用Nodemailer发送邮件通知">
+<meta property="og:url" content="https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Node.js使用Nodemailer发送邮件通知Nodemailer是一个用于 Node.js 应用程序的模块，可以轻松发送电子邮件。支持Windows系统，使用要求Node.js v6.0.0或更新版本。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-28T11:53:15.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Node.js使用Nodemailer发送邮件通知</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Node.js使用Nodemailer发送邮件通知</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2022-02-28T11:53:15.000Z" itemprop="datePublished" class="page-time">
+  2022-02-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node.js使用Nodemailer发送邮件通知</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85Nodemailer"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装Nodemailer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Node-js使用Nodemailer发送邮件通知"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Node.js使用Nodemailer发送邮件通知</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2022-02-28 19:53:15" datetime="2022-02-28T11:53:15.000Z"  itemprop="datePublished">2022-02-28</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Node-js使用Nodemailer发送邮件通知"><a href="#Node-js使用Nodemailer发送邮件通知" class="headerlink" title="Node.js使用Nodemailer发送邮件通知"></a>Node.js使用Nodemailer发送邮件通知</h1><p>Nodemailer是一个用于 Node.js 应用程序的模块，可以轻松发送电子邮件。支持Windows系统，使用要求Node.js v6.0.0或更新版本。</p>
+<span id="more"></span>
+
+<h2 id="安装Nodemailer"><a href="#安装Nodemailer" class="headerlink" title="安装Nodemailer"></a>安装Nodemailer</h2><div class="highlight-wrap" data-rel="Mipsasm"><figure class="lpz highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="keyword">add </span>nodemailer </span><br><span class="line"><span class="keyword">or</span></span><br><span class="line"><span class="keyword"></span>npm i nodemailer</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>这里使用qq邮箱发送邮件，<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6079ad0eb14aaa28fe86db5a.html">开启SMTP教程</a></p>
+<div class="highlight-wrap" data-rel="Php"><figure class="lpz highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">nodemailer</span> = <span class="keyword">require</span>(<span class="string">&#x27;nodemailer&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.创建一个Nodemailer smtp传输对象</span></span><br><span class="line">transporter = nodemailer.<span class="title function_ invoke__">createTransport</span>(&#123;</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&#x27;smtp.qq.com&#x27;</span>,</span><br><span class="line">  <span class="attr">port</span>: <span class="string">&#x27;465&#x27;</span>,</span><br><span class="line">  <span class="attr">secureConnection</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">secure</span>: <span class="literal">false</span>, <span class="comment">// true for 465, false for other ports</span></span><br><span class="line">  <span class="attr">auth</span>: &#123; <span class="attr">user</span>:<span class="string">&#x27;SMTP邮箱名&#x27;</span>, <span class="attr">pass</span>: <span class="string">&#x27;SMTP授权码&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 配置消息</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">data</span> = &#123;</span><br><span class="line">  subject: <span class="string">&#x27;标题&#x27;</span>,</span><br><span class="line">  <span class="keyword">from</span>: <span class="string">&#x27;发送邮箱&#x27;</span></span><br><span class="line">  to: <span class="string">&#x27;接收邮箱、多邮箱拿，号分割&#x27;</span>,</span><br><span class="line">  html: <span class="string">&#x27;支持发送html&#x27;</span>,</span><br><span class="line">  text: <span class="string">&#x27;文本内容&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 发送</span></span><br><span class="line">transporter.<span class="title function_ invoke__">sendMail</span>(data)</span><br></pre></td></tr></table></figure></div>
+<p>更多使用方法参考<a target="_blank" rel="noopener" href="https://nodemailer.com/">文档</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/nodemailer/nodemailer">https://github.com/nodemailer/nodemailer</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html" target="_blank" rel="external">https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&title=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&title=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&source=Node.js使用Nodemailer发送邮件通知Nodemailer是一个用于 Node.js 应用程序的模块，可以轻松发送电子邮件。支持Windows..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E6%8B%AF%E6%95%91%E8%A2%AB%E5%A2%99%E7%9A%84ip-v2ray%E4%BD%BF%E7%94%A8cloudflare%E4%B8%AD%E8%BD%AC%E6%B5%81%E9%87%8F.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">拯救被墙的ip,v2ray使用cloudflare中转流量</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/js%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%970-1-0-2-0-30000000000000004.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js浮点运算0.1+0.2 = 0.30000000000000004</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&title=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&title=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&source=Node.js使用Nodemailer发送邮件通知Nodemailer是一个用于 Node.js 应用程序的模块，可以轻松发送电子邮件。支持Windows..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node.js使用Nodemailer发送邮件通知》 — 蓝胖纸&url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Node-js%E4%BD%BF%E7%94%A8Nodemailer%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD60lEQVR42u3cWY7bQAwFQN//0pMDxJbeI1sTByh9CV7U3eUAHC7I6xVfP39d7evJJ6+/+2k/16+8nrhw4MCBA0d51FNb/LRW+/nrdZMnJ2fEgQMHDhxnOZIFkuB6fdQWPeeeBV0cOHDgwPENHJsEaRaG8xQu3z8OHDhw4Ph+jjYYJ2lbsuJs/zhw4MCB42mOJLlqj5Q3ivLt5onl47VSHDhw4MBx3+WJjvc/3j8y34EDBw4cOMqpsKQ8l6dSSQtqltrNhhjerI4DBw4cONYcs4Jd3oJqB+Nm6V8Ld/NJHDhw4MBxlKNdeLbpthyZMM2Kj6/2N8SBAwcOHIuQ1h5j0yJKwva+/HfzBwEOHDhw4HiAI39EPYK2COTJu7Pi45taKQ4cOHDgOMSRh8k895kdr20m5Xu+SRRx4MCBA8cDHEkgzAt5ecrXFv7yHyxPSnHgwIEDxymOdlCgLfa1Iw7JuNvmZ7gpDuLAgQMHjgVHvonNyNomfM7Can6PAwcOHDjOcvxmE2gWXNv07Pq7N/c4cODAgeMxjnbJNgwnzaQ2GB8Y9caBAwcOHEc52iU3HLMrf9qwaIgDBw4cOI5ytKlUmyy1barNuEMe4IsUDgcOHDhwpLW41X/r/DthNTleu+5NIocDBw4cOEYceQNp9sk8VM/GJtpgfJPs4cCBAweOQxztYrNm1WysrS0+zu7rWikOHDhw4Ig58hJeOww3C7SnjholeDhw4MCB4xBHcsj8CbMg2g4x7IcnPg404MCBAweONUfb1JmV/DadsXZoO08m6+IgDhw4cOCIp8JmhbnNgMLm3Vkz7ObPAhw4cODAseY4O3ZwqgiYD1vkWEnBEQcOHDhwPM2RB7x2oC0Pq/nARLK3aMwOBw4cOHAsOOphsricN5sQaJ+2CbRvzoUDBw4cOB7jOFXmy5tG7Xfb1lT0Cg4cOHDgWHO0QSsPXW0adoq7LTje/CPAgQMHDhwLjs1IQVv+a1tBP6NrFoxx4MCBA8eGo330viTXjiPcpFiLRtThR+DAgQMHjnhA4ew43ex+8/yCCQcOHDhwHOJI4k7+7vUrbbXyevUk9BYD3zhw4MCBY80xO9imJNceY7aTPNnDgQMHDhxnOWaNnDbBawfmcsT9E4b1RRw4cODAsb6SJfO0LS8OzoazZ8/HgQMHDhynODYpWVuem4XSNuVbPR8HDhw4cBzi2ATCdsThbICfpWcfv4sDBw4cOP4Rx6Y4mOPmQXTT6MKBAwcOHN/A0TLlSdQmYLftsY/FQRw4cODAsebIQ1e+fH6kzbDdviWGAwcOHDjOcmzymlkZLtlEOwbXBuxNyRIHDhw4cHzYzx8fhF5gwIGkDgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

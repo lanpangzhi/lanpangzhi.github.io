@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html">
+    
+    
+    <title>js获取图片文件宽度和高度 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="js获取图片文件宽度和高度这里利用FileReader对象来获取图片宽高。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js获取图片文件宽度和高度">
+<meta property="og:url" content="https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="js获取图片文件宽度和高度这里利用FileReader对象来获取图片宽高。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-29T02:15:39.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js获取图片文件宽度和高度</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js获取图片文件宽度和高度</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-08-29T02:15:39.000Z" itemprop="datePublished" class="page-time">
+  2021-08-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6"><span class="post-toc-number">1.</span> <span class="post-toc-text">js获取图片文件宽度和高度</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-number">2.</span> <span class="post-toc-text">demo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-js获取图片文件宽度和高度"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js获取图片文件宽度和高度</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-08-29 10:15:39" datetime="2021-08-29T02:15:39.000Z"  itemprop="datePublished">2021-08-29</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="js获取图片文件宽度和高度"><a href="#js获取图片文件宽度和高度" class="headerlink" title="js获取图片文件宽度和高度"></a>js获取图片文件宽度和高度</h1><p>这里利用FileReader对象来获取图片宽高。</p>
+<span id="more"></span>
+
+<p>代码如下</p>
+<div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const reader = new <span class="built_in">FileReader</span>()</span><br><span class="line"><span class="comment">// 获取base64格式字符串文件内容</span></span><br><span class="line">reader<span class="selector-class">.readAsDataURL</span>(file)</span><br><span class="line">reader<span class="selector-class">.onload</span> = <span class="built_in">function</span>(data) &#123;</span><br><span class="line">  const <span class="selector-tag">img</span> = new <span class="built_in">Image</span>()</span><br><span class="line">  <span class="selector-tag">img</span><span class="selector-class">.src</span> = data<span class="selector-class">.target</span><span class="selector-class">.result</span></span><br><span class="line">  let that = this</span><br><span class="line">  <span class="selector-tag">img</span><span class="selector-class">.onload</span> = <span class="built_in">function</span>() &#123;</span><br><span class="line">    console<span class="selector-class">.log</span>(this<span class="selector-class">.width</span>, this.<span class="attribute">height</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p><a target="_blank" rel="noopener" href="https://jsbin.com/xalukapolu/edit?html,console,output">https://jsbin.com/xalukapolu/edit?html,console,output</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader">https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html" target="_blank" rel="external">https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&title=《js获取图片文件宽度和高度》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&title=《js获取图片文件宽度和高度》 — 蓝胖纸&source=js获取图片文件宽度和高度这里利用FileReader对象来获取图片宽高。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js获取图片文件宽度和高度》 — 蓝胖纸&url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E5%88%87%E6%8D%A2node%E7%89%88%E6%9C%AC%E9%A1%B9%E7%9B%AESaas%E6%8A%A5%E9%94%99.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">切换node版本项目Saas报错</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/css%E5%AE%9E%E7%8E%B0table%E8%A1%A8%E5%A4%B4%E5%92%8C%E5%88%97%E5%9B%BA%E5%AE%9A.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">css粘性定位实现table表头和列固定</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&title=《js获取图片文件宽度和高度》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&title=《js获取图片文件宽度和高度》 — 蓝胖纸&source=js获取图片文件宽度和高度这里利用FileReader对象来获取图片宽高。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js获取图片文件宽度和高度》 — 蓝胖纸&url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/js%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEh0lEQVR42u3by47aQBAF0Pn/n55IWSVSYO6tMhFtjleIAbd9PFLXi6+v+Pj+fTx//9Fn/vzroyNZ/dFaz8/2/LsXH5gwYcKE6S2Zkht4/n7+ekafP4D8gdUPDxMmTJgwHc40u9x8c509gCR0SM7QBjGYMGHChOkzmZJlNribM+evMWHChAkTpqsuOim/zkrM+TtJSo8JEyZMmD6B6bLTjc7ZfqblbhNsTJgwYcJ0J6Z2S77T6xfON2HChAkTpjdg+i6PNjXNz5mPmc7GdDYHJkyYMGE6lylPO/MCa3Ke2bhP+8lZfFRUCDBhwoQJ09szbUZ2rkov81BjQ5+Pq/5jFUyYMGHCdCOmNgWdDfHMxnHyYOWqM2PChAkTptOZZhvtbIgneQxt4bgNKVpWTJgwYcJ0D6Z2geRWk4ZoGygkZ8sfz1VFYUyYMGHC9P5Ms2GatnmZny1fpf35RJK0P7weTJgwYcJ0O6ZZ0JCXUzdNylmheZZmY8KECROm05lmbcj2pxSzXLJNZVcESYCCCRMmTJiOZZoNvuzbn7MV27bo5jFgwoQJE6bTmWbp6KxHmiPOrm3Wi4zOjwkTJkyYDmfKt+f89VU/2JiVa/Mfb0QPCRMmTJgwHciU30z+mXwgdZbubtLmYeqLCRMmTJhuxJQkt7PG4Wb4tU2YrxpIwoQJEyZMd2La90Jf125si7N5eToq/mLChAkTpmOZ2qbgrLTahgJtEXb2eIqAABMmTJgw3YhpU+R93cY8G+7Z3NfwfwETJkyYML0Z03BYM99EF2FEG0BcO2wUhQKYMGHChOntmZJBlnzLz5uU7SXui8uztR5WxDFhwoQJ0yFMbZI5W6a97U3QsBnZeRhSYMKECROmw5nyW90PrbZNyoQ+T4mHxWVMmDBhwnQsU/LlPCCYtRXzdDov6V67FiZMmDBhuitTu9hm4iU/Z7vZJ58c1sIxYcKECdMhTLPplM2AaX6hs7S5Xb0ejcWECRMmTMcy5ZtiEhzkIzVtmnpVANG2VzFhwoQJ01lMbWo6G82pZ2ZHwzdteJG3SzFhwoQJ07lMLcds1GYWRrSdxE1gEV0hJkyYMGE6kGlTnG0ver+3tol0HgT8EGRgwoQJE6ZjmYZJYLBJ78OCdq38u8OABhMmTJgwHci0byXOtuT8wbQPYxaaFAM6mDBhwoTpKKZ9ItoOx7SJdPvObLA1Og8mTJgwYTqQaVYebQumeRF5tpEnxd9VcxQTJkyYMN2C6doB0zZomJVi81BjluRjwoQJE6bTmfLNeNYO3DcjZ+3PWRm3ODMmTJgwYTqE6bs82u+2N982QeuWZNz+/GsVTJgwYcJ0LNN+S37FoGobiOQDQLPhJEyYMGHCdDpTXhLNt9LN2E2ybh5wXDa6igkTJkyYDmdqg4D2hjdHHhasKtyzi8CECRMmTDdiumoUJm+atn9t27FFcIMJEyZMmD6GqU2Gk1blvpSctznb1B0TJkyYMN2DaV/GnQ22Juj/J0D54R8IEyZMmDAdy7SvcOa3l1xiu9astXlZ8RcTJkyYML0v0y/HPS5/ScxZ1QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

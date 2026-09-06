@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html">
+    
+    
+    <title>vue-cli3设置默认打开浏览器 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="vue-cli3设置默认打开浏览器vue-cli3设置默认打开浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli3设置默认打开浏览器">
+<meta property="og:url" content="https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="vue-cli3设置默认打开浏览器vue-cli3设置默认打开浏览器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8/20190324112058.png">
+<meta property="article:published_time" content="2019-03-24T03:11:19.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.308Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="cli">
+<meta property="article:tag" content="vue2.0">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8/20190324112058.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue-cli3设置默认打开浏览器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue-cli3设置默认打开浏览器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-24T03:11:19.000Z" itemprop="datePublished" class="page-time">
+  2019-03-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue-cli3设置默认打开浏览器</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue-cli3设置默认打开浏览器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue-cli3设置默认打开浏览器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-24 11:11:19" datetime="2019-03-24T03:11:19.000Z"  itemprop="datePublished">2019-03-24</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="vue-cli3设置默认打开浏览器"><a href="#vue-cli3设置默认打开浏览器" class="headerlink" title="vue-cli3设置默认打开浏览器"></a>vue-cli3设置默认打开浏览器</h1><p>vue-cli3设置默认打开浏览器</p>
+<span id="more"></span>
+<p>项目根目录找到package.json文件， 找到scripts 里 serve 后面加上 –open, 本地开发的时候就会自动打开浏览器了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8/20190324112058.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html" target="_blank" rel="external">https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cli/" rel="tag">cli</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue2-0/" rel="tag">vue2.0</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&title=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&title=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&source=vue-cli3设置默认打开浏览器vue-cli3设置默认打开浏览器" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Hexo%E5%8D%9A%E5%AE%A2%E4%BB%8ECoding%E8%BF%81%E7%A7%BB%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91COS.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hexo博客从Coding迁移到腾讯云COS</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/centos7%E5%AE%89%E8%A3%85MySQL.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">centos7安装MySQL</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&title=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&title=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&source=vue-cli3设置默认打开浏览器vue-cli3设置默认打开浏览器" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-cli3设置默认打开浏览器》 — 蓝胖纸&url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/vue-cli3%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD8klEQVR42u3cQW7jQAwEQP//09lrFoGkbnKc+FA6BYYz0pQODDmNvF7x9fXt+vl58p2f19UKV7+VrHm12uELBw4cOHDEW71fOv/86oGuvpk/T7Jm8pyXT4IDBw4cOA5xXD1WvrH80fMV2vp4v/L9b+HAgQMHjr/iSArbPWJ+l/Zl5K8TBw4cOHB8DsdmgLiZzuV3xIEDBw4cn8DRHg61BXLWsM0awl+aleLAgQMHjsnMbdhofdrPb8l34MCBAweOUXSgbcza0WFe8PKGbbg7HDhw4MCx5tgM/toYXLvtTeRuRYwDBw4cOBYc7bgt/zw/dkrGkW0pbVcu0hY4cODAgSOopJtjp1PHRS3fJirxsA4OHDhw4Fhw5GO7pKDORoGnyNph5WULhwMHDhw4Fhyzhiof1eVHRLNS3TLVUTkcOHDgwFFyJLdpA82nQhL5m9w0k0UmAgcOHDhwlGW1LWOzIjo71tqX/2inOHDgwIFjzZGPzzbbnqUF8peRbzXaCw4cOHDgWHC0MYW82WsR89Zu04I+rI8DBw4cOF5H/gNz0WKdPY7Km6tZoGE2oMSBAwcOHHuO/KipjSDkZbvdRrLCMKiHAwcOHDgWHG1D1ZbY2fb2jdmwEcWBAwcOHGuONhi9Gdi9o9DOynn0BwQOHDhw4FhwJEGBNu6QxA7aqFy7sWEbiQMHDhw4Fhyzm+UNW77O/vhqc6//OlocOHDgwLHgaGMHswqVt2r70eSswcOBAwcOHGc5ZoO8thnbDwpzrNnKOHDgwIFjzzEbutVN0ejNJGu2sYaHIzEcOHDgwLHmmJXbfPN5MG7/nXZMWaDgwIEDB46v7r+75CWzDatt3k/bTOZkxZQUBw4cOHCMOPJy2xa8zbiwjcEl7dwDPQ4cOHDgOMqxjxFs+PJN5kdf9WEVDhw4cOBYc7SHSXlz9ZaHy0tmeewUReVw4MCBA0fA0T7uJr6Wv5nN3WcDRxw4cODA8Zsc7Q3yInq2tctHhA/DQRw4cODAsebID4pmn+exiX00of2jIcrZ4cCBAweOkmNTGvMyOWvq2sK5ij7gwIEDB45DHEndORvLLs7BFhHtOhiBAwcOHDjWHLNR4Kb4zSILsxfTvmYcOHDgwLHnmB3etNG0fXDhVPP2UMJx4MCBA8eaI79mhzrJ4yY/t0PM2VASBw4cOHCc4phFEPKitYkatC3frNDiwIEDB453cLSFatOSzQr8LMDdIuLAgQMHjr/iaI+I8tYu4RuGFTZOOHDgwIHjbRyzcMNsVNcOBIscx/1wEAcOHDhwrDnajeWt2mbN/Pungn04cODAgWPP0fY1m7KaxOBmbV5esPP1ceDAgQNHyfEPcNd9TyAxqfcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

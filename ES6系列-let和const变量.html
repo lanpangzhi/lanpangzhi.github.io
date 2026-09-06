@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html">
+    
+    
+    <title>ES6系列-let和const变量 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6系列-let和const变量">
+<meta property="og:url" content="https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-26T09:08:51.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6系列-let和const变量</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES6系列-let和const变量</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-26T09:08:51.000Z" itemprop="datePublished" class="page-time">
+  2018-06-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES6系列-let和const变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#let"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">let</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#const"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">const</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ES6系列-let和const变量"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6系列-let和const变量</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-26 17:08:51" datetime="2018-06-26T09:08:51.000Z"  itemprop="datePublished">2018-06-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="ES6系列-let和const变量"><a href="#ES6系列-let和const变量" class="headerlink" title="ES6系列-let和const变量"></a>ES6系列-let和const变量</h1><p>ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+<span id="more"></span>
+
+<p>首先说说var声明变量的弊端。<br>1.可以重复声明<br>2.无法限制修改<br>3.没有块级作用域<br>4.变量会被提升</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>let不可以重复声明。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let <span class="keyword">a</span> = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">let <span class="keyword">a</span> = <span class="number">3</span><span class="comment">;</span></span><br><span class="line">alert<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>如果重复声明会直接报错。<br>let有块级作用域。</p>
+<div class="highlight-wrap" data-rel="Abnf"><figure class="lpz highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  let a <span class="operator">=</span> <span class="number">2</span><span class="comment">;</span></span><br><span class="line">  var b <span class="operator">=</span> <span class="number">3</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(b)<span class="comment">;</span></span><br><span class="line">console.log(a)<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>会报错 a is not defined。<br>let不存在变量提升。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br><span class="line">console.log<span class="punctuation">(</span>b<span class="punctuation">)</span></span><br><span class="line">var <span class="keyword">a</span> = <span class="number">1</span><span class="comment">;</span></span><br><span class="line">let b = <span class="number">2</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>会打印出 a undefined b is not defined。</p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const常量是不可以被修改的。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">a</span> = &#x27;lanpangzhi&#x27;<span class="comment">;</span></span><br><span class="line"><span class="keyword">a</span> = <span class="number">11</span><span class="comment">;</span></span><br><span class="line">alert<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>修改会直接报错，但是如果是对象数据类型可以在对象下添加新得属性。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">a</span> = &#123;&#125;<span class="comment">;</span></span><br><span class="line"><span class="keyword">a</span>.b = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">console.log<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>这样写不会报错，常量a存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把a指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p>
+<p>const不可以重复声明。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">a</span> = <span class="number">2</span><span class="comment">;</span></span><br><span class="line">const <span class="keyword">a</span> = <span class="number">3</span><span class="comment">;</span></span><br><span class="line">alert<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>如果重复声明会直接报错。</p>
+<p>const有块级作用域。</p>
+<div class="highlight-wrap" data-rel="Abnf"><figure class="lpz highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  const a <span class="operator">=</span> <span class="number">2</span><span class="comment">;</span></span><br><span class="line">  var b <span class="operator">=</span> <span class="number">3</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">console.log(b)<span class="comment">;</span></span><br><span class="line">console.log(a)<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>会报错 a is not defined。</p>
+<p>const不存在变量提升。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log<span class="punctuation">(</span><span class="keyword">a</span><span class="punctuation">)</span></span><br><span class="line">console.log<span class="punctuation">(</span>b<span class="punctuation">)</span></span><br><span class="line">var <span class="keyword">a</span> = <span class="number">1</span><span class="comment">;</span></span><br><span class="line">const b = <span class="number">2</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>会打印出 a undefined b is not defined。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>让i从0输出到5，按顺序输出，es5版本需要闭包来实现。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for <span class="punctuation">(</span>var i = <span class="number">0</span><span class="comment">; i &lt;= 5; i++)&#123;</span></span><br><span class="line">	<span class="punctuation">(</span>function<span class="punctuation">(</span>i<span class="punctuation">)</span>&#123;</span><br><span class="line">		console.log<span class="punctuation">(</span>i<span class="punctuation">)</span></span><br><span class="line">	&#125;<span class="punctuation">)</span><span class="punctuation">(</span>i<span class="punctuation">)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>es6版本</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for <span class="punctuation">(</span>let i = <span class="number">0</span><span class="comment">; i &lt;= 5; i++)&#123;</span></span><br><span class="line">	console.log<span class="punctuation">(</span>i<span class="punctuation">)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>let和const解决了var的弊端，瞬间开发变简单了很多。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#docs/let">http://es6.ruanyifeng.com/#docs/let</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html" target="_blank" rel="external">https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&title=《ES6系列-let和const变量》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&title=《ES6系列-let和const变量》 — 蓝胖纸&source=ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6系列-let和const变量》 — 蓝胖纸&url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node定时任务</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/%E8%A7%A3%E5%86%B3%E7%A7%BB%E5%8A%A8%E7%AB%AFclick%E4%BA%8B%E4%BB%B6300%E6%AF%AB%E7%A7%92%E5%BB%B6%E8%BF%9F%E5%92%8C%E7%82%B9%E9%80%8F%E9%97%AE%E9%A2%98.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">解决移动端click事件300毫秒延迟和点透问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&title=《ES6系列-let和const变量》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&title=《ES6系列-let和const变量》 — 蓝胖纸&source=ES6系列-let和const变量ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6系列-let和const变量》 — 蓝胖纸&url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/ES6%E7%B3%BB%E5%88%97-let%E5%92%8Cconst%E5%8F%98%E9%87%8F.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJUlEQVR42u3aQW7jQAwEQP//015gbwtDTpOcDSy6dApiRZ7ShSGbj0d8Pf9erz9f3fl6z+vv3z/z6v6r6/E/LmxsbOybsJPHvf+aqy/OD1olvX990XOwsbGx17F7Rat30LwQVotf/u3Y2NjY38nOC1heDqt/9f482NjY2Nh5Cem1MXlBSgZG2NjY2NjVo1fHOnlD0osNRhECNjY29iL2JOj9tJ9/Kd/GxsbG/hj2c3CdejVJieot8VyeHBsbG3sRex4D9Ib7eZsxWev8ochhY2NjL2JPlnXykf18yaYXM2NjY2PvZudj/fmB5iOhXsxc3uvExsbGvi17EsQm4558wFRtRaqjKGxsbOxN7HypsVeW8ldWbVryuAIbGxt7N3t+iPmqTR5I5I1HMw/BxsbGviE7L13zItQ74uT+fFyFjY2NvYmdNxK91qVanPKVoGqzhI2Njb2DnY/UqyVq8uR826gXIWBjY2NvZVcbj3khORsGFEodNjY29lJ28tCzZWzeAvVWNrGxsbE3secD+vwlnl3fmYfB2NjY2DvYeZHIG4lqSFBFTk6LjY2NvZWdMPI2I3/ypBWpvhRsbGzs72SXx+5xwzBvNvJh07F4ABsbG/vj2b3hzvzQeak7FWNgY2Njb2L3FnF66495u5K0N5NxFTY2NvY3sKsF5tQo/1QgEZU9bGxs7BXsfKmxtwpZbWDmzUz0crGxsbEXsZNYtPdpcqBTLUc1csbGxsbexM7/xe8t3+SRQLWyVAPpf56DjY2NvY5dHayfDXQnS5/Jq4yaEGxsbOzbsqNAtBjxVj/tLQlNWiBsbGzsTezqOGb+9dVhU37/gQ4MGxsb+4bsXqBb/dd/spTTGypVY2BsbGzs+7KfxWsS6E4i21508cMsDRsbG3sFO78KA/di8HC2ZFbPiY2Njb2DXQ1T8yH+qTBgMkIqhATY2NjYN2f3hj7VNqCKnFRjbGxsbOy8GPQGOtVWJH+VUfHDxsbG/kp2dVmnWlryMlltPC6zEWxsbOxF7OrS5GQ1M3+tvfujZgkbGxt7EbsX9FYP3StjZ8vegXwbGxsb+7PYfwBY5qvPwOREiwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

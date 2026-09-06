@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html">
+    
+    
+    <title>Express路由 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Express路由之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express路由">
+<meta property="og:url" content="https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Express路由之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-07T09:50:08.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Express">
+<meta property="article:tag" content="路由">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Express路由</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Express路由</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-07T09:50:08.000Z" itemprop="datePublished" class="page-time">
+  2018-05-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Express%E8%B7%AF%E7%94%B1"><span class="post-toc-number">1.</span> <span class="post-toc-text">Express路由</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Express路由"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Express路由</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-07 17:50:08" datetime="2018-05-07T09:50:08.000Z"  itemprop="datePublished">2018-05-07</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Express路由"><a href="#Express路由" class="headerlink" title="Express路由"></a>Express路由</h1><p>之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。</p>
+<span id="more"></span>
+
+<p>一个网站下面可能有很多地址例如:<br><a target="_blank" rel="noopener" href="http://www.langpz.com/aaa">www.langpz.com/aaa</a><br>user&#x2F;<br><a target="_blank" rel="noopener" href="http://www.langpz.com/user/aaa">www.langpz.com/user/aaa</a><br><a target="_blank" rel="noopener" href="http://www.langpz.com/user/bbb">www.langpz.com/user/bbb</a><br><a target="_blank" rel="noopener" href="http://www.langpz.com/user/ccc">www.langpz.com/user/ccc</a><br>vip&#x2F;<br><a target="_blank" rel="noopener" href="http://www.langpz.com/vip/aaa">www.langpz.com/vip/aaa</a><br><a target="_blank" rel="noopener" href="http://www.langpz.com/vip/bbb">www.langpz.com/vip/bbb</a><br><a target="_blank" rel="noopener" href="http://www.langpz.com/vip/ccc">www.langpz.com/vip/ccc</a><br>等等。。。<br>咱们可以拆分成vip和user两个目录目录下再放子路由。<br>先安装express 然后在项目根目录建一个app.js和routers文件夹，routers文件夹里面再建一个index.js文件和vip、user两个目录，两个目录下面分别建立index.js文件。</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="title function_">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> routers = <span class="title function_">require</span>(<span class="string">&#x27;./routers&#x27;</span>);  <span class="comment">//引入路由</span></span><br><span class="line"></span><br><span class="line">let app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/vip&#x27;</span>, routers.vip);   <span class="comment">// 设置/vip路由中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/user&#x27;</span>, routers.user);  <span class="comment">// 设置/user路由中间件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">8000</span>);</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routers/index.js</span></span><br><span class="line"><span class="keyword">let</span> vip = <span class="built_in">require</span>(<span class="string">&#x27;./vip&#x27;</span>); <span class="comment">// 引入vip文件下面的路由</span></span><br><span class="line"><span class="keyword">let</span> user = <span class="built_in">require</span>(<span class="string">&#x27;./user&#x27;</span>);   <span class="comment">// 引入user文件下面的路由</span></span><br><span class="line"><span class="comment">// 导出路由</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    vip,</span><br><span class="line">    user</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// routers/vip/index.js</span><br><span class="line">const express = require<span class="punctuation">(</span>&#x27;express&#x27;<span class="punctuation">)</span><span class="comment">; // 必须要引入express</span></span><br><span class="line"></span><br><span class="line">let routerVip = express.Router<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;   // 创建router实例</span></span><br><span class="line"></span><br><span class="line">// 添加路由配置</span><br><span class="line">routerVip.get<span class="punctuation">(</span>&#x27;/&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是vip根目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">routerVip.get<span class="punctuation">(</span>&#x27;/aaa&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是vip/aaa目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">routerVip.get<span class="punctuation">(</span>&#x27;/bbb&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是vip/bbb目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">// 导出路由</span><br><span class="line">module.exports = routerVip<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// routers/user/index.js</span><br><span class="line">const express = require<span class="punctuation">(</span>&#x27;express&#x27;<span class="punctuation">)</span><span class="comment">; // 必须要引入express</span></span><br><span class="line"></span><br><span class="line">let routerUser = express.Router<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;  // 创建router实例</span></span><br><span class="line"></span><br><span class="line">// 添加路由配置</span><br><span class="line">routerUser.get<span class="punctuation">(</span>&#x27;/&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt;&#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是user根目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">routerUser.get<span class="punctuation">(</span>&#x27;/aaa&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是user/aaa目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">routerUser.get<span class="punctuation">(</span>&#x27;/bbb&#x27;, <span class="punctuation">(</span>req, res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>&#x27;我是user/bbb目录&#x27;<span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// 导出路由</span><br><span class="line">module.exports = routerUser<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>然后执行 node app.js 再浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8000/user/aaa%E3%80%81http://localhost:8000/vip/aaa%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%9D%A5%E5%9B%9E%E5%88%87%E6%8D%A2%E8%B7%AF%E7%94%B1%E4%BA%86%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%96%B0%E5%A2%9E%E4%BA%86%E4%B8%80%E4%B8%AA%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9D%97%E5%B0%B1%E5%9C%A8routers%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%EF%BC%8C%E5%86%8D%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%92%E5%88%86%E8%B7%AF%E7%94%B1%EF%BC%8C%E8%BF%99%E6%A0%B7%E8%B7%AF%E7%94%B1%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83%E6%B8%85%E6%99%B0%EF%BC%8C%E5%90%8E%E6%9C%9F%E7%BB%B4%E6%8A%A4%E8%B5%B7%E6%9D%A5%E4%B9%9F%E6%96%B9%E4%BE%BF%E3%80%82">http://localhost:8000/user/aaa、http://localhost:8000/vip/aaa，就可以来回切换路由了，如果新增了一个路由模块就在routers文件夹下，再新建文件夹划分路由，这样路由文件比较清晰，后期维护起来也方便。</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Express%E8%B7%AF%E7%94%B1.html" target="_blank" rel="external">https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1/" rel="tag">路由</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&title=《Express路由》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&title=《Express路由》 — 蓝胖纸&source=Express路由之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Express路由》 — 蓝胖纸&url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MySQL.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Windows下安装MySQL</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Express%E6%A1%86%E6%9E%B6cookie%E5%92%8Csession.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Express框架cookie和session</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&title=《Express路由》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&title=《Express路由》 — 蓝胖纸&source=Express路由之前在Express入坑里面简单讲了下路由的用法，现在就讲下如果再项目中怎么配置路由。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Express路由》 — 蓝胖纸&url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Express%E8%B7%AF%E7%94%B1.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aS27DMAwFwN7/0inQbWDnPSotGmm0Chx/NFoQpMSvr3g8fsbz7+T++3ue35w8OxwYGBgfy3jcjqtpXX3yfirJV66uXD2FgYFxDiMJsjksmej9QuRzw8DAwEhISTrYIjEwMDDeFXAT6ixYY2BgYKyndO3U21L2F2txDAyMD2SsHAz89u8/Ot/AwMD4x4xHOZLEMXlqds/lsxgYGFsz7kvKvD2iDZptuRu9GQMD40hG27Y1S++SRYzehoGBsSmjDZHr4OGm//1MMDAwDmCsN3u1u2HrCehlLY6BgbE1o22PmJWgCa8+QsDAwNia0X6sLYCTK+0hxOV1DAyMrRlt6ZgfD7TUleCOgYGxN2PW9NC2keWNrcPtPAwMjE0ZeSrWJnx5cvmGtg8MDIwDGLONsHY7bD1wv9g1xMDAOJKRHy7mjWKzpXlxBQMDY2tGW7Im4W+23Z+AozCNgYGxNWOlUXU2lfVWjEsSBgbGdoz1qbcpZvLdpaQQAwNjI8Yb2rACWNJIMSuhMTAwzmG0U5w1RrRvK5AYGBhbM9rWinVeu4h1goiBgbEd41GOPB1813Fm9C8GBsbWjHy0qVte1rbJ6CyhxMDA+HTGSptFvvU/e3Ox3hgYGAcwZtv9s2avlVAe7R1iYGAczGgPGvO2sNlTGBgYGLON+3Zy+RHCCwwGBsYBjDbktQXtShCve9wwMDC2Y6wXkHlIbY8262ZWDAyM3RjfMjpBz7UxN+cAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html">
+    
+    
+    <title>TypeScript-条件类型 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="条件类型条件类型是 TypeScript 提供的一种基于条件的类型选择机制，可以根据类型的真假条件来进行类型推导和分配。这种功能使得 TypeScript 更加灵活和强大，能够处理复杂的类型逻辑。例如 ** A extends B ? C : D **。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-条件类型">
+<meta property="og:url" content="https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="条件类型条件类型是 TypeScript 提供的一种基于条件的类型选择机制，可以根据类型的真假条件来进行类型推导和分配。这种功能使得 TypeScript 更加灵活和强大，能够处理复杂的类型逻辑。例如 ** A extends B ? C : D **。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-23T09:05:18.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.305Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="条件类型">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-条件类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-条件类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-06-23T09:05:18.000Z" itemprop="datePublished" class="page-time">
+  2024-06-23
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.</span> <span class="post-toc-text">条件类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">条件类型基本使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%E5%88%86%E5%8F%91"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">条件类型分发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#infer%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">infer类型推断</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-条件类型"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-条件类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-06-23 17:05:18" datetime="2024-06-23T09:05:18.000Z"  itemprop="datePublished">2024-06-23</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="条件类型"><a href="#条件类型" class="headerlink" title="条件类型"></a>条件类型</h1><p>条件类型是 TypeScript 提供的一种基于条件的类型选择机制，可以根据类型的真假条件来进行类型推导和分配。这种功能使得 TypeScript 更加灵活和强大，能够处理复杂的类型逻辑。例如 ** A extends B ? C : D **。</p>
+<span id="more"></span>
+
+<h2 id="条件类型基本使用"><a href="#条件类型基本使用" class="headerlink" title="条件类型基本使用"></a>条件类型基本使用</h2><p>可以使用extends关键字和三元表达式，实现条件判断。</p>
+<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span> extends <span class="selector-tag">B</span> ? C : D</span><br></pre></td></tr></table></figure></div>
+<p>A extends B 是条件表达式，如果 A 能够赋值给 B（即 A 是 B 的子类型），那么结果类型就是 C，否则就是 B。</p>
+<p>案例</p>
+<div class="highlight-wrap" data-rel="Excel"><figure class="lpz highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">IsNumber</span>&lt;<span class="built_in">T</span>&gt; = <span class="built_in">T</span> extends number ? <span class="built_in">true</span> <span class="symbol">:</span> <span class="built_in">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span> B = <span class="built_in">IsNumber</span>&lt;number&gt;;  // <span class="built_in">true</span></span><br><span class="line"><span class="built_in">type</span> A = <span class="built_in">IsNumber</span>&lt;string&gt;;  // <span class="built_in">false</span></span><br></pre></td></tr></table></figure></div>
+<p>IsNumber 是一个条件类型，它检查给定的类型 T 是否是 number 类型。如果是 number，则结果类型为 true，否则为 false。</p>
+<h2 id="条件类型分发"><a href="#条件类型分发" class="headerlink" title="条件类型分发"></a>条件类型分发</h2><p>当条件类型作用于联合类型时，TypeScript 会对联合类型中的每一个成员单独进行条件类型的检查和分发。这意味着条件类型在联合类型上会进行分配和计算，而不是直接应用于整个联合类型。</p>
+<div class="highlight-wrap" data-rel="Vhdl"><figure class="lpz highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Example&lt;T&gt; = T extends <span class="built_in">string</span> ? <span class="symbol">&#x27;string</span>&#x27; : <span class="symbol">&#x27;not</span> <span class="built_in">string</span>&#x27;;</span><br><span class="line"><span class="keyword">type</span> Result = Example&lt;<span class="built_in">string</span> | number&gt;;  // <span class="symbol">&#x27;string</span>&#x27; | <span class="symbol">&#x27;not</span> <span class="built_in">string</span>&#x27;</span><br></pre></td></tr></table></figure></div>
+<p>Result 的类型是 ‘string’ | ‘not string’，因为 Example 类型应用于 string 和 number 时，分别得到了 ‘string’ 和 ‘not string’。这里会用每一项依次进行分发，最终采用联合类型作为结果，等价如下。</p>
+<div class="highlight-wrap" data-rel="Llvm"><figure class="lpz highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="keyword">c</span><span class="number">1</span> <span class="operator">=</span> Example&lt;string&gt;<span class="comment">;</span></span><br><span class="line"><span class="keyword">type</span> <span class="keyword">c</span><span class="number">2</span> <span class="operator">=</span> Example&lt;number&gt;<span class="comment">;</span></span><br><span class="line"><span class="keyword">type</span> <span class="keyword">c</span> <span class="operator">=</span> <span class="keyword">c</span><span class="number">1</span> | <span class="keyword">c</span><span class="number">2</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="infer类型推断"><a href="#infer类型推断" class="headerlink" title="infer类型推断"></a>infer类型推断</h2><p>infer 关键字用于在条件类型中引入类型推断。它允许从上下文中推断出某个类型，而无需显式指定。这种特性对于处理复杂的类型转换和推断非常有用。</p>
+<ul>
+<li>MyReturnType 返回值类型</li>
+</ul>
+<div class="highlight-wrap" data-rel="Ada"><figure class="lpz highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">MyReturnType&lt;T&gt; </span>= T extends (...args: any[]) =&gt; infer R ? R : <span class="type">never</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title">getUser</span>() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="type">&#123;</span> a: <span class="number">1</span>, name: <span class="string">&quot;lanpz&quot;</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="type">ExampleReturnType </span>= MyReturnType&lt;typeof getUser&gt;; // &#123; a: number, name: string &#125;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>MyInstanceType 实例类型</li>
+</ul>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">name</span>: <span class="built_in">string</span>, <span class="attr">age</span>: <span class="built_in">number</span></span>) &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyInstanceType</span>&lt;T&gt; = T <span class="keyword">extends</span> &#123; <span class="title function_">new</span>(...<span class="attr">args</span>: <span class="built_in">any</span>): infer R &#125; ? R : <span class="built_in">any</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyInstance</span> = <span class="title class_">MyInstanceType</span>&lt;<span class="keyword">typeof</span> <span class="title class_">Person</span>&gt;</span><br></pre></td></tr></table></figure></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html" target="_blank" rel="external">https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B/" rel="tag">条件类型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-条件类型》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-条件类型》 — 蓝胖纸&source=条件类型条件类型是 TypeScript 提供的一种基于条件的类型选择机制，可以根据类型的真假条件来进行类型推导和分配。这种功能使得 TypeScript..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-条件类型》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-unknown%E7%B1%BB%E5%9E%8B.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-unknown类型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-%E7%B1%BB%E5%9E%8B%E4%BF%9D%E6%8A%A4.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-类型保护</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-条件类型》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-条件类型》 — 蓝胖纸&source=条件类型条件类型是 TypeScript 提供的一种基于条件的类型选择机制，可以根据类型的真假条件来进行类型推导和分配。这种功能使得 TypeScript..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-条件类型》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3awU7DQAwE0P7/T4PEDaGUmXVcivRyQqVJ9uWQdcd+POLj4+v4+Ul+/Dzr6jrP7/LYOPDw8PCOlp4s6wqcfP/qrHZV+Zrx8PDwtnnJUpIXfYI/e0Dt48PDw8N7B177cj8r059vEnh4eHj/i5cXuMniiiW+ft/Dw8PDC3hngPyVnQcNf5a14OHh4cW8tvx9h78X+3t4eHh4g676ZJPIP8/L93q1eHh4eAu8SZx6VgqfDQ1MhhXw8PDw9njtKzspeXNG/nn7IPDw8PC2eRNYEqeeffNs08LDw8N7PS9/9bcbRnLfyZgsHh4e3h7vrrAgKm2PhqjyYv2XmQg8PDy8m3j5eNPGwMFZUZ4/Ajw8PLwNXlsi5zduy9/nJfVhaIKHh4e3xrtrUCB/G0+oecMMDw8Pb4PXvnzPBkzPBrnye/1SXuPh4eG9hJc3xtptYDLCVeQrbSKCh4eHd8Sbl7yTJtlkGCsqqfHw8PAWeO2yzhpX+TWTK0SBCB4eHt7LeflCzwak2gijDXnx8PDw7uVNGlqP8XFXWHwZZODh4eEt89pCto2D82GsNhS+pOLh4eEt8O696KQx1g685ufi4eHh7fGSyGC+AZxFtO1wWCTGw8PDO+K1L/E8pJiPt7bxx+VmgIeHh7fA22jbTwYOJsV3lFLj4eHhDXjbrf2N4a3kodS/FfDw8PBiXvsk2rAg304mYwpRGIGHh4e3xstjiMlWkYwOnA0KfPsvHh4e3gKvHS1thwzaJlYbBN82PouHh4dX8tp2V7sZbNy3iH3x8PDw1nj5wOhZSJE8jrb1VUQSeHh4eH/Euws/6te147B4eHh4b8M7a3TlxXd71g0lNR4eHl7Ja0PVfGw0DxGS7SRZAx4eHt427+ynfh2nxuHFGXLU5cPDw8NLeZ9RwqesHuMw/gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

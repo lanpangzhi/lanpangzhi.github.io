@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html">
+    
+    
+    <title>Loop 与 Graph Engineering：AI Agent 编排范式演进与实战 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Loop 与 Graph Engineering：AI Agent 编排范式演进与实战读完这篇你能拿到什么：一个能分辨 Loop &#x2F; Graph Engineering 真假的坐标系 + 四篇可直接套用的实战（Claude Code 并行审计 &#x2F; Codex 多视角 Code Review &#x2F; 两种「改到全绿为止」的闭环）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Loop 与 Graph Engineering：AI Agent 编排范式演进与实战">
+<meta property="og:url" content="https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Loop 与 Graph Engineering：AI Agent 编排范式演进与实战读完这篇你能拿到什么：一个能分辨 Loop &#x2F; Graph Engineering 真假的坐标系 + 四篇可直接套用的实战（Claude Code 并行审计 &#x2F; Codex 多视角 Code Review &#x2F; 两种「改到全绿为止」的闭环）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-01T06:32:15.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent编排">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="Graph Engineering">
+<meta property="article:tag" content="工作流">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Loop 与 Graph Engineering：AI Agent 编排范式演进与实战</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Loop 与 Graph Engineering：AI Agent 编排范式演进与实战</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2026-08-01T06:32:15.000Z" itemprop="datePublished" class="page-time">
+  2026-08-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Loop-%E4%B8%8E-Graph-Engineering%EF%BC%9AAI-Agent-%E7%BC%96%E6%8E%92%E8%8C%83%E5%BC%8F%E6%BC%94%E8%BF%9B%E4%B8%8E%E5%AE%9E%E6%88%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">Loop 与 Graph Engineering：AI Agent 编排范式演进与实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%88%E5%BB%BA%E7%AB%8B%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%9A%E4%B8%A4%E4%B8%AA%E6%AD%A3%E4%BA%A4%E7%BB%B4%E5%BA%A6%EF%BC%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E6%9D%A1%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">先建立坐标系：两个正交维度，不是一条对应关系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E6%9D%A1%E7%A4%BE%E5%8C%BA%E5%8F%99%E4%BA%8B%EF%BC%9A%E4%BB%8E-Prompt-%E5%88%B0-Graph%EF%BC%88%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">一条社区叙事：从 Prompt 到 Graph（了解即可）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Loop-Engineering%EF%BC%9AGoal-%E2%86%92-Evaluator-%E2%86%92-Loop-%E2%86%92-Termination"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Loop Engineering：Goal → Evaluator → Loop → Termination</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%88%E5%88%86%E6%B8%85%E4%B8%A4%E5%B1%82-loop%EF%BC%88%E5%85%A8%E6%96%87%E6%9C%80%E5%AE%B9%E6%98%93%E6%B7%B7%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%89"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">先分清两层 loop（全文最容易混的地方）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%88%AB%E6%8A%8A-goal-%E5%92%8C-termination-%E6%B7%B7%E6%88%90%E4%B8%80%E4%B8%AA%EF%BC%89"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">四层模型（别把 goal 和 termination 混成一个）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Loop-Engineering-%E7%9A%84%E5%AE%8C%E6%95%B4%E7%94%BB%E9%9D%A2%EF%BC%88%E4%B8%8D%E5%8F%AA%E6%98%AF-Goal%E2%86%92Evaluator%E2%86%92Loop%E2%86%92Termination%EF%BC%89"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">Loop Engineering 的完整画面（不只是 Goal→Evaluator→Loop→Termination）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%80%E5%B0%8F%E9%97%AD%E7%8E%AF%E9%AA%A8%E6%9E%B6"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">一个最小闭环骨架</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Graph-Engineering%EF%BC%9A%E6%98%BE%E5%BC%8F%E6%8E%A7%E5%88%B6%E6%B5%81%EF%BC%8C%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%B9%B6%E8%A1%8C"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Graph Engineering：显式控制流，不只是并行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%AC%E8%B4%A8%E6%98%AF%E3%80%8C%E6%98%BE%E5%BC%8F%E7%BC%96%E7%A0%81%E6%8E%A7%E5%88%B6%E6%B5%81%E3%80%8D%EF%BC%8C%E4%B8%8D%E6%98%AF%E3%80%8C%E5%B9%B6%E8%A1%8C%E3%80%8D"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">本质是「显式编码控制流」，不是「并行」</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#loop-%E4%B8%8D%E6%98%AF%E8%A2%AB-graph%E3%80%8C%E5%8F%96%E4%BB%A3%E3%80%8D%EF%BC%8C%E6%98%AF-graph-%E7%9A%84%E7%89%B9%E4%BE%8B"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">loop 不是被 graph「取代」，是 graph 的特例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%B6%E8%A1%8C%E5%8F%AA%E6%98%AF-graph-%E7%9A%84%E4%B8%80%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">并行只是 graph 的一种模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fan-out-%E4%B8%8D%E7%AD%89%E4%BA%8E%E9%97%AD%E7%8E%AF"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">fan-out 不等于闭环</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%AB%E6%8A%8A-agent-%E5%BD%93%E5%83%B5%E5%8C%96%E8%8A%82%E7%82%B9%EF%BC%88%E5%A4%9A%E4%B8%AA%E5%AE%9E%E8%B7%B5%E7%9A%84%E4%B8%80%E8%87%B4%E5%BF%A0%E5%91%8A%EF%BC%89"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">别把 agent 当僵化节点（多个实践的一致忠告）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E5%B1%82%E5%90%AB%E4%B9%89%E5%88%AB%E6%B7%B7"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">两层含义别混</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98%E6%80%BB%E8%A7%88"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">实战总览</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%A5%E5%B8%B8%E5%9C%BA%E6%99%AF%E9%80%9F%E6%9F%A5%EF%BC%9AVue-Element-UI-%E9%A1%B9%E7%9B%AE%E6%80%8E%E4%B9%88%E5%A5%97"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">日常场景速查：Vue &#x2F; Element UI 项目怎么套</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98%E4%B8%80%EF%BC%9AClaude-Code-%E5%B9%B6%E8%A1%8C%E5%AE%A1%E8%AE%A1%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%88fan-out-%E5%AF%B9%E6%8A%97%E5%BC%8F%E5%A4%8D%E6%A0%B8%EF%BC%89"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">实战一：Claude Code 并行审计工作流（fan-out + 对抗式复核）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98%E4%BA%8C%EF%BC%9ACodex-%E5%AE%98%E6%96%B9-Subagents-%E5%B9%B6%E8%A1%8C%E5%AE%A1%E6%9F%A5"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">实战二：Codex 官方 Subagents 并行审查</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98%E4%B8%89%EF%BC%9A%E7%9C%9F%E6%AD%A3%E7%9A%84%E9%97%AD%E7%8E%AF%E2%80%94%E2%80%94%E6%94%B9%E5%88%B0%E6%A3%80%E6%9F%A5%E9%80%9A%E8%BF%87%E4%B8%BA%E6%AD%A2%EF%BC%88Claude-workflow%E3%80%8Ckeep-fixing-until-a-check-passes%E3%80%8D%EF%BC%89"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">实战三：真正的闭环——改到检查通过为止（Claude workflow「keep fixing until a check passes」）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98%E5%9B%9B%EF%BC%9ACodex-%E7%9A%84-Loop-Engineering-%E9%97%AD%E7%8E%AF%EF%BC%88-goal-%E9%A9%B1%E5%8A%A8%EF%BC%89"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">实战四：Codex 的 Loop Engineering 闭环（&#x2F;goal 驱动）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%87%8C%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E9%80%89-%E6%9C%80%E5%BF%AB%E8%90%BD%E5%9C%B0%E8%B7%AF%E5%BE%84"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">项目里到底怎么选 + 最快落地路径</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%85%88%E9%80%89%E5%8E%9F%E8%AF%AD%EF%BC%88-loop%E3%80%81-goal%E3%80%81Workflow-%E5%90%84%E7%AE%A1%E4%B8%80%E4%BB%B6%E4%BA%8B%EF%BC%89"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">第一步：先选原语（&#x2F;loop、&#x2F;goal、Workflow 各管一件事）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E8%8C%83%E5%BC%8F%EF%BC%88%E5%9B%9E%E5%88%B0%E4%B8%A4%E4%B8%AA%E7%BB%B4%E5%BA%A6%EF%BC%89"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">选范式（回到两个维度）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E4%BF%A1%E5%8F%B7%E5%87%BA%E7%8E%B0%E6%97%B6%E8%AF%A5%E4%BB%8E-loop-%E5%8D%87%E7%BA%A7%E5%88%B0-graph"><span class="post-toc-number">1.10.3.</span> <span class="post-toc-text">什么信号出现时该从 loop 升级到 graph</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E5%B7%A5%E5%85%B7"><span class="post-toc-number">1.10.4.</span> <span class="post-toc-text">选工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%BF%AB%E8%90%BD%E5%9C%B0%E8%B7%AF%E5%BE%84%EF%BC%88%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%EF%BC%89"><span class="post-toc-number">1.10.5.</span> <span class="post-toc-text">最快落地路径（从零到一）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%8D%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">反模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%88%90%E6%9C%AC%E4%BC%B0%E7%AE%97%EF%BC%9A%E8%B7%91%E4%B8%80%E6%AC%A1%E5%A4%A7%E6%A6%82%E5%A4%9A%E5%B0%91-token"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">成本估算：跑一次大概多少 token</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95%E6%8E%92%E9%94%99%EF%BC%9A%E8%B7%91%E6%8C%82%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">调试排错：跑挂了怎么办</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%98%E6%96%B9%E4%B8%8E%E5%BB%B6%E4%BC%B8%E5%8F%82%E8%80%83"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">官方与延伸参考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Loop与Graph-Engineering-AI-Agent编排演进指南."
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Loop 与 Graph Engineering：AI Agent 编排范式演进与实战</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2026-08-01 14:32:15" datetime="2026-08-01T06:32:15.000Z"  itemprop="datePublished">2026-08-01</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Loop-与-Graph-Engineering：AI-Agent-编排范式演进与实战"><a href="#Loop-与-Graph-Engineering：AI-Agent-编排范式演进与实战" class="headerlink" title="Loop 与 Graph Engineering：AI Agent 编排范式演进与实战"></a>Loop 与 Graph Engineering：AI Agent 编排范式演进与实战</h1><p>读完这篇你能拿到什么：<strong>一个能分辨 Loop &#x2F; Graph Engineering 真假的坐标系</strong> + <strong>四篇可直接套用的实战</strong>（Claude Code 并行审计 &#x2F; Codex 多视角 Code Review &#x2F; 两种「改到全绿为止」的闭环）。<span id="more"></span></p>
+<p>2026 年，Addy Osmani 把「盖在 Agent ReAct 循环之上」的工程（自动找活、派活、验收、记状态）命名为 <strong>Loop Engineering</strong>；紧接着又冒出 <strong>Graph Engineering</strong>，主张把步骤打开成可编排的图。这两个词在 X 上几周刷屏，也伴随大量噪音甚至假消息。</p>
+<p>但如果你去看 Anthropic、OpenAI、Google、LangChain 的官方文档，会发现它们<strong>没有统一采用社区所说的 Prompt → Context → Loop → Graph 演进叙事</strong>，而是用同一组更本质的概念。所以本文不只讲社区新词，更帮你建立业界通用的坐标系，然后落到 Claude Code 和 Codex 里一个能真正跑起来的最小工作流。</p>
+<blockquote>
+<p>本文概念部分依据 2026 年公开资料，命令部分依据 <code>code.claude.com</code> 官方文档与大公司一手文档（Anthropic &#x2F; OpenAI &#x2F; Google ADK &#x2F; LangChain &#x2F; Codex）。Loop&#x2F;Graph Engineering 是很新的社群提法，迭代极快，请以文末官方来源为准。文中明确区分「官方能力」「社群技巧」「外部规范」，避免把不存在的东西当成命令。</p>
+</blockquote>
+<h2 id="先建立坐标系：两个正交维度，不是一条对应关系"><a href="#先建立坐标系：两个正交维度，不是一条对应关系" class="headerlink" title="先建立坐标系：两个正交维度，不是一条对应关系"></a>先建立坐标系：两个正交维度，不是一条对应关系</h2><p>社区爱造词（Prompt → Context → Loop → Graph Engineering），但四大公司&#x2F;框架的官方文档里，核心其实是<strong>两个正交维度</strong>，别把它们揉成一条对应关系。</p>
+<p><strong>维度一：决策归属——控制流归谁？</strong></p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>「用代码定义控制流」那端</th>
+<th>「交给 LLM 自主决定」那端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Anthropic</strong></td>
+<td><strong>workflows</strong>（预定义代码路径编排 LLM 和工具）</td>
+<td><strong>agents</strong>（LLM 动态指挥自己的过程）</td>
+</tr>
+<tr>
+<td><strong>OpenAI Agents SDK</strong></td>
+<td><strong>orchestrating via code</strong></td>
+<td><strong>orchestrating via LLM</strong></td>
+</tr>
+<tr>
+<td><strong>Google ADK</strong></td>
+<td><strong>workflow agents</strong>（1.x：Sequential &#x2F; Parallel &#x2F; Loop；<strong>2.0 起主线转向 graph-based &#x2F; dynamic workflows</strong>，模板保留为 Template workflows）</td>
+<td><strong>LlmAgent transfer</strong>（动态路由）</td>
+</tr>
+</tbody></table>
+<p><strong>维度二:拓扑结构——长什么样?</strong></p>
+<blockquote>
+<p>按结构丰富度，从简到繁：<strong>单步 → Loop（带环）→ Graph（多节点 + 边 + 状态）</strong>。⚠️ 这是”结构复杂度”的排序，<strong>不是”前后替代”</strong>——Loop 本身就是一种带环图，Graph 并不是 Loop 的下一代（后文会展开：loop ⊂ graph）。</p>
+</blockquote>
+<p><strong>这两个维度是正交的，不能划等号。</strong> LangGraph 官方原话：”each node sits at a different point on the deterministic-to-agentic scale”（每个节点都在「确定性→自主」这条频谱上有自己的位置）——也就是说，<strong>同一张图里，有的节点用代码、有的节点放 LLM，确定性是 per-node 的属性，和图拓扑相互独立</strong>。</p>
+<p>这点特别重要，因为社区（包括早期版本的本文）常犯一个错：把「graph engineering ≈ workflows（代码端）」「loop engineering ≈ agents（LLM 端）」直接等同。<strong>这是不对的</strong>：</p>
+<ul>
+<li><strong>loop 既可由 LLM 驱动（自主 agent），也可纯代码</strong>——Google ADK 1.x 把 <code>Loop</code> 明确归为 workflow agent（代码端，2.0 里归入 Template workflows）；OpenAI 把 “while loop + evaluator” 归入 orchestrating via code；CI 里的固定重试脚本也是纯代码 loop。</li>
+<li><strong>graph 也可以由 LLM 动态路由</strong>——LangGraph 的 <code>Send</code>、Supervisor 运行时选 worker、OpenAI 的 handoffs，都是 LLM 决定图内下一步走哪。</li>
+<li>所以别把 graph 和「代码端」、loop 和「LLM 端」绑死——<strong>两个维度正交，同一张图里可以混用，loop 也能纯代码</strong>。</li>
+</ul>
+<p>选型原则（Anthropic）：”we recommend finding the simplest solution possible, and only increasing complexity when needed”（先用最简方案，按需加复杂度）——<strong>这可能意味着根本不该上 agent 或 graph</strong>。</p>
+<p><strong>一张图看懂「正交」</strong>（横轴 &#x3D; 控制流归谁，纵轴 &#x3D; 拓扑复杂度）：</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">                代码定义控制流                LLM 自主决定</span><br><span class="line">            ┌──────────────────────┬──────────────────────────┐</span><br><span class="line"><span class="title class_">Graph</span>       │ <span class="title class_">Claude</span> <span class="title class_">Dynamic</span>       │ <span class="title class_">LangGraph</span> <span class="title class_">Supervisor</span>     │</span><br><span class="line">(多节点+边) │ <span class="title class_">Workflows</span> 脚本       │ 运行时选 worker           │</span><br><span class="line">            │ <span class="title class_">Google</span> ADK <span class="number">2.0</span> 图    │ <span class="title class_">OpenAI</span> handoffs          │</span><br><span class="line">            ├──────────────────────┼──────────────────────────┤</span><br><span class="line"><span class="title class_">Loop</span>        │ CI 重试脚本          │ <span class="title class_">Claude</span> <span class="title class_">Code</span> / <span class="title class_">Codex</span>      │</span><br><span class="line">(带环)      │ ADK <span class="number">1</span>.x <span class="title class_">LoopAgent</span>    │ 单 <span class="title class_">Agent</span> <span class="title class_">ReAct</span> 循环       │</span><br><span class="line">            │ evaluator-optimizer  │ /goal 驱动闭环            │</span><br><span class="line">            ├──────────────────────┼──────────────────────────┤</span><br><span class="line">单步        │ prompt chaining      │ 单次 LLM 调用             │</span><br><span class="line">            │ 简单 routing         │                          │</span><br><span class="line">            └──────────────────────┴──────────────────────────┘</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>每个格子里的工具只是举例，重点看<strong>两个维度各自独立</strong>——你可以在任意一个格子里找到适合你任务的方案。</p>
+</blockquote>
+<h2 id="一条社区叙事：从-Prompt-到-Graph（了解即可）"><a href="#一条社区叙事：从-Prompt-到-Graph（了解即可）" class="headerlink" title="一条社区叙事：从 Prompt 到 Graph（了解即可）"></a>一条社区叙事：从 Prompt 到 Graph（了解即可）</h2><p>社区用四个阶段概括演进（完整谱系里还夹着一个 “harness engineering”，本文从略）。<strong>先说明：这是社群叙事，不是学术共识</strong>，定位用。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>你在优化什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Prompt Engineering</td>
+<td>2023</td>
+<td>一句话的表达</td>
+</tr>
+<tr>
+<td>Context Engineering</td>
+<td>2025</td>
+<td>把上下文窗口塞对（RAG、系统提示、few-shot）</td>
+</tr>
+<tr>
+<td>Loop Engineering</td>
+<td>2026</td>
+<td>把循环工程化（反馈循环 + 终止条件 + 错误处理）</td>
+</tr>
+<tr>
+<td>Graph Engineering</td>
+<td>2026</td>
+<td>把循环打开成可编排的图</td>
+</tr>
+</tbody></table>
+<p>这里必须诚实交代，对你判断信息质量很重要：</p>
+<blockquote>
+<p>「Loop Engineering」「Graph Engineering」是 X 上的社群流行词，迭代极快、伴随噪音（社区对 “graph” 一度给出<strong>四种</strong>互相竞争的定义；还出现过一条伪造的「graph engineering 已在某机构<strong>取代 RAG、准确率 +18%、成本 −85%</strong>」假数据——后被辟谣：数字其实出自一篇把 GraphRAG 用于工业图纸的论文，与编排图无关），甚至有文章调侃「Loop Engineering 只活了六周」就被取代。</p>
+</blockquote>
+<p>所以这两个词目前<strong>不是 RAG、ReAct 那种稳固术语</strong>。LangChain 官方博客自己都说：Graph Engineering「不是新主意，是一项成熟实践的最新名字」——他们用 LangGraph 做这件事已经三年。</p>
+<h2 id="Loop-Engineering：Goal-→-Evaluator-→-Loop-→-Termination"><a href="#Loop-Engineering：Goal-→-Evaluator-→-Loop-→-Termination" class="headerlink" title="Loop Engineering：Goal → Evaluator → Loop → Termination"></a>Loop Engineering：Goal → Evaluator → Loop → Termination</h2><h3 id="先分清两层-loop（全文最容易混的地方）"><a href="#先分清两层-loop（全文最容易混的地方）" class="headerlink" title="先分清两层 loop（全文最容易混的地方）"></a>先分清两层 loop（全文最容易混的地方）</h3><p>读下去之前先记住 <strong>“loop” 有两层</strong>，本文反复在防的就是把它俩混成一个：</p>
+<ul>
+<li><strong>内层 &#x3D; Agent 自己的工具调用循环（ReAct）</strong>：Reason（想下一步）→ Act（调工具&#x2F;写代码）→ Observe（读结果）→ Repeat。这是单个 Agent 在 harness 里干活的循环，Claude Code、Codex CLI 底层都是它。Anthropic 对 agent 的定义就是「在循环里用工具、根据反馈行动的 LLM」。</li>
+<li><strong>外层 &#x3D; Loop Engineering</strong>（Osmani 2026 的提法）：它<strong>坐在 harness 上一层</strong>——自动发现&#x2F;调度任务、开 worktree 隔离并行、用 skills 沉淀项目知识、派 sub-agent、把状态持久化到对话之外、再用一个独立小模型做「达标验收」（即 <code>/goal</code>）。一句话：<strong>内层是”一个 agent 怎么干活”，外层是”谁来派活、怎么验收、状态记哪”</strong>。</li>
+</ul>
+<blockquote>
+<p>下面这套 Goal→Evaluator→Loop→Termination 四层模型，是用来分析<strong>外层执行闭环</strong>的骨架——它不是 Loop Engineering 的完整定义（完整版还含任务发现、调度、worktree、skills、状态等，见 Osmani 原文），更不是内层 ReAct 循环。把它当分析工具，别当标准分类。</p>
+</blockquote>
+<h3 id="四层模型（别把-goal-和-termination-混成一个）"><a href="#四层模型（别把-goal-和-termination-混成一个）" class="headerlink" title="四层模型（别把 goal 和 termination 混成一个）"></a>四层模型（别把 goal 和 termination 混成一个）</h3><p>一个工程化 loop 的核心是四层（<strong>本文归纳的模型</strong>，不是哪家官方标准分类），<strong>不要把 goal 和 termination 混在一起</strong>：</p>
+<blockquote>
+<p><strong>Goal（期望状态：什么叫完成）→ Evaluator（评估闸门：用证据检验是否达标，如 pytest 退出码）→ Loop（未达标就继续）→ Termination（停止规则：成功达标 &#x2F; 预算耗尽 &#x2F; 阻塞 &#x2F; 暂停 &#x2F; 人工中断）</strong></p>
+</blockquote>
+<p><code>tools</code>、<code>context</code>、<code>errors</code> 是配套维度。注意 Goal 和 Termination 是两件事：Goal 是「想要什么」（如「所有 pytest 通过 + ruff 无报错」），Termination 是「什么时候停」（达标停 &#x2F; 跑满 N 轮停 &#x2F; 连续无进展停）。</p>
+<ul>
+<li>好 Goal：「所有 pytest 通过 + ruff 无报错」（可评估）</li>
+<li>坏 Goal：「让 app 更好」（无法判断达标 → 死循环或乱停）</li>
+</ul>
+<p><strong>这套外层闭环不是抽象理论——Claude Code 和 Codex 都给了产品原语 <code>/goal</code></strong>：</p>
+<ul>
+<li><strong>Claude <code>/goal</code></strong>：设一个完成条件，每轮由一个小快模型（默认 Haiku）评估是否满足，未满足就再起一轮、满足才自动清除，底层是 session 级 Stop hook。注意：这个评估器<strong>不调工具、不读文件</strong>，只能根据主 agent 已经写进对话的证据判断——所以条件要写成「agent 自己的输出能证明」的形式。它覆盖了 Goal + Evaluator + Termination。</li>
+<li><strong>Codex <code>/goal</code></strong>：同样提供官方 <code>/goal</code>（<code>/goal &lt;objective&gt;</code> 设置、<code>/goal</code> 查看、<code>/goal pause</code> &#x2F; <code>resume</code> &#x2F; <code>clear</code>，目标最长 4000 字符），把「持久化目标」做成能力。</li>
+</ul>
+<p>所以 <code>/goal</code> 是<strong>支撑”持续验收循环”的产品原语</strong>——但它<strong>只是外层 Loop Engineering 的一个部件，不等于完整 Loop Engineering</strong>（完整版还含调度、worktree、状态等），更不是内层 ReAct 循环。</p>
+<h3 id="Loop-Engineering-的完整画面（不只是-Goal→Evaluator→Loop→Termination）"><a href="#Loop-Engineering-的完整画面（不只是-Goal→Evaluator→Loop→Termination）" class="headerlink" title="Loop Engineering 的完整画面（不只是 Goal→Evaluator→Loop→Termination）"></a>Loop Engineering 的完整画面（不只是 Goal→Evaluator→Loop→Termination）</h3><p>上面的四层模型只抓了 Loop Engineering 的<strong>验收闭环</strong>。Osmani 原文还有更大的一层意思——<strong>你的角色变了</strong>：</p>
+<blockquote>
+<p>你不再是「坐在聊天框前逐条输入的人」，而是「设计一个自动化系统的人」——谁来发现任务、谁来执行、谁来验收、状态存哪、失败怎么恢复，这些都是你要设计的。</p>
+</blockquote>
+<p>这个身份转变落到工具里，体现为三层能力（四层模型只覆盖了第二层）：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>你在设计什么</th>
+<th>Claude Code 对应</th>
+<th>Codex 对应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>任务发现</strong></td>
+<td>谁来找到要做的事？</td>
+<td><code>/loop</code>（定时轮询：每隔 N 分钟跑一遍提示词，如「检查 CI 状态并修失败项」）</td>
+<td>Symphony（外部开源规范，非 Codex 内置；从 Linear 拉 issue 自动分派）</td>
+</tr>
+<tr>
+<td><strong>验收闭环</strong></td>
+<td>怎么判断做完了？失败怎么重试？</td>
+<td><code>/goal</code>（Haiku 评估 + Stop hook） + Dynamic Workflows 的 gate agent</td>
+<td><code>/goal</code>（持久化目标 + 自动循环）</td>
+</tr>
+<tr>
+<td><strong>状态持久化</strong></td>
+<td>做过的事怎么记住、下次怎么复用？</td>
+<td><code>.claude/workflows/</code> 存脚本 → <code>/命令</code> 复用；worktree 隔离并行；skills 沉淀项目知识（<code>CLAUDE.md</code>）</td>
+<td><code>.codex/agents/*.toml</code> 角色级复用；app-server 状态层（关终端目标不丢）</td>
+</tr>
+</tbody></table>
+<p>一句话：<strong>Loop Engineering 的核心不是 <code>for</code> 循环本身，而是「把人从循环里拿出来，让系统自己转」</strong>——任务发现、验收闭环、状态持久化是它的三根支柱，<code>/goal</code> 只是其中验收那根。</p>
+<blockquote>
+<p>辨析三个容易混的命令：Claude <code>/loop</code>（bundled Skill）是<strong>按时间间隔反复跑提示词</strong>（定时调度，对应上表「任务发现」层，和 Loop Engineering 方法论不是一回事；省略间隔时，Anthropic API 上 Claude 会自适应步频 1 分–1 小时，但 Amazon Bedrock &#x2F; Claude Platform on AWS &#x2F; Google Cloud’s Agent Platform &#x2F; Microsoft Foundry 上是固定 10 分钟，且这些平台上裸 <code>/loop</code> 不带提示词时只打印用法信息）；Codex 没有官方 <code>/loop</code>；<code>/goal</code>（两端都有）才是状态驱动的「设目标、持续对齐」，对应「验收闭环」层。别把方法论和命令搞混。</p>
+</blockquote>
+<h3 id="一个最小闭环骨架"><a href="#一个最小闭环骨架" class="headerlink" title="一个最小闭环骨架"></a>一个最小闭环骨架</h3><div class="highlight-wrap" data-rel="Python"><figure class="lpz highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据流伪代码：重点看 GOAL、评估器输出、错误如何回流到下一轮</span></span><br><span class="line">MAX_ITER = <span class="number">8</span></span><br><span class="line">NO_PROGRESS_LIMIT = <span class="number">3</span>      <span class="comment"># 连续 N 轮无进展即提前停，别硬烧到 MAX_ITER</span></span><br><span class="line">GOAL = <span class="string">&quot;所有单元测试通过，且 ruff 检查无报错。&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_tests</span>():</span><br><span class="line">    <span class="comment"># 评估器 = Goal 的 verification surface：必须和 GOAL 一一对应（这里即 pytest + ruff）</span></span><br><span class="line">    <span class="comment"># return passed: bool, feedback: str（把 stdout/stderr 都带上，别只看退出码）</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">agent_step</span>(<span class="params">goal, last_feedback</span>):</span><br><span class="line">    <span class="comment"># 一轮 LLM 调用：把 Goal 和上一次的失败反馈都喂进去，给出修复补丁</span></span><br><span class="line">    <span class="comment"># return patch: str | None（给不出补丁就返回 None）</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loop</span>():</span><br><span class="line">    <span class="comment"># 先评估一次：项目可能已经达标，就别动它（避免无谓修改）</span></span><br><span class="line">    passed, feedback = run_tests()</span><br><span class="line">    <span class="keyword">if</span> passed:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;✓ <span class="subst">&#123;GOAL&#125;</span>（开始前已达标，无需修改）&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    last_feedback = feedback</span><br><span class="line">    no_progress = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, MAX_ITER + <span class="number">1</span>):</span><br><span class="line">        patch = agent_step(GOAL, last_feedback)     <span class="comment"># 把 Goal + 上一轮反馈喂进去</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> patch:                                 <span class="comment"># 分支：agent 给不出补丁</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;✗ 第 <span class="subst">&#123;i&#125;</span> 轮无补丁，升级人工处理&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            apply_patch(patch)                        <span class="comment"># 把补丁写回项目（git apply / 写文件）</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:                        <span class="comment"># 分支：补丁应用失败，别崩，把错误喂回去</span></span><br><span class="line">            last_feedback = <span class="string">f&quot;补丁应用失败：<span class="subst">&#123;e&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        passed, feedback = run_tests()                <span class="comment"># Evaluator：客观闸门</span></span><br><span class="line">        <span class="keyword">if</span> passed:                                    <span class="comment"># Termination：成功达标</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;✓ <span class="subst">&#123;GOAL&#125;</span>（第 <span class="subst">&#123;i&#125;</span> 轮达标）&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">if</span> feedback == last_feedback:                 <span class="comment"># Termination：连续无进展</span></span><br><span class="line">            no_progress += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> no_progress &gt;= NO_PROGRESS_LIMIT:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;✗ 连续 <span class="subst">&#123;NO_PROGRESS_LIMIT&#125;</span> 轮无进展，提前升级人工处理&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            no_progress = <span class="number">0</span></span><br><span class="line">        last_feedback = feedback</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;✗ <span class="subst">&#123;MAX_ITER&#125;</span> 轮预算耗尽，升级人工处理&quot;</span>)    <span class="comment"># Termination：预算耗尽</span></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>这段骨架和实战三的关系</strong>：上面是<strong>语言无关的抽象</strong>（Python 伪代码），实战三的 <code>fix-until-green.js</code> 是它<strong>在 Claude Dynamic Workflows 里的落地实现</strong>——变量名刻意对齐（<code>MAX_ITER=8</code>、<code>NO_PROGRESS_LIMIT=3</code>），方便你对照看。如果你直接用 Claude Code，跳到实战三拿 JS 脚本跑即可。</p>
+</blockquote>
+<p>关键不是循环本身，而是 <strong>Evaluator（评估闸门）和 Termination（停止规则）</strong>——这两样决定 loop 是「可靠自动化」还是「烧 token 的死循环」。生产默认 <strong>closed first</strong>（这里 closed 指「约束先于探索」，不是控制理论的 closed-loop）：先把目标、闸门、终止都定义死跑稳，再逐步放开探索空间。</p>
+<h2 id="Graph-Engineering：显式控制流，不只是并行"><a href="#Graph-Engineering：显式控制流，不只是并行" class="headerlink" title="Graph Engineering：显式控制流，不只是并行"></a>Graph Engineering：显式控制流，不只是并行</h2><h3 id="本质是「显式编码控制流」，不是「并行」"><a href="#本质是「显式编码控制流」，不是「并行」" class="headerlink" title="本质是「显式编码控制流」，不是「并行」"></a>本质是「显式编码控制流」，不是「并行」</h3><p>很多人以为 graph 相对 loop 的本质区别是「并行」。<strong>这是被社区文带偏的表述</strong>。LangChain 官方把 graph 的本质讲得很清楚：</p>
+<blockquote>
+<p>“representing agentic systems as graphs… lets you <strong>impose your preconceptions of how the system should work into more constrained paths</strong>, not relying solely on the judgement of the LLM”<br>（把 agent 系统建模成图，能让你把”系统该怎么跑”的预判编码进更受约束的路径，而不是全靠 LLM 当场判断）</p>
+</blockquote>
+<p>graph 的本质是：<strong>把控制流显式化（节点 + 边 + 状态），让你在想要确定性的地方用代码、在想要灵活性的地方放 LLM&#x2F;agent</strong>。LangGraph 自己说的核心价值就是「确定性路径与自主步骤之间的平衡」。<strong>并行只是 graph 支持的一种拓扑，不是它的本质。</strong></p>
+<h3 id="loop-不是被-graph「取代」，是-graph-的特例"><a href="#loop-不是被-graph「取代」，是-graph-的特例" class="headerlink" title="loop 不是被 graph「取代」，是 graph 的特例"></a>loop 不是被 graph「取代」，是 graph 的特例</h3><blockquote>
+<p>先界定一下 graph 的两层含义，免得和前面”拓扑阶梯”打架：下文取<strong>广义 graph</strong>（任何”节点 + 边 + 环”），所以 loop 是它的特例；前文拓扑轴里的 “graph” 取<strong>狭义</strong>（多节点富结构）。两者并不冲突。</p>
+</blockquote>
+<p>LangChain 官方有一句金句，建议直接记下：</p>
+<blockquote>
+<p>“<strong>Loop engineering isn’t an alternative to graphs, so much as a simple version of them. As David Khourshid put it, a loop is just a directed, cyclic graph.</strong>“<br>（loop engineering 不是 graph 的替代品，而是它的一个简单版本。一个 loop，就是一个有向的、带环的图——后半句是 LangChain 引 David Khourshid 的话。）</p>
+</blockquote>
+<p>也就是说 <strong>loop ⊂ graph</strong>。这也解释了一个反直觉的事实——<strong>生产级的 agent 图通常不是 DAG</strong>（LangGraph 官方原话：”agent graphs are usually not DAGs”），因为重试、追问、修订都需要循环。</p>
+<h3 id="并行只是-graph-的一种模式"><a href="#并行只是-graph-的一种模式" class="headerlink" title="并行只是 graph 的一种模式"></a>并行只是 graph 的一种模式</h3><p>并行确实是 graph 带来的一个高价值能力，但要摆正位置：</p>
+<ul>
+<li><strong>Anthropic</strong> 把 parallelization 列为五种 workflow 模式之一（另四种：prompt chaining、routing、orchestrator-workers、evaluator-optimizer），且并行分两种——<strong>sectioning</strong>（拆成独立子任务并行）和 <strong>voting</strong>（同一任务跑多次，取多样化输出&#x2F;投票裁决）</li>
+<li><strong>OpenAI Agents SDK</strong> 把「用 <code>asyncio.gather</code> 并行跑多个 agent」列为 “orchestrating via code” 的常见模式之一——<strong>这意味着并行用朴素 Python 原语就能做，不必上 graph 框架</strong>（其主页亦强调 “Python-first, rather than needing to learn new abstractions”）</li>
+<li>所以「并行」不等于「graph」，并行用最朴素的代码就能做</li>
+</ul>
+<h3 id="fan-out-不等于闭环"><a href="#fan-out-不等于闭环" class="headerlink" title="fan-out 不等于闭环"></a>fan-out 不等于闭环</h3><p>这里要区分两种 graph 形态，<strong>别混</strong>：</p>
+<ul>
+<li><strong>一次性 fan-out（map-reduce）</strong>：派多个 agent 各做一件事 → 汇总。没有反馈边、没有客观通过条件。Claude Code 官方文档把它单列为一种 shape（”Audit many files for the same issue”）。</li>
+<li><strong>带反馈的闭环</strong>：跑 checker → 修失败项 → 重复，直到通过或停止进展（Claude Code 官方另一种 shape：”Keep fixing until a check passes”）。这才需要客观 gate + 停止规则。</li>
+</ul>
+<p>实战一、实战二都是<strong>前者（fan-out 单趟）</strong>，不是闭环——这点先说清楚，免得你误以为并行审查就等于”验证闭环”；想要闭环见实战三（Claude）&#x2F; 实战四（Codex）。</p>
+<h3 id="别把-agent-当僵化节点（多个实践的一致忠告）"><a href="#别把-agent-当僵化节点（多个实践的一致忠告）" class="headerlink" title="别把 agent 当僵化节点（多个实践的一致忠告）"></a>别把 agent 当僵化节点（多个实践的一致忠告）</h3><p>graph 的”新”主要新在<strong>节点里能放什么</strong>：早期节点是确定性代码或单次 LLM 调用，现在模型够可靠了，<strong>一个节点可以是一整个带内部循环的 agent</strong>（LangGraph 原话：”what’s changed is what you can put inside a node”——出自其”What’s actually new”小节）。</p>
+<p>但多个实践都给了同一个反向警告——<strong>别把 agent 当成状态机里僵化的节点</strong>：</p>
+<ul>
+<li><strong>OpenAI Symphony 团队</strong>：”treating agents as rigid nodes in a state machine doesn’t work well… So we eventually moved toward giving agents <strong>objectives</strong> instead of strict transitions”（给目标，而不是严格转移）</li>
+<li><strong>LangGraph</strong>：有些任务天生 agentic，硬塞进确定性路径是错的。深度研究就是例子——LangChain 自己的 deep research 从预定义工作流改成了 agentic 核心循环，GPT Researcher 也做了同样迁移</li>
+</ul>
+<p><strong>结论</strong>：graph 的价值是「该确定的地方确定、该自主的地方自主」，不是「把一切锁死成图」。</p>
+<h3 id="两层含义别混"><a href="#两层含义别混" class="headerlink" title="两层含义别混"></a>两层含义别混</h3><p>社群里「graph」还混了另一个完全不同的东西，写文章和选型要分清：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>节点是什么</th>
+<th>强调</th>
+<th>对应工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>编排图</strong>（本文讲的就是这层）</td>
+<td>agent 或步骤</td>
+<td>控制流、并行、状态</td>
+<td>LangGraph、Claude Code dynamic workflows、Google ADK workflow agents、OpenAI Agents SDK</td>
+</tr>
+<tr>
+<td><strong>知识图谱 &#x2F; GraphRAG</strong></td>
+<td>实体</td>
+<td>关系存储、多跳推理</td>
+<td>Zep Graphiti、GraphRAG</td>
+</tr>
+</tbody></table>
+<h2 id="实战总览"><a href="#实战总览" class="headerlink" title="实战总览"></a>实战总览</h2><p>四篇实战覆盖两种 shape：<strong>fan-out</strong>（实战一 Claude &#x2F; 实战二 Codex）和<strong>闭环</strong>（实战三 Claude &#x2F; 实战四 Codex）。按你的任务选：</p>
+<table>
+<thead>
+<tr>
+<th>你的任务</th>
+<th>「每个」单元 &#x2F; 形态</th>
+<th>看哪篇</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后端：上线前查接口鉴权</td>
+<td>每个路由文件</td>
+<td><strong>实战一</strong>：Claude fan-out 审计</td>
+</tr>
+<tr>
+<td>前端：给 PR 做多维 Code Review</td>
+<td>每个关注点（a11y &#x2F; 性能 &#x2F; 状态）</td>
+<td><strong>实战二</strong>：Codex subagents</td>
+</tr>
+<tr>
+<td>把 failing tests &#x2F; lint 改到全绿</td>
+<td>每轮失败项（带反馈边）</td>
+<td><strong>实战三</strong>（Claude workflow）&#x2F; <strong>实战四</strong>（Codex <code>/goal</code>）</td>
+</tr>
+<tr>
+<td>前端：全站补 loading &#x2F; error 态</td>
+<td>每个 page &#x2F; 组件文件</td>
+<td>套实战一，换目录与检查项</td>
+</tr>
+<tr>
+<td>后端：批量补接口入参校验</td>
+<td>每个 controller</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>任意：批量迁移（Options→Composition API、JS→TS、补单测）</td>
+<td>每个文件</td>
+<td>fan-out 每文件改；改完套实战三&#x2F;四闭环兜底</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>判断你能不能套 fan-out：<strong>把任务说成「对每个 X 做 Y」说得通就用</strong>；说不通（任务是一条链、前后依赖）那就用 prompt chaining 或闭环（实战三），别硬并行。</p>
+</blockquote>
+<blockquote>
+<p><strong>触发语 <code>use a workflow to</code> 是什么</strong>：下面四篇实战的触发语都以 <code>use a workflow to …</code> 开头——这是 Claude Code <a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/workflows">官方文档</a>点名的<strong>自然语言激活说法</strong>（原话：<em>“Asking in your own words, for example ‘use a workflow’ or ‘run a workflow’, also works”</em>），和 <code>ultracode</code> 关键字、<code>/effort ultracode</code> 三者等效。它让 Claude 去写并跑一段 fan-out &#x2F; 闭环的编排脚本，而不是单 agent 顺着做；<strong>不写它（又不换 <code>ultracode</code>），就退回普通单 agent 任务</strong>，并行&#x2F;闭环跑不起来。另外它<strong>只对你本人键入的输入生效</strong>，对 <code>-p</code> &#x2F; 定时任务 &#x2F; webhook 不触发（v2.1.160 前的触发关键字是 <code>workflow</code>，自然语言说法两个版本都行）。另外触发语<strong>不要求英文</strong>——判定的是意图而不是字符串匹配，中文直接说「用工作流把 X 全部审一遍」「起一个工作流反复跑测试修到全绿」同样生效；只有 <code>ultracode</code> 关键字必须敲英文原词。</p>
+</blockquote>
+<h3 id="日常场景速查：Vue-Element-UI-项目怎么套"><a href="#日常场景速查：Vue-Element-UI-项目怎么套" class="headerlink" title="日常场景速查：Vue &#x2F; Element UI 项目怎么套"></a>日常场景速查：Vue &#x2F; Element UI 项目怎么套</h3><p>后文四篇实战涉及 Node&#x2F;Express、React + TS 和 Python。如果你的项目是 <strong>Vue 2 + Element UI</strong>（或类似的企业中后台系统），下面先给出三个最常见的日常场景和对应触发语，直接复制改两个词就能跑：</p>
+<p><strong>场景 A：全站补 loading &#x2F; error 态</strong>（套实战一的 fan-out）</p>
+<div class="highlight-wrap" data-rel="Aspectj"><figure class="lpz highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use a workflow to 扫描 src/views/ 下所有 .vue 文件，检查每个组件里的 API 调用</span><br><span class="line">（axios / <span class="keyword">this</span>.$http / request）是否都有 loading 态（如 v-loading 或 loading 变量）</span><br><span class="line">和 <span class="keyword">error</span> 处理（<span class="keyword">catch</span> / .<span class="keyword">catch</span> / <span class="keyword">try</span>-<span class="keyword">catch</span>）。</span><br><span class="line">输出每个缺失项的文件路径、行号、缺失类型（缺 loading / 缺 <span class="keyword">error</span> / 都缺）。</span><br><span class="line">这是只读审计，不得修改或创建任何文件。</span><br></pre></td></tr></table></figure></div>
+
+<p>中文等效触发语（判定的是意图，不是英文关键字）：</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用工作流扫描 src<span class="operator">/</span>views<span class="symbol">/</span> 下所有 .vue 文件，检查每个组件里的 API 调用</span><br><span class="line">（axios <span class="symbol">/</span> this.$http <span class="symbol">/</span> request）是否都有 loading 态和 error 处理。</span><br><span class="line">输出每个缺失项的文件路径、行号、缺失类型。这是只读审计，不得修改任何文件。</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>场景 B：批量 Options API → Composition API 迁移</strong>（fan-out 改 + 闭环兜底）</p>
+<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 第一步：fan-out 每文件改</span><br><span class="line"><span class="selector-tag">use</span> <span class="selector-tag">a</span> workflow <span class="selector-tag">to</span> 把 <span class="attribute">src</span>/views/opticianManagement/ 下每个 <span class="selector-class">.vue</span> 文件</span><br><span class="line">从 Options API 迁移到 Composition API（setup + ref/reactive/computed），</span><br><span class="line">保持功能不变，不改 template 结构。</span><br><span class="line"></span><br><span class="line"># 第二步：闭环兜底（改完后跑）</span><br><span class="line"><span class="selector-tag">use</span> <span class="selector-tag">a</span> workflow <span class="selector-tag">to</span> 反复跑 npm run build，把编译报错改到零为止；</span><br><span class="line">连续 <span class="number">3</span> 轮报错没变化或满 <span class="number">8</span> 轮就停。</span><br></pre></td></tr></table></figure></div>
+
+<p>中文等效触发语：</p>
+<div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步：fan-out 每文件改</span></span><br><span class="line">用工作流把 src<span class="regexp">/views/opticianManagement/</span> 下每个 .vue 文件从 Options API</span><br><span class="line">迁移到 Composition API，保持功能不变，不改 template 结构。</span><br><span class="line"><span class="comment"># 第二步：闭环兜底（改完后跑）</span></span><br><span class="line">起一个工作流反复跑 <span class="built_in">npm</span> run build，把编译报错改到零为止；</span><br><span class="line">连续 <span class="number">3</span> 轮报错没变化或满 <span class="number">8</span> 轮就停。</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>场景 C：PR 提交前检查 Element UI 用法规范</strong>（套实战二的多视角审查，把 TOML 里的 React 检查项换成 Vue 的）</p>
+<div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .codex/agents/vue_reviewer.toml</span></span><br><span class="line"><span class="attr">name</span>                   = <span class="string">&quot;vue_reviewer&quot;</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">&quot;只读 Vue 2 审查 Agent，检查 Element UI 用法与组件规范。&quot;</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">&quot;read-only&quot;</span></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是只读 Vue 2 审查 Agent，只看本 PR 改动的 .vue 文件。</span></span><br><span class="line"><span class="string">检查：el-form 是否有 :rules 校验、el-table 大数据是否分页或虚拟滚动、</span></span><br><span class="line"><span class="string">v-for 是否带 :key、组件是否缺 name 属性、$refs 操作是否在 $nextTick 内。</span></span><br><span class="line"><span class="string">输出按 Critical/High/Medium/Low 排序，每条带文件路径、行号、建议。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>核心逻辑不变——fan-out 就是「对每个 .vue 文件做 Y」，闭环就是「跑 <code>npm run build</code> 改到零报错」——<strong>只换触发语里的目录、检查项、命令名</strong>，脚本结构（schema &#x2F; gate &#x2F; termination）完全复用。</p>
+</blockquote>
+<h2 id="实战一：Claude-Code-并行审计工作流（fan-out-对抗式复核）"><a href="#实战一：Claude-Code-并行审计工作流（fan-out-对抗式复核）" class="headerlink" title="实战一：Claude Code 并行审计工作流（fan-out + 对抗式复核）"></a>实战一：Claude Code 并行审计工作流（fan-out + 对抗式复核）</h2><p>Claude Code 把「编排图」做成了官方能力，叫 <strong>Dynamic Workflows（动态工作流）</strong>：让 Claude 写一段 JavaScript 脚本，由后台运行时执行，脚本自己持有循环、分支和中间结果。<strong>它没有 <code>/graph</code> 命令</strong>——workflows 就是它的 graph 形态。</p>
+<blockquote>
+<p><strong>能力可信度：官方确认。</strong> 命令、版本、限制均来自 <code>code.claude.com/docs/en/workflows</code>。</p>
+</blockquote>
+<p><strong>场景</strong>：Node&#x2F;Express 或 Python&#x2F;FastAPI 服务上线前，查 <code>src/routes/</code> 下几十个接口有没有鉴权——装饰器、中间件、路由分组写法五花八门，正则容易漏，让 agent 真去读代码再交叉复核。</p>
+<p><strong>形状</strong>（两趟 fan-out，无环；带环的闭环见实战三）：</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">列文件 → ① 每文件 <span class="number">1</span> agent 审计 → 收集 findings</span><br><span class="line">       → ② 每条发现 <span class="number">1</span> agent 对抗复核 → 三态裁决</span><br><span class="line">       → 汇总：confirmed 留 <span class="symbol">/</span> refuted 丢 <span class="symbol">/</span> unverified 留痕交人工</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>适合什么任务</strong>：能说成「对每个 X 做独立的只读检查 + 交叉复核」的批量审查（接口鉴权、a11y、硬编码、依赖漏洞…）。</p>
+<p><strong>跑起来</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> Claude Code ≥ v2.1.154，<code>/config</code> 里 <strong>Dynamic workflows</strong> 已开</li>
+<li><input disabled="" type="checkbox"> 建议切到<strong>干净 worktree</strong>（防误改未提交内容的<strong>安全实践，非运行条件</strong>——workflow 对工作区是否干净没有要求；子 agent 固定 <code>acceptEdits</code>、文件改动自动批准——无论你会话什么模式）</li>
+<li><input disabled="" type="checkbox"> 贴触发语：<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">use</span> <span class="selector-tag">a</span> workflow <span class="selector-tag">to</span> 审计 <span class="attribute">src</span>/routes/ 下每个 API 端点是否缺少鉴权检查，</span><br><span class="line">并对每条发现做对抗式复核后再报告。这是只读审计，不得修改或创建任何文件。</span><br></pre></td></tr></table></figure></div>
+（含 <code>ultracode</code> 关键字也行；v2.1.160 前是 <code>workflow</code>，只对你本人键入生效，不对 <code>-p</code>&#x2F;定时&#x2F;webhook 生效）<br>（中文等效触发语：「用工作流审计 src&#x2F;routes&#x2F; 下每个 API 端点是否缺少鉴权检查，并对每条发现做对抗式复核后再报告。只读审计，不得修改任何文件。」）</li>
+<li><input disabled="" type="checkbox"> 看 planned phases → <strong>Yes, run it</strong>（Auto 权限模式仅首次弹，且 <strong>Auto 模式下 <code>ultracode</code> 会话连首次也跳过</strong>；Manual&#x2F;acceptEdits 模式每次弹，<code>ultracode</code> 不豁免；<code>claude -p</code>&#x2F;Bypass&#x2F;Agent SDK 从不弹）</li>
+<li><input disabled="" type="checkbox"> <code>/workflows</code> 跟进度：<code>↑↓</code> 选 phase、<code>Enter</code> 钻入、<code>p</code> 暂停、<code>x</code> 停</li>
+<li><input disabled="" type="checkbox"> 拿报告：每条带 <strong>路径&#x2F;行号&#x2F;影响&#x2F;置信度</strong>，复核分 <strong>confirmed &#x2F; unverified</strong> 两栏（refuted 静默丢弃；复核本身超时&#x2F;限流的发现进 unverified 留人工，不被当成「不成立」）</li>
+<li><input disabled="" type="checkbox"> 满意 → <code>/workflows</code> 选中按 <code>s</code>，存到 <code>.claude/workflows/</code>（项目级）或 <code>~/.claude/workflows/</code>（个人级），变成 <code>/audit-auth</code> 下次复用</li>
+</ul>
+<p><strong>你会拿到什么</strong>（报告节选）：</p>
+<div class="highlight-wrap" data-rel="Dts"><figure class="lpz highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">confirmed:</span></span><br><span class="line">  • src<span class="keyword">/routes/</span>user.ts:<span class="number">14</span>   GET <span class="keyword">/api/</span>users   无鉴权——任何人可拉全量用户</span><br><span class="line"><span class="symbol">    severity:</span> Critical   confidence: <span class="number">0.9</span></span><br><span class="line"><span class="symbol">    evidence:</span> 该 handler 未挂 auth 中间件（紧邻的 <span class="keyword">/api/</span>orders 却挂了）</span><br><span class="line"><span class="symbol">unverified:</span></span><br><span class="line">  • src<span class="keyword">/routes/</span>order.ts:<span class="number">8</span>   对抗复核超时，需人工再看一眼</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>套到你项目</strong>：把 <code>src/routes/</code> 换成你的路由目录，把「鉴权」换成你要查的（参数校验、SQL 注入、日志脱敏、敏感字段返回…）——触发语里改两个词就能跑。</p>
+<p><strong>参考脚本</strong>（两趟 fan-out + 三态裁决，完整版可折叠）：</p>
+<details>
+<summary>展开看 audit-auth.js</summary>
+
+<div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> meta = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;audit-auth&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;审计每个路由处理器是否缺少鉴权检查&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构化输出契约：脚本要消费的字段必须用 schema 约束，否则 agent 只返回纯文本</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">FINDING_SCHEMA</span> = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;findings&#x27;</span>],</span><br><span class="line">  <span class="attr">properties</span>: &#123;</span><br><span class="line">    <span class="attr">findings</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>,</span><br><span class="line">      <span class="attr">items</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>,</span><br><span class="line">        <span class="attr">required</span>: [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;file&#x27;</span>, <span class="string">&#x27;line&#x27;</span>, <span class="string">&#x27;description&#x27;</span>, <span class="string">&#x27;impact&#x27;</span>, <span class="string">&#x27;evidence&#x27;</span>, <span class="string">&#x27;severity&#x27;</span>, <span class="string">&#x27;confidence&#x27;</span>],</span><br><span class="line">        <span class="attr">properties</span>: &#123;</span><br><span class="line">          <span class="attr">id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,            <span class="comment">// 供第二趟复核回引，别靠数组下标</span></span><br><span class="line">          <span class="attr">file</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">line</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">description</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">impact</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,        <span class="comment">// 影响：与产出承诺对齐</span></span><br><span class="line">          <span class="attr">evidence</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,      <span class="comment">// 证据：哪一行/哪个调用支撑这条结论</span></span><br><span class="line">          <span class="attr">severity</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>, <span class="attr">enum</span>: [<span class="string">&#x27;Critical&#x27;</span>, <span class="string">&#x27;High&#x27;</span>, <span class="string">&#x27;Medium&#x27;</span>, <span class="string">&#x27;Low&#x27;</span>] &#125;,</span><br><span class="line">          <span class="attr">confidence</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>, <span class="attr">minimum</span>: <span class="number">0</span>, <span class="attr">maximum</span>: <span class="number">1</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 三态裁决：技术失败(超时/限流/异常)必须落到 unverified，不能被当成&quot;问题不成立&quot;</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">VERDICT_SCHEMA</span> = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;finding_id&#x27;</span>, <span class="string">&#x27;status&#x27;</span>],</span><br><span class="line">  <span class="attr">properties</span>: &#123;</span><br><span class="line">    <span class="attr">finding_id</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">    <span class="attr">status</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span>, <span class="attr">enum</span>: [<span class="string">&#x27;confirmed&#x27;</span>, <span class="string">&#x27;refuted&#x27;</span>, <span class="string">&#x27;unverified&#x27;</span>] &#125;,</span><br><span class="line">    <span class="attr">reason</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">REPORT_SCHEMA</span> = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;summary&#x27;</span>, <span class="string">&#x27;confirmed&#x27;</span>, <span class="string">&#x27;unverified&#x27;</span>],</span><br><span class="line">  <span class="attr">properties</span>: &#123;</span><br><span class="line">    <span class="attr">summary</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">    <span class="attr">confirmed</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>, <span class="attr">items</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span> &#125; &#125;,</span><br><span class="line">    <span class="attr">unverified</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>, <span class="attr">items</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span> &#125; &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一趟：列出文件；空结果要区分&quot;没文件&quot;还是&quot;列举失败&quot;，别生成&quot;成功的空报告&quot;</span></span><br><span class="line"><span class="keyword">const</span> found = <span class="keyword">await</span> <span class="title function_">agent</span>(<span class="string">&#x27;列出 src/routes/ 下所有 .ts 文件。&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">schema</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;files&#x27;</span>],</span><br><span class="line">    <span class="attr">properties</span>: &#123; <span class="attr">files</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>, <span class="attr">items</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125; &#125; &#125; &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">if</span> (!found) <span class="keyword">return</span> &#123;</span><br><span class="line">  <span class="attr">summary</span>: <span class="string">&#x27;路由文件列举失败，审计未执行&#x27;</span>,</span><br><span class="line">  <span class="attr">confirmed</span>: [],</span><br><span class="line">  <span class="attr">unverified</span>: [&#123; <span class="attr">description</span>: <span class="string">&#x27;文件列举 agent 未返回结果&#x27;</span>, <span class="attr">why</span>: <span class="string">&#x27;agent 被停止或发生不可恢复错误&#x27;</span> &#125;],</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!found.<span class="property">files</span>.<span class="property">length</span>) <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">&#x27;未找到 src/routes/*.ts，请确认目录&#x27;</span>, <span class="attr">confirmed</span>: [], <span class="attr">unverified</span>: [] &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> auditResults = <span class="keyword">await</span> <span class="title function_">pipeline</span>(found.<span class="property">files</span>, <span class="function"><span class="params">file</span> =&gt;</span></span><br><span class="line">  <span class="title function_">agent</span>(<span class="string">`审计 <span class="subst">$&#123;file&#125;</span> 是否缺少鉴权检查。每条发现请给 id、file、line、description、impact、evidence、severity、confidence。`</span>, &#123; <span class="attr">label</span>: file, <span class="attr">schema</span>: <span class="variable constant_">FINDING_SCHEMA</span> &#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// pipeline 会保留失败 agent 对应的 null；必须按下标回关联文件，不能 filter 后静默漏报</span></span><br><span class="line"><span class="keyword">const</span> audits = [], unverified = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; auditResults.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = auditResults[i]</span><br><span class="line">  <span class="keyword">const</span> file = found.<span class="property">files</span>[i]</span><br><span class="line">  <span class="keyword">if</span> (!result) &#123;</span><br><span class="line">    unverified.<span class="title function_">push</span>(&#123;</span><br><span class="line">      file,</span><br><span class="line">      <span class="attr">description</span>: <span class="string">&#x27;该文件的审计 agent 未返回结果&#x27;</span>,</span><br><span class="line">      <span class="attr">impact</span>: <span class="string">&#x27;该文件尚未完成鉴权审计&#x27;</span>,</span><br><span class="line">      <span class="attr">why</span>: <span class="string">&#x27;agent 被停止或发生不可恢复错误&#x27;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">  &#125;</span><br><span class="line">  audits.<span class="title function_">push</span>(...result.<span class="property">findings</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二趟：对每条发现做对抗式复核（独立 agent，默认怀疑）</span></span><br><span class="line"><span class="keyword">const</span> verified = <span class="keyword">await</span> <span class="title function_">pipeline</span>(audits, <span class="function"><span class="params">f</span> =&gt;</span></span><br><span class="line">  <span class="title function_">agent</span>(<span class="string">`对抗式复核：以下疑似缺失鉴权的发现是否成立？请尽力反驳；若你无法判断(缺信息/超时)，标 unverified。返回的 finding_id 要与该发现的 id 一致。<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(f)&#125;</span>`</span>,</span><br><span class="line">    &#123; <span class="attr">schema</span>: <span class="variable constant_">VERDICT_SCHEMA</span> &#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三态分流：confirmed 留，refuted 丢，unverified 单独留痕交人工（技术失败 ≠ 问题不成立）</span></span><br><span class="line"><span class="keyword">const</span> confirmed = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; verified.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> verdict = verified[i]</span><br><span class="line">  <span class="keyword">const</span> finding = audits[i]   <span class="comment">// pipeline 保持输入顺序，null 也占位</span></span><br><span class="line">  <span class="keyword">if</span> (!verdict || verdict.<span class="property">finding_id</span> !== finding.<span class="property">id</span>) &#123;</span><br><span class="line">    unverified.<span class="title function_">push</span>(&#123;</span><br><span class="line">      ...finding,</span><br><span class="line">      <span class="attr">why</span>: verdict ? <span class="string">&#x27;复核结果无法关联原发现&#x27;</span> : <span class="string">&#x27;复核 agent 未返回结果&#x27;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (verdict.<span class="property">status</span> === <span class="string">&#x27;confirmed&#x27;</span>) confirmed.<span class="title function_">push</span>(finding)</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (verdict.<span class="property">status</span> === <span class="string">&#x27;unverified&#x27;</span>) unverified.<span class="title function_">push</span>(&#123; ...finding, <span class="attr">why</span>: verdict.<span class="property">reason</span> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">await</span> <span class="title function_">agent</span>(</span><br><span class="line">  <span class="string">`汇总去重并按严重程度排序。confirmed=<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(confirmed)&#125;</span>；`</span> +</span><br><span class="line">  <span class="string">`另有 unverified（复核本身失败/未定，需人工看）=<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(unverified)&#125;</span>`</span>,</span><br><span class="line">  &#123; <span class="attr">schema</span>: <span class="variable constant_">REPORT_SCHEMA</span> &#125;)</span><br></pre></td></tr></table></figure></div>
+
+</details>
+
+<p><strong>注意</strong>：对抗复核是<strong>质量增强不是客观闸门</strong>，能降假阳性但不保证消除（也可能引入假阴性），不能替代测试或人工安全审；上限 16 并发 &#x2F; 单次 1000 agent &#x2F; 运行中不支持人工输入（要分阶段签字就拆成多个 workflow）；脚本本身无文件系统&#x2F;shell 访问、只能通过 agent；超 25 agent 或预计 150 万 token 弹 <code>Large workflow</code> 警告（v2.1.203+，仅提醒），想省钱在 <code>/config</code> 选 <code>small</code>(&lt;5) 的 size guideline。</p>
+<h2 id="实战二：Codex-官方-Subagents-并行审查"><a href="#实战二：Codex-官方-Subagents-并行审查" class="headerlink" title="实战二：Codex 官方 Subagents 并行审查"></a>实战二：Codex 官方 Subagents 并行审查</h2><p>Codex CLI <strong>没有内置 <code>/graph</code> 命令</strong>，多 agent 能力是 subagent 路线。和实战一对照看：同样是 fan-out，这边并行的是「不同关注点」，每个关注点一个专职只读 reviewer。</p>
+<blockquote>
+<p><strong>能力可信度分级</strong>：subagent + <code>/goal</code> &#x3D; 官方确认；graph-max &#x3D; 社群演示技巧；Symphony &#x3D; 外部开源规范。</p>
+</blockquote>
+<p><strong>场景</strong>：一个 React + TypeScript 的 PR 改了十几个组件，Code Review 怕漏 a11y &#x2F; 硬编码中文，又怕重渲染性能坑、状态边界没处理好。派三个专职只读 reviewer 并行看。</p>
+<p><strong>形状</strong>（三路并行 fan-out，无环）：</p>
+<div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PR <span class="built_in">diff</span> → ① a11y_reviewer  ② perf_reviewer  ③ state_reviewer  并行只读审查</span><br><span class="line">       → 汇总去重 → 一份带路径/行号的清单</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>适合什么任务</strong>：同一产物（PR &#x2F; 文档 &#x2F; 设计）要从多个独立视角各审一遍、每个视角有自己的 checklist。</p>
+<p><strong>跑起来</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 在 <code>.codex/agents/</code> 下放 3 个只读 reviewer 角色，都设 <code>sandbox_mode = &quot;read-only&quot;</code>（a11y &#x2F; perf &#x2F; state，TOML 见下方折叠）</li>
+<li><input disabled="" type="checkbox"> 在 <code>.codex/config.toml</code> 的 <code>[agents]</code> 表下配并发（<code>max_threads</code> 是 legacy alias，官方仍兼容）：<div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[agents]</span></span><br><span class="line"><span class="attr">max_concurrent_threads_per_session</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure></div></li>
+<li><input disabled="" type="checkbox"> <strong>父 Codex 会话选 Read Only、别开 <code>--yolo</code></strong>——subagent 会继承父会话权限模式，父开 Full Auto 会削弱只读意图；提示词里的「只读」只是软约束，真隔离靠 <code>sandbox_mode</code> + 父会话权限</li>
+<li><input disabled="" type="checkbox"> 贴委派语（编排 spawn &#x2F; 等待 &#x2F; 汇总由 Codex 自身负责）：<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对当前 PR（本分支 vs <span class="selector-tag">main</span>）改动的前端文件做只读 <span class="selector-tag">Code</span> Review。为以下每个关注点</span><br><span class="line">各派一个 reviewer（a11y_reviewer / perf_reviewer / state_reviewer），等全部跑完</span><br><span class="line">再汇总去重，不改代码：<span class="number">1</span>.可访问性与 i18n <span class="number">2</span>.渲染性能 <span class="number">3</span>.状态与边界。</span><br></pre></td></tr></table></figure></div></li>
+<li><input disabled="" type="checkbox"> 拿三路并行审查 + 汇总去重清单（每条带文件&#x2F;行号）</li>
+<li><input disabled="" type="checkbox"> <strong>验证 agent 确实加载了</strong>：贴完委派语后，看 Codex 输出里是否出现类似 <code>spawning a11y_reviewer</code> &#x2F; <code>perf_reviewer</code> &#x2F; <code>state_reviewer</code> 的启动日志；如果没出现，检查 TOML 内的 <code>name</code> 是否和委派语里的角色名一致、项目是否处于 trusted 状态（文件名保持同名只是推荐约定）</li>
+</ul>
+<p><strong>你会拿到什么</strong>（汇总清单节选）：</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a11y :  <span class="title class_">FormLogin</span>.tsx:<span class="number">22</span>   &lt;input&gt; 缺 aria-label                 <span class="title class_">High</span></span><br><span class="line">perf :  <span class="title class_">UserList</span>.tsx:<span class="number">40</span>    <span class="number">1000</span> 项列表未虚拟化，滚动卡顿           <span class="title class_">Medium</span></span><br><span class="line">state:  <span class="title class_">OrderForm</span>.tsx:<span class="number">15</span>   请求中无 loading 态，用户无反馈          <span class="title class_">High</span></span><br><span class="line">（去重后共 <span class="number">12</span> 条，每条带文件/行号/建议/置信度）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>套到你项目</strong>：把三个 reviewer 换成你关心的关注点——后端 PR 改成 security &#x2F; logic &#x2F; test，文档审查改成 准确性 &#x2F; 完整性 &#x2F; 语气，<code>.codex/agents/</code> 里改 TOML 即可。</p>
+<details>
+<summary>展开看 a11y / perf / state 三个 reviewer 的 TOML</summary>
+
+<div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .codex/agents/a11y_reviewer.toml</span></span><br><span class="line"><span class="attr">name</span>                   = <span class="string">&quot;a11y_reviewer&quot;</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">&quot;只读前端审查 Agent，检查可访问性、键盘操作、以及硬编码中文（i18n）。&quot;</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">&quot;read-only&quot;</span>   <span class="comment"># 官方支持的 per-agent 覆盖项；只读审查靠它实现</span></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是只读前端可访问性审查 Agent，只看本 PR 改动的前端文件。</span></span><br><span class="line"><span class="string">检查：表单控件是否有 label/aria-label、交互能否键盘操作、图片是否有 alt、</span></span><br><span class="line"><span class="string">是否有硬编码中文（应走 i18n 的 t()）。</span></span><br><span class="line"><span class="string">输出按 Critical/High/Medium/Low 排序，每条带文件路径、行号、影响、建议、置信度。</span></span><br><span class="line"><span class="string">没有发现问题时明确说明，不要凑数。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .codex/agents/perf_reviewer.toml</span></span><br><span class="line"><span class="attr">name</span>                   = <span class="string">&quot;perf_reviewer&quot;</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">&quot;只读前端审查 Agent，检查重渲染与性能坑。&quot;</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">&quot;read-only&quot;</span></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是只读前端性能审查 Agent，只看本 PR 改动的前端文件。</span></span><br><span class="line"><span class="string">检查：缺少 memo/useMemo/useCallback 导致的重渲染、useEffect 依赖数组错误、</span></span><br><span class="line"><span class="string">大列表未虚拟化、不必要的全量重算。</span></span><br><span class="line"><span class="string">输出按 Critical/High/Medium/Low 排序，每条带文件路径、行号、影响、建议、置信度。</span></span><br><span class="line"><span class="string">没有发现问题时明确说明，不要凑数。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap" data-rel="Toml"><figure class="lpz highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .codex/agents/state_reviewer.toml</span></span><br><span class="line"><span class="attr">name</span>                   = <span class="string">&quot;state_reviewer&quot;</span></span><br><span class="line"><span class="attr">description</span>            = <span class="string">&quot;只读前端审查 Agent，检查状态管理与边界。&quot;</span></span><br><span class="line"><span class="attr">sandbox_mode</span>           = <span class="string">&quot;read-only&quot;</span></span><br><span class="line"><span class="attr">developer_instructions</span> = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">你是只读前端状态审查 Agent，只看本 PR 改动的前端文件。</span></span><br><span class="line"><span class="string">检查：loading/error 态是否处理、竞态(过期请求/竞态条件)、未清理的订阅与定时器、</span></span><br><span class="line"><span class="string">表单防重复提交。</span></span><br><span class="line"><span class="string">输出按 Critical/High/Medium/Low 排序，每条带文件路径、行号、影响、建议、置信度。</span></span><br><span class="line"><span class="string">没有发现问题时明确说明，不要凑数。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+</details>
+
+<p><strong>注意</strong>：这是 fan-out 单趟、不是带客观 gate 的闭环；多同模型 agent 结论可能高度相关——是「帮你把容易漏的点先过一遍」，不是「替你签字合并」。<code>.codex/agents/*.toml</code> 定义的是<strong>角色</strong>（由父 Codex 依提示词 spawn），不是你要另写的脚本函数；换后端 PR 把三个角色改成 security &#x2F; logic &#x2F; test 即可。</p>
+<p><strong>延伸（非步骤，了解即可）</strong>：</p>
+<ul>
+<li><strong>Codex <code>/goal</code></strong>（官方）：给这次审查设个<strong>可评估</strong>的持久目标（达标后进入 <code>complete</code> 状态并停止自动续跑）。完整闭环实战见<strong>实战四</strong>——别只给约束，要给「三类审查均完成 + 汇总报告已生成」这种可验证终点。</li>
+<li><strong>graph-max</strong>（社群演示技巧）：画一张工作流图 → 丢给 Codex → 即兴生成编排脚本并跑。轻量好玩，但<strong>可复现性低</strong>（原帖只说 “draw → send → run, it just works”，未涉及脚本提交&#x2F;运行入口&#x2F;失败处理；脚本随模型而变），不建议做稳定运行方式——要可执行编排走 Agents SDK（<code>asyncio.gather</code>）或 Codex App Server。</li>
+<li><strong>Symphony</strong>（外部开源规范，Draft v1）：把 Linear issue tracker 当控制平面、任务组成 DAG 按依赖并行的 always-on 方案；Non-Goals <strong>明确声明不做通用工作流引擎</strong>，是窄域草案。官方数据「部分团队前三周 landed PR 增长约 500%」是 OpenAI 自报、无第三方验证。与 graph-max 同作者（Alex Kotliarskyi），可把 graph-max 理解为 Symphony 思想的轻量类比（本文类比解读，非官方定位）。</li>
+</ul>
+<h2 id="实战三：真正的闭环——改到检查通过为止（Claude-workflow「keep-fixing-until-a-check-passes」）"><a href="#实战三：真正的闭环——改到检查通过为止（Claude-workflow「keep-fixing-until-a-check-passes」）" class="headerlink" title="实战三：真正的闭环——改到检查通过为止（Claude workflow「keep fixing until a check passes」）"></a>实战三：真正的闭环——改到检查通过为止（Claude workflow「keep fixing until a check passes」）</h2><p>实战一、实战二都是 fan-out <strong>单趟</strong>（检查完就结束，没有反馈边）。这里补一个真正的<strong>闭环</strong>：跑客观检查 → 没过就派 agent 修 → 重跑，直到全绿或触发停止。它把 Loop Engineering 那节的 <code>Goal→Evaluator→Loop→Termination</code> 落到真实工具里，也验证 <strong>loop ⊂ graph</strong>——这个带「重试边」的 workflow 本身就是一张带环的图。</p>
+<blockquote>
+<p><strong>能力可信度：官方 shape。</strong> Claude Code 官方文档列出的标准形态之一（”Keep fixing until a check passes”），和实战一同源（命令、版本、限制见 <code>code.claude.com/docs/en/workflows</code>）。</p>
+</blockquote>
+<p><strong>场景</strong>：Python 服务 CI 挂在十几个 ruff 告警 + 几个 pytest 失败上，逐个人改又烦又容易漏——让 workflow 自己改到绿，改不动再交人。</p>
+<p><strong>形状</strong>（带环，和实战一的无环对照）：</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">预检 gate ──已达标──→ 直接返回「无需修改」</span><br><span class="line">        └─没过──→ 修 ─→ gate ─没过─→ 修 ─→ …（达标 <span class="symbol">/</span> 连续无进展 <span class="symbol">/</span> 预算耗尽 即停）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>适合什么任务</strong>：有客观通过条件（测试 &#x2F; lint &#x2F; 编译）且修了能重验的任务；没有客观 gate 就别上闭环，会变「烧 token 的死循环」。</p>
+<p><strong>四层模型对齐</strong>（闭环的骨架）：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>本例是什么</th>
+<th>关键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Goal</strong></td>
+<td>ruff 无报错 + pytest 全通过</td>
+<td>可评估</td>
+</tr>
+<tr>
+<td><strong>Evaluator</strong></td>
+<td>真跑 <code>ruff check .</code> + <code>pytest</code>（退出码 + stderr）</td>
+<td><strong>客观闸门</strong>，不是问 LLM「你觉得好了吗」</td>
+</tr>
+<tr>
+<td><strong>Loop</strong></td>
+<td>没过 → 把失败项喂给 agent 修（acceptEdits 直接写回）→ 重跑</td>
+<td>失败反馈回流下一轮</td>
+</tr>
+<tr>
+<td><strong>Termination</strong></td>
+<td>达标停 &#x2F; 连续 3 轮无进展停 &#x2F; 满 8 轮停</td>
+<td>三种停止规则都要有</td>
+</tr>
+</tbody></table>
+<p><strong>跑起来</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 强烈建议切到<strong>干净 worktree</strong>（这个 workflow 会<strong>改你的代码</strong>，不是只读——干净基线便于事后 <code>git diff</code> 逐项核对；这是安全实践而非运行条件）</li>
+<li><input disabled="" type="checkbox"> 贴触发语：<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">use</span> <span class="selector-tag">a</span> workflow <span class="selector-tag">to</span> 反复跑 ruff + pytest，把失败项改到全绿为止；连续 <span class="number">3</span> 轮失败项没变化、</span><br><span class="line">或满 <span class="number">8</span> 轮就停，把剩下的失败项列给我。跑完我会 git diff 逐项核对，别顺手重构无关代码。</span><br></pre></td></tr></table></figure></div>
+（中文等效：「起一个工作流，反复跑 ruff + pytest 把失败项修到全绿；连续 3 轮失败项没变化或满 8 轮就停，把剩下的列给我，别顺手重构无关代码。」）</li>
+<li><input disabled="" type="checkbox"> <code>/workflows</code> 跟进度——达标 &#x2F; 连续无进展 &#x2F; 预算耗尽时自动停并报告</li>
+<li><input disabled="" type="checkbox"> 拿结果后 <strong><code>git diff</code> 逐项核对</strong>再提交</li>
+</ul>
+<p><strong>参考脚本</strong>（一个 <code>for</code> 循环 + 客观 gate + 三种停止；和 Loop Engineering 节的 Python 伪代码骨架<strong>主干对应</strong>——<code>run_tests()</code>→gate、<code>agent_step()</code>→修复 agent、<code>MAX_ITER=8</code> &#x2F; <code>NO_PROGRESS_LIMIT=3</code> 连名字都一样，为求极简省掉了骨架的 <code>try/except</code> 与「给不出补丁就提前停」两分支）：</p>
+<details>
+<summary>展开看 fix-until-green.js</summary>
+
+<div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> meta = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;fix-until-green&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;闭环：反复跑 ruff+pytest，派 agent 修失败项，直到全绿或预算耗尽&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">MAX_ITER</span> = <span class="number">8</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">NO_PROGRESS_LIMIT</span> = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Evaluator 的结构化输出：必须返回客观结果，禁止 LLM 自评&quot;我觉得好了&quot;</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">GATE_SCHEMA</span> = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;passed&#x27;</span>, <span class="string">&#x27;failures&#x27;</span>],</span><br><span class="line">  <span class="attr">properties</span>: &#123;</span><br><span class="line">    <span class="attr">passed</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;boolean&#x27;</span> &#125;,</span><br><span class="line">    <span class="attr">failures</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>,</span><br><span class="line">      <span class="attr">items</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;object&#x27;</span>, <span class="attr">required</span>: [<span class="string">&#x27;file&#x27;</span>, <span class="string">&#x27;line&#x27;</span>, <span class="string">&#x27;message&#x27;</span>],</span><br><span class="line">        <span class="attr">properties</span>: &#123;</span><br><span class="line">          <span class="attr">file</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">line</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">code</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">          <span class="attr">message</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;string&#x27;</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">GATE_PROMPT</span> = <span class="string">&#x27;执行 ruff check . 与 pytest，原样返回失败项（文件/行/规则码或测试名/报错原文）；不要替我判断&quot;差不多行了&quot;。&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 去掉耗时、路径分隔符等易变噪音，再按稳定键排序，避免同一批失败因顺序变化被误判为有进展</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">normalizeMessage</span>(<span class="params">message</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> message</span><br><span class="line">    .<span class="title function_">replace</span>(<span class="regexp">/\d+(?:\.\d+)?\s*(?:ms|s)\b/g</span>, <span class="string">&#x27;&lt;duration&gt;&#x27;</span>)</span><br><span class="line">    .<span class="title function_">replace</span>(<span class="regexp">/\\/g</span>, <span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">failureSignature</span>(<span class="params">failures</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> failures</span><br><span class="line">    .<span class="title function_">map</span>(<span class="function">(<span class="params">&#123; file, line, code, message &#125;</span>) =&gt;</span></span><br><span class="line">      <span class="string">`<span class="subst">$&#123;file.replace(/\\/g, <span class="string">&#x27;/&#x27;</span>)&#125;</span>:<span class="subst">$&#123;line == <span class="literal">null</span> ? <span class="string">&#x27;&#x27;</span> : line&#125;</span>:<span class="subst">$&#123;code || normalizeMessage(message)&#125;</span>`</span>)</span><br><span class="line">    .<span class="title function_">sort</span>()</span><br><span class="line">    .<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先评估一次：项目可能已经达标，就别动它（避免无谓修改）</span></span><br><span class="line"><span class="keyword">const</span> pre = <span class="keyword">await</span> <span class="title function_">agent</span>(<span class="variable constant_">GATE_PROMPT</span>, &#123; <span class="attr">schema</span>: <span class="variable constant_">GATE_SCHEMA</span> &#125;)</span><br><span class="line"><span class="keyword">if</span> (!pre)</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">&#x27;✗ 预检 agent 未返回结果，未修改代码，升级人工&#x27;</span>, <span class="attr">iterations</span>: <span class="number">0</span> &#125;</span><br><span class="line"><span class="keyword">if</span> (pre.<span class="property">passed</span>)                                        <span class="comment">// —— Termination：开始前已达标 ——</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">&#x27;✓ 开始前已达标，无需修改&#x27;</span>, <span class="attr">iterations</span>: <span class="number">0</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> lastFailures = pre.<span class="property">failures</span></span><br><span class="line"><span class="keyword">let</span> lastSignature = <span class="title function_">failureSignature</span>(pre.<span class="property">failures</span>)</span><br><span class="line"><span class="keyword">let</span> noProgress = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="variable constant_">MAX_ITER</span>; i++) &#123;</span><br><span class="line">  <span class="comment">// —— Loop：把上轮失败项喂给 agent 修（acceptEdits 直接写回，不要顺手重构）——</span></span><br><span class="line">  <span class="keyword">const</span> repair = <span class="keyword">await</span> <span class="title function_">agent</span>(</span><br><span class="line">    <span class="string">`依据以下失败项修复代码，只改与失败直接相关的地方：\n<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(lastFailures)&#125;</span>`</span>,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">`round-<span class="subst">$&#123;i&#125;</span>`</span> &#125;)</span><br><span class="line">  <span class="keyword">if</span> (!repair)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">`✗ 第 <span class="subst">$&#123;i&#125;</span> 轮修复 agent 未返回结果，升级人工`</span>, <span class="attr">iterations</span>: i &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// —— Evaluator：客观闸门（真跑检查，不是问 LLM）——</span></span><br><span class="line">  <span class="keyword">const</span> gate = <span class="keyword">await</span> <span class="title function_">agent</span>(<span class="variable constant_">GATE_PROMPT</span>, &#123; <span class="attr">schema</span>: <span class="variable constant_">GATE_SCHEMA</span> &#125;)</span><br><span class="line">  <span class="keyword">if</span> (!gate)</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">`✗ 第 <span class="subst">$&#123;i&#125;</span> 轮复检 agent 未返回结果，升级人工`</span>, <span class="attr">iterations</span>: i &#125;</span><br><span class="line">  <span class="keyword">if</span> (gate.<span class="property">passed</span>)                                     <span class="comment">// —— Termination：达标 ——</span></span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">`✓ 第 <span class="subst">$&#123;i&#125;</span> 轮修复后 ruff+pytest 全绿`</span>, <span class="attr">iterations</span>: i &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> signature = <span class="title function_">failureSignature</span>(gate.<span class="property">failures</span>)</span><br><span class="line">  <span class="keyword">if</span> (signature === lastSignature) &#123;</span><br><span class="line">    <span class="keyword">if</span> (++noProgress &gt;= <span class="variable constant_">NO_PROGRESS_LIMIT</span>)             <span class="comment">// —— Termination：连续无进展 ——</span></span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">`✗ 连续 <span class="subst">$&#123;NO_PROGRESS_LIMIT&#125;</span> 轮失败项无变化，升级人工`</span>, <span class="attr">iterations</span>: i &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> noProgress = <span class="number">0</span></span><br><span class="line">  lastSignature = signature</span><br><span class="line">  lastFailures = gate.<span class="property">failures</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> &#123; <span class="attr">summary</span>: <span class="string">`✗ <span class="subst">$&#123;MAX_ITER&#125;</span> 轮预算耗尽，升级人工`</span>, <span class="attr">iterations</span>: <span class="variable constant_">MAX_ITER</span> &#125;   <span class="comment">// —— Termination：预算耗尽 ——</span></span><br></pre></td></tr></table></figure></div>
+
+</details>
+
+<p><strong>你会拿到什么</strong>（一次闭环的轨迹）：workflow 先跑 <code>ruff + pytest</code>，拿到 12 条失败项 → 修复 → 重跑剩 3 条 → 再修 → 第 2 轮全绿并自动停。若规范化后的失败签名连续 3 轮不变，它会提前升级人工，不会硬烧到 8 轮。和实战一的 fan-out 不同，这里靠<strong>客观 Evaluator + 三种 Termination</strong>形成真正的反馈闭环。</p>
+<p><strong>套到你项目</strong>：把 <code>ruff + pytest</code> 换成你的检查命令（<code>npm test</code>、<code>go test ./...</code>、<code>tsc --noEmit</code>…），gate agent 的 prompt 里改命令名；失败项的 schema（file&#x2F;line&#x2F;message）通用，不用动。</p>
+<p><strong>注意</strong>：和实战一一样，子 agent 固定 <code>acceptEdits</code>、建议在干净 worktree 跑、跑完 <code>git diff</code> 核对；脚本本身无 shell 访问，跑 ruff&#x2F;pytest 靠子 agent 调 Bash（Claude Code 子代理默认就有；锁了工具白名单就改读 CI 预生成的报告，别让 agent 现跑）；想再快可把每轮修复也 fan-out 并行（做法同实战一的两趟 fan-out），但<strong>落在同一文件的并行改写会互相覆盖</strong>——按文件聚合或用 worktree 隔离。</p>
+<h2 id="实战四：Codex-的-Loop-Engineering-闭环（-goal-驱动）"><a href="#实战四：Codex-的-Loop-Engineering-闭环（-goal-驱动）" class="headerlink" title="实战四：Codex 的 Loop Engineering 闭环（/goal 驱动）"></a>实战四：Codex 的 Loop Engineering 闭环（<code>/goal</code> 驱动）</h2><p>实战三是 Claude 的后台 workflow；Codex 的闭环原语是 <strong><code>/goal</code></strong>：把目标、生命周期、预算和进度持久化在线程状态里，每轮根据文件、测试、日志、命令输出或制品等证据判断是否完成，未达标就继续，直到达标、预算耗尽、阻塞或人工暂停。和实战三的关键差别在于：那边由脚本显式控制 gate 和循环，这边由持久目标驱动后续行动。</p>
+<blockquote>
+<p><strong>能力可信度：官方。</strong> Codex <code>/goal</code>（<code>/goal &lt;objective&gt;</code> 设、<code>/goal</code> 看、<code>/goal pause</code> &#x2F; <code>resume</code> &#x2F; <code>clear</code>），持久化到 app-server 状态层，关终端也不丢。</p>
+</blockquote>
+<p><strong>场景</strong>：在 Codex 会话里把当前分支的测试 + lint 改到全绿——不想自己一轮轮敲「再跑一次」，让 <code>/goal</code> 盯着转到绿。</p>
+<p><strong>形状</strong>（带环，和实战三同构）：</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设 <span class="symbol">/goal</span> ─→ worker 干活（读<span class="operator">/</span>改<span class="operator">/</span>跑测试）─→ 检查目标达标？</span><br><span class="line">                                          ├ 未达（带原因）─→ 回 worker 再干（循环）</span><br><span class="line">                                          ├ 达标 ─────────→ 标记 complete，停止续跑</span><br><span class="line">                                          └ 连续无进展 <span class="symbol">/</span> 预算耗尽 ─→ 停并报告</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>适合什么任务</strong>：有客观通过条件、且能由线程中的明确证据验证的任务（测试通过、lint 清零、编译过）；没有可验证终点就别用 <code>/goal</code>（会转成烧 token 的空转）。</p>
+<p><strong>跑起来</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 使用支持 Goals 的 Codex（0.128.0+；当前版本默认开启），在项目根目录恢复或新建会话</li>
+<li><input disabled="" type="checkbox"> 确认目标<strong>可评估</strong>——明确指定文件、测试、日志、命令输出或制品等完成证据</li>
+<li><input disabled="" type="checkbox"> 设目标（≤4000 字符），比如：<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/goal 把当前分支的 npm <span class="built_in">test</span> + lint 改到全绿：每轮先跑测试和 lint，失败就修、再跑，</span><br><span class="line">直到对话里出现一次全绿的命令输出；只改与失败直接相关的代码，不重构无关部分。</span><br><span class="line">以「对话里贴出一次测试+lint 全绿输出」为完成证据；若某失败连续 3 轮改不动，停下报告阻塞。</span><br></pre></td></tr></table></figure></div></li>
+<li><input disabled="" type="checkbox"> <code>/goal</code>（不带参数）看实时状态：轮次、上次未达标的原因、token 消耗</li>
+<li><input disabled="" type="checkbox"> 要暂停&#x2F;恢复：<code>/goal pause</code> &#x2F; <code>/goal resume</code>；中途换目标直接再 <code>/goal &lt;新&gt;</code>（覆盖旧的）</li>
+<li><input disabled="" type="checkbox"> 达标后进入 <code>complete</code> 状态并停止自动续跑；<code>/goal clear</code> 用于显式移除目标</li>
+</ul>
+<p><strong>你会拿到什么</strong>（一次闭环的轨迹）：worker 第 1 轮跑 <code>npm test</code> → 3 failed → 修 → 第 2 轮剩 1 failed → 再修 → 第 3 轮全绿并记录通过证据 → Goal 标记为 <code>complete</code>，自动续跑停止。若连续 3 轮某条失败纹丝不动，它会按目标里的停止条件报告阻塞。</p>
+<p><strong>套到你项目</strong>：把 <code>npm test + lint</code> 换成你的检查（<code>pytest</code>、<code>go test ./...</code>、<code>cargo test</code>…），「完成证据」那句跟着改；其余（worker 干活 &#x2F; 检查判定 &#x2F; 失败回流）是 <code>/goal</code> 内置的，你不用写。</p>
+<details>
+<summary>展开看「写一个能跑稳的 /goal」六维模板</summary>
+
+<p>Codex 官方 Goal 指南建议稳健目标覆盖以下六类信息，本文将其整理为模板：</p>
+<div class="highlight-wrap" data-rel="Css"><figure class="lpz highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/goal</span><br><span class="line">  <span class="selector-attr">[Outcome]</span>       完成时必须达到的具体状态（如：npm test 全绿）</span><br><span class="line">  <span class="selector-attr">[Verification]</span>  用什么证明做对了（如：对话里贴出全绿输出）</span><br><span class="line">  <span class="selector-attr">[Constraints]</span>   不能破坏什么（如：不重构无关代码、不降测试覆盖率）</span><br><span class="line">  <span class="selector-attr">[Boundaries]</span>    可以改哪些（如：只动 <span class="attribute">src</span>/ 和测试文件）</span><br><span class="line">  <span class="selector-attr">[Iteration]</span>     失败后下一步优先试什么（如：先看报错→查依赖→问人）</span><br><span class="line">  <span class="selector-attr">[Blocked-stop]</span>  何时必须停下报告（如：连续 <span class="number">3</span> 轮无进展、或遇到没权限的外部服务）</span><br></pre></td></tr></table></figure></div>
+
+</details>
+
+<details>
+<summary>展开看一次完整的 /goal 会话交互示例</summary>
+
+<div class="highlight-wrap" data-rel="Gams"><figure class="lpz highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># ① 设目标</span><br><span class="line">&gt; /goal 把当前分支的 npm test + eslint 改到全绿。每轮先跑测试和 lint，</span><br><span class="line">  失败就修、再跑。以对话里贴出一次全绿输出为完成证据。</span><br><span class="line">  只改与失败直接相关的代码。若某失败连续 <span class="number">3</span> 轮改不动，停下报告阻塞。</span><br><span class="line"></span><br><span class="line">✓ Goal <span class="keyword">set</span>: <span class="string">&quot;把当前分支的 npm test + eslint 改到全绿...&quot;</span></span><br><span class="line"></span><br><span class="line"># ② 第 1 轮：worker 自动开始干活</span><br><span class="line">&gt; npm <span class="comment">test</span></span><br><span class="line">  FAIL  <span class="comment">src</span>/utils/<span class="comment">date.test.ts</span>  ✕ <span class="comment">formatDate handles null (Expected:</span> <span class="comment">&quot;--&quot;</span> <span class="comment">Received: TypeError)</span></span><br><span class="line">  FAIL  <span class="comment">src</span>/api/<span class="comment">user.test.ts</span>    ✕ <span class="comment">fetchUser retries on 500 (timeout)</span></span><br><span class="line">  Tests: 2 failed, 47 passed</span><br><span class="line">&gt; eslint <span class="comment">.</span></span><br><span class="line">  src/components/Modal.tsx:12  error  <span class="comment">&#x27;useEffect&#x27;</span> <span class="comment">missing dependency</span> <span class="comment">&#x27;onClose&#x27;</span></span><br><span class="line">  ✖ 1 problem</span><br><span class="line"></span><br><span class="line">  [worker] 分析 3 个失败项，开始修复...</span><br><span class="line">  [worker] 修复 date.ts: 加 null 检查返回 <span class="comment">&quot;--&quot;</span></span><br><span class="line">  [worker] 修复 user.test.ts: 增加 mock <span class="comment">timer</span></span><br><span class="line">  [worker] 修复 Modal.tsx: 补 useEffect 依赖</span><br><span class="line"></span><br><span class="line"># ③ 第 2 轮：重跑验证</span><br><span class="line">&gt; npm <span class="comment">test</span></span><br><span class="line">  Tests: 1 failed, 48 passed   ← <span class="comment">user.test.ts</span> 还挂</span><br><span class="line">&gt; eslint <span class="comment">.</span>  ✓ <span class="comment">0 problems</span></span><br><span class="line"></span><br><span class="line">  [worker] user.test.ts 仍失败，换思路：用 <span class="comment">vi.useFakeTimers()...</span></span><br><span class="line"></span><br><span class="line"># ④ 第 3 轮：再跑</span><br><span class="line">&gt; npm <span class="comment">test</span></span><br><span class="line">  Tests: 49 passed, 0 failed   ← 全绿！</span><br><span class="line">&gt; eslint <span class="comment">.</span>  ✓ <span class="comment">0 problems</span></span><br><span class="line"></span><br><span class="line">✓ Goal <span class="comment">achieved</span> — 状态更新为 <span class="comment">complete</span>，自动续跑停止。</span><br><span class="line"></span><br><span class="line"># ⑤ 确认不再需要该目标后，显式移除</span><br><span class="line">&gt; /goal clear</span><br></pre></td></tr></table></figure></div>
+
+</details>
+
+<p><strong>注意</strong>：目标必须能用线程里的证据验证（别写「让代码更好」）；<code>/goal</code> 是线程级单目标，新目标会覆盖旧目标，完成和清除是两个不同动作；关终端后目标状态仍会持久化。长循环很烧 token，目标里一定写「连续 N 轮改不动就停」做阀门；<strong>别在 <code>--yolo</code> 下跑</strong>——worker 改代码 + 无人监督循环，风险叠加。</p>
+<h2 id="项目里到底怎么选-最快落地路径"><a href="#项目里到底怎么选-最快落地路径" class="headerlink" title="项目里到底怎么选 + 最快落地路径"></a>项目里到底怎么选 + 最快落地路径</h2><h3 id="第一步：先选原语（-loop、-goal、Workflow-各管一件事）"><a href="#第一步：先选原语（-loop、-goal、Workflow-各管一件事）" class="headerlink" title="第一步：先选原语（&#x2F;loop、&#x2F;goal、Workflow 各管一件事）"></a>第一步：先选原语（&#x2F;loop、&#x2F;goal、Workflow 各管一件事）</h3><p>落到 Claude Code 的产品原语层，先回答「谁驱动」——时钟、状态，还是结构：</p>
+<table>
+<thead>
+<tr>
+<th>你的需求</th>
+<th>用什么</th>
+<th>一句话判据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定时反复做（盯 CI、轮询发布状态）</td>
+<td><code>/loop</code></td>
+<td><strong>时间驱动</strong>：每隔 N 分钟跑一遍提示词</td>
+</tr>
+<tr>
+<td>单会话里修到某个条件满足（测试全绿）</td>
+<td><code>/goal</code></td>
+<td><strong>状态驱动</strong>：小模型每轮验收对话里的证据，没过自动再来一轮</td>
+</tr>
+<tr>
+<td>批量 + 并行 + 交叉验证，流程要存成命令复用</td>
+<td><strong>Dynamic Workflows</strong></td>
+<td><strong>结构驱动</strong>：脚本持有流程（循环&#x2F;分支&#x2F;扇出），可 fan-out 可闭环</td>
+</tr>
+<tr>
+<td>以上都不是</td>
+<td>单 agent 直接做</td>
+<td>最简方案优先</td>
+</tr>
+</tbody></table>
+<p>关键差别：<code>/goal</code> 的评估器<strong>不调工具、不读文件</strong>，只能看对话里已有的证据——干活的和验收的在同一个会话，有自证偏差；Workflow 的 gate agent 是独立 subagent，能真跑命令拿退出码。三者不互斥，常见组合：Workflow 做批量审计（fan-out + 对抗复核）+ <code>/goal</code> 兜「改到全绿」+ <code>/loop</code> 盯发布后的 CI。</p>
+<blockquote>
+<p>与后文的递进关系：<strong>先选原语（本节）→ 再选范式（loop&#x2F;graph 两个维度）→ 最后选工具（Claude &#x2F; Codex &#x2F; 框架）</strong>。</p>
+</blockquote>
+<h3 id="选范式（回到两个维度）"><a href="#选范式（回到两个维度）" class="headerlink" title="选范式（回到两个维度）"></a>选范式（回到两个维度）</h3><ol>
+<li><strong>任务简单&#x2F;路径明确</strong> → 直接做，别上 agent 也别上 graph（Anthropic：最简方案优先）</li>
+<li><strong>任务开放&#x2F;要灵活</strong> → agent loop（Claude Code &#x2F; Codex 直接干）</li>
+<li><strong>任务有可编码的结构 + 多个独立验证步骤</strong> → graph&#x2F;workflow（fan-out 或闭环）</li>
+<li><strong>批量同类任务</strong> → 并行（Claude <code>pipeline()</code> &#x2F; Codex 官方 subagents &#x2F; 朴素 <code>asyncio.gather</code>）</li>
+</ol>
+<h3 id="什么信号出现时该从-loop-升级到-graph"><a href="#什么信号出现时该从-loop-升级到-graph" class="headerlink" title="什么信号出现时该从 loop 升级到 graph"></a>什么信号出现时该从 loop 升级到 graph</h3><p>文章反复说「能用最简方案就别上 graph」，但你得知道<strong>什么时候就该升级了</strong>。对照这个清单，命中 2 条以上就值得考虑 graph&#x2F;workflow：</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>上下文爆了</strong>——单个 agent 的对话越来越长、开始忘记前面的指令或结果（你发现它重复做已经做过的事）</li>
+<li><input disabled="" type="checkbox"> <strong>任务有可编码的前后依赖</strong>——A 完成后 B 才能开始，C 和 D 可以并行；你发现自己在手动 copy-paste 上一步的输出给下一步</li>
+<li><input disabled="" type="checkbox"> <strong>需要交叉验证</strong>——你不信一个 agent 自己审自己的结果（审计 + 对抗式复核，实战一就是这个场景）</li>
+<li><input disabled="" type="checkbox"> <strong>同一个编排要重复跑</strong>——每次上线前都要跑一遍接口鉴权审计 &#x2F; 每个 PR 都要做多维 Code Review → 存成 workflow 复用才划算</li>
+<li><input disabled="" type="checkbox"> <strong>角色混乱</strong>——你让一个 agent 同时当 reviewer、fixer、tester，结果它开始自说自话自证正确</li>
+<li><input disabled="" type="checkbox"> <strong>需要并行提速</strong>——20 个文件串行审查要 10 分钟，fan-out 2 分钟搞定（但注意：并行不是 graph 的本质，只是它的一种拓扑）</li>
+</ul>
+<p>如果以上一条都没中，<strong>请继续用单 loop</strong>——你的复杂度预算不值得花在编排上。</p>
+<h3 id="选工具"><a href="#选工具" class="headerlink" title="选工具"></a>选工具</h3><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>Claude Code</th>
+<th>Codex CLI</th>
+<th>其他官方框架</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>官方 graph 式编排</td>
+<td>Dynamic Workflows（v2.1.154+）</td>
+<td>无内置 graph runtime；用官方 subagents 做产品级多 agent 编排</td>
+<td>LangGraph &#x2F; Google ADK 2.0 graph workflows &#x2F; OpenAI Agents SDK</td>
+</tr>
+<tr>
+<td>触发方式</td>
+<td><code>use a workflow</code> &#x2F; <code>ultracode</code> &#x2F; <code>/effort ultracode</code></td>
+<td>提示词派 subagent</td>
+<td>各框架自有 API</td>
+</tr>
+<tr>
+<td>目标持久化</td>
+<td><code>/goal</code></td>
+<td><code>/goal</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>编排可保存复用</td>
+<td><code>.claude/workflows/</code> → <code>/命令</code></td>
+<td><code>.codex/agents/*.toml</code>（角色级）</td>
+<td>因框架而异</td>
+</tr>
+<tr>
+<td>适合场景</td>
+<td>需要确定性、可复用、对抗式复核</td>
+<td>已有 Codex 工作流、想轻量并行</td>
+<td>跨工具&#x2F;平台的生产编排</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意它们<strong>不在同一抽象层</strong>：Claude Dynamic Workflows 和 Codex subagents 是<strong>交互式编码 Agent 产品能力</strong>（CLI &#x2F; IDE &#x2F; 桌面端，不是持久化 graph runtime），LangGraph&#x2F;ADK&#x2F;Agents SDK 是代码框架，Symphony 是项目级 always-on 规范——选型时别把 Symphony 当成”Codex 的并行替代”来比。</p>
+</blockquote>
+<h3 id="最快落地路径（从零到一）"><a href="#最快落地路径（从零到一）" class="headerlink" title="最快落地路径（从零到一）"></a>最快落地路径（从零到一）</h3><ol>
+<li><strong>先用单 loop 跑通</strong>：在 Claude Code &#x2F; Codex 里直接把任务做完，验证目标可评估、终止条件能触发。<strong>别一上来就 graph。</strong></li>
+<li><strong>遇到瓶颈再加结构</strong>：上下文爆了、角色混乱了、同一审查要重复跑——这时升级。</li>
+<li><strong>升级到 fan-out 并行</strong>：从 2–4 个节点起步（对应 <code>small</code> size guideline 的 &lt;5），量准了再放大。</li>
+<li><strong>把反复出现的编排固化</strong>：Claude 存成 <code>.claude/workflows/</code>，Codex 沉淀成 <code>.codex/agents/</code> + 提示词模板。</li>
+</ol>
+<blockquote>
+<p>一句话：<strong>loop 是图的一个简单特例，graph 不是用来取代 loop，而是当你需要”在确定性和自主性之间显式求平衡”时的升级路径。</strong> 能用最简方案就别上 graph；要上，从最小 fan-out 开始。</p>
+</blockquote>
+<h2 id="反模式"><a href="#反模式" class="headerlink" title="反模式"></a>反模式</h2><table>
+<thead>
+<tr>
+<th>反模式</th>
+<th>你踩了的信号</th>
+<th>问题</th>
+<th>正确做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>把 graph-max &#x2F; Symphony 当成 Codex 内置命令</td>
+<td>敲命令后报 “unknown command”</td>
+<td>虚构能力，照抄会失败</td>
+<td>明确：社群技巧 &#x2F; 外部规范</td>
+</tr>
+<tr>
+<td>把 fan-out 并行审查称作「闭环&#x2F;验证闭环」</td>
+<td>审查报告里零失败项也没触发修复</td>
+<td>缺客观 gate 与停止规则</td>
+<td>闭环需 checker→修复→重验→停止；fan-out 是单趟</td>
+</tr>
+<tr>
+<td>把 graph 本质等同于”并行”</td>
+<td>选型时排除了不需要并行但需要确定性路径的场景</td>
+<td>选型错位（以为不并行就不该用）</td>
+<td>本质是显式控制流；并行只是其一</td>
+</tr>
+<tr>
+<td>把 loop&#x2F;graph 与 workflow&#x2F;agent 划等号</td>
+<td>讨论时说”用了 graph 就不需要 agent 了”</td>
+<td>两个正交维度被揉成一个</td>
+<td>拓扑（单步&#x2F;loop&#x2F;graph）× 决策（代码&#x2F;LLM），各自独立</td>
+</tr>
+<tr>
+<td>把 agent 当状态机里僵化的节点</td>
+<td>agent 在简单任务上反而比直接提示更慢更差</td>
+<td>限制模型能力</td>
+<td>给目标而非严格转移（Symphony 教训）</td>
+</tr>
+<tr>
+<td>把知识图谱（GraphRAG）和编排图混为一谈</td>
+<td>给编排选型时去评估了 Neo4j &#x2F; Zep</td>
+<td>选型错位</td>
+<td>分清”存关系”和”调度 agent”</td>
+</tr>
+<tr>
+<td>把 Loop&#x2F;Graph Engineering 当学术共识</td>
+<td>写进设计文档被同事质疑”查不到出处”</td>
+<td>过几个月就过时</td>
+<td>标注「社群概念」</td>
+</tr>
+<tr>
+<td>盲信并行提速「快 3 倍」之类的保证</td>
+<td>实测并行反而更慢（编排开销 &gt; 省下的时间）</td>
+<td>特定硬件 benchmark 被泛化</td>
+<td>并行耗时 ≈ 最慢分支 + 编排开销，无通用倍数</td>
+</tr>
+</tbody></table>
+<h2 id="成本估算：跑一次大概多少-token"><a href="#成本估算：跑一次大概多少-token" class="headerlink" title="成本估算：跑一次大概多少 token"></a>成本估算：跑一次大概多少 token</h2><p>下面是 <strong>token 数量级参考</strong>（实际取决于文件大小、失败轮次和模型选择，仅供制定预算上限）：</p>
+<table>
+<thead>
+<tr>
+<th>实战</th>
+<th>场景规模</th>
+<th>token 估算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实战一</strong>：fan-out 审计</td>
+<td>20 个路由文件，两趟 fan-out</td>
+<td>约 15–40 万 token</td>
+</tr>
+<tr>
+<td><strong>实战二</strong>：3 路 reviewer</td>
+<td>一个中等 PR（10–20 文件变更）</td>
+<td>约 10–25 万 token</td>
+</tr>
+<tr>
+<td><strong>实战三</strong>：闭环 fix</td>
+<td>12 条失败项，2–3 轮达标</td>
+<td>约 20–60 万 token</td>
+</tr>
+<tr>
+<td><strong>实战四</strong>：&#x2F;goal 闭环</td>
+<td>同上，但含每轮目标检查开销</td>
+<td>约 20–60 万 token</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>踩坑提醒</strong>：闭环的成本不确定性比 fan-out 高得多——停止条件没设好时，token 会持续累积。实战三、四的「连续 3 轮无进展就停」是核心护栏。想控制上限，还可以在 Claude <code>/config</code> 里选 <code>small</code>（&lt;5 agent）的 size guideline，或在 Codex 会话&#x2F;配置中设定运行预算与上限。美元费用受模型版本、输入&#x2F;输出比例和缓存策略影响，本文不做固定换算。</p>
+</blockquote>
+<h2 id="调试排错：跑挂了怎么办"><a href="#调试排错：跑挂了怎么办" class="headerlink" title="调试排错：跑挂了怎么办"></a>调试排错：跑挂了怎么办</h2><p>编排越复杂，出错点越多。这里列实战中最常见的五类故障：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>排查方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>workflow 启动后卡在 “planned phases”</strong></td>
+<td>触发语里<strong>没有明确要求跑 workflow</strong>（缺 opt-in）——Claude 按普通单 agent 任务顺着做，根本不会起 workflow</td>
+<td>重写触发语：包含 <code>use a workflow</code> &#x2F; 「用工作流…」这类明确要求，或加 <code>ultracode</code> 关键字（注意：工作区干不干净<strong>不是</strong>运行条件，别往这查）</td>
+</tr>
+<tr>
+<td><strong>子 agent 返回空结果或纯文本</strong></td>
+<td>schema 定义的必填字段与 prompt 不匹配；或 agent 幻觉了一个不存在的文件</td>
+<td>在 <code>/workflows</code> 里钻入该 phase，看 agent 的原始输出；schema 里加 <code>description</code> 字段帮 agent 理解期望格式</td>
+</tr>
+<tr>
+<td><strong>并行 agent 结果互相覆盖</strong></td>
+<td>多个 agent 同时改同一文件</td>
+<td>按文件聚合分派（一个文件只派一个 agent）或用 worktree 隔离</td>
+</tr>
+<tr>
+<td><strong>Codex subagent 没被 spawn</strong></td>
+<td>TOML 内的 <code>name</code> 与委派语不一致；项目未 trust</td>
+<td>检查 <code>.codex/agents/xxx.toml</code> 的 <code>name</code> 字段；确认项目已标记为信任（trusted）项目。文件名同名只是推荐约定</td>
+</tr>
+<tr>
+<td><strong><code>/goal</code> 达标后不停 &#x2F; 不达标就停</strong></td>
+<td>目标写得太模糊（“让代码更好”）或太严格（“零警告”但包含不相关的 info 级）</td>
+<td>重写目标，确保“完成证据”部分能被 worker 输出客观证明；用 <code>/goal</code> 查状态看「上次未达标原因」</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>日志在哪看</strong>：Claude Code 用 <code>/workflows</code> 钻入每个 phase 看子 agent 的完整输入&#x2F;输出；Codex 的 subagent 日志会内联显示在会话里（每个 spawn 有独立的输出块）。如果是 CI 场景，加 <code>--output-format json</code> 把结果导出到日志文件做事后分析。</p>
+</blockquote>
+<h2 id="官方与延伸参考"><a href="#官方与延伸参考" class="headerlink" title="官方与延伸参考"></a>官方与延伸参考</h2><p>大公司 &#x2F; 框架一手资料（权威，均于 2026-08-07 访问核验）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic：Building Effective AI Agents（workflows vs agents + 五种模式）</a></li>
+<li><a target="_blank" rel="noopener" href="https://openai.github.io/openai-agents-python/multi_agent/">OpenAI Agents SDK：Agent orchestration（via code vs via LLM）</a></li>
+<li><a target="_blank" rel="noopener" href="https://openai.com/index/open-source-codex-orchestration-symphony/">OpenAI：Symphony——Codex 编排开源规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://adk.dev/2.0/">Google ADK 2.0：graph-based &#x2F; dynamic workflows（1.x 的 Sequential&#x2F;Parallel&#x2F;Loop 保留为 Template workflows）</a>（旧 1.x 文档：google.github.io&#x2F;adk-docs&#x2F;）</li>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph">LangChain：3 Years of Graph Engineering with LangGraph</a></li>
+<li><a target="_blank" rel="noopener" href="https://addyosmani.com/blog/loop-engineering/">Addy Osmani：Loop Engineering（”外层循环工程化”的原始提法，本文两层 loop 划分的依据）</a></li>
+<li><a target="_blank" rel="noopener" href="https://addyosmani.com/blog/own-the-outer-loop/">Addy Osmani：Own the Outer Loop（后续篇，讨论自主循环中人的责任与问责，与本文「闭环必须有人工终止」观点互补）</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/workflows">Claude Code：Orchestrate subagents at scale with dynamic workflows</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/goal">Claude Code：&#x2F;goal 命令</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/scheduled-tasks">Claude Code：定时任务与 &#x2F;loop</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/codex/subagents">Codex：Subagents 官方指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/codex/config-reference">Codex：Configuration Reference（max_concurrent_threads_per_session 等）</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.chatgpt.com/docs/developer-commands">Codex：Built-in slash commands（含 &#x2F;goal）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex">Codex：Using Goals in Codex（生命周期、证据标准与六维写法）</a></li>
+</ul>
+<p>社区讨论（非官方，注意时效与噪音）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@techlatest.net/loop-engineering-explained-visually-from-manual-prompts-to-goal-driven-ai-agents-f2c4d634c261">Loop Engineering Explained Visually — Techlatest.net</a></li>
+<li><a target="_blank" rel="noopener" href="https://flowtivity.ai/blog/graph-engineering-2026-guide-openclaw-codex/">From Loops to Graphs — flowtivity.ai</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.turingpost.com/p/is-graph-engineering-real-why-everyone-is-talking-about-it">What Is Graph Engineering? — Turing Post</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>抓住五点：</p>
+<ul>
+<li><strong>坐标系</strong>：两个正交维度——拓扑（单步&#x2F;loop&#x2F;graph）× 决策归属（代码&#x2F;LLM），各自独立，别把 graph 绑代码端、loop 绑 LLM 端</li>
+<li><strong>Loop Engineering</strong>（外层，Osmani 提法）≠ 内层 ReAct 循环：关键是 Goal→Evaluator→Loop→Termination 这套持续验收闭环；Claude 和 Codex 的 <code>/goal</code> 是这套闭环的<strong>产品原语</strong>（只是部件，不等于完整 Loop Engineering）；实战三（Claude workflow）&#x2F; 实战四（Codex <code>/goal</code>）把它落到工具里</li>
+<li><strong>Graph Engineering</strong> 本质是<strong>显式编码控制流、在确定性与自主间求平衡</strong>，<strong>loop 是它的一个简单特例</strong>；并行只是它的一种拓扑</li>
+<li><strong>Claude Code</strong> 用官方 <strong>Dynamic Workflows</strong> 落地两种 shape：<strong>fan-out</strong>（实战一：审计 + 对抗式复核）和<strong>闭环</strong>（实战三：keep fixing until check passes）→ 都能存成 <code>/命令</code> 复用</li>
+<li><strong>Codex CLI</strong> 没有内置 graph 命令，靠<strong>官方 Subagents</strong> 做并行（实战二）、<code>/goal</code> 做闭环（实战四）；graph-max 只是社群演示技巧，Symphony 是项目级外部规范</li>
+</ul>
+<p>最后一句提醒：这两个概念是正在快速演化的社群提法，本文所有「官方确认」的命令以 <code>code.claude.com</code>、<code>learn.chatgpt.com</code> 和各框架官方文档为准，所有「社群技巧」用之前先在你的环境里验证一遍——<strong>别把别人的 demo 当成你的生产能力</strong>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html" target="_blank" rel="external">https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agent%E7%BC%96%E6%8E%92/" rel="tag">Agent编排</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Claude-Code/" rel="tag">Claude Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codex/" rel="tag">Codex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph-Engineering/" rel="tag">Graph Engineering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="tag">工作流</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&title=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&title=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&source=Loop 与 Graph Engineering：AI Agent 编排范式演进与实战读完这篇你能拿到什么：一个能分辨 Loop &#x2F; Graph..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Codex-CLI%E5%AD%90%E4%BB%A3%E7%90%86%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8C%87%E5%8D%97.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Codex CLI 子代理工程化工作流指南</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&title=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&title=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&source=Loop 与 Graph Engineering：AI Agent 编排范式演进与实战读完这篇你能拿到什么：一个能分辨 Loop &#x2F; Graph..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Loop 与 Graph Engineering：AI Agent 编排范式演进与实战》 — 蓝胖纸&url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Loop%E4%B8%8EGraph-Engineering-AI-Agent%E7%BC%96%E6%8E%92%E6%BC%94%E8%BF%9B%E6%8C%87%E5%8D%97..html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEmElEQVR42u3aS27bQBAFQN//0s4miwSJ5Pe6x4BGLq4EyiKHRQPTv4+P+Pj84/jzzKO//PdX/x75HZ9fM7lXsvIDByZMmDBhekmm9tLPl/iI7PmZ9pr5+WMvEhMmTJgwXc6UX+754yVLSe6VfLt/ecl6MGHChAnTz2RqHzLZhtu7J+FFQokJEyZMmDDNHiOH+75jVvDFhAkTJkzvx5RvpbMi6XOU7y717tePCRMmTJjuZcq31ff7/C3RByZMmDBhehmmz9Ex23rzZmTesJy1LevnxYQJEyZM1zLNxmJODda0gUhblt2k8f+5JiZMmDBhupApaUPmCWQ70prfPQ9QZoXjL14eJkyYMGF6U6a26ZgDJbj7x24btA8dMGHChAnT5Uyn0te8EJz/KnmF7arq62DChAkTpmuZ8kJqHgQkG38bKGyGjdoi78O7Y8KECROmC5lOPfbs79vgo02M26Lww5eECRMmTJguZ0p+3DYdo0ikvE7evGzXXEQWmDBhwoTpQqbNoOpmpKbl2w+etq/z92dMmDBhwnQt02a/e94CzJmKhcYByqmmJiZMmDBhup0pSQJnjcb8mu3w6NmAIAkXMGHChAnTvUyzzbWtiOYNyO8LCNpRWkyYMGHC9H5Msy25Ld1uGqhtWtu2M4voCRMmTJgwXcWUl0HblDKhaRPvfHAnD0qKkAITJkyYMF3L1JZE2xGc9uE3QJtibtT4xIQJEyZMlzBtyrjtaOm+iDxru+YjOw+vhgkTJkyYrmWaNSPbAdM2PW4bn/tiblHkxYQJEyZMVzGdSms34zKbFHozTlQUeTFhwoQJ07VMbc+uTUr3TcfPQ8cmUMCECRMmTPcybcqgs/R4s9nnI0FFrn/2/wUTJkyYML0Y09nkcJNS5g+2aUzmn4sqOCZMmDBhemGmfZswf+D2LpsEe7/aui+KCRMmTJhekinZPjeP2i4iL9FuApoDSTImTJgwYbqQ6VTiOlvcppS86d/mK8eECRMmTDcyJZtu0phMrpA3I/P6dH5+NVqECRMmTJjelOnUVp2P+ORhRHu+fZF//QoTJkyYMF3LlC8uL+kmC52lrO0oTzuKVEw2YcKECROmC5mSB5ultbMBoFmK2ybVecKPCRMmTJjuZWoh8jZhO7qal4CTQvCmafrF/xQmTJgwYbqQKd+k8xS0DSxmI0SztDYJfeoIBRMmTJgwvTxTvnm3M5z5tj1rTOaBxTDpxYQJEyZMFzJtyrKbNDgfzdls/JtrPhzZwYQJEyZM1zLNbjlrMbaNxtm3+yIvJkyYMGG6nandmNuUtW4TBht28TCLoAQTJkyYML0H02d55CM+sxGZtozb/io//9fTYcKECROma5naDXXWtlwVWOO0/NSgz+rAhAkTJkwvyZQHAUnqm4QLG9ZTZeV6JZgwYcKE6XKm2aDMfkGbAOXjG46HV8aECRMmTD+AaVb8PfVtGxC0V/siJcaECRMmTD+Aqa187gd0Nu3P2ZDQ4bgJEyZMmDC9DNOmyJsM5cxwZ2M3+fmisYoJEyZMmK5lmpU+26Q3H2bNA5G2+Dt78ZgwYcKE6VqmX982WKm2RbBdAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html">
+    
+    
+    <title>TypeScript-函数类型 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="函数类型在 TypeScript 中，函数不仅是代码结构的组成部分，还是类型系统的核心。通过函数类型，我们能够更清晰地定义函数的输入和输出，并让 TypeScript 编译器在编译时进行更强大的类型检查。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-函数类型">
+<meta property="og:url" content="https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="函数类型在 TypeScript 中，函数不仅是代码结构的组成部分，还是类型系统的核心。通过函数类型，我们能够更清晰地定义函数的输入和输出，并让 TypeScript 编译器在编译时进行更强大的类型检查。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-11T07:50:07.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.305Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="函数类型">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-函数类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-函数类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-11-11T07:50:07.000Z" itemprop="datePublished" class="page-time">
+  2023-11-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.</span> <span class="post-toc-text">函数类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%A3%B0%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">函数的两种声明方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">可选参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">默认参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">剩余参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">函数重载</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-函数类型"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-函数类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-11-11 15:50:07" datetime="2023-11-11T07:50:07.000Z"  itemprop="datePublished">2023-11-11</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h1><p>在 TypeScript 中，函数不仅是代码结构的组成部分，还是类型系统的核心。通过函数类型，我们能够更清晰地定义函数的输入和输出，并让 TypeScript 编译器在编译时进行更强大的类型检查。</p>
+<span id="more"></span>
+<h2 id="函数的两种声明方式"><a href="#函数的两种声明方式" class="headerlink" title="函数的两种声明方式"></a>函数的两种声明方式</h2><ul>
+<li>通过function关键字来进行声明</li>
+</ul>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function add<span class="punctuation">(</span><span class="keyword">a</span>: number, b: number<span class="punctuation">)</span>:number &#123;</span><br><span class="line">    return <span class="keyword">a</span> + b<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">add<span class="punctuation">(</span><span class="number">1</span>, <span class="number">2</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>通过表达式方式声明</li>
+</ul>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Add</span> = <span class="function">(<span class="params"><span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">b1</span>: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">add</span>: <span class="title class_">Add</span> = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></div>
+<p>可以用来限制<strong>函数的参数和返回值类型</strong>，上面的例子声明了一个名为 add 的函数，该函数接收两个参数 x 和 y，它们的类型分别为 number，并且函数返回值的类型也被指定为 number。</p>
+<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p>在函数参数中，有时候我们希望某个参数是可选的（非必传）。可以使用 <strong>?</strong> 表示可选参数。</p>
+<div class="highlight-wrap" data-rel="Lasso"><figure class="lpz highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">sum</span> = (a: <span class="built_in">string</span>, b?: <span class="built_in">string</span>):<span class="built_in">string</span> =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">sum</span>(<span class="string">&#x27;langpz&#x27;</span>);</span><br></pre></td></tr></table></figure></div>
+<p><strong>可选参数必须在其他参数的最后面。</strong></p>
+<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><p>在函数参数中，有时候我们希望希望给参数设置一个默认值。可以使用 <strong>&#x3D;</strong> 表示默认参数。</p>
+<div class="highlight-wrap" data-rel="Lasso"><figure class="lpz highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">sum</span> = (a: <span class="built_in">string</span>, b: <span class="built_in">string</span> = <span class="string">&#x27;.com&#x27;</span>):<span class="built_in">string</span> =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">sum</span>(<span class="string">&#x27;langpz&#x27;</span>);</span><br></pre></td></tr></table></figure></div>
+<p><strong>默认参数不能同时和可选参数使用。</strong></p>
+<h2 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h2><p>有时我们希望一个函数可以接受任意数量的参数。可以使用 <strong>…</strong> 表示剩余参数。</p>
+<div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span><span class="params">(<span class="rest_arg">...numbers</span>: number[])</span>: number &#123;</span><br><span class="line">    <span class="keyword">return</span> numbers.reduce((acc, val) =&gt; acc + val, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><p>TypeScript 允许我们为同一个函数提供多个类型定义，称之为函数重载。你可以在不同的情况下为函数提供不同的输入和输出类型定义，让编译器能够更精确地推断和检查函数调用。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function toArray<span class="punctuation">(</span>value: number<span class="punctuation">)</span>: number[]</span><br><span class="line">function toArray<span class="punctuation">(</span>value: string<span class="punctuation">)</span>: string[]</span><br><span class="line">function toArray<span class="punctuation">(</span>value: number | string<span class="punctuation">)</span> &#123;</span><br><span class="line">    if <span class="punctuation">(</span>typeof value === &#x27;string&#x27;<span class="punctuation">)</span> &#123;</span><br><span class="line">        return value.split<span class="punctuation">(</span>&#x27;&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return value.toString<span class="punctuation">(</span><span class="punctuation">)</span>.split<span class="punctuation">(</span>&#x27;&#x27;<span class="punctuation">)</span>.map<span class="punctuation">(</span>item =&gt; Number<span class="punctuation">(</span>item<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">toArray<span class="punctuation">(</span><span class="number">123</span><span class="punctuation">)</span><span class="comment">;  // [1, 2, 3] </span></span><br><span class="line">toArray<span class="punctuation">(</span>&#x27;<span class="number">123</span>&#x27;<span class="punctuation">)</span><span class="comment">; // [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;] </span></span><br></pre></td></tr></table></figure></div>
+<p>根据传入不同类型的数据 返回不同的结果。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html" target="_blank" rel="external">https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B/" rel="tag">函数类型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-函数类型》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-函数类型》 — 蓝胖纸&source=函数类型在 TypeScript 中，函数不仅是代码结构的组成部分，还是类型系统的核心。通过函数类型，我们能够更清晰地定义函数的输入和输出，并让 Type..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-函数类型》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-%E7%B1%BB.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-类</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-基础类型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-函数类型》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&title=《TypeScript-函数类型》 — 蓝胖纸&source=函数类型在 TypeScript 中，函数不仅是代码结构的组成部分，还是类型系统的核心。通过函数类型，我们能够更清晰地定义函数的输入和输出，并让 Type..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-函数类型》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3awW7cMAwE0Pz/T6dATy0KJzOk5LbA82mRxdp8OljKkB8f8fX583r63H779Jdf/558e+zCw8PDG5X+dP1Z9FOhT8uRLFNeVV4zHh4e3m1eUkpeUP7STzaYfGnw8PDw/jVefnbNX/15JXh4eHj/I292sE4iiVPLjYeHh/cmb/PP/wzQBrjXsxY8PDy8mLdvgL3/+dX+Hh4eHl68JeQv7jzGzRn7Cw8PD+8Gbx+ntsHubGhg1jDDw8PDu81rX81nGbO7RSNieHh4eBd47VhV/shZgDtbsiKrxsPDw1vw8lZWu1r7O8yGD/Dw8PDe5LUv5SSSyLeZUxvSsTM7Hh4eXhzjtmNMX5fYhrCb8Sk8PDy8N3mnWlxtufmRetMYw8PDw7vBax+fv+JvUOvf4uHh4R3lzXaPTfCat8TyYdZvYlw8PDy8o7w2zM3j3f3I6T4mxsPDw7vBawdDN8fcNrbYxBN4eHh493h5k74dfspj32IIIKiw6PXh4eHhXeO1ce1seCuPMGYRCR4eHt5Z3md8bZZjv2TDLQoPDw/vKG92IJ6Nn9bzXwvwb/09PDw8vKO8pO10KoTNN5t2S/hmo8LDw8M7yps179txqJZ0qh48PDy827xZWe3A1n5coIh38fDw8K7x2hB2Pw41O6a3d8DDw8O7wWvD2TzCuBdV5FsRHh4e3g1eMuS0Dx3yKYZ8xOpA1oKHh4e35s2GrpIiNhvPahwBDw8P7wIvv9rHzBpmyXaSH+jx8PDw7vGSzWDz+exz69gXDw8P7xov3wy+LjH5bR7j5nta1ADDw8PDe53XRg9t6LBpv0X9PTw8PLy/ymvjg7bFNbvP6kiNh4eHV/LaUDU/5rbLtBkvwMPDw3uHt2+AbY7R+cBrOyyLh4eHd4H3AzGjac78cg72AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

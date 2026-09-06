@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html">
+    
+    
+    <title>path模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="path模块path模块是Node.js提供用于处理文件与目录的路径。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="path模块">
+<meta property="og:url" content="https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="path模块path模块是Node.js提供用于处理文件与目录的路径。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-26T03:17:42.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">path模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">path模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-26T03:17:42.000Z" itemprop="datePublished" class="page-time">
+  2018-02-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#path%E6%A8%A1%E5%9D%97"><span class="post-toc-number">1.</span> <span class="post-toc-text">path模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%B7%AF%E5%BE%84"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">连接路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E6%89%A9%E5%B1%95%E5%90%8D"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">获取路径扩展名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">获取绝对路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">判断是否是绝对路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">获取路径中的文件名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#path-sep-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E5%88%86%E9%9A%94%E7%AC%A6"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">path.sep 文件路径分隔符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#path-delimiter-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%B7%AF%E5%BE%84%E5%88%86%E9%9A%94%E7%AC%A6"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">path.delimiter 环境变量路径分隔符</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-path模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">path模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-26 11:17:42" datetime="2018-02-26T03:17:42.000Z"  itemprop="datePublished">2018-02-26</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="path模块"><a href="#path模块" class="headerlink" title="path模块"></a>path模块</h1><p>path模块是Node.js提供用于处理文件与目录的路径。</p>
+<span id="more"></span>
+<h2 id="连接路径"><a href="#连接路径" class="headerlink" title="连接路径"></a>连接路径</h2><div class="highlight-wrap" data-rel="Rust"><figure class="lpz highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">path</span> = <span class="title function_ invoke__">require</span>(<span class="symbol">&#x27;pat</span>h<span class="string">&#x27;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">console.log(path.join(__dirname,&#x27;</span>lan<span class="string">&#x27;,&#x27;</span>pang<span class="string">&#x27;,&#x27;</span>zi<span class="string">&#x27;)) # 输出c:<span class="char escape_">\U</span>sers<span class="char escape_">\w</span>indows<span class="char escape_">\D</span>esktop\新建文件夹<span class="char escape_">\l</span>an<span class="char escape_">\p</span>ang<span class="char escape_">\z</span>i</span></span><br></pre></td></tr></table></figure></div>
+<p>为什么要使用这个方法，因为Windows和liunx系统路径分隔符不一样，liunx系统是”&#x2F;“，Windows系统是”&quot;，path.join()会正确使用当前系统的路径分隔符。</p>
+<h2 id="获取路径扩展名"><a href="#获取路径扩展名" class="headerlink" title="获取路径扩展名"></a>获取路径扩展名</h2><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let path = require<span class="punctuation">(</span>&#x27;path&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">console.log<span class="punctuation">(</span>path.extname<span class="punctuation">(</span>__filename<span class="punctuation">)</span><span class="punctuation">)</span> # 输出 .js</span><br></pre></td></tr></table></figure></div>
+<p>从 path 的最后一部分中的最后一个 . 字符到字符串结束。 如果 path 的最后一部分没有 . 或 path 的文件名的第一个字符是 .，则返回一个空字符串。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log<span class="punctuation">(</span>path.extname<span class="punctuation">(</span>&#x27;.lanpangzhi&#x27;<span class="punctuation">)</span><span class="punctuation">)</span> # 输出空字符串</span><br><span class="line">console.log<span class="punctuation">(</span>path.extname<span class="punctuation">(</span>&#x27;lanpangzhi.github.exe&#x27;<span class="punctuation">)</span><span class="punctuation">)</span> # 输出 .exe</span><br><span class="line">console.log<span class="punctuation">(</span>path.extname<span class="punctuation">(</span>&#x27;lanpangzhi.&#x27;<span class="punctuation">)</span><span class="punctuation">)</span> # 输出 .</span><br><span class="line">console.log<span class="punctuation">(</span>path.extname<span class="punctuation">(</span>&#x27;lanpangzhi&#x27;<span class="punctuation">)</span><span class="punctuation">)</span> # 输出空字符串</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="获取绝对路径"><a href="#获取绝对路径" class="headerlink" title="获取绝对路径"></a>获取绝对路径</h2><div class="highlight-wrap" data-rel="Rust"><figure class="lpz highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">path</span> = <span class="title function_ invoke__">require</span>(<span class="symbol">&#x27;pat</span>h<span class="string">&#x27;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">console.log(path.resolve(&#x27;</span>lan/pang<span class="string">&#x27;,&#x27;</span>zi<span class="string">&#x27;)) # 输出 c:<span class="char escape_">\U</span>sers<span class="char escape_">\w</span>indows<span class="char escape_">\D</span>esktop\新建文件夹<span class="char escape_">\l</span>an<span class="char escape_">\p</span>ang<span class="char escape_">\z</span>i</span></span><br></pre></td></tr></table></figure></div>
+<p>路径的序列是从右往左被处理的。<br>如果处理完全部给定的 path 片段后还未生成一个绝对路径，则当前工作目录会被用上。<br>生成的路径是规范化后的，且末尾的斜杠会被删除，除非路径被解析为根目录。<br>如果不传参数会得到当前所在的目录</p>
+<h2 id="判断是否是绝对路径"><a href="#判断是否是绝对路径" class="headerlink" title="判断是否是绝对路径"></a>判断是否是绝对路径</h2><div class="highlight-wrap" data-rel="Lua"><figure class="lpz highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">path</span>.isAbsolute(<span class="string">&#x27;/lanpangzhi&#x27;</span>)) # 输出 <span class="literal">true</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">path</span>.isAbsolute(<span class="string">&#x27;lanpangzhi/&#x27;</span>)) # 输出 <span class="literal">false</span></span><br></pre></td></tr></table></figure></div>
+<p>如果 path 不是一个字符串，则抛出 TypeError。</p>
+<h2 id="获取路径中的文件名"><a href="#获取路径中的文件名" class="headerlink" title="获取路径中的文件名"></a>获取路径中的文件名</h2><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let path = require<span class="punctuation">(</span>&#x27;path&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">console.log<span class="punctuation">(</span>path.basename<span class="punctuation">(</span>__filename<span class="punctuation">)</span><span class="punctuation">)</span> # 输出 http.js</span><br><span class="line">console.log<span class="punctuation">(</span>path.basename<span class="punctuation">(</span>__filename,&#x27;.js&#x27;<span class="punctuation">)</span><span class="punctuation">)</span> # 输出 http</span><br></pre></td></tr></table></figure></div>
+<p>第一个参数是路径。<br>第二个参数是文件扩展名，如果加上只返回文件名。</p>
+<h2 id="path-sep-文件路径分隔符"><a href="#path-sep-文件路径分隔符" class="headerlink" title="path.sep 文件路径分隔符"></a>path.sep 文件路径分隔符</h2><h2 id="path-delimiter-环境变量路径分隔符"><a href="#path-delimiter-环境变量路径分隔符" class="headerlink" title="path.delimiter 环境变量路径分隔符"></a>path.delimiter 环境变量路径分隔符</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/path.html">http://nodejs.cn/api/path.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/path%E6%A8%A1%E5%9D%97.html" target="_blank" rel="external">https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&title=《path模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&title=《path模块》 — 蓝胖纸&source=path模块path模块是Node.js提供用于处理文件与目录的路径。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《path模块》 — 蓝胖纸&url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/stream%E6%A8%A1%E5%9D%97.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">stream模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/fs%E6%A8%A1%E5%9D%97.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">fs模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&title=《path模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&title=《path模块》 — 蓝胖纸&source=path模块path模块是Node.js提供用于处理文件与目录的路径。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《path模块》 — 蓝胖纸&url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/path%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aQY6EMAwEwPn/p3cfsAJ1x+xIJMUJIWBcHDxx7M8nPn7K4++z9++8uvLwgYGB8VpGEtDVlfuw/t6ZPHX1u/cfCwMD4wTGVQa7vydJlMknWLsTAwMDY42RpOlJWsfAwMBIGMn5U8kUAwMDoy1i822y5A1tyn6sFsfAwHghI991//75v/Q3MDAwXsVYa0y2DYB8M27twMDA2JuRJ7j70O8Xc/nichQPBgbG1oy1cjEZBcsDaq+MhsMwMDC2YOTjWe0W/1qzs1huYmBgbM1Ifv7ZEY213y0SMQYGxhaMpK04H+d6djjsctcQAwNja8akHG3HT/NlZQIubsLAwHgtY23MaxJ63hDNN/UwMDD2ZrSF6FpB27YZ2sFWDAyMvRntPlzemMx5bSOzbglgYGBsx2jL16cWi21CLzAYGBjbMdqtt3bBN8dHfw8YGBgHMPLB1nxE9b4wXhvUwMDAOIGRD0CsJcFJW7TYCsTAwNia0Y5w5UNj81ReLwoxMDAOY+SLszygdiy1/jQYGBgHMCavaEOctzPrb4mBgbERIyoXS8YouLw8xsDA2JTxUx7PBp28P1q2YmBgbM1ok10CmL8hb3DWGAwMjNcy8iS7toBbK1nbNgMGBsYJjDygdtH2pc+EgYGBsTRs0Q65tql5lHAxMDAOYOSBTtqZORIDA+MExlPNgPap+QAHBgbGCYy2dMwHJualb36OgYGxKeMXnT5qmFFqE4gAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

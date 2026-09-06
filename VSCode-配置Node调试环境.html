@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html">
+    
+    
+    <title>VSCode 配置Node调试环境 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="VSCode 配置Node调试环境我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有办法了，因为是在命令行执行的没法打断点一个个console的话效率太低，所以这个时候就需要VSCode来辅助我们开发node.js。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode 配置Node调试环境">
+<meta property="og:url" content="https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="VSCode 配置Node调试环境我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有办法了，因为是在命令行执行的没法打断点一个个console的话效率太低，所以这个时候就需要VSCode来辅助我们开发node.js。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105173242.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105174736.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/debug.gif">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105180933.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105181532.png">
+<meta property="article:published_time" content="2018-01-05T09:17:59.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.306Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="VSCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105173242.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VSCode 配置Node调试环境</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VSCode 配置Node调试环境</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-05T09:17:59.000Z" itemprop="datePublished" class="page-time">
+  2018-01-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="post-toc-number">1.</span> <span class="post-toc-text">VSCode 配置Node调试环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A6%96%E5%85%88%E4%B8%8B%E8%BD%BDVSCode"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">首先下载VSCode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">新建文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">开始调试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%93%E6%96%AD%E7%82%B9"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">打断点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8Capp-js"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">执行app.js</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-VSCode-配置Node调试环境"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VSCode 配置Node调试环境</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-05 17:17:59" datetime="2018-01-05T09:17:59.000Z"  itemprop="datePublished">2018-01-05</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="VSCode-配置Node调试环境"><a href="#VSCode-配置Node调试环境" class="headerlink" title="VSCode 配置Node调试环境"></a>VSCode 配置Node调试环境</h1><p>我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有办法了，因为是在命令行执行的没法打断点一个个console的话效率太低，所以这个时候就需要VSCode来辅助我们开发node.js。</p>
+<span id="more"></span>
+<h2 id="首先下载VSCode"><a href="#首先下载VSCode" class="headerlink" title="首先下载VSCode"></a>首先下载VSCode</h2><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>下载对应系统的安装包</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105173242.png" alt="下载VSCode" title="">
+                </div>
+                <div class="image-caption">下载VSCode</div>
+            </figure>
+
+<h2 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h2><p>打开VSCode新建一个文件夹hello，在里面再新建一个app.js</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105174736.png" alt="新建文件" title="">
+                </div>
+                <div class="image-caption">新建文件</div>
+            </figure>
+
+<p>app.js的代码</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="number">5</span>; <span class="keyword">index</span>++) &#123;</span><br><span class="line">   console.<span class="built_in">log</span>(<span class="keyword">index</span>)   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(<span class="string">&#x27;Hello Word&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><p>再点调试，快捷键（Ctrl+Shift+D）,添加配置选择Node.js。<br>注： “program”: “${workspaceFolder}&#x2F;app.js”   &#x2F;app.js 可以是任何名字，但是一定要是你入口文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/debug.gif" alt="调试" title="">
+                </div>
+                <div class="image-caption">调试</div>
+            </figure>
+
+<h2 id="打断点"><a href="#打断点" class="headerlink" title="打断点"></a>打断点</h2><p>开始打断点。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105180933.png" alt="打断点" title="">
+                </div>
+                <div class="image-caption">打断点</div>
+            </figure>
+
+<h2 id="执行app-js"><a href="#执行app-js" class="headerlink" title="执行app.js"></a>执行app.js</h2><p>操作和浏览器调试类似。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/20180105181532.png" alt="执行app.js" title="">
+                </div>
+                <div class="image-caption">执行app.js</div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html" target="_blank" rel="external">https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&title=《VSCode 配置Node调试环境》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&title=《VSCode 配置Node调试环境》 — 蓝胖纸&source=VSCode 配置Node调试环境我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VSCode 配置Node调试环境》 — 蓝胖纸&url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E4%BB%80%E4%B9%88%E6%98%AFNode-js.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">什么是Node.js</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Git%E9%85%8D%E7%BD%AEhttps%E5%85%8D%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E6%8F%90%E4%BA%A4.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Git配置https免用户名和密码提交</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&title=《VSCode 配置Node调试环境》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&title=《VSCode 配置Node调试环境》 — 蓝胖纸&source=VSCode 配置Node调试环境我们在写js的时候需要调试打开浏览器按F12（开发者工具）就可以打断点去看程序写得对不对。但是在node.js里面就没有..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VSCode 配置Node调试环境》 — 蓝胖纸&url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/VSCode-%E9%85%8D%E7%BD%AENode%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLklEQVR42u3a247qMAwFUP7/pxnp6LzNtN22A6Jh9QkBTbI60hhfHo/4ev67jt4/+vR8nd93Ha12/k6+e/nCxsbGvgn7eXolB8o/PX98vUdzdM6LfbGxsbG3Y/eCTbLO+eHyFXJ2FICxsbGxv5LdCxvVAFkNpdjY2NjYVXYvdCXpwTmpl7pgY2Njfw87CRuvaCf0wtVba2nY2NjYH8+eNGg/7fUL+9vY2NjYH8mel4GqKc2qYDYpaWFjY2PvxO4Vj/KgkqcQvd0ne2FjY2PvwU4KLnlYyss3PV6vFfHHmtjY2NgbsaujkL0jLhuyGf9JHnk8xMbGxr4Ju1eIr5aTVjVllz1ibGxs7I3Y+T/9agGoeqC8LNV7BIcnxMbGxt6CXR18nByx2qBdlRpdFJWwsbGxb86elGzy1kKCmRShqk1rbGxs7D3Y1UPMByWre/VSkYs/EjY2Nvam7N5BJ4M479zlotGLjY2NfVv2vNSeNxXm7YHeuA82Njb2d7KrBaBRh7nYe60ODBVmTrGxsbFvyJ6UfqrjmL1AOC9yFYZ1sLGxsW/Ozhu91YGe8tBMsZyUBFFsbGzsXdl5qKj+9K8mJL3dRy1hbGxs7C3Yy+pSrWPloajaBo6KStjY2NhbsKu/z/MkZBX+WbyazQlsbGzs27Kr5aS8fPOeBkC1bfz/LmxsbOyN2MmXJqWiXvm+FwJ7o0XY2NjY+7En5aHqamtf52UpbGxs7F3Z5ZGXQVLxitpOM4BhY2Njb8TuDdbkw5F5c7c61tMsJ2FjY2Nvwc7bq/NwUm3Trm1CY2NjY+/Kro5X5s2A/DuTRGWUaWFjY2NvwZ4Ug3rJxiTh6TUJ/niNjY2NvRE7TzB6zdQ82EySnwVNDmxsbOzbsp/F6/zQyZq9dKKa2FysjI2Njb0Re1Jy6iUJ+UEnoXFV8MPGxsa+C7sXtJIsJx/QqY77JGlMeUYJGxsb++bsedDq/fRfNj1aLYFhY2NjfzF70ljNH2V+wl7bGBsbG/s72b0EptoGWDtIdFFUwsbGxt6IPSnuVBOJ6l29du/FjtjY2NgbsSeN1byolNw1eb+6CzY2NvYW7B/15SY5dblQVQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

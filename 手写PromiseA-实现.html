@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html">
+    
+    
+    <title>手写PromiseA+ 实现 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手写PromiseA+ 实现">
+<meta property="og:url" content="https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-31T11:28:49.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.309Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Promise">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">手写PromiseA+ 实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">手写PromiseA+ 实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-12-31T11:28:49.000Z" itemprop="datePublished" class="page-time">
+  2024-12-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">测试</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-手写PromiseA-实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">手写PromiseA+ 实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-12-31 19:28:49" datetime="2024-12-31T11:28:49.000Z"  itemprop="datePublished">2024-12-31</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/fe-doc/Promises-A-">PromiseA+规范中文版</a></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><div class="highlight-wrap" data-rel="Kotlin"><figure class="lpz highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyPromise</span> &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(executor) &#123;</span><br><span class="line">    <span class="comment">// 2.1 Promise状态和值</span></span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">&quot;pending&quot;</span>;    <span class="comment">// 2.1.1 初始状态为pending</span></span><br><span class="line">    <span class="keyword">this</span>.value = undefined;     <span class="comment">// 2.1.2.2 fulfilled状态的值 2.1.3.2 rejected状态的值</span></span><br><span class="line">    <span class="keyword">this</span>.onResolvedCallbacks = [];  <span class="comment">// 2.2.6.1 存储fulfilled的回调</span></span><br><span class="line">    <span class="keyword">this</span>.onRejectedCallbacks = [];  <span class="comment">// 2.2.6.2 存储rejected的回调</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.1 确保异步执行</span></span><br><span class="line">    <span class="keyword">this</span>.useMicroTask = typeof queueMicrotask === <span class="string">&#x27;function&#x27;</span> || typeof process?.nextTick === <span class="string">&#x27;function&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> resolve = (value) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 2.3.2 如果value是Promise，递归解析</span></span><br><span class="line">      <span class="keyword">if</span> (value instanceof MyPromise) &#123;</span><br><span class="line">        <span class="keyword">return</span> value.then(resolve, reject);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 3.1 确保异步执行</span></span><br><span class="line">      <span class="keyword">this</span>.asyncTask(() =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">&#x27;pending&#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>.value = value;</span><br><span class="line">          <span class="keyword">this</span>.status = <span class="string">&#x27;resolved&#x27;</span>;  <span class="comment">// 状态从pending转换为fulfilled</span></span><br><span class="line">          <span class="comment">// 2.2.6.1 调用所有fulfilled回调</span></span><br><span class="line">          <span class="keyword">this</span>.onResolvedCallbacks.forEach(fn =&gt; fn(value));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> reject = (reason) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 3.1 确保异步执行</span></span><br><span class="line">      <span class="keyword">this</span>.asyncTask(() =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">&#x27;pending&#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>.value = reason;</span><br><span class="line">          <span class="keyword">this</span>.status = <span class="string">&#x27;rejected&#x27;</span>;  <span class="comment">// 状态从pending转换为rejected</span></span><br><span class="line">          <span class="comment">// 2.2.6.2 调用所有rejected回调</span></span><br><span class="line">          <span class="keyword">this</span>.onRejectedCallbacks.forEach(fn =&gt; fn(reason));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="comment">// 2.1.1、2.3 执行 executor 函数 resolve/reject 改变状态</span></span><br><span class="line">      executor(resolve, reject);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      reject(e); <span class="comment">// 2.2.7.2 捕获 executor 内的异常，并以 reject 的形式处理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3.1 异步任务处理函数</span></span><br><span class="line">  asyncTask(fn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.useMicroTask) &#123;</span><br><span class="line">      <span class="comment">// 优先使用微任务</span></span><br><span class="line">      <span class="keyword">if</span> (typeof queueMicrotask === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        queueMicrotask(fn);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (typeof process?.nextTick === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        process.nextTick(fn);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 降级使用宏任务</span></span><br><span class="line">      setTimeout(fn, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2.2 then方法</span></span><br><span class="line">  then(onFulfilled, onRejected) &#123;</span><br><span class="line">    <span class="comment">// 2.2.1 参数可选</span></span><br><span class="line">    onFulfilled = typeof onFulfilled === <span class="string">&#x27;function&#x27;</span> ? onFulfilled : value =&gt; value; <span class="comment">// 2.2.1.1</span></span><br><span class="line">    onRejected = typeof onRejected === <span class="string">&#x27;function&#x27;</span> ? onRejected : reason =&gt; &#123; <span class="keyword">throw</span> reason &#125;; <span class="comment">// 2.2.1.2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.2.7 then必须返回一个新的Promise</span></span><br><span class="line">    <span class="keyword">const</span> promise2 = new MyPromise((resolve, reject) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> handleFulfilled = () =&gt; &#123;</span><br><span class="line">        <span class="comment">// 3.1 确保异步执行</span></span><br><span class="line">        <span class="keyword">this</span>.asyncTask(() =&gt; &#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> x = onFulfilled(<span class="keyword">this</span>.value); <span class="comment">// 2.2.5 调用onFulfilled</span></span><br><span class="line">            resolvePromise(promise2, x, resolve, reject); <span class="comment">// 2.2.7.1 处理返回值</span></span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            reject(e); <span class="comment">// 2.2.7.2 捕获异常</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> handleRejected = () =&gt; &#123;</span><br><span class="line">        <span class="comment">// 3.1 确保异步执行</span></span><br><span class="line">        <span class="keyword">this</span>.asyncTask(() =&gt; &#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> x = onRejected(<span class="keyword">this</span>.value); <span class="comment">// 2.2.5 调用onRejected</span></span><br><span class="line">            resolvePromise(promise2, x, resolve, reject);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            reject(e);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 2.2.2 和 2.2.3 根据状态调用对应的回调</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">&#x27;resolved&#x27;</span>) &#123;</span><br><span class="line">        handleFulfilled();</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="string">&#x27;rejected&#x27;</span>) &#123;</span><br><span class="line">        handleRejected();</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 2.2.6 注册回调</span></span><br><span class="line">        <span class="keyword">this</span>.onResolvedCallbacks.push(handleFulfilled);</span><br><span class="line">        <span class="keyword">this</span>.onRejectedCallbacks.push(handleRejected);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> promise2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">catch</span>(onRejected) &#123;</span><br><span class="line">    <span class="comment">// 2.2.3.2 实现catch方法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.then(<span class="literal">null</span>, onRejected);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  static resolve(value) &#123;</span><br><span class="line">    <span class="comment">// 如果是Promise直接返回</span></span><br><span class="line">    <span class="keyword">return</span> value instanceof MyPromise ? value : new MyPromise(resolve =&gt; resolve(value));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.3 Promise解决过程</span></span><br><span class="line">function resolvePromise(promise2, x, resolve, reject) &#123;</span><br><span class="line">  <span class="comment">// 2.3.1 防止循环引用</span></span><br><span class="line">  <span class="keyword">if</span> (promise2 === x) &#123;</span><br><span class="line">    reject(new TypeError(<span class="string">&#x27;循环引用&#x27;</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let called = <span class="literal">false</span>;  <span class="comment">// 2.3.3.3.3 确保只调用一次</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2.3.3 如果x是对象或函数</span></span><br><span class="line">  <span class="keyword">if</span> (x !== <span class="literal">null</span> &amp;&amp; (typeof x === <span class="string">&#x27;object&#x27;</span> || typeof x === <span class="string">&#x27;function&#x27;</span>)) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 2.3.3.1 获取then方法</span></span><br><span class="line">      <span class="keyword">const</span> then = x.then;</span><br><span class="line">      <span class="keyword">if</span> (typeof then === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// 2.3.3.3 调用then方法</span></span><br><span class="line">        then.call(</span><br><span class="line">          x,</span><br><span class="line">          y =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (called) <span class="keyword">return</span>;</span><br><span class="line">            called = <span class="literal">true</span>;</span><br><span class="line">            resolvePromise(promise2, y, resolve, reject); <span class="comment">// 2.3.3.3.1 递归处理</span></span><br><span class="line">          &#125;,</span><br><span class="line">          r =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (called) <span class="keyword">return</span>;</span><br><span class="line">            called = <span class="literal">true</span>;</span><br><span class="line">            reject(r); <span class="comment">// 2.3.3.3.2 处理reject</span></span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 2.3.3.4 如果then不是函数，直接resolve</span></span><br><span class="line">        resolve(x);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="comment">// 2.3.3.2 捕获异常</span></span><br><span class="line">      <span class="keyword">if</span> (called) <span class="keyword">return</span>;</span><br><span class="line">      called = <span class="literal">true</span>;</span><br><span class="line">      reject(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 2.3.4 如果x不是对象或函数，直接resolve</span></span><br><span class="line">    resolve(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><div class="highlight-wrap" data-rel="Actionscript"><figure class="lpz highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MyPromise.deferred = <span class="keyword">function</span> <span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  obj.promise = <span class="keyword">new</span> MyPromise(<span class="keyword">function</span> <span class="params">(resolve, reject)</span> &#123;</span><br><span class="line">    obj.resolve = resolve;</span><br><span class="line">    obj.reject = reject;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>保存MyPromise代码和上面代码创建 test.js 文件，并运行以下命令测试</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx promises-aplus-tests <span class="keyword">test</span><span class="number">.</span><span class="keyword">js</span></span><br></pre></td></tr></table></figure>
+<p>可以看到MyPromise通过 872个测试 符合 Promise&#x2F;A+ 规范了！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html" target="_blank" rel="external">https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Promise/" rel="tag">Promise</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&title=《手写PromiseA+ 实现》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&title=《手写PromiseA+ 实现》 — 蓝胖纸&source=Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写PromiseA+ 实现》 — 蓝胖纸&url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS设计模式-观察者模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/git-reset-%E5%92%8C-git-revert%E7%9A%84%E5%8C%BA%E5%88%AB.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git reset 和 git revert的区别</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&title=《手写PromiseA+ 实现》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&title=《手写PromiseA+ 实现》 — 蓝胖纸&source=Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写PromiseA+ 实现》 — 蓝胖纸&url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E6%89%8B%E5%86%99PromiseA-%E5%AE%9E%E7%8E%B0.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3aQW7DMAwEwP7/0y3QU4HC9pIUER8mpyK1HY0CSMqSX1/x6/v3VX3/73+vrry6q/eE5gsPDw+vNfT80f8/5ur6+6cl19+P4f56PDw8vG3e/aJ//+j8/erTqtsMHh4e3tt41aW/Nx35pODh4eG9n5ewk6HfM6pjwMPDw/sUL48PkkNzHs7mI1nPWvDw8PBiXrUA9oa/F+t7eHh4eIOqenVp7k1Tr8QVjRMPDw9vgZcciHsDrZbEeqt9tGHg4eHhLfDyIfbi1DzUyFtg7+96SFzw8PDwBrzCwbTVQJAMuvANVO/Cw8PDW+MlQ+9FCfe8/BObYS4eHh7eGu9U60A1OMjvSqbsIcDFw8PDO8SbI+fvJ5tWHkYc/g7x8PDwLloHekt/PsTe8Tr/MVD+xYCHh4c35uW1snxxz7eHXqAcTRMeHh7eAi8v/+cZaW/bqLYLFJpl8fDw8BZ4efGpV3WqtludamLAw8PD2+BVS1l5i8DZACIPSi7zaTw8PLxDvBxQLeSfbXKdRMZ4eHh4G7wcUN088oC4XNzKJwIPDw/vKG9eZMonZS/IuBwDHh4e3gIvPxznefCpcLa3zVweqfHw8PCO8qoRQL5w55Fr9RNHLzw8PLwxLw9Vq3flpbJJ40KUT+Ph4eEt8CbRQH50Pjsp0cEaDw8Pb4E3b4HKj9r5BpMfvssBBB4eHt6YNymATcpX1Y0kKbAVOiPw8PDwDvGqzQTNA+7R7DlqHcDDw8M7xJss1klwkEQMvU0iGgMeHh7eAq+3+E6KVUlwnG85eeSBh4eHd5ZX3QzmTVq9A3ezyQAPDw9vjZcfgic1pl50O2r/wsPDw3sNr3rIrsYHeevVw9Pw8PDwPsqrHnAfKm+tiKEc4+Lh4eGt8ebNT/k1vTJYs9CFh4eHt8CbFMB6RaleM1b1WI+Hh4e3wPsBiDWIvUCm7kcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

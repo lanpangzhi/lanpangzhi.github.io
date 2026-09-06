@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html">
+    
+    
+    <title>javascript数组去重(ES6版) | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="javascript数组去重(ES6版)之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。今天就利用 Set 来去重。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript数组去重(ES6版)">
+<meta property="og:url" content="https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="javascript数组去重(ES6版)之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。今天就利用 Set 来去重。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-02T08:49:44.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="ES6">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="数组">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">javascript数组去重(ES6版)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">javascript数组去重(ES6版)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-02T08:49:44.000Z" itemprop="datePublished" class="page-time">
+  2018-05-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88"><span class="post-toc-number">1.</span> <span class="post-toc-text">javascript数组去重(ES6版)</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-javascript数组去重-ES6版"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">javascript数组去重(ES6版)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-02 16:49:44" datetime="2018-05-02T08:49:44.000Z"  itemprop="datePublished">2018-05-02</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="javascript数组去重-ES6版"><a href="#javascript数组去重-ES6版" class="headerlink" title="javascript数组去重(ES6版)"></a>javascript数组去重(ES6版)</h1><p>之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。<br>今天就利用 Set 来去重。</p>
+<span id="more"></span>
+
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="string">&#x27;1&#x27;</span>];</span><br><span class="line">arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="keyword">new</span> <span class="title class_">Set</span>(arr));</span><br><span class="line">console.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure></div>
+<p>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。</p>
+<p><a target="_blank" rel="noopener" href="https://jsbin.com/buyowuk/edit?js,console">jsBin 地址</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html" target="_blank" rel="external">https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&title=《javascript数组去重(ES6版)》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&title=《javascript数组去重(ES6版)》 — 蓝胖纸&source=javascript数组去重(ES6版)之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。今天就利用 Se..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript数组去重(ES6版)》 — 蓝胖纸&url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/Express%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Express文件上传</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/css%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-%E5%8C%85%E6%8B%AC%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E7%9A%84%E5%85%83%E7%B4%A0.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">css实现元素垂直水平居中-包括未知宽高的元素</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&title=《javascript数组去重(ES6版)》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&title=《javascript数组去重(ES6版)》 — 蓝胖纸&source=javascript数组去重(ES6版)之前讲了如何利用循环和json对象去重，但是有BUG，如果是一个是字符串一个是数字就没办法区分了。今天就利用 Se..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript数组去重(ES6版)》 — 蓝胖纸&url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-ES6%E7%89%88.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLUlEQVR42u3awW7CQAwEUP7/p6nUU6UKmFkHiV1eThVNy77kYNnj2y2+7r/X80/+f/78r+5/rvz+/799dJILLmxsbOxN2Pen16N78qM8+tvkcbQPN7FgY2Njn8qe/OvJgXJ8/oiTAoyNjY39ney8PORFca0I5QUVGxsbG3veYMzZyVwIGxsbGzs/4rWhQv448vsvnqVhY2Njfzy7BXzyz2/Mt7GxsbE/kn0fXGvhbn7P5PMXJ8fGxsY+iH1ViDuPdfNvbx96NEvDxsbG3pydD+vzAf1a6Wp5k2gBGxsb+yR2Hqm2xSaf6kTR7OD1YGNjY5/Nbh/HZFlnsqbTFtHFIAEbGxt7Q3Y7lGmLU7uOM3+H9aYSNjY29rbstglJSO3R82h2bdQVvWdsbGzsbdlt+/GOODYvYHkXddlcDRsbG/vj2e1R2rYhHxKt3b84YMLGxsY+jj1pM9a+eP44JrEENjY29knsSWvxjpXNSYPUtjTY2NjY57GLXZ4yDJiUn3ZnsnBhY2NjH8FODjpZmllbkcy3jdrYGBsbG/tsdt5ITALgtvy0S0VRK4KNjY39NexJiNvGtJMooh5aYWNjYx/EnuwiXhXotrz8bC8eEDY2NvZB7DYGyMf6+ef548tbnWhxBxsbG/sIdrGwOBjr5yWwHXVd1odhY2Njb8i+qvDkQ6h8pXLtPJelItjY2NgbsvP2Y/L1yc956Fv3VdjY2NiHstvFynzgvrbEMyl4SYSMjY2NfRJ7MqyZjHXeESq3wQM2Njb2Gex7fOWlYm0gNVnrqSMKbGxs7IPYkwWdteZkbYcoj5xrMDY2Nvbm7Lx4TAb37XvIS2kSMLxoRbCxsbE3ZyfFoG1C2sA4aTCShmSxJGNjY2Nvzr62zNS5RNBOXPVKbnmFxMbGxt6KPdlXXJxaBQedrP60i0fY2NjYZ7DbiDdf4skLWH7ctVL6YlMJGxsb+wj2ZMzULmVO7nnLFA0bGxv7i9lrwXA79G9fQPQasLGxsb+S3ZaKtfLWBgBrzRI2Njb2eex8qNR+fT5IakPiUVyNjY2NfRC7DXrXkG3Zy2OAPDwY5dvY2NjYn8j+AcwggwZjnDhJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html">
+    
+    
+    <title>解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="github拉代码报错ssh: connect to host github.com port 22: Connection timed out">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out">
+<meta property="og:url" content="https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="github拉代码报错ssh: connect to host github.com port 22: Connection timed out">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-20T10:49:52.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.310Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-01-20T10:49:52.000Z" itemprop="datePublished" class="page-time">
+  2024-01-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#github%E6%8B%89%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99"><span class="post-toc-number">1.</span> <span class="post-toc-text">github拉代码报错</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-解决github拉取推送代码报错-ssh-connect-to-host-github-com-port-22-Connection-timed-out"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-01-20 18:49:52" datetime="2024-01-20T10:49:52.000Z"  itemprop="datePublished">2024-01-20</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="github拉代码报错"><a href="#github拉代码报错" class="headerlink" title="github拉代码报错"></a>github拉代码报错</h1><p>ssh: connect to host github.com port 22: Connection timed out</p>
+<span id="more"></span>
+<p>Windows 找到用户&#x2F;.ssh&#x2F;config 文件<br>macOS ~&#x2F;.ssh&#x2F;config<br>没有config文件就创建一个</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Host</span> github.com</span><br><span class="line">  <span class="title class_">Hostname</span> ssh.github.com</span><br><span class="line">  <span class="title class_">Port</span> <span class="number">443</span></span><br></pre></td></tr></table></figure></div>
+<p>重新拉取或提交代码，就可以正常使用了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" target="_blank" rel="external">https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&title=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&title=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&source=github拉代码报错ssh: connect to host github.com port 22: Connection timed out" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-%E6%B3%9B%E5%9E%8B.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-泛型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-%E6%8E%A5%E5%8F%A3.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-接口</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&title=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&title=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&source=github拉代码报错ssh: connect to host github.com port 22: Connection timed out" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解决github拉取推送代码报错:ssh: connect to host github.com port 22: Connection timed out》 — 蓝胖纸&url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E8%A7%A3%E5%86%B3github%E6%8B%89%E5%8F%96%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E6%8A%A5%E9%94%99-ssh-connect-to-host-github-com-port-22-Connection-timed-out.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

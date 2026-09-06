@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html">
+    
+    
+    <title>TypeScript-声明文件 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="声明文件TypeScript 声明文件（.d.ts）是用来描述 JavaScript 库或模块的类型信息的文件。它告诉 TypeScript 编译器，这些库或模块中的变量、函数、类等具有什么样的类型，从而使我们在使用这些库时能够获得类型检查和代码补全等功能，提高开发效率和代码质量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-声明文件">
+<meta property="og:url" content="https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="声明文件TypeScript 声明文件（.d.ts）是用来描述 JavaScript 库或模块的类型信息的文件。它告诉 TypeScript 编译器，这些库或模块中的变量、函数、类等具有什么样的类型，从而使我们在使用这些库时能够获得类型检查和代码补全等功能，提高开发效率和代码质量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-07T02:16:01.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.305Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="声明文件">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-声明文件</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-声明文件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-09-07T02:16:01.000Z" itemprop="datePublished" class="page-time">
+  2024-09-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.</span> <span class="post-toc-text">声明文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建声明文件的场景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%A3%B0%E6%98%8E%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="post-toc-number">3.</span> <span class="post-toc-text">声明全局变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%89%E6%96%B9%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">编写第三方声明文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9-types-%E5%8C%85"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用第三方 @types 包</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-声明文件"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-声明文件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-09-07 10:16:01" datetime="2024-09-07T02:16:01.000Z"  itemprop="datePublished">2024-09-07</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h1><p>TypeScript 声明文件（.d.ts）是用来描述 JavaScript 库或模块的类型信息的文件。它告诉 TypeScript 编译器，这些库或模块中的变量、函数、类等具有什么样的类型，从而使我们在使用这些库时能够获得类型检查和代码补全等功能，提高开发效率和代码质量。</p>
+<span id="more"></span>
+
+<h1 id="创建声明文件的场景"><a href="#创建声明文件的场景" class="headerlink" title="创建声明文件的场景"></a>创建声明文件的场景</h1><p>声明文件通常用于以下场景：</p>
+<ol>
+<li>JavaScript 库没有内置的类型定义：比如老旧的 JavaScript 库或者一些专用的小型库没有提供 .d.ts 文件，这时你可以手动创建一个声明文件来为该库添加类型支持。</li>
+<li>当需要编写自己的 JavaScript 库或模块时，需要定义其类型信息以便其他开发者能够更好地使用它。</li>
+<li>为第三方库添加类型：有些库可能已经在 DefinitelyTyped 上有类型定义，但你可能需要根据项目需求进行扩展或修改。</li>
+</ol>
+<h1 id="声明全局变量"><a href="#声明全局变量" class="headerlink" title="声明全局变量"></a>声明全局变量</h1><p>全局变量的声明</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare const <span class="params">_:</span> &#123;</span><br><span class="line">  <span class="built_in">map</span><span class="symbol">&lt;T&gt;</span>(<span class="params">arr:</span> T[], <span class="params">fn:</span> (<span class="params">item:</span> T) <span class="operator">=</span><span class="operator">&gt;</span> any): T[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>声明了一个全局变量 _，它是一个对象，其中有一个名为 map 的方法。</p>
+<p>函数的声明</p>
+<div class="highlight-wrap" data-rel="Delphi"><figure class="lpz highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="function"><span class="keyword">function</span> <span class="title">lanpz</span><span class="params">(<span class="keyword">name</span>: <span class="keyword">string</span>)</span>:</span> void;</span><br></pre></td></tr></table></figure></div>
+<p>声明了一个名为 lanpz 的函数，接受一个 string 类型的参数，并且不返回任何值（void）。</p>
+<p>类的声明</p>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="attr">name</span>: <span class="built_in">string</span>, <span class="attr">age</span>: <span class="built_in">number</span></span>);</span><br><span class="line">  <span class="title function_">greet</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>声明了一个 Person 类，带有构造函数和一个方法。</p>
+<p>模块的声明</p>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&quot;lodash&quot;</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> map&lt;T&gt;(<span class="attr">arr</span>: T[], <span class="attr">fn</span>: <span class="function">(<span class="params"><span class="attr">item</span>: T</span>) =&gt;</span> <span class="built_in">any</span>): T[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>声明了一个 lodash 模块，其中包含一个 map 函数。</p>
+<p>全局变量的声明</p>
+<div class="highlight-wrap" data-rel="Pgsql"><figure class="lpz highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">global</span> &#123;</span><br><span class="line">  interface <span class="keyword">Window</span> &#123;</span><br><span class="line">    <span class="type">name</span>: string;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>Window 接口添加了一个名为 name 的属性，并且将其类型定义为 string。TypeScript 在任何地方引用 window.name 时都会认为它是一个 string 类型的值。</p>
+<p>还可以使用 <strong>declare namespace</strong> 来声明一个命名空间; <strong>declare enum</strong> 来声明一个枚举类型; <strong>declare interface</strong> 来声明一个接口; <strong>declare type</strong> 来声明一个类型别名等。</p>
+<h2 id="编写第三方声明文件"><a href="#编写第三方声明文件" class="headerlink" title="编写第三方声明文件"></a>编写第三方声明文件</h2><p>假设我们有一个名为 langpz-lib 的第三方库，它导出了一个对象，里面包含几个方法和属性：</p>
+<div class="highlight-wrap" data-rel="Nix"><figure class="lpz highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">//</span> langpz-lib.js</span><br><span class="line">m<span class="attr">odule.exports</span> <span class="operator">=</span> &#123;</span><br><span class="line">  <span class="params">name:</span> <span class="string">&quot;LangpzLib&quot;</span>,</span><br><span class="line">  <span class="params">version:</span> <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="params">hello:</span> function () &#123;</span><br><span class="line">    console.log(<span class="string">&quot;Hello, LangpzLib!&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="params">config:</span> &#123;</span><br><span class="line">    <span class="params">setting1:</span> <span class="literal">true</span>,</span><br><span class="line">    <span class="params">setting2:</span> <span class="string">&quot;default&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>TypeScript 声明文件示例</p>
+<div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// langpz-lib.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&quot;langpz-lib&quot;</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">version</span>: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>): <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">interface</span> <span class="title class_">Config</span> &#123;</span><br><span class="line">    <span class="attr">setting1</span>: <span class="built_in">boolean</span>;</span><br><span class="line">    <span class="attr">setting2</span>: <span class="built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">config</span>: <span class="title class_">Config</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>declare module 一般用于定义 CommonJS 模块或其他非 ES6 模块系统中的模块。</p>
+<h1 id="使用第三方-types-包"><a href="#使用第三方-types-包" class="headerlink" title="使用第三方 @types 包"></a>使用第三方 @types 包</h1><p>在很多情况下，你不需要手动编写声明文件，因为大部分流行的 JavaScript 库都已经由社区编写好了类型定义文件，并发布到了 <a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a> 仓库中。你可以通过 npm 安装这些声明文件，通常以 @types 前缀命名。</p>
+<div class="highlight-wrap" data-rel="Coffeescript"><figure class="lpz highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install @types/lodash -D</span><br></pre></td></tr></table></figure></div>
+<p>当使用lodash时默认会查找 node_modules&#x2F;@types&#x2F;lodash&#x2F;index.d.ts 文件，无需手动配置。TypeScript 将自动引用这些类型声明文件。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" target="_blank" rel="external">https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6/" rel="tag">声明文件</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&title=《TypeScript-声明文件》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&title=《TypeScript-声明文件》 — 蓝胖纸&source=声明文件TypeScript 声明文件（.d.ts）是用来描述 JavaScript 库或模块的类型信息的文件。它告诉 TypeScript 编译器，这些..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-声明文件》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-%E8%A3%85%E9%A5%B0%E5%99%A8.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-5.0装饰器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-模块和命名空间</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&title=《TypeScript-声明文件》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&title=《TypeScript-声明文件》 — 蓝胖纸&source=声明文件TypeScript 声明文件（.d.ts）是用来描述 JavaScript 库或模块的类型信息的文件。它告诉 TypeScript 编译器，这些..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-声明文件》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQU7DQAwF0N7/0kViVQRJv+24LdKbFQpNMm+QamP7dovX/Xv9vvK4ju56/O35ld5bLlh4eHh4ra0frSPeZLvnR3b+5HzPeHh4eNu882CQPOgerCTY5LwkgOHh4eG9lzdJwfPjS1JqPDw8vP/CO399Ek7OnzY/bjw8PLxX8pJiRJLg5uXdZOvJfi6rteDh4eHFvGqK/Ak/L/b38PDw8AZd9fxLeeN6b4c/noaHh4e3wEsS3PPSw3yAoNdCywu7eHh4eNfykg9Nkt3zJPiqsHSowMPDw3shLymJTppYeal3ElTw8PDwtnm94YBk04UNxZ+JdouHh4e3xsvLB/kAQZ5SVz9ZeBceHh7eAq+Zqg7Gp/Kyb3VQAA8PD+/1vGvnl6rJelLU6B0cHh4e3rW8ZmMpTpH3qNG9eHh4eGu8Kqxaos2T794w1uFB4OHh4S3w8q/dartrr+ybByo8PDy8PV4yLlAdh6qGnORKL0jg4eHhXcurjlL1Bk+rd+Xh4Un4wcPDw1vj5dvqFSB6IaSadj8p4+Lh4eEt8JIA0CtGTA5uVObAw8PDW+b1Sr29UkJ14LV6lHh4eHjbvPzR1ULDpHiRlHGf/AHw8PDwFngbASAvB+eNrny4AQ8PD2+b1xsRmA9IbSfieHh4eNu8Hmlv7KBaXC4XI/Dw8PAGvPzf/jwtrg5IVUsVeaMODw8Pb4N3D9Ykma4eSj5iVS5G4OHh4b2QNx+6mrSyCoMCv+/Cw8PDW+Dla9K8T0oYSajISyHlhYeHh1fk5cEg/8ruDWlVQ070djw8PLw1XjUY5M3+ZHyqWhAplyTw8PDw3sTLx6p6o129xP3JceDh4eF9AC/f0KTF1XvOKKXGw8PDK/I2mv15USOfEau+EQ8PD2+DN/lXf5IQT9Lx9f4eHh4e3t/3fgGf2MabRfiSYwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

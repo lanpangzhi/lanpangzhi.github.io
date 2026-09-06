@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html">
+    
+    
+    <title>yarn使用介绍 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="yarn使用介绍Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快一些，而且还更稳定，而且和npm使用相同的软件包流程也一样，下面只介绍一些常用的方法。尽快从npm上手yarn。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yarn使用介绍">
+<meta property="og:url" content="https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="yarn使用介绍Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快一些，而且还更稳定，而且和npm使用相同的软件包流程也一样，下面只介绍一些常用的方法。尽快从npm上手yarn。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-12T06:19:09.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.308Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="yarn">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">yarn使用介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">yarn使用介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-12T06:19:09.000Z" itemprop="datePublished" class="page-time">
+  2018-06-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D"><span class="post-toc-number">1.</span> <span class="post-toc-text">yarn使用介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">初始化新项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">添加依赖包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%87%E7%BA%A7%E5%8C%85"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">升级包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E5%8C%85"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">删除包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%85%A8%E9%83%A8%E4%BE%9D%E8%B5%96"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">安装项目的全部依赖</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8C%85%E5%AE%89%E8%A3%85%E4%BF%A1%E6%81%AF"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">查看包安装信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-yarn使用介绍"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">yarn使用介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-12 14:19:09" datetime="2018-06-12T06:19:09.000Z"  itemprop="datePublished">2018-06-12</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="yarn使用介绍"><a href="#yarn使用介绍" class="headerlink" title="yarn使用介绍"></a>yarn使用介绍</h1><p>Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快一些，而且还更稳定，而且和npm使用相同的软件包流程也一样，下面只介绍一些常用的方法。尽快从npm上手yarn。</p>
+<span id="more"></span>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g yarn</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="初始化新项目"><a href="#初始化新项目" class="headerlink" title="初始化新项目"></a>初始化新项目</h2><div class="highlight-wrap" data-rel="Csharp"><figure class="lpz highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="keyword">init</span></span><br></pre></td></tr></table></figure></div>
+<p>等同于 npm init， -y参数也是一样。</p>
+<h2 id="添加依赖包"><a href="#添加依赖包" class="headerlink" title="添加依赖包"></a>添加依赖包</h2><p>安装全局包需要先执行yarn global bin 然后把获取到的路径添加到环境变量path里面，感觉很麻烦也可以用 npm i -g 安装</p>
+<div class="highlight-wrap" data-rel="Dsconfig"><figure class="lpz highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">yarn</span> <span class="string">global</span> <span class="string">add</span> <span class="built_in">create-react-app</span>  // 全局安装等同于 <span class="string">npm</span> <span class="string">i</span> -<span class="string">g</span> <span class="built_in">create-react-app</span></span><br></pre></td></tr></table></figure></div>
+<p>安装包信息将加入到dependencies（生产阶段的依赖） </p>
+<div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">add</span> <span class="keyword">forever</span>  <span class="comment"> // 等同于 npm install forever -S </span></span><br><span class="line">yarn <span class="built_in">add</span> <span class="keyword">forever</span>@<span class="number">2.0</span><span class="number">.0</span><span class="comment"> // 安装2.0.0版本</span></span><br></pre></td></tr></table></figure></div>
+<p>将依赖项添加到不同依赖项类别<br>分别添加到 devDependencies、peerDependencies 和 optionalDependencies</p>
+<div class="highlight-wrap" data-rel="Livecodeserver"><figure class="lpz highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">add</span> express <span class="comment">--dev  // 等同于 npm install forever -D </span></span><br><span class="line">yarn <span class="built_in">add</span> express <span class="comment">--peer</span></span><br><span class="line">yarn <span class="built_in">add</span> express <span class="comment">--optional</span></span><br></pre></td></tr></table></figure></div>
+<p>peerDependencies “同伴依赖”，一种特殊的依赖，在发布包的时候需要。<br>有这种依赖意味着安装包的用户也需要和包同样的依赖。 这对于像 react 这样也被人安装的、需要单一 react-dom 副本的包很有用。<br>optionalDependencies 这是可选依赖，意味着依赖是……可选的。这种依赖即便安装失败，Yarn也会认为整个依赖安装过程是成功的。</p>
+<h2 id="升级包"><a href="#升级包" class="headerlink" title="升级包"></a>升级包</h2><div class="highlight-wrap" data-rel="Armasm"><figure class="lpz highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">yarn</span> upgrade express  <span class="comment">// 等同于 npm update express</span></span><br><span class="line"><span class="symbol">yarn</span> <span class="meta">global</span> upgrade express <span class="comment">// 等同于 npm update npm update express -g</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="删除包"><a href="#删除包" class="headerlink" title="删除包"></a>删除包</h2><div class="highlight-wrap" data-rel="Maxima"><figure class="lpz highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">remove</span> <span class="built_in">express</span> // 等同于 npm uninstall <span class="built_in">express</span></span><br><span class="line">yarn global <span class="built_in">remove</span> <span class="built_in">express</span> // 等同于 npm uninstall -g <span class="built_in">express</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="安装项目的全部依赖"><a href="#安装项目的全部依赖" class="headerlink" title="安装项目的全部依赖"></a>安装项目的全部依赖</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="keyword">or</span> yarn <span class="keyword">install</span>  // 等同于 npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="查看包安装信息"><a href="#查看包安装信息" class="headerlink" title="查看包安装信息"></a>查看包安装信息</h2><div class="highlight-wrap" data-rel="Armasm"><figure class="lpz highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">yarn</span> list  <span class="comment">// 等同于 npm list</span></span><br><span class="line"><span class="symbol">yarn</span> <span class="meta">global</span> list  <span class="comment">// npm list -g</span></span><br></pre></td></tr></table></figure></div>
+<p>上面就是比较常用的方法了，可以快速从npm切换到yarn上，更多方法可以去官网查看。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://yarnpkg.com/zh-Hans/">https://yarnpkg.com/zh-Hans/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html" target="_blank" rel="external">https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yarn/" rel="tag">yarn</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&title=《yarn使用介绍》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&title=《yarn使用介绍》 — 蓝胖纸&source=yarn使用介绍Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yarn使用介绍》 — 蓝胖纸&url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/webpack4-0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%BA%8C%EF%BC%89%E8%BD%AC%E6%8D%A2es7%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack4.0入门指南（二）转换es7语法解析静态资源</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack4.0入门指南（一）安装和转换es6语法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&title=《yarn使用介绍》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&title=《yarn使用介绍》 — 蓝胖纸&source=yarn使用介绍Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。Yarn要比npm要快..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yarn使用介绍》 — 蓝胖纸&url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/yarn%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQW7jMAwF0N7/0p1tB4Mm/4ti4AGeV4XTyHpeiAzJr6/4+v5x/Xsn+fTn/ddrJutfvvDw8PAGW0+2+5o9YST7zPeMh4eHt81Llnv9UvLvTk7vfM94eHh4z+FN2EmCnv8/Hh4e3v/Fy/Htp48IDHh4eHgBL1/69XLzokb+ui/XWvDw8PBiXt5Fes7fK/09PDw8vHFXPSnUJkd/G2byYPNmt3h4eHgLvHmD6m4TK0+p8+EwPDw8vA3eRhusLU/kAaDdGx4eHt4GbzIiMC+zTsZVoxXw8PDw1nhJIz8PJPlAQDsW0LbW8PDw8O7y2kfmgwV32/xnrwMPDw9vm5cf6+041FkAmI+34uHh4X2GNy891K2pYLwgX7+YRMDDw8M74uWjTnnx4iw5nhR8izIuHh4e3iVe24iaHPrzQkae6OPh4eFt8G417PMj+wyTr/bXfTw8PLw1XtsAy1toSSApZhzKsTA8PDy8PV57p/1uXn5tx7yioSs8PDy8j/DaVlZehjgrfBwOy+Lh4eEt8PIDt2XkZYVkrKpNxPHw8PD2eJP2/FmqPYHVTTg8PDy8NV5y+OYPziNS/vS2KIyHh4e3x8t//LctsTacTEa16kExPDw8vDEvLyVMUuq8VJGHk2hNPDw8vDXeWRiYjFIlqXlezP11b3h4eHjLvEmBIA8nk4M+H9LCw8PD+wwvuZ8Xbe8Op54VUPDw8PDu8r7L6yzZTZA5OC8f4+Hh4W3w2mM3T5SjoahBo+tarw8PDw/viPeZYNCm6e1w1ZtfDHh4eHgLvDzxzQ/9s8bY2XjWr6vh4eHhPYw3GRfIE+5JORgPDw/vObwkgc6R7etbmSnDw8PDK3nzxLdtWd0d/HoTGPDw8PCu8s5+8Lcp9VkXri0rH154eHh4Ke8PM9zaT+k4wxwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

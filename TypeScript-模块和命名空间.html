@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html">
+    
+    
+    <title>TypeScript-模块和命名空间 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="模块和命名空间TypeScript 提供了两种主要的代码组织方式：模块（Modules）和命名空间（Namespaces）。它们都用于组织和管理代码，但有不同的用途和特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript-模块和命名空间">
+<meta property="og:url" content="https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="模块和命名空间TypeScript 提供了两种主要的代码组织方式：模块（Modules）和命名空间（Namespaces）。它们都用于组织和管理代码，但有不同的用途和特性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-17T07:29:04.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.305Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="模块， 命名空间">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript-模块和命名空间</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript-模块和命名空间</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-08-17T07:29:04.000Z" itemprop="datePublished" class="page-time">
+  2024-08-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="post-toc-number">1.</span> <span class="post-toc-text">模块和命名空间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97%EF%BC%88Modules%EF%BC%89"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">模块（Modules）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%BC%E5%87%BA%E5%92%8C%E5%AF%BC%E5%85%A5"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">导出和导入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%87%BA"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">默认导出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">重命名导入和导出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%88Namespaces%EF%BC%89"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命名空间（Namespaces）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">使用命名空间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">命名空间嵌套使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%88%E5%B9%B6%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">合并命名空间</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97%EF%BC%88Modules%EF%BC%89-VS-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%88Namespaces%EF%BC%89"><span class="post-toc-number">2.</span> <span class="post-toc-text">模块（Modules） VS  命名空间（Namespaces）</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-模块和命名空间"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript-模块和命名空间</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-08-17 15:29:04" datetime="2024-08-17T07:29:04.000Z"  itemprop="datePublished">2024-08-17</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="模块和命名空间"><a href="#模块和命名空间" class="headerlink" title="模块和命名空间"></a>模块和命名空间</h1><p>TypeScript 提供了两种主要的代码组织方式：模块（Modules）和命名空间（Namespaces）。它们都用于组织和管理代码，但有不同的用途和特性。</p>
+<span id="more"></span>
+<h2 id="模块（Modules）"><a href="#模块（Modules）" class="headerlink" title="模块（Modules）"></a>模块（Modules）</h2><p>在 TypeScript 中，可以通过 export 关键字来导出模块中的变量、函数、类和接口。导出的元素可以在其他模块中通过 import 关键字进行导入。<br>每个模块都拥有自己的作用域，不会与其他模块中的变量冲突。</p>
+<h3 id="导出和导入"><a href="#导出和导入" class="headerlink" title="导出和导入"></a>导出和导入</h3><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.ts导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"><span class="attr">x</span>: <span class="built_in">number</span>, <span class="attr">y</span>: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.ts导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; add &#125; <span class="keyword">from</span> <span class="string">&#x27;./math.ts&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="默认导出"><a href="#默认导出" class="headerlink" title="默认导出"></a>默认导出</h3><div class="highlight-wrap" data-rel="Javascript"><figure class="lpz highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.ts导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">&#x27;langpz&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index.ts导入</span></span><br><span class="line"><span class="keyword">import</span> name <span class="keyword">from</span> <span class="string">&#x27;./a&#x27;</span></span><br></pre></td></tr></table></figure></div>
+<p>默认导出可以使用 default 关键字。默认导出的项在导入时不需要使用大括号 {}。</p>
+<h3 id="重命名导入和导出"><a href="#重命名导入和导出" class="headerlink" title="重命名导入和导出"></a>重命名导入和导出</h3><p>在导入和导出时，可以对名称进行重命名，以避免命名冲突或使名称更加语义化。</p>
+<div class="highlight-wrap" data-rel="Arcade"><figure class="lpz highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.ts导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x: number, y: number</span>): <span class="title function_">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">subtract</span>(<span class="params">x: number, y: number</span>): <span class="title function_">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; add as <span class="built_in">sum</span>, subtract as <span class="built_in">difference</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.ts导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="built_in">sum</span>, <span class="built_in">difference</span> &#125; from <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">sum</span>(<span class="number">5</span>, <span class="number">3</span>)); <span class="comment">// 输出: 8</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">difference</span>(<span class="number">5</span>, <span class="number">3</span>)); <span class="comment">// 输出: 2</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="命名空间（Namespaces）"><a href="#命名空间（Namespaces）" class="headerlink" title="命名空间（Namespaces）"></a>命名空间（Namespaces）</h2><p>命名空间是 TypeScript 提供的一种将代码分组的方式，适用于将代码组织在一个全局范围内。命名空间通过 namespace 关键字定义，通常用于在一个全局作用域中定义库或框架。</p>
+<h3 id="使用命名空间"><a href="#使用命名空间" class="headerlink" title="使用命名空间"></a>使用命名空间</h3><div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Utils</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> function <span class="title function_">log</span>(message: string): <span class="keyword">void</span> &#123;</span><br><span class="line">        console.<span class="title function_">log</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> function <span class="title function_">error</span>(message: string): <span class="keyword">void</span> &#123;</span><br><span class="line">        console.<span class="title function_">error</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用命名空间中的函数</span></span><br><span class="line"><span class="title class_">Utils</span>.<span class="title function_">log</span>(<span class="string">&#x27;lanpz&#x27;</span>); <span class="comment">// 输出:lanpz</span></span><br><span class="line"><span class="title class_">Utils</span>.<span class="title function_">error</span>(<span class="string">&#x27;https://blog.langpz.com&#x27;</span>); <span class="comment">// 输出:https://blog.langpz.com</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="命名空间嵌套使用"><a href="#命名空间嵌套使用" class="headerlink" title="命名空间嵌套使用"></a>命名空间嵌套使用</h3><div class="highlight-wrap" data-rel="Typescript"><figure class="lpz highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title class_">zoo</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">        <span class="title function_">eat</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zoo dog&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">namespace</span> <span class="title class_">bear</span> &#123;</span><br><span class="line">        <span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">&#x27;熊&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(zoo.<span class="property">bear</span>.<span class="property">name</span>); <span class="comment">// 输出: 熊</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="合并命名空间"><a href="#合并命名空间" class="headerlink" title="合并命名空间"></a>合并命名空间</h3><p>TypeScript 允许合并同名的命名空间，这在定义复杂库或框架时非常有用。</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Library</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> function <span class="title function_">init</span>(): <span class="keyword">void</span> &#123;</span><br><span class="line">        console.<span class="title function_">log</span>(<span class="string">&#x27;Library initialized&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace <span class="title class_">Library</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> function <span class="title function_">shutdown</span>(): <span class="keyword">void</span> &#123;</span><br><span class="line">        console.<span class="title function_">log</span>(<span class="string">&#x27;Library shut down&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用合并后的命名空间</span></span><br><span class="line"><span class="title class_">Library</span>.<span class="title function_">init</span>(); <span class="comment">// 输出: Library initialized</span></span><br><span class="line"><span class="title class_">Library</span>.<span class="title function_">shutdown</span>(); <span class="comment">// 输出: Library shut down</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="模块（Modules）-VS-命名空间（Namespaces）"><a href="#模块（Modules）-VS-命名空间（Namespaces）" class="headerlink" title="模块（Modules） VS  命名空间（Namespaces）"></a>模块（Modules） VS  命名空间（Namespaces）</h1><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>模块（Modules）</th>
+<th>命名空间（Namespaces）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作用域</td>
+<td>独立作用域，避免命名冲突</td>
+<td>全局作用域，可能导致命名冲突</td>
+</tr>
+<tr>
+<td>依赖管理</td>
+<td>通过导入和导出管理模块依赖</td>
+<td>无法管理依赖，全部在全局可见</td>
+</tr>
+<tr>
+<td>代码重用</td>
+<td>易于在不同项目中重用</td>
+<td>重用性较差，需要手动包含文件</td>
+</tr>
+<tr>
+<td>动态加载</td>
+<td>支持动态加载，提高性能</td>
+<td>不支持动态加载，不适用于大型应用</td>
+</tr>
+<tr>
+<td>兼容性</td>
+<td>与 ECMAScript 标准兼容</td>
+<td>非 ECMAScript 标准，现代项目不推荐使用</td>
+</tr>
+<tr>
+<td>学习曲线</td>
+<td>较为复杂，需要学习和配置</td>
+<td>简单易用，适合快速开发</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>适用于大型项目和现代应用</td>
+<td>适用于小型项目和库开发</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" target="_blank" rel="external">https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E5%9D%97%EF%BC%8C-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" rel="tag">模块， 命名空间</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&title=《TypeScript-模块和命名空间》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&title=《TypeScript-模块和命名空间》 — 蓝胖纸&source=模块和命名空间TypeScript 提供了两种主要的代码组织方式：模块（Modules）和命名空间（Namespaces）。它们都用于组织和管理代码，但有..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-模块和命名空间》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/TypeScript-%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">TypeScript-声明文件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/TypeScript-unknown%E7%B1%BB%E5%9E%8B.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript-unknown类型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&title=《TypeScript-模块和命名空间》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&title=《TypeScript-模块和命名空间》 — 蓝胖纸&source=模块和命名空间TypeScript 提供了两种主要的代码组织方式：模块（Modules）和命名空间（Namespaces）。它们都用于组织和管理代码，但有..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript-模块和命名空间》 — 蓝胖纸&url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/TypeScript-%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJ0lEQVR42u3awVLCUAwFUP//p3HGcafQm6QoDacrphV557EILzcfH/F1+7oev773tPren1e+npMvbGxs7Iuwbw+ve4DH/yeBJZuV388t2NjY2FvZvSJRLTa9MplvbmEN2NjY2G/JTgpbrxAmxS///9jY2NjYk+NBcsx4XlMJGxsb+53ZeWHI44H8INHbmj/qpWFjY2O/PPusoPcVXv9Dvo2NjY39r+zbSVcv+q0eb+Z///0ubGxs7EXsfCn5QSIPbpOmUvK0erzBxsbGfgd2dZiy2prvDfpUS+bB14ONjY29gj0PaJPBmnNbQr1w4pfvGRsbG3spuxr39hpGeUA7iZDvfiI2Njb2OnZ1sCZv088HJattrGgTsbGxsRexey3+eUgwCQBy9sEnYmNjY69gVxdUbt8M7ldDiLylhY2Njb2PnRSSZx9FekeXfKjobi8NGxsbex27FwzMG095sZyM7BR6ZtjY2NgXYfcaPb0WUn4seV5TCRsbG3srezIQWQ1xe8M31Xi4sB5sbGzsFey8gFV/9E9Gf/JhzWojDBsbG3sTuzp8OZoMGh9Uqms7OHthY2Njr2NXByvz0jVp7vfOVQfrx8bGxl7Ezhv08yI02ZRJKY3aZNjY2Ngr2GeVqLws9RpMyWbla8PGxsbexK4OzcyPFtXRzPkWY2NjY+9jnxW1zpeYFM7qxh300rCxsbFXsPMr+elfDWuf8brJw8bGxr4suzcWORmgzAeG8vvlQouNjY29iN0La6shQb4dk6flXho2Njb2CvYkDMiLWd5UqjaP8qAXGxsbeyu7F/RWxyt7w5TzuOLkkR1sbGzsl2RXC1i13z4ZmpxE0Qfbio2Njb2I3WvBTwKDfEObgHgwCBsbG3sH+1a8qiM71WNDb4AyGQMtZAjY2NjYl2L3hi+rY5fzgZ5eVDAvftjY2NhXYc8PEtVguHqnN155UHqxsbGx17EnTf9eQNsbxJmUXmxsbGzsXhmbs3vtpIOGFDY2NvZbsudjl0nxmz+NNgUbGxt7HXsSvlaLTTX6rZaxRISNjY29id1rzcxLyOR+NXg+Id/GxsbGfkX2JyDhWj0Zj90QAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

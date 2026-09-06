@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html">
+    
+    
+    <title>querystring模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="querystring模块querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。处理get请求参数的时候用的比较多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="querystring模块">
+<meta property="og:url" content="https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="querystring模块querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。处理get请求参数的时候用的比较多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-09T05:10:53.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">querystring模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">querystring模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-09T05:10:53.000Z" itemprop="datePublished" class="page-time">
+  2018-02-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#querystring%E6%A8%A1%E5%9D%97"><span class="post-toc-number">1.</span> <span class="post-toc-text">querystring模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AF%B9%E8%B1%A1-querystring-parse-str-sep-eq-options"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">把字符串转换成对象  querystring.parse(str[, sep[, eq[, options]]])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8A%8A%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2-querystring-stringify-obj-sep-eq-options"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">把对象转换成字符串 querystring.stringify(obj[, sep[, eq[, options]]])</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-querystring模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">querystring模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-09 13:10:53" datetime="2018-02-09T05:10:53.000Z"  itemprop="datePublished">2018-02-09</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="querystring模块"><a href="#querystring模块" class="headerlink" title="querystring模块"></a>querystring模块</h1><p>querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。<br>处理get请求参数的时候用的比较多。</p>
+<span id="more"></span>
+<h2 id="把字符串转换成对象-querystring-parse-str-sep-eq-options"><a href="#把字符串转换成对象-querystring-parse-str-sep-eq-options" class="headerlink" title="把字符串转换成对象  querystring.parse(str[, sep[, eq[, options]]])"></a>把字符串转换成对象  querystring.parse(str[, sep[, eq[, options]]])</h2><div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">let querystring = <span class="title function_">require</span>(<span class="string">&#x27;querystring&#x27;</span>);</span><br><span class="line"></span><br><span class="line">let query =  querystring.<span class="title function_">parse</span>(<span class="string">&#x27;name=lanpangzhi&amp;age=18&#x27;</span>);</span><br><span class="line">console.<span class="title function_">log</span>(query); # 输出&#123; name: <span class="string">&#x27;lanpangzhi&#x27;</span>, age: <span class="string">&#x27;18&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加第二个参数 sep</span></span><br><span class="line">let query2 = querystring.<span class="title function_">parse</span>(<span class="string">&#x27;name=lanpangzhi@age=18&#x27;</span>,<span class="string">&#x27;@&#x27;</span>);</span><br><span class="line">console.<span class="title function_">log</span>(query2); # 输出&#123; name: <span class="string">&#x27;lanpangzhi&#x27;</span>, age: <span class="string">&#x27;18&#x27;</span> &#125;</span><br><span class="line"><span class="comment">// sep: 第二个参数用于界定查询字符串中的键值对的子字符串。默认为 &#x27;&amp;&#x27;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加第三个参数 eq</span></span><br><span class="line">let query3 = querystring.<span class="title function_">parse</span>(<span class="string">&#x27;name|lanpangzhi@age|18&#x27;</span>,<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;|&#x27;</span>);</span><br><span class="line">console.<span class="title function_">log</span>(query3); </span><br><span class="line"><span class="comment">// eq:  用于界定查询字符串中的键与值的子字符串。默认为 &#x27;=&#x27;。</span></span><br><span class="line"><span class="comment">// sep eq 可以替换割分字符串的关键字，在某些特定的场景会用的。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第四个参数用得比较少</span></span><br><span class="line">let query = querystring.<span class="title function_">parse</span>(<span class="string">&#x27;name|lanpangzhi@age|18@age2|20@age3|21@age4|555&#x27;</span>,<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;|&#x27;</span>,&#123;</span><br><span class="line">    decodeURIComponent: function <span class="title function_">test</span>(str) &#123;</span><br><span class="line">        <span class="keyword">return</span> str+= <span class="string">&#x27;1&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    maxKeys: <span class="number">4</span></span><br><span class="line">&#125;);</span><br><span class="line">console.<span class="title function_">log</span>(query); # 输出 &#123; name1: <span class="string">&#x27;lanpangzhi1&#x27;</span>, age1: <span class="string">&#x27;181&#x27;</span>, age21: <span class="string">&#x27;201&#x27;</span>, age31: <span class="string">&#x27;211&#x27;</span> &#125;</span><br><span class="line"><span class="comment">// 第四个参数是一个对象， 里面有 decodeURIComponent 和 maxKeys 两个参数。</span></span><br><span class="line"><span class="comment">// decodeURIComponent: 解码查询字符串的字符时使用的函数。默认为 querystring.unescape()。</span></span><br><span class="line"><span class="comment">// maxKeys: 指定要解析的键的最大数量。默认为 1000。指定为 0 则不限制。</span></span><br><span class="line"><span class="comment">// 我刚才指定是4  所以 age4  这个参数没输出。</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="把对象转换成字符串-querystring-stringify-obj-sep-eq-options"><a href="#把对象转换成字符串-querystring-stringify-obj-sep-eq-options" class="headerlink" title="把对象转换成字符串 querystring.stringify(obj[, sep[, eq[, options]]])"></a>把对象转换成字符串 querystring.stringify(obj[, sep[, eq[, options]]])</h2><div class="highlight-wrap" data-rel="Clean"><figure class="lpz highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> querystring = require(<span class="string">&#x27;querystring&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; name: <span class="string">&#x27;lanpangzhi&#x27;</span>, baz: [<span class="string">&#x27;qux&#x27;</span>, <span class="string">&#x27;quux&#x27;</span>], age: <span class="string">&#x27;18&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> str = querystring.stringify(obj);</span><br><span class="line">console.log(str); # 输出 name=lanpangzhi&amp;baz=qux&amp;baz=quux&amp;age=<span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加第二个参数 sep</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; name: <span class="string">&#x27;lanpangzhi&#x27;</span>, age: <span class="string">&#x27;18&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> str = querystring.stringify(obj,<span class="string">&#x27;@&#x27;</span>);</span><br><span class="line">console.log(str); # 输出 name=lanpangzhi@age=<span class="number">18</span></span><br><span class="line"><span class="comment">// sep: 第二个参数用于界定查询字符串中的键值对的子字符串。默认为 &#x27;&amp;&#x27;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加第三个参数 eq</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; name: <span class="string">&#x27;lanpangzhi&#x27;</span>, age: <span class="string">&#x27;18&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> str = querystring.stringify(obj,<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;|&#x27;</span>);</span><br><span class="line">console.log(str);</span><br><span class="line"><span class="comment">// eq:  用于界定查询字符串中的键与值的子字符串。默认为 &#x27;=&#x27;。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第四个参数 options  基本上用不到</span></span><br><span class="line"><span class="comment">// encodeURIComponent &lt;Function&gt; : 把对象中的字符转换成查询字符串时使用的函数。默认为 querystring.escape()。</span></span><br></pre></td></tr></table></figure></div>
+<p>querystring.stringify 和 querystring.parse 功能正好是对应的， 基本上第四个参数用不到，第二和第三个参数只有在某些特定的场景才会使用，指定切割默写字符，或者输出某些字符。<br>querystring 这个模块还有两个方法，但是基本上不会用到，更多可以去node中文网或者官网查看。<br>新年快乐2018</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/querystring.html">http://nodejs.cn/api/querystring.html</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/querystring%E6%A8%A1%E5%9D%97.html" target="_blank" rel="external">https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&title=《querystring模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&title=《querystring模块》 — 蓝胖纸&source=querystring模块querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。处理get请求参数的时候用的比较多。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《querystring模块》 — 蓝胖纸&url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/fs%E6%A8%A1%E5%9D%97.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">fs模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Buffer%E5%AF%B9%E8%B1%A1.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Buffer对象</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&title=《querystring模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&title=《querystring模块》 — 蓝胖纸&source=querystring模块querystring 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。处理get请求参数的时候用的比较多。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《querystring模块》 — 蓝胖纸&url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/querystring%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS24CMRAFQO5/aXIARPJeN0SacXmF0MTjYtFxfx6PeD2D9fr86+d3O7++5fGNhYGBcVlGcrjfv2/fkmDys2FgYJzDaLduA2iyQ/skBgYGRhIE2+tgEqAxMDAw9ozkWtn+FQYGBkbCaA/UXhyTJDZJnj+Qi2NgYFyQkRfL/v/zV/obGBgYl2I8y9Ve19qWw/BUGBgYt2a0JbB9CzNpALTnwcDAOIGRB77kyQ1v8w0GBsZpjKS41g5VJPu3P01UO8TAwLg4YxZM81ZBW8Rvx+4xMDBOYGxamO2wRV6MG7ZCMTAwbspox0nbEYpP7fkHDwMD4xjGLPzNZh7y5DniYWBgHMBICmTJiFhbjEtCcFSew8DAOIDRbpqX2zZDG0VoxsDAOIDRthXzRDRvAGyaEBgYGCczZqNa7aBGkkIXwxYYGBi3Y2wSyOFIxOLqGc21YWBgHMDIX9AW42bDrMOMHAMD49aMtpS/T1ZnbYPo/wYGBsbtGO04xaxV8HtjoB2lfVt0w8DAuDWjLXJt2pYzXhRwMTAwbsrYJLRJGW7TEI0urBgYGDdlPMu1SV/zZLgIshgYGAcw8rUfEZsNdrRDrhgYGHdlrIpcoxGKlh21JTAwMA5gfCpZbRsDeVsiagxgYGBglAnwJli3PAwMDIxZ2jlLSvM26gcCLgYGxqUYs7GtNnTmIxf5AAcGBsYJjP29Kz9oHoiTVBkDA+MAxg9ioSy6cvAoAgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

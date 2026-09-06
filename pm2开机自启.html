@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html">
+    
+    
+    <title>pm2开机自启 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="pm2开机自启123pm2 start  # 你要启动的程序，如果有多个都要先启动pm2 savepm2 startup 执行代码，重启服务器pm2会自动启动。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pm2开机自启">
+<meta property="og:url" content="https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="pm2开机自启123pm2 start  # 你要启动的程序，如果有多个都要先启动pm2 savepm2 startup 执行代码，重启服务器pm2会自动启动。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-20T01:40:00.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta property="article:tag" content="pm2">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">pm2开机自启</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">pm2开机自启</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-20T01:40:00.000Z" itemprop="datePublished" class="page-time">
+  2018-11-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">pm2开机自启</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-pm2开机自启"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">pm2开机自启</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-20 09:40:00" datetime="2018-11-20T01:40:00.000Z"  itemprop="datePublished">2018-11-20</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="pm2开机自启"><a href="#pm2开机自启" class="headerlink" title="pm2开机自启"></a>pm2开机自启</h1><div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm2 <span class="literal">start</span>  <span class="comment"># 你要启动的程序，如果有多个都要先启动</span></span><br><span class="line">pm2 save</span><br><span class="line">pm2 startup</span><br></pre></td></tr></table></figure></div>
+<p>执行代码，重启服务器pm2会自动启动。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://cnodejs.org/topic/556f02a98ce3684b284b55ad">https://cnodejs.org/topic/556f02a98ce3684b284b55ad</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html" target="_blank" rel="external">https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pm2/" rel="tag">pm2</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&title=《pm2开机自启》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&title=《pm2开机自启》 — 蓝胖纸&source=pm2开机自启123pm2 start  # 你要启动的程序，如果有多个都要先启动pm2 savepm2 startup
+执行代码，重启服务器pm2会自动..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《pm2开机自启》 — 蓝胖纸&url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/centos7%E5%AE%89%E8%A3%85mongodb.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">centos7安装MongoDB</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/centos7%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFnginx.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">centos7开机自启nginx</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&title=《pm2开机自启》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&title=《pm2开机自启》 — 蓝胖纸&source=pm2开机自启123pm2 start  # 你要启动的程序，如果有多个都要先启动pm2 savepm2 startup
+执行代码，重启服务器pm2会自动..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《pm2开机自启》 — 蓝胖纸&url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/pm2%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3awU4rMQwF0P7/T/Okt0VT7rUT6OJkVVUDkxOk2Nh+veL19X99//z05NN6evLpZ5+ePLzw8PDwRlt/v6Gnb5KDSBj5HtpDxMPDw7vHyzfaBpL3wSB5Zna4eHh4eJ/AazfRhoF9Wo+Hh4f3mbx8Kzk+CRt4eHh4n8ZrCwGzRHmPv1hrwcPDw5vnrq9ZkPjNz7/U38PDw8Mru+r5hdte2XkAWO0WDw8P7wIvafC3N3BeYtiXJ6K0Hg8PD+8Cr21xJfhZQTYvPeT7xMPDwzvLS9r8+VXeFmFnba0ikODh4eFd4OWtqbZxFTX1g+3WgwLfv8fDw8M7yntfhshLt3lK3Y69Jqn5DwUIPDw8vKO8NmGdHc2sQHwq3cfDw8M7y6tPokyIZwOmm109Tkbg4eHhHeXNUtvNkH2bKCfHUcyC4eHh4S147xPW5AWzYsGpgFT/JfHw8PDWvHxzbSo8G1fdlGsfh67w8PDwjvLyplR+QW8ws9JwMXSFh4eHd5R3rHg6Kigkm26PCQ8PD+8Gr01q8xLtK15JeJgl/Xh4eHj3eJvENx8jmAWAtvhb/6+Ah4eHN+K1hdQbhdo8tKxmyvDw8PDWvDa13RRVZ0eQ/wY8PDy8v+Llr8lfMCsQz9LrulOHh4eHN+K1l3Lb/t+Mq+bpeFRxwcPDw1vz2uu+bXS1l34+LhAFITw8PLzLvIQxK+bOUvmc93h8eHh4eBd4bRtpVtLN0/E2jR4uPDw8vAXvq1ybxlgeePKw9EO4wsPDw7vAa+/YtjHWBpXZMOtstAsPDw9vw2uDwT4pnx1T/kyRWOPh4eEtePuiQHJMbao9Kwrj4eHhfQ4vb0RtxlU34QcPDw/vM3lto6s9iHxv0ZHh4eHhXePNihGHB0yD6z4vGePh4eHd4w3/yV8UDmYhZ/9ePDw8vDXvH1KuDQHEzkV0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

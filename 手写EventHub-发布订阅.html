@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html">
+    
+    
+    <title>手写EventHub(发布订阅) | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="EventHub 是一种事件发布-订阅模式的实现。订阅者（Subscriber）把自己想订阅的事件注册（Subscribe）到调度中心（Event Channel），当发布者（Publisher）发布该事件（Publish Event）到调度中心，也就是该事件触发时，由调度中心统一调度（Fire Event）订阅者注册到调度中心的处理代码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手写EventHub(发布订阅)">
+<meta property="og:url" content="https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="EventHub 是一种事件发布-订阅模式的实现。订阅者（Subscriber）把自己想订阅的事件注册（Subscribe）到调度中心（Event Channel），当发布者（Publisher）发布该事件（Publish Event）到调度中心，也就是该事件触发时，由调度中心统一调度（Fire Event）订阅者注册到调度中心的处理代码。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-29T06:07:39.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.309Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="EventHub，发布订阅">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">手写EventHub(发布订阅)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">手写EventHub(发布订阅)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-04-29T06:07:39.000Z" itemprop="datePublished" class="page-time">
+  2023-04-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-number">2.</span> <span class="post-toc-text">demo</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-手写EventHub-发布订阅"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">手写EventHub(发布订阅)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-04-29 14:07:39" datetime="2023-04-29T06:07:39.000Z"  itemprop="datePublished">2023-04-29</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>EventHub 是一种事件发布-订阅模式的实现。<br>订阅者（Subscriber）把自己想订阅的事件注册（Subscribe）到调度中心（Event Channel），当发布者（Publisher）发布该事件（Publish Event）到调度中心，也就是该事件触发时，由调度中心统一调度（Fire Event）订阅者注册到调度中心的处理代码。</p>
+<span id="more"></span>
+
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><ul>
+<li>每个实例有一个<strong>调度中心</strong>。负责存储消息与订阅者的对应关系，有消息触发时，负责通知订阅者。</li>
+<li><strong>on方法</strong>订阅的事件注册（Subscribe）到调度中心。</li>
+<li><strong>once方法</strong>只订阅一次，执行后移除订阅事件。</li>
+<li><strong>off方法</strong>从调度中心移除订阅的事件。</li>
+<li><strong>emit方法</strong>发布事件，并通过调度中心通知所有的订阅者</li>
+</ul>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class EventHub &#123;</span><br><span class="line">  constructor<span class="punctuation">(</span><span class="punctuation">)</span> &#123;</span><br><span class="line">    // 调度中心</span><br><span class="line">    this.channel = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  on<span class="punctuation">(</span>name, fn<span class="punctuation">)</span> &#123;</span><br><span class="line">    this.channel[name] = this.channel[name] || []</span><br><span class="line">    this.channel[name].push<span class="punctuation">(</span>fn<span class="punctuation">)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  off<span class="punctuation">(</span>name, fn<span class="punctuation">)</span> &#123;</span><br><span class="line">    const list = this.channel[name] || []</span><br><span class="line">    const index = list.indexOf<span class="punctuation">(</span>fn<span class="punctuation">)</span></span><br><span class="line">    if<span class="punctuation">(</span>index &lt; <span class="number">0</span><span class="punctuation">)</span> return</span><br><span class="line">    list.splice<span class="punctuation">(</span>index, <span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  once<span class="punctuation">(</span>name, fn<span class="punctuation">)</span> &#123;</span><br><span class="line">    this.channel[name] = this.channel[name] || []</span><br><span class="line">    let one = <span class="punctuation">(</span>arg<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">      fn.call<span class="punctuation">(</span>null, arg<span class="punctuation">)</span></span><br><span class="line">    &#125;</span><br><span class="line">    // 记录下绑定事件</span><br><span class="line">    one.fn = fn</span><br><span class="line">    // 添加移除方法</span><br><span class="line">    one.off = <span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123; this.off<span class="punctuation">(</span>name, one<span class="punctuation">)</span> &#125;</span><br><span class="line">    this.on<span class="punctuation">(</span>name, one<span class="punctuation">)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  emit<span class="punctuation">(</span>name, data<span class="punctuation">)</span> &#123;</span><br><span class="line">    let list = this.channel[name] || []</span><br><span class="line">    let ones = []</span><br><span class="line">    list.forEach<span class="punctuation">(</span>fn =&gt; &#123;</span><br><span class="line">      fn.call<span class="punctuation">(</span>null, data<span class="punctuation">)</span></span><br><span class="line">      fn.off &amp;&amp; ones.push<span class="punctuation">(</span>fn<span class="punctuation">)</span></span><br><span class="line">    &#125;<span class="punctuation">)</span></span><br><span class="line">    // 移除once订阅事件、执行完再移除不会导致删除数组后执行顺序不对问题</span><br><span class="line">    ones.forEach<span class="punctuation">(</span>fn =&gt; fn.off<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>测试</p>
+<div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发布者</span></span><br><span class="line">let <span class="selector-tag">q</span> = new <span class="built_in">EventHub</span>()</span><br><span class="line"><span class="comment">// 订阅者</span></span><br><span class="line"><span class="selector-tag">q</span><span class="selector-class">.on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="built_in">function</span>(data) &#123;</span><br><span class="line">  console<span class="selector-class">.log</span>(<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 订阅者只订阅一次</span></span><br><span class="line"><span class="selector-tag">q</span><span class="selector-class">.once</span>(<span class="string">&#x27;click&#x27;</span>, <span class="built_in">function</span>() &#123;</span><br><span class="line">  console<span class="selector-class">.log</span>(<span class="string">&#x27;once&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布者发布消息通知click的订阅者</span></span><br><span class="line"><span class="selector-tag">q</span><span class="selector-class">.emit</span>(<span class="string">&#x27;click&#x27;</span>)</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-class">.emit</span>(<span class="string">&#x27;click&#x27;</span>)</span><br><span class="line"><span class="comment">// 输出 on、once、on</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p><a target="_blank" rel="noopener" href="https://jsbin.com/wibilapihi/edit?js,console">demo地址</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html" target="_blank" rel="external">https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EventHub%EF%BC%8C%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/" rel="tag">EventHub，发布订阅</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&title=《手写EventHub(发布订阅)》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&title=《手写EventHub(发布订阅)》 — 蓝胖纸&source=EventHub 是一种事件发布-订阅模式的实现。订阅者（Subscriber）把自己想订阅的事件注册（Subscribe）到调度中心（Event Cha..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写EventHub(发布订阅)》 — 蓝胖纸&url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E6%89%8B%E5%86%99bind%E3%80%81call%E3%80%81apply%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">手写bind、call、apply方法实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Vue3%E7%BB%84%E5%90%88%E5%BC%8FAPI(Composition%20API)%20.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Vue3组合式API(Composition API)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&title=《手写EventHub(发布订阅)》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&title=《手写EventHub(发布订阅)》 — 蓝胖纸&source=EventHub 是一种事件发布-订阅模式的实现。订阅者（Subscriber）把自己想订阅的事件注册（Subscribe）到调度中心（Event Cha..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《手写EventHub(发布订阅)》 — 蓝胖纸&url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E6%89%8B%E5%86%99EventHub-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMUlEQVR42u3aS27jQAwFwNz/0gowqwkcK4+kDNhU9SqwhVZXZ0Hz8/UVr+Pfevzk//X45Pkzj5+f75B8e/HCxsbG/hD2cbqesfMLSqgJ8vy0uQUbGxt7K/sckLwmR54/nyOfnTP6Z2BjY2Pfkl1NAPJrSq4gT06wsbGxsZMAlgSVCTJPhLCxsbGx86LSHHmeikzKTC+spWFjY2O/Pbta9H/nv1/Y38bGxsZ+S/ZRXNW2brXklJCO8cLGxsbexO4lBtVmQI7plZPyYc1RPoSNjY399ux8i7wcXx3EnLyrnKJgY2Njr2NPajLnScJ8HCfZJ29vYGNjY29i9wbcJ8OXSYO21+4tNJ6xsbGxF7HzI/auZl4Mql5cOSRjY2NjL2Lnhftq4KkmKpM2cLXhgY2Njf3p7F5rdl5Oql5BHjij82BjY2OvZufjNUk5Pk8MkiQkv6A/8NjY2NhL2dUBmjzZqB63Wu6vpjfY2NjY+9h5WJocYpJaXFXAwsbGxr4DOy+790pC1UvMi1Z5ewMbGxt7E3veGa4OaxbGIge7VUeIsLGxsXewk6NMWrzV4curZiYvmDnFxsbGfmN23hLIk5Y8ePRayL1UBxsbG/sO7OpgzSTA5A2AeXP3l8+xsbGxF7HzBm3euJ0EsN7IzuSisbGxsfex8wNdNkAz3m0S0rCxsbE/nV1to1Z/9OflqjwsXZAyYWNjYy9i91KIaos3H6ms7l/dBxsbG3sfOxlYTApJeTjM04zk22oo/dEVwcbGxl7B7o3mHPGqFqR6O1evFRsbG3sTe/ITv9pk7YXGPJgVgiU2Njb2IvY8gPVCXXVQshogo8vFxsbGXsGu/sRPmgc5Mr+sXnB9+nZsbGzsdeyElKcT1TQj3yEaxJnMmWJjY2N/LLtalK8ea9IGyANhIdxiY2NjL2L3gkGv3FNtA+ehq1cIw8bGxt7EzoNW74J6TeL5eOUfb8fGxsZex563WnsFpkkgzBu9TwMYNjY29s3YrxisnFzi6CTY2NjYN2bnKUo+cDnfvzr0g42Njb2P3WvuVpOEPAj1EqFyAMPGxsZewe4NMualomvbyVc9iY2Njb2C/Q04QAdKELM5qgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html">
+    
+    
+    <title>node连接MySQL | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="node连接MySQL之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node连接MySQL">
+<meta property="og:url" content="https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="node连接MySQL之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-10T07:40:04.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.307Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">node连接MySQL</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">node连接MySQL</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-10T07:40:04.000Z" itemprop="datePublished" class="page-time">
+  2018-05-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#node%E8%BF%9E%E6%8E%A5MySQL"><span class="post-toc-number">1.</span> <span class="post-toc-text">node连接MySQL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84SQL%E8%AF%AD%E5%8F%A5"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">常用的SQL语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node%E6%93%8D%E4%BD%9CMySQL"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">node操作MySQL</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-node连接MySQL"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">node连接MySQL</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-10 15:40:04" datetime="2018-05-10T07:40:04.000Z"  itemprop="datePublished">2018-05-10</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="node连接MySQL"><a href="#node连接MySQL" class="headerlink" title="node连接MySQL"></a>node连接MySQL</h1><p>之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。</p>
+<span id="more"></span>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> mysql</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><div class="highlight-wrap" data-rel="Pgsql"><figure class="lpz highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const mysql = require(<span class="string">&#x27;mysql&#x27;</span>);</span><br><span class="line"></span><br><span class="line">let <span class="keyword">connection</span> = mysql.createConnection(&#123;</span><br><span class="line">    host : <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="keyword">user</span> : <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="keyword">password</span> : <span class="string">&#x27;password&#x27;</span>,</span><br><span class="line">    <span class="keyword">database</span> : <span class="string">&#x27;test&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">connection</span>.<span class="keyword">connect</span>(<span class="keyword">function</span>(err) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    console.error(<span class="string">&#x27;连接出错: &#x27;</span> + err.stack);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  console.log(<span class="string">&#x27;连接成功 id &#x27;</span> + <span class="keyword">connection</span>.threadId);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>host：连接的服务器<br>user：用户名默认是root<br>password：之前设置的MySQL密码<br>database： 要连接的库</p>
+<h2 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h2><p>SQL 是一门 ANSI 的标准计算机语言，用来访问和操作数据库系统。SQL 语句用于取回和更新数据库中的数据。SQL 可与数据库程序协同工作，比如 MS Access、DB2、Informix、MS SQL Server、Oracle、Sybase 以及其他数据库系统。</p>
+<p>增</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span> (username, pass) <span class="keyword">VALUES</span> (<span class="string">&#x27;blog.langpz.com&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>INSERT INTO 表名称 VALUES (值1, 值2,….)<br>指定所要插入数据的列<br>INSERT INTO table_name (列1, 列2,…) VALUES (值1, 值2,….)</p>
+<p>删</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">user</span>  <span class="keyword">WHERE</span> id = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>DELETE FROM 表名称 WHERE 列名称 &#x3D; 值<br>不加WHERE会删除所有行<br>WHERE子句用于规定选择的标准。</p>
+<p>改</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> pass = <span class="string">&#x27;bbb&#x27;</span> <span class="keyword">WHERE</span> username = <span class="string">&#x27;张三&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>UPDATE 表名称 SET 列名称 &#x3D; 新值 WHERE 列名称 &#x3D; 某值</p>
+<p>查</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+<p>SELECT 列名 FROM 表名 注： * 代表全部</p>
+<h2 id="node操作MySQL"><a href="#node操作MySQL" class="headerlink" title="node操作MySQL"></a>node操作MySQL</h2><p>查询</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query<span class="punctuation">(</span>&#x27;SELECT * FROM user WHERE username = <span class="string">&quot;blog.langpz.com&quot;</span>&#x27;, <span class="punctuation">(</span>err, results, fields<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    if<span class="punctuation">(</span>err<span class="punctuation">)</span>&#123;</span><br><span class="line">        console.log<span class="punctuation">(</span>err<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    console.log<span class="punctuation">(</span>results<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>删除</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query<span class="punctuation">(</span>&#x27;DELETE FROM user  WHERE id = <span class="number">1</span>&#x27;, <span class="punctuation">(</span>err, results<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    if<span class="punctuation">(</span>err<span class="punctuation">)</span>&#123;</span><br><span class="line">        console.log<span class="punctuation">(</span>err<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    console.log<span class="punctuation">(</span>results<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>增加</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query<span class="punctuation">(</span>&#x27;INSERT INTO user<span class="punctuation">(</span>username, pass<span class="punctuation">)</span> VALUES<span class="punctuation">(</span>?, ?<span class="punctuation">)</span>&#x27;,[&#x27;lan&#x27;, &#x27;abc&#x27;], <span class="punctuation">(</span>err, results<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    if<span class="punctuation">(</span>err<span class="punctuation">)</span>&#123;</span><br><span class="line">        console.log<span class="punctuation">(</span>err<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    console.log<span class="punctuation">(</span>results<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>修改</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query<span class="punctuation">(</span>&#x27;UPDATE user SET pass = <span class="string">&quot;bbb&quot;</span> WHERE username = <span class="string">&quot;lan&quot;</span>&#x27;, <span class="punctuation">(</span>err, results<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    if<span class="punctuation">(</span>err<span class="punctuation">)</span>&#123;</span><br><span class="line">        console.log<span class="punctuation">(</span>err<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    console.log<span class="punctuation">(</span>results<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>终止连接</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection.end<span class="punctuation">(</span>function<span class="punctuation">(</span>err<span class="punctuation">)</span> &#123;</span><br><span class="line">  // The connection is terminated now</span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">connection.destroy<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>调用这两个方法都可以。<br>基本操作就是这个流程，可以通过路由封装接口，写一个CRUD应用，mysql模块更多参数可以去看github。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/mysqljs/mysql">https://github.com/mysqljs/mysql</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/node%E8%BF%9E%E6%8E%A5MySQL.html" target="_blank" rel="external">https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&title=《node连接MySQL》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&title=《node连接MySQL》 — 蓝胖纸&source=node连接MySQL之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node连接MySQL》 — 蓝胖纸&url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node%E7%88%AC%E8%99%AB.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node爬虫</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Windows%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Windows下安装MongoDB</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&title=《node连接MySQL》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&title=《node连接MySQL》 — 蓝胖纸&source=node连接MySQL之前讲了怎么安装MySQL，今天就讲下这么用node去连接操作MySQL。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node连接MySQL》 — 蓝胖纸&url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/node%E8%BF%9E%E6%8E%A5MySQL.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQW7DMAwEwPz/0+4DDCdL0i4geXQKUtTO6CCQ4n4+8TpO6/zX8+f8yee3fJ5YGBgYyzKOr+vqBd9hOfLqyflvw8DAeA+j+vrvP6v6TUL68QQMDAyM+PCdVG6T7cPAwMDIH53/V1JoYmBgYFSb2F75mF/YJa3yDb04BgbGgoze9f3/fH5kvoGBgbEU4yiu6ugxOSKP8cLAwNibkR9w88uy5MKu93swMDD2ZuSt42RUkEcxqt9gYGC8h5G/oIr5flgnQ4VotICBgfECRjVg2gt79S71omdiYGBszehdiuXjyXnwIo9lYGBg7MpIAha9OFdvIFrdvqj2xMDAWJzRq6yqDW2+WdUGeFQgYmBgLMKoXpZVI6fz0jN6CwYGxssYd5GqP7o6trxMi2BgYGzNqF5+Vbegd1iPwhYYGBgvYBSOvJtir70jGAMDY2/GpBCcFJS9QWk5OYKBgbEFozcA6L2+GvkqxGcxMDC2ZlTTC71BZm/kOdlWDAyM/RjVC7XkgK5uRxLUKFe4GBgY2zGq12S9mMVkzPCjuMTAwHgBo3cgVo/UZguatLgYGBibMo7i6l2uTSIXUXuMgYGxNWN+WleDFHdd3lWHnRgYGKsz8kM2b3SfiLeOCkQMDIwtGLfFGuLyrjdZ/dGLY2BgYMSRr2pzm1/eXT4fAwMDYzC8rMbL8ljYqDTEwMBYkJEPAybhierGPdKLY2BgLMjIW8e8+OvFv6okDAyMFzD+APYWaphVA7JYAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

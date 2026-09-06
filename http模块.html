@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html">
+    
+    
+    <title>http模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="http模块http模块是node提供搭建http客户端和服务端的核心模块。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http模块">
+<meta property="og:url" content="https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="http模块http模块是node提供搭建http客户端和服务端的核心模块。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-15T09:05:37.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.306Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">http模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">http模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-15T09:05:37.000Z" itemprop="datePublished" class="page-time">
+  2018-01-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#http%E6%A8%A1%E5%9D%97"><span class="post-toc-number">1.</span> <span class="post-toc-text">http模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是客户端和什么是服务端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">搭建一个服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%90%91HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E8%B5%B7%E8%AF%B7%E6%B1%82"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">客户端向HTTP服务器发起请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#http-request-options-callback"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">http.request(options[, callback])</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E8%B5%B7get%E8%AF%B7%E6%B1%82-http-get-options-callback"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">发起get请求 http.get(options[, callback])</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-http模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">http模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-15 17:05:37" datetime="2018-01-15T09:05:37.000Z"  itemprop="datePublished">2018-01-15</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h1><p>http模块是node提供搭建http客户端和服务端的核心模块。</p>
+<span id="more"></span>
+<h2 id="什么是客户端和什么是服务端"><a href="#什么是客户端和什么是服务端" class="headerlink" title="什么是客户端和什么是服务端"></a>什么是客户端和什么是服务端</h2><p>客户端（Client），是指与服务器相对应，为客户提供本地服务的程序。一般安装在普通的用户机上，需要与服务端互相配合运行。互联网发展以后，较常用的客户端包括了如万维网使用的网页浏览器，收寄电子邮件时的电子邮件客户端，以及即时通信的客户端软件等。<br>服务端(Server)，是为客户端服务的，服务的内容诸如向客户端提供资源，保存客户端数据。是实现游戏特色化的重要途径，也是最直接可以通过游戏表现出来的技术，比如你要修改某个NPC的参数，重加载后，在游戏内立刻体现出来。</p>
+<h2 id="搭建一个服务器"><a href="#搭建一个服务器" class="headerlink" title="搭建一个服务器"></a>搭建一个服务器</h2><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var http = require<span class="punctuation">(</span>&#x27;http&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">var app = http.createServer<span class="punctuation">(</span>function<span class="punctuation">(</span>request,response<span class="punctuation">)</span>&#123;</span><br><span class="line">	response.writeHead<span class="punctuation">(</span><span class="number">200</span>, &#123;&#x27;Content-Type&#x27;: &#x27;text/plain&#x27;&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	response.write<span class="punctuation">(</span>&#x27;入坑了...&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	response.end<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">app.listen<span class="punctuation">(</span><span class="number">8000</span><span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>http.createServer() 创建一个服务器的实例，它的参数是一个函数，函数里有两个参数request和response，request是从客户端的请求、response是服务端的响应。<br>输入 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a> 就可以看到（入坑了…）这几个字。代表创建成功。<br>response.writeHead() 发送一个http响应头给请求。<br>response.write() 向客户端发送响应体。<br>response.end()  结束响应。<br>listen() 监听的端口。</p>
+<h2 id="客户端向HTTP服务器发起请求"><a href="#客户端向HTTP服务器发起请求" class="headerlink" title="客户端向HTTP服务器发起请求"></a>客户端向HTTP服务器发起请求</h2><h3 id="http-request-options-callback"><a href="#http-request-options-callback" class="headerlink" title="http.request(options[, callback])"></a>http.request(options[, callback])</h3><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">// request.js</span><br><span class="line">var http = require<span class="punctuation">(</span>&#x27;http&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">var querystring = require<span class="punctuation">(</span>&#x27;querystring&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">const postData = querystring.stringify<span class="punctuation">(</span>&#123;</span><br><span class="line">	&#x27;msg&#x27;: &#x27;Hello World!&#x27;</span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">const options = &#123;</span><br><span class="line">	hostname: &#x27;localhost&#x27;,</span><br><span class="line">	port: <span class="number">80</span>,</span><br><span class="line">	path: &#x27;/&#x27;,</span><br><span class="line">	method: &#x27;POST&#x27;,</span><br><span class="line">	headers: &#123;</span><br><span class="line">		&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;,</span><br><span class="line">		&#x27;Content-Length&#x27;: Buffer.byteLength<span class="punctuation">(</span>postData<span class="punctuation">)</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">const req = http.request<span class="punctuation">(</span>options, <span class="punctuation">(</span>res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">	console.log<span class="punctuation">(</span>`状态码: $&#123;res.statusCode&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	console.log<span class="punctuation">(</span>`响应头: $&#123;JSON.stringify<span class="punctuation">(</span>res.headers<span class="punctuation">)</span>&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	res.setEncoding<span class="punctuation">(</span>&#x27;utf8&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	res.on<span class="punctuation">(</span>&#x27;data&#x27;, <span class="punctuation">(</span>chunk<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">		console.log<span class="punctuation">(</span>`响应主体: $&#123;chunk&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	res.on<span class="punctuation">(</span>&#x27;end&#x27;, <span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">		console.log<span class="punctuation">(</span>&#x27;响应中已无数据。&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">req.on<span class="punctuation">(</span>&#x27;error&#x27;, <span class="punctuation">(</span>e<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">	console.error<span class="punctuation">(</span>`请求遇到问题: $&#123;e.message&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// 写入数据到请求主体</span><br><span class="line">req.write<span class="punctuation">(</span>postData<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">req.end<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// sever.js</span><br><span class="line">let http = require<span class="punctuation">(</span>&#x27;http&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let querystring = require<span class="punctuation">(</span>&#x27;querystring&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">let app = http.createServer<span class="punctuation">(</span> <span class="punctuation">(</span>res,req<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    let str = &#x27;&#x27;<span class="comment">;</span></span><br><span class="line">    res.on<span class="punctuation">(</span>&#x27;data&#x27;,  <span class="punctuation">(</span>data<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">        str += data</span><br><span class="line">    &#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    res.on<span class="punctuation">(</span><span class="string">&quot;end&quot;</span>, <span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">       </span><br><span class="line">        str = querystring.parse<span class="punctuation">(</span>str<span class="punctuation">)</span></span><br><span class="line">        console.log<span class="punctuation">(</span>str<span class="punctuation">)</span></span><br><span class="line">		// 向客户端返回数据</span><br><span class="line">        req.end<span class="punctuation">(</span>`提交成功了: $&#123;str.msg&#125;`<span class="punctuation">)</span> </span><br><span class="line">    &#125;<span class="punctuation">)</span>	</span><br><span class="line">      </span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">app.listen<span class="punctuation">(</span><span class="number">80</span><span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>客户端会输出</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">状态码: <span class="number">200</span></span><br><span class="line">响应头: &#123;<span class="string">&quot;date&quot;</span>:<span class="string">&quot;Fri, 02 Feb 2018 03:37:39 GMT&quot;</span>,<span class="string">&quot;connection&quot;</span>:<span class="string">&quot;close&quot;</span>,<span class="string">&quot;content-length&quot;</span>:<span class="string">&quot;29&quot;</span>&#125;</span><br><span class="line">响应主体: 提交成功了: <span class="title class_">Hello</span> <span class="title class_">World</span>!</span><br><span class="line">响应中已无数据。</span><br></pre></td></tr></table></figure></div>
+<p>我们可以写个定时器用request方法，一直向某个网站提交信息。</p>
+<p>options: Object | string | URL</p>
+<ul>
+<li>protocol &lt;string&gt; 使用的协议。默认为 http:。</li>
+<li>host &lt;string&gt; 请求发送至的服务器的域名或 IP 地址。默认为 localhost。</li>
+<li>hostname &lt;string&gt; host 的别名。为了支持 url.parse()，hostname 优先于 host。</li>
+<li>family &lt;number&gt; 当解析 host 和 hostname 时使用的 IP 地址族。 有效值是 4 或 6。当未指定时，则同时使用 IP v4 和 v6。</li>
+<li>port &lt;number&gt; 远程服务器的端口。默认为 80。</li>
+<li>localAddress &lt;string&gt; 为网络连接绑定的本地接口。</li>
+<li>socketPath &lt;string&gt; Unix 域 Socket（使用 host:port 或 socketPath）。</li>
+<li>method &lt;string&gt; 指定 HTTP 请求方法的字符串。默认为 ‘GET’。</li>
+<li>path &lt;string&gt; 请求的路径。默认为 ‘&#x2F;‘。 应包括查询字符串（如有的话）。如 ‘&#x2F;index.html?page&#x3D;12’。 当请求的路径中包含非法字符时，会抛出异常。 目前只有空字符会被拒绝，但未来可能会变化。</li>
+<li>headers &lt;Object&gt; 包含请求头的对象。</li>
+<li>auth &lt;string&gt; 基本身份验证，如 ‘user:password’ 用来计算 Authorization 请求头。</li>
+<li>agent &lt;http.Agent&gt; | &lt;boolean&gt; 控制 Agent 的行为。 可能的值有：undefined (默认): 对该主机和端口使用 http.globalAgent。</li>
+<li>Agent 对象：显式地使用传入的 Agent。false: 创建一个新的使用默认值的 Agent。</li>
+<li>createConnection &lt;Function&gt; 当不使用 agent 选项时，为请求创建一个 socket 或流。 这可以用于避免仅仅创建一个自定义的 Agent 类来覆盖默认的 createConnection 函数。详见 agent.createConnection()。</li>
+<li>timeout &lt;number&gt;: 指定 socket 超时的毫秒数。 它设置了 socket 等待连接的超时时间。</li>
+</ul>
+<h3 id="发起get请求-http-get-options-callback"><a href="#发起get请求-http-get-options-callback" class="headerlink" title="发起get请求 http.get(options[, callback])"></a>发起get请求 http.get(options[, callback])</h3><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var http = require<span class="punctuation">(</span>&#x27;http&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">http.get<span class="punctuation">(</span>&#x27;http://blog.langpz.com&#x27;, <span class="punctuation">(</span>res<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">	const &#123; statusCode &#125; = res<span class="comment">;</span></span><br><span class="line">	let str = <span class="string">&quot;&quot;</span><span class="comment">;</span></span><br><span class="line">	let error<span class="comment">;</span></span><br><span class="line">	if <span class="punctuation">(</span>statusCode !== <span class="number">200</span><span class="punctuation">)</span> &#123;</span><br><span class="line">		error = new Error<span class="punctuation">(</span>&#x27;请求失败。\n&#x27; +</span><br><span class="line">						`状态码: $&#123;statusCode&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	res.on<span class="punctuation">(</span><span class="string">&quot;data&quot;</span>, <span class="punctuation">(</span>data<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">		str += data</span><br><span class="line">	&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	if <span class="punctuation">(</span>error<span class="punctuation">)</span> &#123;</span><br><span class="line">		console.error<span class="punctuation">(</span>error.message<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">		// 消耗响应数据以释放内存</span><br><span class="line">		res.resume<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">		return<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	res.on<span class="punctuation">(</span><span class="string">&quot;end&quot;</span>, <span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">		console.log<span class="punctuation">(</span>str<span class="punctuation">)</span></span><br><span class="line">	&#125;<span class="punctuation">)</span>		</span><br><span class="line">&#125;<span class="punctuation">)</span>.on<span class="punctuation">(</span>&#x27;error&#x27;, <span class="punctuation">(</span>e<span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">	console.error<span class="punctuation">(</span>`出错了: $&#123;e.message&#125;`<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>网站内容就爬下来了。<br>该方法与 http.request() 唯一的区别是它设置请求方法为 GET 且自动调用 req.end()。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF">https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF</a><br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF">https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF</a><br><a target="_blank" rel="noopener" href="http://nodejs.cn/api/http.html#http_http_request_options_callback">http://nodejs.cn/api/http.html#http_http_request_options_callback</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/http%E6%A8%A1%E5%9D%97.html" target="_blank" rel="external">https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&title=《http模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&title=《http模块》 — 蓝胖纸&source=http模块http模块是node提供搭建http客户端和服务端的核心模块。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《http模块》 — 蓝胖纸&url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/global%E5%AF%B9%E8%B1%A1.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">global对象</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Node模块机制</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&title=《http模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&title=《http模块》 — 蓝胖纸&source=http模块http模块是node提供搭建http客户端和服务端的核心模块。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《http模块》 — 蓝胖纸&url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/http%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQZLCMAxEUe5/6cwBKJlutT1Vkb9XFATil4WQZH0+8nqKVX36/d31b1bvbF4wYMB4LeNZLv2WCqP6tLpG2RsMGDDuYVQRbH2NEijXG02uhAEDBgz3xm5Q1q+HAQMGDJehvN4VTGHAgAHDLWKTglYvZY/X4jBgwHghQ++6///rI+cbMGDAeBXjMVfvAEBvxvUWDBgwZjP0AJc01PTksrcfGDBg3MDojTgkh5rrxpk+WCblsDBgwBjEcAvXXos/HztzHxMMGDDmMdyS1R1X7QV9PVjDgAFjHkO39hpwJ4bDyq4hDBgwRjPyLeoBNymGN0yLwIABYwRj18GAvhX3gLNMDWHAgHEBw226uY05N300Hh8MGDAuYLg/2qO6CaJOggEDxmxGcjMpaTM3pD8++yQWBgwYIxi9Fps7HJYXwz/+AGDAgHEBQ2+W6cmZEriTFBMGDBizGfk4hZIUuvmpHe5hwIAxmtEbj+gFyiSUN3NbGDBgXMNwk79dY6n6wScMGDDuYaxv3xuw0I8Q3Eab8SxhwIAxjpEnf1F6J/cIy8kRGDBgjGM85nLDqxvolfeNpBAGDBgjGEmZmoRIPRHUHx8MGDBmM9wge2JQzH1kP6ZFYMCAMZSRN9SSo8okiMOAAQNG0vrvbU4PzUcCLgwYMMYxlLI2Oc40htVgwIBxAUMf6uqNqPaK4SPtNhgwYLyQkbf43VEMvfTtjX3AgAFjEOMPSUMi4JImVoQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

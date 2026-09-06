@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html">
+    
+    
+    <title>Claude Code安装和使用指南 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="什么是 Claude Code？Claude Code 是 Anthropic 推出的官方命令行界面（CLI）工具，是一个强大且灵活的 AI 编程助手。它可以让开发者在终端中直接使用 Claude AI 的能力，帮助完成代码生成、分析、优化等各种编程任务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code安装和使用指南">
+<meta property="og:url" content="https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="什么是 Claude Code？Claude Code 是 Anthropic 推出的官方命令行界面（CLI）工具，是一个强大且灵活的 AI 编程助手。它可以让开发者在终端中直接使用 Claude AI 的能力，帮助完成代码生成、分析、优化等各种编程任务。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-30T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.304Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="CLI">
+<meta property="article:tag" content="Claude">
+<meta property="article:tag" content="开发工具">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Claude Code安装和使用指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Claude Code安装和使用指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-11-30T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2025-11-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Claude-Code%EF%BC%9F"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 Claude Code？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-Claude-Code%EF%BC%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么要使用 Claude Code？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Claude-Code-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="post-toc-number">3.</span> <span class="post-toc-text">Claude Code 的核心特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">主要功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E4%BC%98%E5%8A%BF"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">主要优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">系统要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85-Claude-Code"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">1. 全局安装 Claude Code</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">2. 验证安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">3. 初始配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">不同操作系统的注意事项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Windows-%E7%B3%BB%E7%BB%9F"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">Windows 系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#macOS-%E7%B3%BB%E7%BB%9F"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">macOS 系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Linux-%E7%B3%BB%E7%BB%9F"><span class="post-toc-number">4.3.3.</span> <span class="post-toc-text">Linux 系统</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">5.</span> <span class="post-toc-text">基本使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8-Claude-Code"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">启动 Claude Code</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%90%AF%E5%8A%A8"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">在项目目录中启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E5%A7%8B%E5%AF%B9%E8%AF%9D"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">开始对话</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">使用工具和功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E6%8A%80%E5%B7%A7"><span class="post-toc-number">6.</span> <span class="post-toc-text">常用命令和技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AE%E6%96%9C%E6%9D%A0%E5%91%BD%E4%BB%A4"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">内置斜杠命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">键盘快捷键</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">高效使用技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="post-toc-number">6.3.1.</span> <span class="post-toc-text">1. 设置项目上下文</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%93%BE%E5%BC%8F%E5%AF%B9%E8%AF%9D"><span class="post-toc-number">6.3.2.</span> <span class="post-toc-text">2. 链式对话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%98%8E%E7%A1%AE%E6%8C%87%E7%A4%BA"><span class="post-toc-number">6.3.3.</span> <span class="post-toc-text">3. 明确指示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%88%A9%E7%94%A8%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="post-toc-number">6.3.4.</span> <span class="post-toc-text">4. 利用代码块</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A1%88%E4%BE%8B-2%EF%BC%9A%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">案例 2：快速生成测试用例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A1%88%E4%BE%8B-3%EF%BC%9A%E5%AD%A6%E4%B9%A0%E6%96%B0%E6%8A%80%E6%9C%AF"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">案例 3：学习新技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E5%85%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="post-toc-number">7.</span> <span class="post-toc-text">安全最佳实践</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="post-toc-number">8.</span> <span class="post-toc-text">常见问题解决</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%B7%E6%A0%BC%E8%B4%B5%E8%B4%A6%E5%8F%B7%E8%A2%AB%E5%B0%81"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">价格贵账号被封</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">网络连接问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9D%83%E9%99%90%E9%94%99%E8%AF%AF"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">权限错误</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%89%A9%E5%B1%95%E5%8A%9F%E8%83%BD"><span class="post-toc-number">9.</span> <span class="post-toc-text">扩展功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MCP-Model-Context-Protocol"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">MCP (Model Context Protocol)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">自定义命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">10.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="post-toc-number">11.</span> <span class="post-toc-text">相关资源</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Claude-Code安装和使用指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Claude Code安装和使用指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-11-30 09:00:00" datetime="2025-11-30T01:00:00.000Z"  itemprop="datePublished">2025-11-30</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="什么是-Claude-Code？"><a href="#什么是-Claude-Code？" class="headerlink" title="什么是 Claude Code？"></a>什么是 Claude Code？</h1><p>Claude Code 是 Anthropic 推出的官方命令行界面（CLI）工具，是一个强大且灵活的 AI 编程助手。它可以让开发者在终端中直接使用 Claude AI 的能力，帮助完成代码生成、分析、优化等各种编程任务。</p>
+<span id="more"></span>
+<h1 id="为什么要使用-Claude-Code？"><a href="#为什么要使用-Claude-Code？" class="headerlink" title="为什么要使用 Claude Code？"></a>为什么要使用 Claude Code？</h1><p>作为开发者，我们经常需要：</p>
+<ul>
+<li><strong>代码分析和优化</strong> - 快速理解复杂代码逻辑，找出性能瓶颈</li>
+<li><strong>快速解决问题</strong> - 调试错误、修复 bug、解答技术疑问</li>
+<li><strong>代码生成</strong> - 快速生成样板代码、测试用例、文档注释</li>
+<li><strong>学习新技术</strong> - 理解新框架、新语言的最佳实践</li>
+</ul>
+<p>Claude Code 能够：</p>
+<ol>
+<li>直接访问和操作项目文件</li>
+<li>在终端中实时对话和执行代码</li>
+<li>理解项目上下文，提供精准建议</li>
+<li>支持多种编程语言和框架</li>
+<li>与系统命令无缝整合</li>
+</ol>
+<h1 id="Claude-Code-的核心特性"><a href="#Claude-Code-的核心特性" class="headerlink" title="Claude Code 的核心特性"></a>Claude Code 的核心特性</h1><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><ul>
+<li><strong>智能对话</strong> - 在命令行中与 Claude 进行实时对话</li>
+<li><strong>代码生成和编辑</strong> - 生成、分析和优化代码</li>
+<li><strong>文件访问</strong> - 直接读取和操作项目文件</li>
+<li><strong>多种操作模式</strong> - 支持 Plan（规划）、Build（构建）模式</li>
+<li><strong>终端集成</strong> - 与系统命令无缝整合</li>
+<li><strong>MCP 支持</strong> - 通过 Model Context Protocol 集成第三方工具</li>
+</ul>
+<h2 id="主要优势"><a href="#主要优势" class="headerlink" title="主要优势"></a>主要优势</h2><table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发效率提升</td>
+<td>快速获得编码建议和完成代码任务</td>
+</tr>
+<tr>
+<td>学习工具</td>
+<td>理解代码实现和最佳实践</td>
+</tr>
+<tr>
+<td>代码质量</td>
+<td>自动检查代码问题和安全隐患</td>
+</tr>
+<tr>
+<td>跨平台</td>
+<td>支持 Windows、macOS、Linux</td>
+</tr>
+<tr>
+<td>灵活扩展</td>
+<td>支持自定义命令和工作流</td>
+</tr>
+<tr>
+<td>隐私保护</td>
+<td>本地工作，可控的数据处理</td>
+</tr>
+</tbody></table>
+<h1 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h1><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>在开始安装前，请确保你的系统满足以下要求：</p>
+<ul>
+<li>Node.js 18.0 或更高版本</li>
+<li>npm、yarn 或 pnpm 包管理器</li>
+<li>支持的操作系统：Windows、macOS、Linux</li>
+</ul>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1-全局安装-Claude-Code"><a href="#1-全局安装-Claude-Code" class="headerlink" title="1. 全局安装 Claude Code"></a>1. 全局安装 Claude Code</h3><p>使用你喜欢的包管理器进行安装：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 npm 安装（推荐）</span></span><br><span class="line">npm install -g @anthropic-ai/claude-code</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 yarn</span></span><br><span class="line">yarn global add @anthropic-ai/claude-code</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 pnpm</span></span><br><span class="line">pnpm add -g @anthropic-ai/claude-code</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-验证安装"><a href="#2-验证安装" class="headerlink" title="2. 验证安装"></a>2. 验证安装</h3><p>安装完成后，验证是否安装成功：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查版本</span></span><br><span class="line">claude --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看帮助信息</span></span><br><span class="line">claude  --<span class="built_in">help</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-初始配置"><a href="#3-初始配置" class="headerlink" title="3. 初始配置"></a>3. 初始配置</h3><p>第一次运行时，Claude Code 会引导你进行初始配置：</p>
+<ol>
+<li><strong>获取 API 密钥</strong>：访问 <a target="_blank" rel="noopener" href="https://console.anthropic.com/">Anthropic Console</a> 创建或获取你的 API 密钥</li>
+<li><strong>选择默认模型</strong>：推荐使用最新的 Claude Sonnet 4.5</li>
+<li><strong>配置工作目录</strong>：设置默认的项目工作目录</li>
+</ol>
+<h2 id="不同操作系统的注意事项"><a href="#不同操作系统的注意事项" class="headerlink" title="不同操作系统的注意事项"></a>不同操作系统的注意事项</h2><h3 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h3><ul>
+<li>确保 Node.js 已添加到系统 PATH 环境变量</li>
+<li>推荐使用 PowerShell 或 Windows Terminal</li>
+<li>配置文件位置：<code>%APPDATA%\Claude Code</code></li>
+</ul>
+<h3 id="macOS-系统"><a href="#macOS-系统" class="headerlink" title="macOS 系统"></a>macOS 系统</h3><ul>
+<li>如果使用 Homebrew 管理 Node.js，直接使用 npm 安装即可</li>
+<li>配置文件位置：<code>~/.config/claude-code</code> 或 <code>~/Library/Application Support/Claude Code</code></li>
+</ul>
+<h3 id="Linux-系统"><a href="#Linux-系统" class="headerlink" title="Linux 系统"></a>Linux 系统</h3><ul>
+<li>确保已安装 Node.js 和 npm</li>
+<li>配置文件位置：<code>~/.config/claude-code</code></li>
+</ul>
+<h1 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h1><h2 id="启动-Claude-Code"><a href="#启动-Claude-Code" class="headerlink" title="启动 Claude Code"></a>启动 Claude Code</h2><h3 id="在项目目录中启动"><a href="#在项目目录中启动" class="headerlink" title="在项目目录中启动"></a>在项目目录中启动</h3><div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入你的项目目录</span></span><br><span class="line"><span class="built_in">cd</span> your-project-directory</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 Claude Code</span></span><br><span class="line">claude</span><br><span class="line"></span><br><span class="line">/login</span><br><span class="line"><span class="comment"># 按照提示使用您的账户登录</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="开始对话"><a href="#开始对话" class="headerlink" title="开始对话"></a>开始对话</h2><p>启动 Claude Code 后，你可以直接输入问题或请求：</p>
+<div class="highlight-wrap" data-rel="Node-repl"><figure class="lpz highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">帮我分析 index.<span class="property">js</span> 文件中的性能问题</span></span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">这个函数可以优化吗？</span></span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">帮我写一个用户认证的中间件</span></span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">这段代码有什么潜在的安全隐患？</span></span><br></pre></td></tr></table></figure></div>
+
+<p>退出对话：</p>
+<ul>
+<li>输入 <code>exit</code> 或 <code>quit</code></li>
+<li>按 <code>Ctrl+C</code> 或 <code>Ctrl+D</code></li>
+</ul>
+<h2 id="使用工具和功能"><a href="#使用工具和功能" class="headerlink" title="使用工具和功能"></a>使用工具和功能</h2><p>Claude Code 可以帮你：</p>
+<ol>
+<li><strong>读取和分析源代码</strong> - 理解代码结构和逻辑</li>
+<li><strong>执行命令和脚本</strong> - 运行测试、构建项目等</li>
+<li><strong>代码改进建议</strong> - 提供优化方案和最佳实践</li>
+<li><strong>生成新代码</strong> - 创建函数、类、组件等</li>
+<li><strong>调试问题</strong> - 定位错误原因并提供解决方案</li>
+</ol>
+<h1 id="常用命令和技巧"><a href="#常用命令和技巧" class="headerlink" title="常用命令和技巧"></a>常用命令和技巧</h1><h2 id="内置斜杠命令"><a href="#内置斜杠命令" class="headerlink" title="内置斜杠命令"></a>内置斜杠命令</h2><p>Claude Code 提供了一系列内置命令：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取帮助</span></span><br><span class="line">/help</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看使用统计</span></span><br><span class="line">/usage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前模型</span></span><br><span class="line">/model</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换模型</span></span><br><span class="line">/model claude-sonnet-4-5-20250929</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看待办事项</span></span><br><span class="line">/todos</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置上下文</span></span><br><span class="line">/context add &lt;file-path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除上下文</span></span><br><span class="line">/context remove &lt;file-path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有上下文文件</span></span><br><span class="line">/context list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看MCP服务</span></span><br><span class="line">/mcp list</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="键盘快捷键"><a href="#键盘快捷键" class="headerlink" title="键盘快捷键"></a>键盘快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+C</td>
+<td>退出当前对话</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>退出程序（Unix&#x2F;Linux&#x2F;macOS）</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>清空屏幕</td>
+</tr>
+<tr>
+<td>↑↓</td>
+<td>浏览历史命令</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>自动补全（部分支持）</td>
+</tr>
+</tbody></table>
+<h2 id="高效使用技巧"><a href="#高效使用技巧" class="headerlink" title="高效使用技巧"></a>高效使用技巧</h2><h3 id="1-设置项目上下文"><a href="#1-设置项目上下文" class="headerlink" title="1. 设置项目上下文"></a>1. 设置项目上下文</h3><p>使用 <code>/context</code> 命令添加重要文件，让 Claude 更好地理解你的项目：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/context add src/main.js</span><br><span class="line">/context add package.json</span><br><span class="line">/context add README.md</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-链式对话"><a href="#2-链式对话" class="headerlink" title="2. 链式对话"></a>2. 链式对话</h3><p>保持对话的连贯性，让 Claude 建立完整的上下文：</p>
+<div class="highlight-wrap" data-rel="Node-repl"><figure class="lpz highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">我有一个用户认证模块</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">现在需要添加密码重置功能</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">能帮我设计一下流程吗？</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">好的，请帮我实现代码</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-明确指示"><a href="#3-明确指示" class="headerlink" title="3. 明确指示"></a>3. 明确指示</h3><p>提供清晰的需求描述，获得更好的结果：</p>
+<div class="highlight-wrap" data-rel="Markdown"><figure class="lpz highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># ❌ 不好的提问</span></span><br><span class="line"><span class="quote">&gt; 优化这个代码</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ✅ 好的提问</span></span><br><span class="line"><span class="quote">&gt; 请帮我优化 getUserData 函数的性能，主要关注数据库查询和缓存策略</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-利用代码块"><a href="#4-利用代码块" class="headerlink" title="4. 利用代码块"></a>4. 利用代码块</h3><p>在问题中粘贴代码便于 Claude 分析：</p>
+<div class="highlight-wrap" data-rel="Node-repl"><figure class="lpz highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript">这段代码有问题吗？</span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="string">``</span><span class="string">`javascript</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="string">function getData() &#123;</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="string">  // your code here</span></span></span><br><span class="line"><span class="meta prompt_">&gt;</span> <span class="language-javascript"><span class="string">&#125;</span></span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" data-rel="Markdown"><figure class="lpz highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section"># 配置和自定义</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 配置文件</span></span><br><span class="line"></span><br><span class="line">Claude Code 使用 JSON 格式的配置文件。</span><br><span class="line"></span><br><span class="line"><span class="strong">**配置文件位置：**</span></span><br><span class="line"><span class="bullet">-</span> Windows: <span class="code">`%APPDATA%\Claude Code\config.json`</span></span><br><span class="line"><span class="bullet">-</span> macOS: <span class="code">`~/.config/claude-code/config.json`</span></span><br><span class="line"><span class="bullet">-</span> Linux: <span class="code">`~/.config/claude-code/config.json`</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 模型选择</span></span><br><span class="line"></span><br><span class="line">Claude Code 支持多个模型，根据需求选择：</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**Claude Sonnet 4.5**</span> - 最新前沿模型，推荐用于大多数任务</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**Claude Opus**</span> - 功能最强大但成本较高</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**Claude Haiku**</span> - 速度最快但能力相对较弱</span><br><span class="line"></span><br><span class="line"><span class="section"># 实际使用案例</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 案例 1：代码审查和优化</span></span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code"># 启动 Claude Code</span></span><br><span class="line"><span class="code">claude-code</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">&gt; 请审查 src/api/user.js 文件，找出潜在的性能问题和安全隐患</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code"># Claude 会分析文件并提供详细建议</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">&gt; 请帮我优化这些问题</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="案例-2：快速生成测试用例"><a href="#案例-2：快速生成测试用例" class="headerlink" title="案例 2：快速生成测试用例"></a>案例 2：快速生成测试用例</h2><div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 帮我为 utils/formatDate.js 中的 formatDate 函数生成单元测试</span><br><span class="line"></span><br><span class="line"><span class="comment"># Claude 会生成完整的测试代码</span></span><br><span class="line"></span><br><span class="line">&gt; 请使用 Jest 框架</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="案例-3：学习新技术"><a href="#案例-3：学习新技术" class="headerlink" title="案例 3：学习新技术"></a>案例 3：学习新技术</h2><div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 我想在 React 项目中使用 Redux Toolkit，能给我一个完整的示例吗？</span><br><span class="line"></span><br><span class="line">&gt; 解释一下 Redux Toolkit 中的 createSlice 是如何工作的</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="安全最佳实践"><a href="#安全最佳实践" class="headerlink" title="安全最佳实践"></a>安全最佳实践</h1><p>在使用 Claude Code 时，请注意以下安全事项：</p>
+<ol>
+<li><strong>不要在代码中硬编码 API 密钥</strong> - 使用环境变量或配置文件</li>
+<li><strong>定期轮换 API 密钥</strong> - 定期更新密钥以提高安全性</li>
+<li><strong>审查生成的代码</strong> - 总是检查和测试 Claude 生成的代码</li>
+<li><strong>注意敏感信息</strong> - 避免发送包含密码、密钥等敏感信息的代码</li>
+<li><strong>备份配置文件</strong> - 保存好你的配置文件</li>
+</ol>
+<h1 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a>常见问题解决</h1><h2 id="价格贵账号被封"><a href="#价格贵账号被封" class="headerlink" title="价格贵账号被封"></a>价格贵账号被封</h2><p>可以去淘宝或者其他拼车服务购买多人拼车账号</p>
+<h2 id="网络连接问题"><a href="#网络连接问题" class="headerlink" title="网络连接问题"></a>网络连接问题</h2><p><strong>问题</strong>：无法连接到 Anthropic API</p>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li>检查网络连接是否正常</li>
+<li>确认防火墙或代理设置</li>
+<li>尝试使用 VPN（如果在某些地区）</li>
+</ol>
+<h2 id="权限错误"><a href="#权限错误" class="headerlink" title="权限错误"></a>权限错误</h2><p><strong>问题</strong>：无法读写文件</p>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li>确保有适当的文件读写权限</li>
+<li>检查工作目录是否可访问</li>
+<li>在 Windows 上尝试以管理员身份运行</li>
+</ol>
+<h1 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h1><h2 id="MCP-Model-Context-Protocol"><a href="#MCP-Model-Context-Protocol" class="headerlink" title="MCP (Model Context Protocol)"></a>MCP (Model Context Protocol)</h2><p>Claude Code 支持通过 MCP 集成第三方工具和服务，扩展功能：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 MCP 服务器</span></span><br><span class="line">claude mcp add &lt;server-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 MCP 服务器</span></span><br><span class="line"><span class="comment"># 编辑 ~/.config/claude-code/mcp.json</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="自定义命令"><a href="#自定义命令" class="headerlink" title="自定义命令"></a>自定义命令</h2><p>你可以创建自定义命令来扩展 Claude Code 的功能：</p>
+<div class="highlight-wrap" data-rel="Bash"><figure class="lpz highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 .claude/ 目录中创建命令定义</span></span><br><span class="line"><span class="comment"># 配置自己的工作流和快捷命令</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Claude Code 是一个强大的 AI 编程助手工具，能够显著提升开发效率。通过本文，你已经了解了：</p>
+<p>✅ Claude Code 的核心功能和特性<br>✅ 详细的安装步骤<br>✅ 基本使用方法和技巧<br>✅ 配置和自定义选项<br>✅ 安全最佳实践</p>
+<p>建议你：</p>
+<ol>
+<li>先从简单的代码分析任务开始</li>
+<li>逐步探索更多功能</li>
+<li>根据自己的工作流程定制配置</li>
+<li>多实践，发现更多使用场景</li>
+</ol>
+<h1 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/">Anthropic 官方网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.claude.com/docs">Claude Code 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.anthropic.com/">Anthropic API 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://community.anthropic.com/">Anthropic 社区论坛</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/anthropics/claude-code">Claude Code GitHub</a></li>
+</ul>
+<p>开始使用 Claude Code，让 AI 成为你的编程伙伴吧！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" target="_blank" rel="external">https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CLI/" rel="tag">CLI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Claude/" rel="tag">Claude</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&title=《Claude Code安装和使用指南》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&title=《Claude Code安装和使用指南》 — 蓝胖纸&source=什么是 Claude Code？Claude Code 是 Anthropic 推出的官方命令行界面（CLI）工具，是一个强大且灵活的 AI 编程助手。它..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Claude Code安装和使用指南》 — 蓝胖纸&url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/OpenCode-AI%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">OpenCode AI 使用教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS设计模式-原型模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&title=《Claude Code安装和使用指南》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&title=《Claude Code安装和使用指南》 — 蓝胖纸&source=什么是 Claude Code？Claude Code 是 Anthropic 推出的官方命令行界面（CLI）工具，是一个强大且灵活的 AI 编程助手。它..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Claude Code安装和使用指南》 — 蓝胖纸&url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/Claude-Code%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMklEQVR42u3aW46jUAwFwNn/pjPSaP5a0Mc2SOAUX4jADXVbasePP3/i4/Pv+Hnl5/XzZ4/Oz9c8v5K8Q/PAxsbGfgn7c3ocvdDRlQSQMI7eJNnKZAVsbGzsfew88FQDXhKQ8juT7U5WxsbGxv5OdpJ+VAPh+frnV863ABsbGxt7klr0gs28qISNjY39zew8MPQaA1elFvm7XVZLw8bGxn48e1Iketr5jf1tbGxs7EeyP+MjCS1JCSkPQpP7/z+FjY2NvYhdbQNU2ZO0pFpyyseJsLGxsfex58GmyriKl2QZvzyLjY2NvY6dN1yv+rTQmg3Wqa6GjY2N/XZ2MmqTj0LmK/SGO6tve/iN2NjY2IvYvbGYJHj0Upfeyr3twMbGxt7B7qUEvTA2aT/0rh/eg42Njb2OPf/pf16ynxSJqqOW0VPY2NjY69j5hPkdBf1qSStv+hZqadjY2Ngr2FcN31TvLPSi46D7ywZhY2NjL2JXS0jV1m8vBPZGNvPhIWxsbOxN7Oq/+2ohqVpgmiQwBTw2Njb217DL44zx10/avXlr+XAFbGxs7EXsSfLQ25TqtuZlo3ITGhsbG3sFe5ISVId7rhoGSja60BXBxsbGXsG+aoxy0nLoDf00S1HY2NjYi9iTYZ0kVeiN+ORpxuidsbGxsVew87GY6s/9SSk/ub+66eVGLzY2NvZL2NUyzSRs5AWp6h+jXFTCxsbGXsfuhYf72gm9817BCxsbG3sHOw8P1aZCL7WoblayfVG7FxsbG/u17LxsVC3fJMWmPEDmCUahkYyNjY39cnbOuy8gVUNmdYVCVwQbGxv7hexe2ahZtSrG1d55862wsbGxX8tOQk71R/8EM9+I6E5sbGzsRexe4KmmGZMBoHnIHMVzbGxs7MezP8XjqrSk11S4rJ2MjY2NvYjdC13V7ai2e3tNhduTEGxsbOwHs3vDN8nWzJuy84JUYeYUGxsb++XsPGhVw9hkI64tKmFjY2Nj3xdg5mlJnrpgY2NjfzO7+tR8DChKKk7XxMbGxv4e9qSolH9lHuQmTYWoXY2NjY29iD1p9FZHf6oDmpOBzhtHdrCxsbGfwv4LswdPArSfz+EAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

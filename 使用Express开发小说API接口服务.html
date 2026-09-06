@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html">
+    
+    
+    <title>使用Express开发小说API接口服务1.0（一） | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="使用Express开发小说API接口服务1.0（一）1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Express开发小说API接口服务1.0（一）">
+<meta property="og:url" content="https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="使用Express开发小说API接口服务1.0（一）1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png">
+<meta property="og:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png">
+<meta property="article:published_time" content="2018-05-17T07:10:56.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.308Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Express">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用Express开发小说API接口服务1.0（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用Express开发小说API接口服务1.0（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-17T07:10:56.000Z" itemprop="datePublished" class="page-time">
+  2018-05-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A11-0%EF%BC%88%E4%B8%80%EF%BC%89"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用Express开发小说API接口服务1.0（一）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">github创建仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-express-generator-%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装 express-generator 快速生成项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AEcors-%E8%B7%A8%E5%9F%9F"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设置cors 跨域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%A5%E5%BF%97%E5%86%99%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">日志写入本地文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">创建公共文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A6%96%E9%A1%B5%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">首页接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">搜索接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用Express开发小说API接口服务"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用Express开发小说API接口服务1.0（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-17 15:10:56" datetime="2018-05-17T07:10:56.000Z"  itemprop="datePublished">2018-05-17</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用Express开发小说API接口服务1-0（一）"><a href="#使用Express开发小说API接口服务1-0（一）" class="headerlink" title="使用Express开发小说API接口服务1.0（一）"></a>使用Express开发小说API接口服务1.0（一）</h1><p>1.0版本技术栈使用express-generator、express、request、morgan、file-stream-rotator。接口用追书神器API。<br>目前接口设计有首页，小说详情页，搜索，小说文章列表页，排行API。</p>
+<span id="more"></span>
+<h2 id="github创建仓库"><a href="#github创建仓库" class="headerlink" title="github创建仓库"></a>github创建仓库</h2><p>先创建一个仓库放文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517153417.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>然后克隆创建好的仓库</p>
+<div class="highlight-wrap" data-rel="Crmsh"><figure class="lpz highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/lanpangzhi/novel-api.git</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="安装-express-generator-快速生成项目"><a href="#安装-express-generator-快速生成项目" class="headerlink" title="安装 express-generator 快速生成项目"></a>安装 express-generator 快速生成项目</h2><div class="highlight-wrap" data-rel="Cmake"><figure class="lpz highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g express-generator</span><br></pre></td></tr></table></figure></div>
+<p>然后再之前克隆仓库的上一级目录执行</p>
+<div class="highlight-wrap" data-rel="Stata"><figure class="lpz highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">express --<span class="keyword">no</span>-<span class="keyword">view</span> novel-api</span><br><span class="line"><span class="keyword">cd</span> novel-api</span><br><span class="line">npm install </span><br><span class="line">npm install request <span class="keyword">file</span>-stream-rotator -S</span><br><span class="line"><span class="comment">// Linux MacOS</span></span><br><span class="line">DEBUG=novel-api:* &amp; npm start</span><br><span class="line"><span class="comment">// windows </span></span><br><span class="line"><span class="keyword">set</span> DEBUG=novel-api:* &amp; npm start</span><br></pre></td></tr></table></figure></div>
+<p>生成好的目录结构和文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://hexo-1252491761.cos.ap-beijing.myqcloud.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1/QQ%E5%9B%BE%E7%89%8720180517154349.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="设置cors-跨域"><a href="#设置cors-跨域" class="headerlink" title="设置cors 跨域"></a>设置cors 跨域</h2><p>打开项目根目录app.js,放在路由上面。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.all<span class="punctuation">(</span>&#x27;*&#x27;, function <span class="punctuation">(</span>req, res, next<span class="punctuation">)</span> &#123;</span><br><span class="line">    res.header<span class="punctuation">(</span><span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    res.header<span class="punctuation">(</span><span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;Origin, X-Requested-With, Content-Type, Accept&quot;</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    res.header<span class="punctuation">(</span><span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;PUT,POST,GET,DELETE,OPTIONS&quot;</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    res.header<span class="punctuation">(</span><span class="string">&quot;X-Powered-By&quot;</span>, &#x27; <span class="number">3</span>.<span class="number">2</span>.<span class="number">1</span>&#x27;<span class="punctuation">)</span></span><br><span class="line">    res.header<span class="punctuation">(</span><span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json;charset=utf-8&quot;</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    next<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="日志写入本地文件"><a href="#日志写入本地文件" class="headerlink" title="日志写入本地文件"></a>日志写入本地文件</h2><p>按时间分割log日志并写入本地磁盘，需要在app.js文件中引入fs和file-stream-rotator模块。</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let fs = <span class="title function_">require</span>(<span class="string">&#x27;fs&#x27;</span>); </span><br><span class="line">let <span class="title class_">FileStreamRotator</span> = <span class="title function_">require</span>(<span class="string">&#x27;file-stream-rotator&#x27;</span>);  <span class="comment">// 日志按时间分割模块</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面代码写在var app = express();下面</span></span><br><span class="line">let logDir = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;log&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查是否存在logDir这个目录没有则创建</span></span><br><span class="line">fs.<span class="title function_">existsSync</span>(logDir) || fs.<span class="title function_">mkdirSync</span>(logDir);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 日志分割流</span></span><br><span class="line">let accessLogStream = <span class="title class_">FileStreamRotator</span>.<span class="title function_">getStream</span>(&#123;</span><br><span class="line">    date_format: <span class="string">&#x27;YYYYMMDD&#x27;</span>,</span><br><span class="line">    filename: path.<span class="title function_">join</span>(logDir, <span class="string">&#x27;access-%DATE%.log&#x27;</span>),</span><br><span class="line">    frequency: <span class="string">&#x27;daily&#x27;</span>,</span><br><span class="line">    verbose: <span class="keyword">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 日志中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">logger</span>(<span class="string">&#x27;combined&#x27;</span>, &#123; stream: accessLogStream &#125;));</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="创建公共文件"><a href="#创建公共文件" class="headerlink" title="创建公共文件"></a>创建公共文件</h2><p>项目根目录创建common文件夹，再里面再新建一个common.json文件</p>
+<div class="highlight-wrap" data-rel="Json"><figure class="lpz highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;API&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.zhuishushenqi.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;PIC&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://statics.zhuishushenqi.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;CHAPTER&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://chapter2.zhuishushenqi.com&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>API域名: <a target="_blank" rel="noopener" href="http://api.zhuishushenqi.com/">http://api.zhuishushenqi.com</a><br>图片域名: <a target="_blank" rel="noopener" href="http://statics.zhuishushenqi.com/">http://statics.zhuishushenqi.com</a><br>章节域名: <a target="_blank" rel="noopener" href="http://chapter2.zhuishushenqi.com/">http://chapter2.zhuishushenqi.com</a></p>
+<h2 id="首页接口"><a href="#首页接口" class="headerlink" title="首页接口"></a>首页接口</h2><p>1.0版本首页接口直接返回最热榜前20条数据。<br>修改app.js 文件路由中间件配置</p>
+<div class="highlight-wrap" data-rel="Dart"><figure class="lpz highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/index&#x27;</span>, indexRouter);</span><br></pre></td></tr></table></figure></div>
+<p>修改routes&#x2F;index.js 文件</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">let express = require<span class="punctuation">(</span>&#x27;express&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let request = require<span class="punctuation">(</span>&#x27;request&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let common = require<span class="punctuation">(</span>&#x27;../common/common.json&#x27;<span class="punctuation">)</span><span class="comment">; // 引用公共文件</span></span><br><span class="line">let router = express.Router<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">/** </span><br><span class="line">  首页数据追书最热榜 Top100</span><br><span class="line">  获取单一排行榜</span><br><span class="line">  http://api.zhuishushenqi.com/ranking/&#123;rankingId&#125;</span><br><span class="line">*/</span><br><span class="line">router.get<span class="punctuation">(</span>&#x27;/&#x27;, function<span class="punctuation">(</span>req, res, next<span class="punctuation">)</span> &#123;</span><br><span class="line">  // 请求追书最热榜 Top100</span><br><span class="line">  request.get<span class="punctuation">(</span>`$&#123;common.API&#125;/ranking/<span class="number">54d</span>42d92321052167dfb75e3`, function <span class="punctuation">(</span>error, response, body<span class="punctuation">)</span> &#123;</span><br><span class="line">    if <span class="punctuation">(</span>error<span class="punctuation">)</span>&#123;</span><br><span class="line">      res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123;<span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;请求出错了...&quot;</span>&#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 解析返回数据取前<span class="number">20</span>条，并添加图片url链接</span><br><span class="line">    body = JSON.parse<span class="punctuation">(</span>body<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">    if <span class="punctuation">(</span>body.ok<span class="punctuation">)</span>&#123;</span><br><span class="line">      let books = body.ranking.books.slice<span class="punctuation">(</span><span class="number">0</span>, <span class="number">19</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">      books.forEach<span class="punctuation">(</span>element =&gt; &#123;</span><br><span class="line">        element.cover = common.PIC + element.cover<span class="comment">;</span></span><br><span class="line">      &#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">      res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">1</span>, <span class="string">&quot;books&quot;</span>: books, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;OK&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;rankingId有问题&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">module.exports = router<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/index">http://localhost:3000/index</a> 就可以看到返回的数据了。</p>
+<h2 id="搜索接口"><a href="#搜索接口" class="headerlink" title="搜索接口"></a>搜索接口</h2><p>1.0版本的搜索接口只取前40条数据，可以模糊查询。<br>修改app.js 文件路由中间件配置，把users删掉。</p>
+<div class="highlight-wrap" data-rel="Zephir"><figure class="lpz highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> searchRouter = <span class="keyword">require</span>(<span class="string">&#x27;./routes/search&#x27;</span>);</span><br><span class="line">app.<span class="keyword">use</span>(<span class="string">&#x27;/search&#x27;</span>, searchRouter);</span><br></pre></td></tr></table></figure></div>
+<p>然后把routes文件夹下面的users.js删除，新建search.js</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">let express = require<span class="punctuation">(</span>&#x27;express&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let request = require<span class="punctuation">(</span>&#x27;request&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let common = require<span class="punctuation">(</span>&#x27;../common/common.json&#x27;<span class="punctuation">)</span><span class="comment">; // 引用公共文件</span></span><br><span class="line">let router = express.Router<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">/** </span><br><span class="line">  模糊搜索接口</span><br><span class="line">  返回模糊搜索前<span class="number">40</span>条数据</span><br><span class="line">  http://api.zhuishushenqi.com/book/fuzzy-search?query=&#123;name&#125;</span><br><span class="line">*/</span><br><span class="line">router.get<span class="punctuation">(</span>&#x27;/&#x27;, function<span class="punctuation">(</span>req, res, next<span class="punctuation">)</span> &#123;</span><br><span class="line">  // 判断query参数有没有传递过来</span><br><span class="line">  if <span class="punctuation">(</span>req.query.query<span class="punctuation">)</span>&#123;</span><br><span class="line">    // req.query.query 编码转义</span><br><span class="line">    let query = encodeURIComponent<span class="punctuation">(</span>req.query.query<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    request.get<span class="punctuation">(</span>`$&#123;common.API&#125;/book/fuzzy-search?query=$&#123;query&#125;`, function <span class="punctuation">(</span>error, response, body<span class="punctuation">)</span> &#123;</span><br><span class="line">      if <span class="punctuation">(</span>error<span class="punctuation">)</span>&#123;</span><br><span class="line">        res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;请求出错了...&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">       // 解析返回数据</span><br><span class="line">      body = JSON.parse<span class="punctuation">(</span>body<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">      if <span class="punctuation">(</span>body.ok<span class="punctuation">)</span>&#123;</span><br><span class="line">        if <span class="punctuation">(</span>body.books.length == <span class="number">0</span><span class="punctuation">)</span>&#123;</span><br><span class="line">          res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;没有找到书籍，换个名字试试吧。&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 取前<span class="number">40</span>条，并添加图片url链接</span><br><span class="line">        let books = body.books.slice<span class="punctuation">(</span><span class="number">0</span>, <span class="number">39</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">        books.forEach<span class="punctuation">(</span>element =&gt; &#123;</span><br><span class="line">          element.cover = common.PIC + element.cover<span class="comment">;</span></span><br><span class="line">        &#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">        res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">1</span>, <span class="string">&quot;books&quot;</span>: books, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;OK&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123; <span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;请求出错了...&quot;</span> &#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    res.send<span class="punctuation">(</span>JSON.stringify<span class="punctuation">(</span>&#123;<span class="string">&quot;flag&quot;</span>: <span class="number">0</span>, <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;请传入query参数&quot;</span>&#125;<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">module.exports = router<span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/search/?query=%E9%81%AE%E5%A4%A9">http://localhost:3000/search/?query=遮天</a> 就可以看到返回的数据了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/expressjs/morgan">https://github.com/expressjs/morgan</a><br><a target="_blank" rel="noopener" href="https://juejin.im/entry/593a3fdf61ff4b006c737ca4">https://juejin.im/entry/593a3fdf61ff4b006c737ca4</a><br><a target="_blank" rel="noopener" href="https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3">https://github.com/jianhui1012/bookreader/wiki/API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html" target="_blank" rel="external">https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&title=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&title=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0（一）1.0版本技术栈使用express-generator、express、request、morgan、..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1-%E4%BA%8C.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用Express开发小说API接口服务1.0(二)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAHexo.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用travis-ci自动构建Hexo</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&title=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&title=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&source=使用Express开发小说API接口服务1.0（一）1.0版本技术栈使用express-generator、express、request、morgan、..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Express开发小说API接口服务1.0（一）》 — 蓝胖纸&url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/%E4%BD%BF%E7%94%A8Express%E5%BC%80%E5%8F%91%E5%B0%8F%E8%AF%B4API%E6%8E%A5%E5%8F%A3%E6%9C%8D%E5%8A%A1.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEnElEQVR42u3a247aShAFUP7/pxPpPCVKgL2rTA4Ny08jhnG3l0eqrsvtFl8//rt+/fnXT/785p/fyb9/7w73dnLvbo8/ub3iwoQJEyZMb8mUbHH22PkDJFt//Lc5RHKfv9wBEyZMmDAdztQeAvLHzh/m3m8f/23+YpIjxd3PMWHChAnTFzAlIbbNHBOyGVz7V5gwYcKECVMeaF+R7uZr5YVjTJgwYcL0PUz57ZItbhLpnGBzHHlhLRwTJkyYML0Z02xw5zN+fvl8EyZMmDBh+l+ZZuliO1qatxXbgL0Zey2eGhMmTJgwHcvUDtYkEbMdCZ3dOS/UtqlsUSHAhAkTJkyHMM0WS76fD/3kh4+rBn3acjAmTJgwYTqRKd9Wu3De/mzT4HZUaLaH3z7BhAkTJkyHM81Krps0Mj9MbAZ3kt0mBxFMmDBhwvRJTFeNcu4Lu7MAn++h+CfAhAkTJkzHMuVDqHmimMDNAvasNLwpFkf/WZgwYcKE6Sim2dBnntY+3m77qMkrnKW+0ZQTJkyYMGF6e6Y8JLdJbHK82Dcm28NHnnJHXV9MmDBhwvT2TLMttkeH2eGgbaDOysF5mRsTJkyYMJ3INGth5unrBWG4pJyNtD55zZgwYcKE6Vim/GGSTRdnkEX5eFbebfmi1BcTJkyYML09U77Y68J2njbniXSbbBe1cEyYMGHCdBTTbOgz+e2mITprRrYpcXsMwoQJEyZMJzLNHmk2AJrvIXkx+wJunrRjwoQJE6bTmWZF3nbEp21ztk3HvKxcx31MmDBhwnQsU9L2a9PgFnG2Vju0Ohv0iWrJmDBhwoTpjZlmQzD7km47cPOKIm+xFiZMmDBhOpZpcyBo26L7Ym4y7rPhe7IiJkyYMGE6kGkWeq86OswKr3ny3JaVn9TCMWHChAnTgUzJr/NSaRv+Z4+dBPL8QFOM22LChAkTpgOZNq2+dru30dWWkjctW0yYMGHC9A1MeYo7S19nAX72nX1ijwkTJkyYPokpCf95iN0P6OwLtZetjgkTJkyYPpSpvfJxnFlZNm9e5kM/UWKPCRMmTJiOZWqLoe0wTVuEbcdYrxo2ygeGMGHChAnTWUzXNgLbsmyboF4V5oeTTZgwYcKE6UCmNu28KvnMC6wXn3di7rtYmDBhwoTpWKarAuemJdmOzD5OwpPX3x5fMGHChAnTWUytYv7YbbhtV2xf5KoojAkTJkyYjmXKt7jZbpumzlj3Tc0nlJgwYcKE6UCm3LIdVN0Xi/ejPO3rv7t/TJgwYcL0EUxJazO/9b8cY83T7GFzFBMmTJgwHcv0b4A2xdZr09pbfD3ZISZMmDBhOoTpR3m1LczZyM6rp5Py58KECRMmTKcztQFyNpyaLL8Z9Nm85mHqiwkTJkyYjmJq23vt4WBWit0E8scrDg8ZmDBhwoTpcKZ8mX3Ybk8leZF3c+p58n1MmDBhwvQFTMkoaht623bprFE6G5nFhAkTJkzfyTRbeLPpPPwnxdyCBhMmTJgwfRDTLCTPmqCzNmfbjExQklIvJkyYMGE6nWlWAG1bj3mamq8yKwRfhoIJEyZMmN6d6SdBmDm6qElcrAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

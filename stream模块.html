@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html">
+    
+    
+    <title>stream模块 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="stream (流)流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。Node.js 提供了多种流对象。 例如， HTTP 请求 和 process.stdout 就都是流的实例。流可以是可读的、可写的，或是可读写的。所有的流都是 EventEmitter 的实例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stream模块">
+<meta property="og:url" content="https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="stream (流)流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。Node.js 提供了多种流对象。 例如， HTTP 请求 和 process.stdout 就都是流的实例。流可以是可读的、可写的，或是可读写的。所有的流都是 EventEmitter 的实例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-27T05:27:30.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.308Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">stream模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">stream模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-27T05:27:30.000Z" itemprop="datePublished" class="page-time">
+  2018-02-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#stream-%E6%B5%81"><span class="post-toc-number">1.</span> <span class="post-toc-text">stream (流)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8stream"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为什么使用stream</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%81%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">流的类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E8%AF%BB%E6%B5%81%E7%9A%84%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">可读流的常用事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E8%AF%BB%E6%B5%81"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">可读流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9A%82%E5%81%9C%E6%B5%81%E5%AF%B9%E8%B1%A1%E8%A7%A6%E5%8F%91-%E2%80%98data%E2%80%99-%E4%BA%8B%E4%BB%B6"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">暂停流对象触发 ‘data’ 事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E6%96%B0%E6%B5%81%E5%AF%B9%E8%B1%A1%E8%A7%A6%E5%8F%91-%E2%80%98data%E2%80%99-%E4%BA%8B%E4%BB%B6"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">重新流对象触发 ‘data’ 事件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E5%86%99%E6%B5%81"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">可写流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#stream-write-chunk-encoding-callback"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">stream.write(chunk[, encoding][, callback])</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#drain%E4%BA%8B%E4%BB%B6"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">drain事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#stream-end-chunk-encoding-callback"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">stream.end(chunk[, encoding][, callback])</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pipe"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">pipe()</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-stream模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">stream模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-27 13:27:30" datetime="2018-02-27T05:27:30.000Z"  itemprop="datePublished">2018-02-27</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="stream-流"><a href="#stream-流" class="headerlink" title="stream (流)"></a>stream (流)</h1><p>流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。<br>Node.js 提供了多种流对象。 例如， HTTP 请求 和 process.stdout 就都是流的实例。<br>流可以是可读的、可写的，或是可读写的。所有的流都是 EventEmitter 的实例。</p>
+<span id="more"></span>
+
+<h2 id="为什么使用stream"><a href="#为什么使用stream" class="headerlink" title="为什么使用stream"></a>为什么使用stream</h2><p>我们之前读文件用的是readFile()把整个文件读入到内存，如果文件小还可以，假如你读取的文件有几个G就会把内存撑爆，这个时候就需要stream(流)了，收到一块数据，就读取一块。这样占用内存就会小很多。</p>
+<h2 id="流的类型"><a href="#流的类型" class="headerlink" title="流的类型"></a>流的类型</h2><p>Node.js 中有四种基本的流类型：<br>Readable - 可读的流<br>Writable - 可写的流<br>Duplex - 可读写的流<br>Transform - 在读写过程中可以修改和变换数据的 Duplex 流 </p>
+<h2 id="可读流的常用事件"><a href="#可读流的常用事件" class="headerlink" title="可读流的常用事件"></a>可读流的常用事件</h2><p>data 当有数据可读时触发<br>end 没有更多的数据可读时触发。<br>error  在接收和写入过程中发生错误时触发。</p>
+<h2 id="可读流"><a href="#可读流" class="headerlink" title="可读流"></a>可读流</h2><div class="highlight-wrap" data-rel="Livescript"><figure class="lpz highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> rs = fs.createReadStream(<span class="string">&#x27;./hello.txt&#x27;</span>,&#123;</span><br><span class="line">    encoding: <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rs.<span class="literal">on</span>(<span class="string">&#x27;data&#x27;</span>, data =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;读取中--------&#x27;</span> + data +<span class="string">&#x27;--------&#x27;</span>) <span class="comment"># 如果文件过大会分几次输出数据。</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rs.<span class="literal">on</span>(<span class="string">&#x27;end&#x27;</span>, () =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&#x27;读取完毕&#x27;</span>); <span class="comment"># data读取完触发 end 事件。</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>第一个参数是路径。<br>第二个参数是可配置对象。</p>
+<ul>
+<li>flags: 读取模式默认为r（只读）</li>
+<li>encoding: 设置编码默认null</li>
+<li>mode: 设置文件模式默认0o666</li>
+<li>start: 用整数表示文件开始读取字节数的索引位置</li>
+<li>end: 用整数表示文件结束读取字节数的索引位置</li>
+<li>highWaterMark: 最高水位线，停止从底层资源读取前，内部缓存区最多存放的字节数。默认64kb</li>
+</ul>
+<h3 id="暂停流对象触发-‘data’-事件"><a href="#暂停流对象触发-‘data’-事件" class="headerlink" title="暂停流对象触发 ‘data’ 事件"></a>暂停流对象触发 ‘data’ 事件</h3><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rs.pause<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="重新流对象触发-‘data’-事件"><a href="#重新流对象触发-‘data’-事件" class="headerlink" title="重新流对象触发 ‘data’ 事件"></a>重新流对象触发 ‘data’ 事件</h3><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rs.resume<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="可写流"><a href="#可写流" class="headerlink" title="可写流"></a>可写流</h2><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let fs = require<span class="punctuation">(</span>&#x27;fs&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">let stream = fs.createWriteStream<span class="punctuation">(</span>&#x27;./<span class="number">1</span>.<span class="keyword">txt</span>&#x27;<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">stream.write<span class="punctuation">(</span>&#x27;lan&#x27;<span class="punctuation">)</span> # 写入数据</span><br><span class="line">stream.write<span class="punctuation">(</span>&#x27;pang&#x27;<span class="punctuation">)</span> # 写入数据</span><br><span class="line">stream.end<span class="punctuation">(</span>&#x27;zi&#x27;<span class="punctuation">)</span> # 写入数据</span><br><span class="line">stream.on<span class="punctuation">(</span>&#x27;finish&#x27;, function<span class="punctuation">(</span><span class="punctuation">)</span> &#123;</span><br><span class="line">    console.log<span class="punctuation">(</span><span class="string">&quot;写入完成。&quot;</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<p>第一个参数是路径。<br>第二个参数是可配置对象。</p>
+<ul>
+<li>flags: 读取模式默认为w</li>
+<li>encoding: 设置编码默认utf8</li>
+<li>mode: 设置文件模式默认0o666</li>
+<li>start: 用整数表示文件开始写入字节数的索引位置</li>
+<li>highWaterMark: 最高水位线，内部缓存区最多存放的字节数。默认16kb</li>
+</ul>
+<h3 id="stream-write-chunk-encoding-callback"><a href="#stream-write-chunk-encoding-callback" class="headerlink" title="stream.write(chunk[, encoding][, callback])"></a>stream.write(chunk[, encoding][, callback])</h3><p>第一个参数写入的数据。<br>第二个参数设置编码。<br>第三个参数回调函数。<br>返回一个boolean值。<br>写入数据的时候内部缓冲区的大小小于创建流时设定的 highWaterMark 阈值，函数将返回 true 。如果返回值为 false ，应该停止向流中写入数据，直到 ‘drain’ 事件被触发。</p>
+<div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">let fs = require<span class="punctuation">(</span>&#x27;fs&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">let stream = fs.createWriteStream<span class="punctuation">(</span>&#x27;./<span class="number">1</span>.<span class="keyword">txt</span>&#x27;,&#123;</span><br><span class="line">    highWaterMark: <span class="number">10</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">let i = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">let max = <span class="number">100</span><span class="comment">;</span></span><br><span class="line">let write = <span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    let flag = true<span class="comment">;</span></span><br><span class="line">    while <span class="punctuation">(</span>i &lt; max &amp;&amp; flag<span class="punctuation">)</span>&#123;</span><br><span class="line">        console.log<span class="punctuation">(</span>&#x27;写入&#x27; + i<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">        i++<span class="comment">;</span></span><br><span class="line">        flag = stream.write<span class="punctuation">(</span>String<span class="punctuation">(</span>i<span class="punctuation">)</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">write<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">stream.on<span class="punctuation">(</span>&#x27;drain&#x27;,<span class="punctuation">(</span><span class="punctuation">)</span> =&gt; &#123;</span><br><span class="line">    console.log<span class="punctuation">(</span>&#x27;继续写入&#x27;+ i<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">    write<span class="punctuation">(</span><span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="punctuation">)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="drain事件"><a href="#drain事件" class="headerlink" title="drain事件"></a>drain事件</h3><p>如果调用 stream.write(chunk) 方法返回 false，’drain’ 事件会在适合恢复写入数据到流的时候触发。</p>
+<h3 id="stream-end-chunk-encoding-callback"><a href="#stream-end-chunk-encoding-callback" class="headerlink" title="stream.end(chunk[, encoding][, callback])"></a>stream.end(chunk[, encoding][, callback])</h3><p>第一个参数写入的数据。<br>第二个参数设置编码。<br>第三个参数回调函数。<br>调用 writable.end() 方法表明接下来没有数据要被写入 Writable。通过传入可选的 chunk 和 encoding 参数，可以在关闭流之前再写入一段数据。如果传入了可选的 callback 函数，它将作为 ‘finish’ 事件的回调函数。<br>在调用了 stream.end() 方法之后，再调用 stream.write() 方法将会导致错误。</p>
+<h2 id="pipe"><a href="#pipe" class="headerlink" title="pipe()"></a>pipe()</h2><div class="highlight-wrap" data-rel="Dns"><figure class="lpz highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let fs = require<span class="punctuation">(</span>&#x27;fs&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">let rs = fs.createReadStream<span class="punctuation">(</span>&#x27;./<span class="number">1</span>.<span class="keyword">txt</span>&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">let ws = fs.createWriteStream<span class="punctuation">(</span>&#x27;./<span class="number">2</span>.<span class="keyword">txt</span>&#x27;<span class="punctuation">)</span><span class="comment">;</span></span><br><span class="line">rs.pipe<span class="punctuation">(</span>ws<span class="punctuation">)</span></span><br></pre></td></tr></table></figure></div>
+<p>readable.pipe(destination[, options])<br>readable 可读流对象<br>destination 可写流对象<br>readable.pipe() 绑定一个 Writable 到 readable 上， 将可写流自动切换到 flowing 模式并将所有数据传给绑定的 Writable。数据流将被自动管理。这样，即使是可读流较快，目标可写流也不会超负荷（overwhelmed）。<br>pipe 方法是使用流最简单的方式。通常的建议是要么使用 pipe 方法、要么使用事件来读取流，要避免混合使用两者。一般情况下使用 pipe 方法时你就不必再使用事件了。但如果你想以一种更加自定义的方式读取流，就要用到事件了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/stream.html">http://nodejs.cn/api/stream.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/stream%E6%A8%A1%E5%9D%97.html" target="_blank" rel="external">https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&title=《stream模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&title=《stream模块》 — 蓝胖纸&source=stream (流)流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《stream模块》 — 蓝胖纸&url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/node%E5%A4%84%E7%90%86%E5%89%8D%E5%8F%B0post%E8%AF%B7%E6%B1%82.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node处理前台post请求</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/path%E6%A8%A1%E5%9D%97.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">path模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&title=《stream模块》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&title=《stream模块》 — 蓝胖纸&source=stream (流)流（stream）在 Node.js 中是处理流数据的抽象接口。stream 模块提供了基础的 API 。使用这些 API 可以很容易..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《stream模块》 — 蓝胖纸&url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/stream%E6%A8%A1%E5%9D%97.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3ay24CMRAEwPz/T2+ukYBN9zhBwi6fEA+vi8NoHv76itf1YyXfuf/m46/ypywtDAyMj2Vct+vVA159+niIhJfv/HIfDAyMAxj51nmgvH8/2Sc5GwYGBkb7On+nRWJgYGCsM/6v6sTAwMBY2S5PFpMiNg/QGBgYpzFm7fv3vP6X+QYGBsZHMa5yteG1HRsMT4WBgbE1o0378nI3h0UFanIeDAyMTRnXaLXjgTzpHL6DgYFxGCMJeSsXVfOrY0XIxsDAOIAxSwfz4LjS1IvSRwwMjK0Z9z9Yv+D1xw21+xECBgbGpoxW3DbRZsG3DuIYGBiHMe4PMQu7SWmaDzif8DAwMA5g3Ae1WcK3nj4mIRgDA+M0RtvWn/0F+Q51FY6BgbE1Y9Ysy4eULWapiMXAwNiUkTfg8pb9SvqYB9yXqSEGBsbWjLawzINvm0omaSsGBsY5jLwpNgvB6y22X15jYGBszZiVoEvBsRw5tKfCwMDYldGWmrOB5ezTYrSJgYFxAGMWgt/Pw8DAOJnRpm5tslhcnohTTAwMjBMYV7mSR87+lHao+WSEiYGBsSkjX/nWyfWI9ZFAG6YxMDA+nfG3QXblAsdsNwwMjHMYsyFlkq61qedSLY6BgYFRFpMrITgZOSx1ATEwMI5hzNr67YXXiISBgXEAY3bpIT9We8m1HgxgYGBszWhLx1krrb1s0Q41MTAwNmV8A4qAIuBs5lTmAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html">
+    
+    
+    <title>axios发送Basic Auth认证和Bearer Token | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="Basic Auth认证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios发送Basic Auth认证和Bearer Token">
+<meta property="og:url" content="https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="Basic Auth认证">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-03T12:43:16.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.306Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">axios发送Basic Auth认证和Bearer Token</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">axios发送Basic Auth认证和Bearer Token</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2023-02-03T12:43:16.000Z" itemprop="datePublished" class="page-time">
+  2023-02-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Auth%E8%AE%A4%E8%AF%81"><span class="post-toc-number">1.</span> <span class="post-toc-text">Basic Auth认证</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bearer-Token"><span class="post-toc-number">2.</span> <span class="post-toc-text">Bearer Token</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-axios发送Basic-Auth认证和Bearer-Token"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">axios发送Basic Auth认证和Bearer Token</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2023-02-03 20:43:16" datetime="2023-02-03T12:43:16.000Z"  itemprop="datePublished">2023-02-03</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Basic-Auth认证"><a href="#Basic-Auth认证" class="headerlink" title="Basic Auth认证"></a>Basic Auth认证</h1><span id="more"></span>
+<p>axios配置如下只需要增加 auth 参数即可，<code>auth: {username: &#39;lanpz&#39;,password: &#39;123456789&#39;}</code>。</p>
+<div class="highlight-wrap" data-rel="Php"><figure class="lpz highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_ invoke__">post</span>(<span class="string">&#x27;xxx&#x27;</span>, &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;, <span class="attr">auth</span>: &#123;<span class="attr">username</span>: <span class="string">&#x27;lanpz&#x27;</span>,<span class="attr">password</span>: <span class="string">&#x27;123456789&#x27;</span>&#125; , &#123;</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded;charset=UTF-8&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_ invoke__">then</span>((&#123;data&#125;) =&gt; console.<span class="title function_ invoke__">log</span>(data));</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="Bearer-Token"><a href="#Bearer-Token" class="headerlink" title="Bearer Token"></a>Bearer Token</h1><p>在axios请求拦截器里面自定义下请求头即可。</p>
+<div class="highlight-wrap" data-rel="Stylus"><figure class="lpz highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service<span class="selector-class">.interceptors</span><span class="selector-class">.request</span><span class="selector-class">.use</span>(async request =&gt; &#123;</span><br><span class="line">  request<span class="selector-class">.headers</span><span class="selector-attr">[<span class="string">&#x27;Authorization&#x27;</span>]</span> = `Bearer $&#123;token&#125;`</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html" target="_blank" rel="external">https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&title=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&title=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&source=Basic Auth认证" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/%E4%BB%8ETravis-CI%E8%BF%81%E7%A7%BB%E5%88%B0GitHub-Actions.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hexo博客从Travis-CI迁移到GitHub Actions</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/%E6%89%8B%E5%86%99vue%E6%97%A5%E5%8E%86%E7%BB%84%E4%BB%B6.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">手写vue日历组件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&title=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&title=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&source=Basic Auth认证" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios发送Basic Auth认证和Bearer Token》 — 蓝胖纸&url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/axios%E5%8F%91%E9%80%81Basic-Auth%E8%AE%A4%E8%AF%81%E5%92%8CBearer-Token.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNElEQVR42u3awa6iQBAFUP//p5lkVjMx6L3VvBdpDyuDiJxmUemq+3jEx/H3eP7875mza46nY3b/s1+dfXvBgY2NjX0T9vHyeP3oZ9ckgOS3r69Plvh0abCxsbG3Y68XlbxozUpgu5RvjNjY2Nhfyc4fNy9U9ePGBRUbGxsb+6rHnW1p1ksdNjY29rexk6bS6+tnBalltM2vC3pp2NjY2B/PXhn0ftrnX5pvY2NjY38M+xgd1w4D2qFyfrfTf8HGxsbeiL0CaLcBs+VIopbtiAIbGxt7b3Y7Us2LzXpDHxsbGxv7+W4Xr1+5lNe2t4o7Y2NjY2/EXilg+TK1A+NZELMNG2FjY2Pvx05K1Eq7J28zrQ99o7AONjY29hbslbLUhinbQjULdEZRS2xsbOzt2LPzedlbHw/MmllRWAcbGxt7C/Ys/nhVI6ltXc1ez3+fsbGxsbdjt8VgtgmZlai8dNVNJWxsbOwt2PmgdBaLmQ1x8zHD7IVhY2Nj78TOB6srhW29dLWD5zd3w8bGxt6IPQvctGPjWdSmaPeXd8DGxsb+Hna+BPnStIDZFigqrtjY2NgbsZNSsRLTXAnZtFH7opeGjY2NvRG7LSGzrUJewGbDg3xDgo2Njb0Tez00sx6yTDY5s+3Q6d2wsbGxN2XP2jQrYZ12A7NSIE8LGDY2NvbN2bMxQBvcyVtR7d1mLSdsbGzsb2An5xNMO7K9auHqAxsbG/u27LYYJFuIlaWcnc+DPm96adjY2Ng3ZM/+si1d+YChfYZZkAgbGxt7J/ZV8Zr825VwfLtNOn0B2NjY2BuxZw+XR2d+ou/Vjije/C82Njb2zdltkDF/lKsGvbPIfhS+xMbGxt6Cvd58zzcD+Sh32OKfbaWwsbGxb84+ymOWgZkFgK7aaUVbEWxsbOzbsldaOe1IoI3j/0RkHxsbG3tXdh61WSkGeYFsoz+zBhM2Njb2fuy26T+L0eRL0wZ36m0SNjY2NnY56E3aPe3AoI0ZPdo3ho2Njb0de7Ycs+K33myKmkrY2NjYG7HzRk+dBhoNa2fD5qIdho2Njb0Ru23NtO3+WUAzD9/80nwbGxsb+xPZfwCJCqCUYZlDAwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?6793943ebee3558917970a50987cf13b"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/" />
+    
+    
+    
+    <link rel="canonical" href="https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html">
+    
+    
+    <title>webpack内存溢出 | 蓝胖纸 | 哆啦A梦</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="前端,vue,javascript">
+    <meta name="description" content="webpack内存溢出当项目过大的时候就会碰见内存溢出问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack内存溢出">
+<meta property="og:url" content="https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html">
+<meta property="og:site_name" content="蓝胖纸">
+<meta property="og:description" content="webpack内存溢出当项目过大的时候就会碰见内存溢出问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-03T10:37:50.000Z">
+<meta property="article:modified_time" content="2026-09-06T13:30:13.308Z">
+<meta property="article:author" content="lanpangzhi">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="蓝胖纸" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.8.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lanpangzhi</h5>
+          <a href="mailto:875727617@qq.com" title="875727617@qq.com" class="mail">875727617@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lanpangzhi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack内存溢出</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">webpack内存溢出</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-07-03T10:37:50.000Z" itemprop="datePublished" class="page-time">
+  2021-07-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack内存溢出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">更新</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue-cli2-0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">vue-cli2.0解决方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-webpack内存溢出"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack内存溢出</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-07-03 18:37:50" datetime="2021-07-03T10:37:50.000Z"  itemprop="datePublished">2021-07-03</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="webpack内存溢出"><a href="#webpack内存溢出" class="headerlink" title="webpack内存溢出"></a>webpack内存溢出</h1><p>当项目过大的时候就会碰见内存溢出问题。</p>
+<span id="more"></span>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>从 2017 年 8 月发布的 Node.js v8.0 开始，您现在可以使用NODE_OPTIONS 环境变量来全局设置 max_old_space_size。</p>
+<div class="highlight-wrap" data-rel="Arduino"><figure class="lpz highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> NODE_OPTIONS=--max-old-space-size=<span class="number">4096</span></span><br><span class="line"><span class="comment">// windows使用</span></span><br><span class="line">set NODE_OPTIONS=--max-old-space-size=<span class="number">4096</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>或者使用cross-env来解决平台不同命令不同</p>
+<div class="highlight-wrap" data-rel="Mel"><figure class="lpz highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g <span class="keyword">cross</span>-<span class="keyword">env</span></span><br><span class="line"><span class="keyword">cross</span>-<span class="keyword">env</span> NODE_OPTIONS=--<span class="keyword">max</span>-old-space-<span class="keyword">size</span>=<span class="number">4096</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="vue-cli2-0解决方案"><a href="#vue-cli2-0解决方案" class="headerlink" title="vue-cli2.0解决方案"></a>vue-cli2.0解决方案</h2><p>修改package.json文件（兼容windows和macOS本）</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --progress --config <span class="keyword">build</span>/webpack.dev.conf.js<span class="string">&quot;,</span></span><br><span class="line"><span class="string">    &quot;</span><span class="keyword">build</span><span class="string">&quot;: &quot;</span>node -max_old_space_size=<span class="number">4096</span> <span class="keyword">build</span>/<span class="keyword">build</span>.js<span class="string">&quot;,</span></span><br><span class="line"><span class="string">  &#125;,</span></span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://github.com/endel/increase-memory-limit">https://github.com/endel/increase-memory-limit</a><br><a target="_blank" rel="noopener" href="https://github.com/kentcdodds/cross-env">https://github.com/kentcdodds/cross-env</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <a href="/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html" target="_blank" rel="external">https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://blog.langpz.com">
+            <img src="/img/avatar.png" alt="lanpangzhi">
+            lanpangzhi
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&title=《webpack内存溢出》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&title=《webpack内存溢出》 — 蓝胖纸&source=webpack内存溢出当项目过大的时候就会碰见内存溢出问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack内存溢出》 — 蓝胖纸&url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/css%E5%AE%9E%E7%8E%B0table%E8%A1%A8%E5%A4%B4%E5%92%8C%E5%88%97%E5%9B%BA%E5%AE%9A.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css粘性定位实现table表头和列固定</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/nativefier-%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">nativefier 一行命令生成桌面应用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <link href="https://unpkg.com/@waline/client@3.15.2/dist/waline.css" rel="stylesheet">
+    <!-- <script src="/js/waline.min.js?v=1.8.1"></script> -->
+    <!-- Valine Comments script -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@3.15.2/dist/waline.js';
+        init({
+            el: '#comments',
+            serverURL: 'https://waline.langpz.com',
+        });
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lanpangzhi &copy; 2016 - 2026</span>
+            <span>
+                
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow">京ICP备17033838号</a><br>
+                
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/lanpangzhi/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+        </p>
+        <p>Hosted by <a href="https://cloud.tencent.com/product/cos" target="_blank" style="font-weight: bold" rel="external nofollow">Tencent COS</a></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&title=《webpack内存溢出》 — 蓝胖纸&pic=https://blog.langpz.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&title=《webpack内存溢出》 — 蓝胖纸&source=webpack内存溢出当项目过大的时候就会碰见内存溢出问题。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack内存溢出》 — 蓝胖纸&url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html&via=https://blog.langpz.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://blog.langpz.com/webpack%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3awW7cMAwE0Pz/T6fXAu2uZ0gp3QLPp2ATe/l8kJQhv77i6zu+8nt//2171+ELDw8P72jpf/7N+3tnsPwF5TXj4eHh3ea9euj7UpLFOimiLT2pGQ8PD+9zeAkm+e1+Y8DDw8P7v3jJJ/lWMTuC4+Hh4f1b3ubRbZg7O6Zfz1rw8PDwui5VcVD+hJ+v9Pfw8PDwjg4EbJb7/CDeNtIeqsXDw8O7wMsX3HywoC0uD4LbOvHw8PB+hrcZvUoW+s2in0TAf/kWPDw8vAu8NpDdtLs2zbNZfIyHh4d3lvf+hlmouhlsbRl1DIGHh4d3iDcLI/KyZltF++SHmQg8PDy8o7wiEo1HCtplfRNtDFtfeHh4eAveZnvYv4LkabOoAg8PD+8GLx91SraKdmPIeW2deHh4eLd57RG5beHXDf5yiCEPiPHw8PBO8ZIHbQKL2faQh78PNePh4eEd5eWMJIzIh03zp+Vb10MDDA8PD+8Qb/M1eSN/1sRqxwUehlbx8PDwLvCST9pDbfuczdDVy+/Fw8PDO8rLl+xNuDAbz8qP4C/rwcPDw7vA2+8qs9cxe1l5UHJs08TDw8OLR6/yaCDnbaKKFQwPDw/vMi+JEmbxa/si8q0iminDw8PDO8q7F7km9+aH7OHYAR4eHt413n4tbdmzl1iPOODh4eFd5h1bjhfsWVgcpdR4eHh4F3jJNWPkjbS2qgc8Hh4e3lHed3nNIt12EKE90L88suPh4eFd4LWbweaI3EYMSYRxAIaHh4c34iUL+ix43bfQZhsDHh4e3s/w8pbVvq2VtNBmYQQeHh7eJ/PyQ22+5cxqe/gcDw8P7wN4ecyaH9ZnI1bDmTI8PDy8Q7y2iByfN8OSJ9TjC3h4eHgXeAf+4S/7bHkpbcQ8vPDw8PBS3i9IEivw6TEmMwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="/js/waves.min.js?v=1.8.1"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.8.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.8.1"></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  model: { jsonPath: '/live2dw/assets/koharu.model.json' },
+  display: {
+    position: 'right',
+    width: 100,
+    height: 200
+  },
+  mobile: { show: false },
+  react: {
+    opacityDefault: 1,
+    opacityOnHover: 0.2
+  }
+});
+</script>
+
+
+</body>
+</html>
